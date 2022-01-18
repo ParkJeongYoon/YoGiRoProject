@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="springsample">
+	<insert id="insertSample" parameterType="kr.co.goodee39.vo.DataVO1">
+		insert into springsample(column1, column2, column3)
+		values(#{column1}, #{column2}, #{column3})
+	</insert>
+	
+	<select id="selectSample" resultType="kr.co.goodee39.vo.DataVO1">
+		select column1, column2, column3 from springsample
+	</select>
+</mapper>
