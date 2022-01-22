@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/default.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css">
 </head>
-<body>
+<body id="body">
     <div class="container">
         
 		<jsp:include page="header.jsp"></jsp:include>
@@ -29,9 +29,7 @@
 
 
 
-        <footer>
-            <div class="api-list"></div>
-        </footer>
+        <jsp:include page="footer.jsp"></jsp:include>
     </div>
 </body>
 </html>

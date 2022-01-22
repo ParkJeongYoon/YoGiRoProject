@@ -26,4 +26,6 @@
 	<resources mapping="/resources/**" location="/resources/"/>
 	<resources mapping="/docs/**" location="/resources/docs/"/>
 	<resources mapping="/css/**" location="/resources/css/"/>
+	<resources mapping="/font/**" location="/resources/font/"/>
+	<resources mapping="/icons/**" location="/resources/icons/"/>
 </beans:beans>

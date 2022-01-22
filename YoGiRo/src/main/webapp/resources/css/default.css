@@ -53,3 +53,17 @@ button {
 	background: transparent;
 	cursor: pointer;
 }
+
+
+/* YoGiRo Project fonts */
+/* logo */
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+/* normal */
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap');
+/* title */
+@font-face {
+	font-family: 'twayair';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayair.woff') format('woff');
+	font-weight: 700;
+	font-style: normal;
+}
