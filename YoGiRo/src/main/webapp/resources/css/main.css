@@ -10,8 +10,7 @@ main {
     display: flex;
 }
 .article-l {
-    width: 50%;
-    height: 100%;
+    width: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,7 +24,7 @@ img {
     width: 70%;
 }
 .article-r {
-    width: 65%;
+    width: 60%;
     height: 100%;
     display: flex;
     justify-content: center;
