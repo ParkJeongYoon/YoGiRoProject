@@ -2,7 +2,7 @@ package kr.co.goodee39.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class MainContoller {
@@ -47,90 +47,14 @@ public class MainContoller {
 	
 	
 	
-	
-	@GetMapping("/inmap/Seoul-si")
-	public String seoulSi() {
-		return "/inmap/Seoul-si";
-	}
-	
-	@GetMapping("/inmap/Busan-si")
-	public String busanSi() {
-		return "/inmap/Busan-si";
-	}
-	
-	@GetMapping("/inmap/Daegu-si")
-	public String daeguSi() {
-		return "/inmap/Daegu-si";
-	}
-	
-	@GetMapping("/inmap/Incheon-si")
-	public String incheonSi() {
-		return "/inmap/Incheon-si";
-	}
-	
-	@GetMapping("/inmap/Gwangju-si")
-	public String gwangjuSi() {
-		return "/inmap/Gwangju-si";
-	}
-	
-	@GetMapping("/inmap/Daejeon-si")
-	public String daejeonSi() {
-		return "/inmap/Daejeon-si";
-	}
-	
-	@GetMapping("/inmap/Ulsan-si")
-	public String ulsanSi() {
-		return "/inmap/Ulsan-si";
-	}
-	
-	@GetMapping("/inmap/Sejong-si")
-	public String sejongSi() {
-		return "/inmap/Sejong-si";
-	}
-	
-	@GetMapping("/inmap/Gyeonggi-do")
-	public String gyeonggiDo() {
-		return "/inmap/Gyeonggi-do";
-	}
-	
-	@GetMapping("/inmap/Gangwon-do")
-	public String gangwonDo() {
-		return "/inmap/Gangwon-do";
-	}
-	
-	@GetMapping("/inmap/Chungcheongbuk-do")
-	public String chungcheongbukDo() {
-		return "/inmap/Chungcheongbuk-do";
-	}
-	
-	@GetMapping("/inmap/Chungcheongnam-do")
-	public String chungcheongnamDo() {
-		return "/inmap/Chungcheongnam-do";
-	}
-	
-	@GetMapping("/inmap/Jeollabuk-do")
-	public String jeollabukDo() {
-		return "/inmap/Jeollabuk-do";
-	}
-	
-	@GetMapping("/inmap/Jeollanam-do")
-	public String jeollanamDo() {
-		return "/inmap/Jeollanam-do";
-	}
-	
-	@GetMapping("/inmap/Gyeongsangbuk-do")
-	public String gyeongsangbukDo() {
-		return "/inmap/Gyeongsangbuk-do";
-	}
-	
-	@GetMapping("/inmap/Gyeongsangnam-do")
-	public String gyeongsangnamDo() {
-		return "/inmap/Gyeongsangnam-do";
-	}
-	
-	@GetMapping("/inmap/Jeju-do")
-	public String gejuDo() {
-		return "/inmap/Jeju-do";
+		
+	@GetMapping("/inmap/inmap/{lat}/{latDecimal}/{lng}/{lngDecimal}/{zoom}")
+	public String inMap(@PathVariable String lat,
+						@PathVariable String latDecimal,
+						@PathVariable String lng,
+						@PathVariable String lngDecimal,
+						@PathVariable String zoom) {
+		return "/inmap/inmap";
 	}
 
 }

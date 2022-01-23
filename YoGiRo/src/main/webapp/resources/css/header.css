@@ -38,6 +38,8 @@ a:visited {
     flex-direction: column;
     justify-content: center;
     max-width: 1600px;
+    padding-right: 1.7rem;
+    padding-left: 1.7rem;
 }
 
 
