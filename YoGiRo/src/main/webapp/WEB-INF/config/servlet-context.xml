@@ -24,8 +24,10 @@
 	
 	<!-- 정적 파일 경로 세팅 -->
 	<resources mapping="/resources/**" location="/resources/"/>
+	
 	<resources mapping="/docs/**" location="/resources/docs/"/>
 	<resources mapping="/css/**" location="/resources/css/"/>
 	<resources mapping="/font/**" location="/resources/font/"/>
 	<resources mapping="/icons/**" location="/resources/icons/"/>
+	<resources mapping="/img/**" location="/resources/img/"/>
 </beans:beans>

@@ -17,8 +17,8 @@
         <main>
             <section class="section1">
                 <article class="article-l">
-                    <div class="rok-thumbnail">
-                        <img src="${pageContext.request.contextPath}/resources/img/KakaoTalk_20220117_070411036.jpg" alt="카잔">
+                    <div class="rok-thumbnail-box">
+                        <img class="rok-thumbnail" src="${pageContext.request.contextPath}/img/KakaoTalk_20220117_070411036.jpg" alt="카잔">
                     </div>
                 </article>
                 <article class="article-r">

@@ -12,4 +12,9 @@ public class ComponentContoller {
 		return "/header";
 	}
 
+	@GetMapping("/footer")
+	public String footer() {
+		return "/footer";
+	}
+
 }

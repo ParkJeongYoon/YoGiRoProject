@@ -7,8 +7,20 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/default.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css">
 </head>
-<body>
-	<h1>course-main</h1>
-	<jsp:include page="header.jsp"></jsp:include>
+<body id="body">
+    <div class="container">
+        
+		<jsp:include page="header.jsp"></jsp:include>
+
+
+
+        <main>
+			<h1>course-main</h1>
+        </main>
+
+
+
+        <jsp:include page="footer.jsp"></jsp:include>
+    </div>
 </body>
 </html>

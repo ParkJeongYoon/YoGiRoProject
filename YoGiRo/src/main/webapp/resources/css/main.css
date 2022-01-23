@@ -15,12 +15,12 @@ main {
     justify-content: center;
     align-items: center;
 }
-.rok-thumbnail {
+.rok-thumbnail-box {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-img {
+.rok-thumbnail {
     width: 70%;
 }
 .article-r {

@@ -159,9 +159,9 @@
 	        justify-content: center;
 	    }
 	    .svg-box {
-	    	
+	    	z-index: -1;
 	    }
-	    #svg {
+	    .svg {
 	        transform: translateX(3rem) translateY(3rem);
 	    }
 	    .source {
@@ -172,7 +172,6 @@
 	    .a-default {
 	    	text-decoration: underline;
 	    	color: #0000EE;
-	    	z-index: 1;
 	    }
 	    .a-default:visited {
 			color: #551ABB;
@@ -182,7 +181,7 @@
 <div class="rok-body">
 	
 	<div class="svg-box">
-	    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 1150" id="svg">
+	    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 1150" class="svg">
 	        <defs>
 	            <filter id="dropshadow">
 	                <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
