@@ -4,7 +4,7 @@
 <header>
     <div class="header-top">
         <div class="logo-box">
-            <h1 class="logo">YoGiRo</h1>
+            <a style="display: inline;" href="${pageContext.request.contextPath}/"><h1 class="logo">YoGiRo</h1></a>
         </div>
         <div class="login-box">
             <a href="${pageContext.request.contextPath}/qna/qna-main" class="login-box-a">문의하기</a>

@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.vh {
+    width: 100%;
+    height: 100%;
+}
+
+
+.qna-main {
+  	margin-top: 1rem;
+  	margin-bottom: 1rem;
+    width: 100%;
+    height: calc(100vh - 250px);
+    display: flex;
+}

@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/default.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css">
 </head>
-<body id="body">
+<body class="body">
     <div class="container">
         
 		<jsp:include page="header.jsp"></jsp:include>
