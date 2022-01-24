@@ -15,6 +15,13 @@ main {
 	width: 1600px;
 	flex-direction: row;
 }
+body {
+      display: flex;
+      width: 100vw;
+      flex-direction: column;
+      
+      
+   }
 /* .container {
     position: relative;
     left: 50%;
@@ -139,7 +146,7 @@ table {
 }
 
 #search {
-	height: 30px;
+	height: 35px;
 	width: 200px;
 	position: absolute;
 	right: 80px;
@@ -162,23 +169,24 @@ table {
 .course_content {
 	border: 1px solid black;
 	border-radius: 30px;
-	width: 30%;
+	width: 19vw;
 }
 
 .bg {
 	background-color: rgba(0, 0, 0, 0.5);
 	border-radius: 30px;
-	width: 30%;
+	width: 19vw ;
 	height: 100px;
 	position: absolute;
 }
 
 .div_image {
 	border-radius: 30px;
-	width: 100%;
+	width: 19vw;
 	height: 100px;
 	background-size: cover;
 	background-repeat: no-repeat;
+	max-width : 100%;
 }
 
 .div_image p {
@@ -261,12 +269,14 @@ table {
 						<c:forEach var="i" begin="0" end="2">
 							<div id="course${i}" class="course_content">
 
-								<a href="">
+								<a href="" class="course-a">
+								
 									<div class="div_image"
 										style="background-image: url('${commonList[i].firstimage}')">
 										<div class="bg"></div>
 										<p>${commonList[i].title}</p>
 									</div>
+									
 								</a>
 
 
