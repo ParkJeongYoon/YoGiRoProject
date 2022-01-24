@@ -8,18 +8,17 @@
 	<title>Insert title here</title>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/icons/fontawesome-free-5.15.4-web/css/all.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/default.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/qnacss/qna-main.css">
 </head>
 <body class="body vh">
     <div class="container vh">
-		<jsp:include page="header.jsp"></jsp:include>
+		<jsp:include page="../includes/header.jsp"></jsp:include>
 
 
 
         <main class="qna-main">
         
-			<section>
+			<section class="qna-section">
 			
 				<h1>문의하기</h1>
 				
@@ -47,12 +46,12 @@
 							<button type="submit">글쓰기 <i class="fas fa-pen"></i></button>
 						</div>
 						<div class="qna-list-bottom-inner-right">
-							<!-- <form:form>
+							<!-- <%-- <form:form>
 								<form:select path=""></form:select>&#x20;
 								<form:select path=""></form:select>&#x20;&#x20;
 								<form:input path=""/>&#x20;&#x20;
 								<form:button></form:button>
-							</form:form> -->
+							</form:form> --%> -->
 						</div>
 					</tfoot>
 				</table>
@@ -63,7 +62,7 @@
 
 
 
-        <jsp:include page="footer.jsp"></jsp:include>
+        <jsp:include page="../includes/footer.jsp"></jsp:include>
     </div>
 </body>
 </html>
