@@ -10,8 +10,8 @@ public class CourseCommonVO {
 	String mapx;
 	String mapy;
 	String mlevel;
-	//String distance;
-	//String taketime;
+	String distance;
+	String taketime;
 	
 	public String getMlevel() {
 		return mlevel;
@@ -67,18 +67,19 @@ public class CourseCommonVO {
 	public void setMapy(String mapy) {
 		this.mapy = mapy;
 	}
-//	public String getDistance() {
-//		return distance;
-//	}
-//	public void setDistance(String distance) {
-//		this.distance = distance;
-//	}
-//	public String getTaketime() {
-//		return taketime;
-//	}
-//	public void setTaketime(String taketime) {
-//		this.taketime = taketime;
-//	}
+	public String getDistance() {
+		return distance;
+	}
+	public void setDistance(String distance) {
+		this.distance = distance;
+	}
+	public String getTaketime() {
+		return taketime;
+	}
+	public void setTaketime(String taketime) {
+		this.taketime = taketime;
+	}
+
 	
 	
 }

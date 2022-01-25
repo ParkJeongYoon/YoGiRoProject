@@ -9,7 +9,7 @@
     <script src="${pageContext.request.contextPath}/docs/js/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/docs/js/examples-base.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/docs/js/highlight.min.js"></script>
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=06jpeuhp1j&amp;submodules=panorama"></script>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=v14fqiw9zh&amp;submodules=panorama"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/docs/css/examples-base.css" />
     <script>
         var HOME_PATH = '${pageContext.request.contextPath}/docs';

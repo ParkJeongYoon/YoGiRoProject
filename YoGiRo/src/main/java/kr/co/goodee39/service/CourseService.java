@@ -22,6 +22,8 @@ import org.w3c.dom.NodeList;
 import kr.co.goodee39.vo.CourseCommonVO;
 import kr.co.goodee39.vo.CourseDetailVO;
 import kr.co.goodee39.vo.CourseIntroVO;
+import kr.co.goodee39.vo.MyCourseCommonVO;
+import kr.co.goodee39.vo.MyCourseDetailVO;
 
 @Service
 public class CourseService {
@@ -431,5 +433,22 @@ public class CourseService {
 	}
 	public void getMyCourseDetailToJSP(Model model) {
 		model.addAttribute("myDetailList",sqlSessionTemplate.selectList("course.getmycoursedetail"));
+	}
+	
+	public void selectCourseCommonToDetailPage(Model model, CourseCommonVO vo) {
+		
+		model.addAttribute("coursecommontodetailpage",sqlSessionTemplate.selectOne("course.getcoursecommonwithid",vo));
+	}
+	public void selectCourseDetailToDetailPage(Model model, CourseDetailVO vo) {
+		
+		model.addAttribute("coursedetailtodetailpage",sqlSessionTemplate.selectList("course.getcoursedetailwithid",vo));
+	}
+	public void selectMyCourseCommonToDetailPage(Model model, MyCourseCommonVO vo) {
+		
+		model.addAttribute("mycoursecommontodetailpage",sqlSessionTemplate.selectOne("course.getmycoursecommonwithid",vo));
+	}
+	public void selectMyCourseDetailToDetailPage(Model model, MyCourseDetailVO vo) {
+		
+		model.addAttribute("mycoursedetailtodetailpage",sqlSessionTemplate.selectList("course.getmycoursedetailwithid",vo));
 	}
 }

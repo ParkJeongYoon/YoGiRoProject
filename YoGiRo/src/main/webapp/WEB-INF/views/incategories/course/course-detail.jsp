@@ -9,19 +9,17 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/default.css">
 <style>
-
 main {
 	display: flex;
 	width: 1600px;
-	flex-direction: row;
+	flex-direction: column;
 }
+
 body {
-      display: flex;
-      width: 100vw;
-      flex-direction: column;
-      
-      
-   }
+	display: flex;
+	width: 100vw;
+	flex-direction: column;
+}
 /* .container {
     position: relative;
     left: 50%;
@@ -37,15 +35,16 @@ body {
 aside {
 	position: relative;
 	height: 300px;
-	width: 180px; 
+	width: 180px;
 	margin-right: 30px;
 	margin-top: 100px;
 	display: inline-block;
 }
-#course_real_container{
+
+#course_real_container {
 	display: flex;
 	flex-direction: column;
-	width :  100%;
+	width: 100%;
 }
 
 .sidemenubar {
@@ -175,7 +174,7 @@ table {
 .bg {
 	background-color: rgba(0, 0, 0, 0.5);
 	border-radius: 30px;
-	width: 19vw ;
+	width: 19vw;
 	height: 100px;
 	position: absolute;
 }
@@ -186,7 +185,7 @@ table {
 	height: 100px;
 	background-size: cover;
 	background-repeat: no-repeat;
-	max-width : 100%;
+	max-width: 100%;
 }
 
 .div_image p {
@@ -234,110 +233,22 @@ table {
 
 
 		<main>
-			<aside>
-				<div class="sidemenubar">
-					<a href=""><div>
-							<h3>수도권</h3>
-							<i class="fas fa-angle-right"></i>
-						</div></a> <a href=""><div>
-							<h3>강원권</h3>
-							<i class="fas fa-angle-right"></i>
-						</div></a> <a href=""><div>
-							<h3>충청권</h3>
-							<i class="fas fa-angle-right"></i>
-						</div></a> <a href=""><div>
-							<h3>전라권</h3>
-							<i class="fas fa-angle-right"></i>
-						</div></a> <a href=""><div>
-							<h3>경상권</h3>
-							<i class="fas fa-angle-right"></i>
-						</div></a>
-				</div>
-			</aside>
-			<div id="course_real_container">
-				<div id="course_top">
-					<h1>코스</h1>
-					<div id="search_box">
-						<input type="text" id="search">
-						<button id="search_btn">검색</button>
+			<p>${coursecommontodetailpage.contentid}</p>
+			<img src="${coursecommontodetailpage.firstimage}" alt="" />
+			<p>${coursecommontodetailpage.taketime}</p>
+			<p>${coursecommontodetailpage.title}</p>
+			<p>${coursecommontodetailpage.overview}</p>
+			<c:forEach var="item" items="${coursedetailtodetailpage}">
+				
+					<div class="subname_container">
+					<p >${item.contentid}</p>
+						<p >${item.subname}</p>
+						<img src="${item.subdetailimg}" alt="" />
+						<p >${item.subdetailoverview}</p>
+						<br>
 					</div>
-				</div>
-
-				<div class="course_container">
-					<div id="main_course">
-
-						<c:forEach var="i" begin="0" end="2">
-							<div id="course${i}" class="course_content">
-
-								<a href="course_detail?contentid=${commonList[i].contentid}" class="course-a">
-								
-									<div class="div_image"
-										style="background-image: url('${commonList[i].firstimage}')">
-										<div class="bg"></div>
-										<p>${commonList[i].title}</p>
-									</div>
-									
-								</a>
-
-
-								<c:forEach var="item" items="${detailList}">
-
-									<c:if test="${item.contentid eq commonList[i].contentid}">
-										<div class="subname_container">
-											<img class="icon"
-												src="https://cdn.visitkorea.or.kr/resources/images/sub/ico_leftobj.png"
-												alt="" />
-											<p class="subname">${item.subname}</p>
-											<br>
-										</div>
-									</c:if>
-								</c:forEach>
-							</div>
-						</c:forEach>
-
-					</div>
-
-
-
-				</div>
-				<br /> <br />
-				<hr />
-				<br> <a href=""><h4 id="add_my_course">내 코스 올리기</h4></a> <br>
-				<br>
-				<div class="course_container">
-					<div id="user_course">
-
-
-						<c:forEach var="j" begin="0" end="2">
-							<div id="my_course${j}" class="course_content">
-
-								<a href="mycourse_detail?mycoursecommonid=${myCommonList[j].mycoursecommonid}">
-									<div class="div_image"
-										style="background-image: url('${myCommonList[j].mycoursemainimage}')">
-										<div class="bg"></div>
-										<p>${myCommonList[j].mycoursecommontitle}</p>
-									</div>
-								</a>
-
-
-								<c:forEach var="item2" items="${myDetailList}">
-
-									<c:if
-										test="${item2.mycoursecommonid eq myCommonList[j].mycoursecommonid}">
-										<div class="subname_container">
-											<img class="icon"
-												src="https://cdn.visitkorea.or.kr/resources/images/sub/ico_leftobj.png"
-												alt="" />
-											<p class="subname">${item2.mycoursedetailname}</p>
-											<br>
-										</div>
-									</c:if>
-								</c:forEach>
-							</div>
-						</c:forEach>
-					</div>
-				</div>
-			</div>
+				
+			</c:forEach>
 		</main>
 
 
