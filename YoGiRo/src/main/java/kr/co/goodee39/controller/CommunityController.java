@@ -23,18 +23,18 @@ public class CommunityController {
 			 		@RequestParam(defaultValue = "") String title,
 			 		@RequestParam(defaultValue = "") String content) {
 		comService.selectComList(model, num, title, content);
-		return "community-main";
+		return "/incategories/community/community-main";
 	}
 
 	@GetMapping("/community-create")
 	public String getComCreate(CommunityVO vo) {
-		return "community-create";
+		return "/incategories/community/community-create";
 	}
 	
 	@GetMapping("/community-detail")
 	public String getBBSDetail(@ModelAttribute("ComVO") CommunityVO vo, Model model) {
 		comService.updateViewCount(model, vo);
 		comService.selectCom(model, vo);
-		return "community-detail";
+		return "/incategories/community/community-detail";
 	}
 }

@@ -84,8 +84,7 @@
 	<script>
 	    window.onload = function(){
 	       ck = CKEDITOR.replace("editor");
-	    };
-	    
+	    };    
     </script>
 </body>
 </html>
