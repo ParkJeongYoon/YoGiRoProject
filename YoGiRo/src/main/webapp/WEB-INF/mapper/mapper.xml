@@ -17,14 +17,14 @@
 		values( #{contentid},#{region},#{subdetailalt}, #{subdetailimg}, #{subdetailoverview}, #{subname})
 	</insert>
 	
-	<select id="getcoursecommon" resultType="kr.co.goodee39.vo.CourseCommonVO">
+	<select id="getcoursecommon" parameterType= "kr.co.goodee39.vo.CourseCommonVO" resultType="kr.co.goodee39.vo.CourseCommonVO">
 		select contentid,region,firstimage,firstimage2,overview,title,mapx,mapy,mlevel from coursecommon
-		where region="서울";
+		where region=#{region};
 	</select>
 	
-	<select id="getcoursedetail" resultType="kr.co.goodee39.vo.CourseDetailVO">
+	<select id="getcoursedetail"  parameterType= "kr.co.goodee39.vo.CourseDetailVO" resultType="kr.co.goodee39.vo.CourseDetailVO">
 		select contentid,region,subname, subdetailimg, subdetailoverview from coursedetail
-		where region="서울";
+		where region=#{region};
 	</select>
 	
 	<select id="getmycoursecommon" resultType="kr.co.goodee39.vo.MyCourseCommonVO">
