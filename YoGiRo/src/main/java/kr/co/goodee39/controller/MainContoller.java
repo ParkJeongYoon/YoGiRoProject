@@ -39,10 +39,10 @@ public class MainContoller {
 		return "/incategories/course/course-main";
 	}
 	
-	@GetMapping("/incategories/community/community-main")
-	public String community() {
-		return "/incategories/community/community-main";
-	}
+//	@GetMapping("/incategories/community/community-main")
+//	public String community() {
+//		return "/incategories/community/community-main";
+//	}
 	
 	
 	
