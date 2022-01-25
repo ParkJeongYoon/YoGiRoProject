@@ -1,6 +1,6 @@
-<%@page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -228,35 +228,8 @@ table {
 }
 </style>
 </head>
-<body class="body">
-	<div class="container">
-
-		<jsp:include page="../../includes/header.jsp"></jsp:include>
-
-
-
-		<main>
-			<aside>
-				<div class="sidemenubar">
-					<a href="#" onclick="acyncMovePage('move-to-course-main-ajax?region=서울')"><div>
-							<h3>수도권</h3>
-							<i class="fas fa-angle-right"></i>
-						</div></a> <a href="#" onclick="acyncMovePage('move-to-course-main-ajax?region=강원')"><div>
-							<h3>강원권</h3>
-							<i class="fas fa-angle-right"></i>
-						</div></a> <a href="#" onclick="acyncMovePage('move-to-course-main-ajax?region=충청')"><div>
-							<h3>충청권</h3>
-							<i class="fas fa-angle-right"></i>
-						</div></a> <a href="#" onclick="acyncMovePage('move-to-course-main-ajax?region=전라')"><div>
-							<h3>전라권</h3>
-							<i class="fas fa-angle-right"></i>
-						</div></a> <a href="#" onclick="acyncMovePage('move-to-course-main-ajax?region=경상')"><div>
-							<h3>경상권</h3>
-							<i class="fas fa-angle-right"></i>
-						</div></a>
-				</div>
-			</aside>
-			<div id="course_real_container">
+<body>
+	<div id="course_real_container">
 				<div id="course_top">
 					<h1>코스</h1>
 					<div id="search_box">
@@ -340,13 +313,7 @@ table {
 					</div>
 				</div>
 			</div>
-		</main>
-
-
-
-		<jsp:include page="../../includes/footer.jsp"></jsp:include>
-	</div>
-	<script>
+			<script>
  
     function acyncMovePage(url){
         // ajax option
@@ -367,7 +334,5 @@ table {
     }
  
 </script>
-
-
 </body>
 </html>

@@ -32,12 +32,22 @@ public class CourseController {
 
 	
 	@GetMapping("/move-to-course-main")
-	public String getCourseCommon(Model model) {
-		ts.getCourseCommonToJSP(model);
-		ts.getCourseDetailToJSP(model);
+	public String getCourseCommon(@ModelAttribute("CourseCommonVO") CourseCommonVO vo, Model model) {
+		System.out.println(vo.getRegion());
+		ts.getCourseCommonToJSP(model,vo);
+		ts.getCourseDetailToJSP(model,vo);
 		ts.getMyCourseCommonToJSP(model);
 		ts.getMyCourseDetailToJSP(model);
 		return "incategories/course/course-main";
+	}
+	@GetMapping("/move-to-course-main-ajax")
+	public String getCourseCommonAjax(@ModelAttribute("CourseCommonVO") CourseCommonVO vo, Model model) {
+		System.out.println("새로추가한곳"+vo.getRegion());
+		ts.getCourseCommonToJSP(model,vo);
+		ts.getCourseDetailToJSP(model,vo);
+		ts.getMyCourseCommonToJSP(model);
+		ts.getMyCourseDetailToJSP(model);
+		return "incategories/course/course-main-ajax";
 	}
 	
 	@GetMapping("/course_detail")

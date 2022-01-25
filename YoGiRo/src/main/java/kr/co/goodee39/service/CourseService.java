@@ -422,11 +422,20 @@ public class CourseService {
 //
 //	}
 	
-	public void getCourseCommonToJSP(Model model) {
-		model.addAttribute("commonList",sqlSessionTemplate.selectList("course.getcoursecommon"));
+	public void getCourseCommonToJSP(Model model, CourseCommonVO vo) {
+		if(vo.getRegion()==null) {
+			vo.setRegion("서울");
+		}
+		System.out.println("서비스 : "+vo.getRegion());
+		model.addAttribute("commonList",sqlSessionTemplate.selectList("course.getcoursecommon",vo));
 	}
-	public void getCourseDetailToJSP(Model model) {
-		model.addAttribute("detailList",sqlSessionTemplate.selectList("course.getcoursedetail"));
+	public void getCourseDetailToJSP(Model model, CourseCommonVO vo) {
+		if(vo.getRegion()==null) {
+			vo.setRegion("서울");
+		}
+		CourseDetailVO vo1 = new CourseDetailVO();
+		vo1.setRegion(vo.getRegion());
+		model.addAttribute("detailList",sqlSessionTemplate.selectList("course.getcoursedetail",vo1));
 	}
 	public void getMyCourseCommonToJSP(Model model) {
 		model.addAttribute("myCommonList",sqlSessionTemplate.selectList("course.getmycoursecommon"));
