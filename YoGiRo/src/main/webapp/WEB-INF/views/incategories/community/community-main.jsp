@@ -180,7 +180,7 @@
 								<tr>
 									<td>${item.comid}</td>
 									<td><a
-										href="${pageContext.request.contextPath}/community/community-detail?comid=${item.comid}">${item.comtitle}</a></td>
+										href="${pageContext.request.contextPath}/incategories/community/community-detail?comid=${item.comid}">${item.comtitle}</a></td>
 									<td>${item.comuserid}</td>
 									<td>${item.comcreatedate}</td>
 									<td>${item.compageview}</td>
@@ -221,7 +221,7 @@
 							</c:when>
 							<c:otherwise>
 								<a
-									href="${pageContext.request.contextPath}/community/community-main?num=${minBlock-1}${query}">
+									href="${pageContext.request.contextPath}/incategories/community/community-main?num=${minBlock-1}${query}">
 									<i class="fas fa-angle-left"></i> <i
 									class="fas fa-angle-left pagingarrow-left2"></i>
 								</a>
@@ -233,7 +233,7 @@
 							</c:when>
 							<c:otherwise>
 								<a
-									href="${pageContext.request.contextPath}/community/community-main?num=${num-1}${query}">
+									href="${pageContext.request.contextPath}/incategories/community/community-main?num=${num-1}${query}">
 									<i class="fas fa-angle-left pagingarrow-left"></i>
 								</a>
 							</c:otherwise>
@@ -246,7 +246,7 @@
 								</c:when>
 								<c:otherwise>
 									<a
-										href="${pageContext.request.contextPath}/community/community-main?num=${i}${query}">${i}</a>
+										href="${pageContext.request.contextPath}/incategories/community/community-main?num=${i}${query}">${i}</a>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
@@ -256,7 +256,7 @@
 							</c:when>
 							<c:otherwise>
 								<a
-									href="${pageContext.request.contextPath}/community/community-main?num=${num+1}${query}">
+									href="${pageContext.request.contextPath}/incategories/community/community-main?num=${num+1}${query}">
 									<i class="fas fa-angle-right pagingarrow-right"></i>
 								</a>
 							</c:otherwise>
@@ -269,7 +269,7 @@
 							</c:when>
 							<c:otherwise>
 								<a
-									href="${pageContext.request.contextPath}/community/community-main?num=${maxBlock+1}${query}">
+									href="${pageContext.request.contextPath}/incategories/community/community-main?num=${maxBlock+1}${query}">
 									<i class="fas fa-angle-right pagingarrow-right2"></i><i
 									class="fas fa-angle-right"></i>
 								</a>
