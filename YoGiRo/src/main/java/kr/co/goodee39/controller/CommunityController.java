@@ -23,7 +23,6 @@ public class CommunityController {
 			 		@RequestParam(defaultValue = "") String title,
 			 		@RequestParam(defaultValue = "") String content) {
 		comService.selectComList(model, num, title, content);
-		System.out.println();
 		return "/incategories/community/community-main";
 	}
 
