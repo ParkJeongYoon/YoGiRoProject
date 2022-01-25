@@ -10,9 +10,7 @@
 	href="${pageContext.request.contextPath}/css/default.css">
 <style>
 main {
-	display: flex;
 	width: 1600px;
-	flex-direction: column;
 }
 
 body {
@@ -82,146 +80,55 @@ p {
 main {
 	margin-top: 50px;
 	margin-left: 30px;
-	width: 90%;
+	width: 95%;
 	height: 80%;
 	position: relative;
+	background-color: #fff;
+	padding: 40px;
+	border-radius: 30px;
 }
 
 main>h1 {
 	margin-left: 20px;
 }
 
-.table-con {
-	margin-top: 34px;
-	height: 80%;
-}
-
-table, th, tr, td {
-	border-collapse: collapse;
-	height: 40px;
-}
-
-thead {
-	background-color: #FAFAFA;
-	border: 1px solid #E7E7E7;
-}
-
-tr {
-	border-bottom: 1px solid #E7E7E7;
-}
-
-table {
-	width: 99%;
-	text-align: center;
-}
-
-#bbs-create {
-	background-color: #fff;
-	border: 1px solid black;
-	width: 100px;
-	height: 35px;
-}
-
-#category {
-	height: 35px;
-	position: absolute;
-	right: 305px;
-}
-
-#course_top {
+/* 세부페이지 설정  */
+#title {
+	border-bottom: 1px solid gray;
 	display: inline-block;
+	border-width: 30%;
+	margin-left: 10px;
+	font-weight: bold;
 }
 
-#search_btn {
-	height: 35px;
-	width: 80px;
-	position: absolute;
-	right: 0px;
-	background-color: #1DC078;
-}
-
-#search_btn:hover {
-	background-color: green;
-}
-
-#search {
-	height: 35px;
-	width: 200px;
-	position: absolute;
-	right: 80px;
-}
-
-.course_container {
-	width: 100%;
-	height: auto;
-	margin-top: 80px;
-	display: flex;
-}
-
-#main_course {
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-}
-
-.course_content {
-	border: 1px solid black;
+#common-img {
+	width: 600px;
+	height: 400px;
 	border-radius: 30px;
-	width: 19vw;
 }
 
-.bg {
-	background-color: rgba(0, 0, 0, 0.5);
-	border-radius: 30px;
-	width: 19vw;
-	height: 100px;
-	position: absolute;
+hr {
+	border: 1px solid #ccc;
 }
 
-.div_image {
-	border-radius: 30px;
-	width: 19vw;
-	height: 100px;
-	background-size: cover;
-	background-repeat: no-repeat;
-	max-width: 100%;
+#course_detail_container{
+	display :flex;
 }
 
-.div_image p {
-	padding: 10px;
-	color: #ffffff;
-	z-index: 1000;
-	position: relative;
-}
+#course_detail_img{
 
-.icon {
-	display: inline-block;
-	margin: 5px;
-	padding-left: 10px;
+	width : 50%;
 }
+#detail_img{
+	border-radius : 30px;
 
-.subname_container {
-	margin-top: 10px;
 }
-
-.subname {
-	display: inline-block;
-	margin-bottom: 10px;
-	font-size: 18px;
+#course_detail_overview{
+	padding : 20px;
+	width : 50%;
 }
-
-#add_my_course {
-	right: 0;
-	position: absolute;
-	margin-top: 5px;
-}
-
-#user_course {
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
+#overview{
+	font-weight : bold;
 }
 </style>
 </head>
@@ -233,21 +140,55 @@ table {
 
 
 		<main>
-			<p>${coursecommontodetailpage.contentid}</p>
-			<img src="${coursecommontodetailpage.firstimage}" alt="" />
-			<p>${coursecommontodetailpage.taketime}</p>
-			<p>${coursecommontodetailpage.title}</p>
+			<h1>코스</h1>
+			<br /><br /><br /><br />
+			<p id="title">${coursecommontodetailpage.title}</p>
+			<br /><br /><br /> 
+			<c:if test="${coursecommontodetailpage.firstimage != null}">
+				<img id="common-img"
+				src="${coursecommontodetailpage.firstimage}" alt="" /> 
+			
+			</c:if>
+			<br />
+			<br /><br />
+			<hr />
+			<br><br>
+			<h2>개요</h2>
+			<br><br />
+
 			<p>${coursecommontodetailpage.overview}</p>
+			<br /><br /><br /><br /><br /><br />
+			<h2>코스</h2>
+			<br /><br />
+			<p>총 거리 : ${coursecommontodetailpage.distance}</p>
+			<p>소요시간 : ${coursecommontodetailpage.taketime}</p>
+			<br /><br /><br /><br /><br /><br />
+			<hr />
+			<br /><br /><br />
+
+			<c:set var="i" value="1" />
+
 			<c:forEach var="item" items="${coursedetailtodetailpage}">
-				
-					<div class="subname_container">
-					<p >${item.contentid}</p>
-						<p >${item.subname}</p>
-						<img src="${item.subdetailimg}" alt="" />
-						<p >${item.subdetailoverview}</p>
-						<br>
+				<h2>${i}코스:${item.subname}</h2>
+				<br />
+				<div id="course_detail_container">
+					<div id="course_detail_img">
+						
+							<img src="${item.subdetailimg}" alt="" id="detail_img"/>
+						
 					</div>
+					<div id="course_detail_overview">
+						<p id="overview"> <<코스개요>> </p>
+						<br />
+						<p>${item.subdetailoverview}</p>
+					</div>
+				</div>
+				<br /><br /><br /><br /><br /><br /><br />
+	
 				
+				
+
+				<c:set var="i" value="${i+1}"></c:set>
 			</c:forEach>
 		</main>
 

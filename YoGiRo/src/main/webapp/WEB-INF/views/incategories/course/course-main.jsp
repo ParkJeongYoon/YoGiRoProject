@@ -169,20 +169,20 @@ table {
 .course_content {
 	border: 1px solid black;
 	border-radius: 30px;
-	width: 19vw;
+	width: 18vw;
 }
 
 .bg {
 	background-color: rgba(0, 0, 0, 0.5);
 	border-radius: 30px;
-	width: 19vw ;
+	width: 18vw ;
 	height: 100px;
 	position: absolute;
 }
 
 .div_image {
 	border-radius: 30px;
-	width: 19vw;
+	width: 18vw;
 	height: 100px;
 	background-size: cover;
 	background-repeat: no-repeat;

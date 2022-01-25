@@ -231,7 +231,7 @@ table {
 		<jsp:include page="../../includes/header.jsp"></jsp:include>
 
 
-
+		<h1>코스</h1>
 		<main>
 		<p>test</p>
 			<p>${mycoursecommontodetailpage.mycoursecommonid}</p>
