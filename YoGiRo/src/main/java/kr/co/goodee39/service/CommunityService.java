@@ -46,7 +46,7 @@ public class CommunityService {
 	
 	public void updateViewCount(Model model, CommunityVO vo) {
 
-		model.addAttribute("communityVO", sqlSessionTemplate.selectOne("community.viewCount", vo));
+		model.addAttribute("ComVO", sqlSessionTemplate.selectOne("community.viewCount", vo));
 		
 	}
 
