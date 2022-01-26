@@ -26,10 +26,10 @@ public class MainContoller {
 		return "/signup/signup-main";
 	}
 	
-	
+	  
 	
 	@GetMapping("/incategories/food/food-main")
-	public String food() {
+	public String food() { 
 		return "/incategories/food/food-main";
 	}
 	
