@@ -32,7 +32,7 @@ public class CommunityController {
 	}
 	
 	@GetMapping("/community-detail")
-	public String getBBSDetail(@ModelAttribute("ComVO") CommunityVO vo, Model model) {
+	public String getComDetail(@ModelAttribute("CommunityVO") CommunityVO vo, Model model) {
 		comService.updateViewCount(model, vo);
 		comService.selectCom(model, vo);
 		return "/incategories/community/community-detail";

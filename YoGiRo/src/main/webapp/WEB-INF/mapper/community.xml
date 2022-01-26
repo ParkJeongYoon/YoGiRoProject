@@ -36,7 +36,6 @@
 		</choose>
 		order by comid DESC
 		limit #{start}, #{count}
-		<!-- 스타트는 시작 인덱스 시작지점(ex페이지1), 카운트는 한화면에 보여줄 게시물 -->
 	</select>
 	<update id="viewCount" parameterType="communityVO">
 		update community
@@ -45,7 +44,6 @@
 		</set>
 		where comid = #{comid}
 	</update>
-	<!-- 컨텐츠를 빼는 이유는 셀렉트를 불러올시 렉이 걸릴 수 있어서 따로 빼는 것 -->
 	<select id="selectCom" resultType="communityVO">
 		select comid, comcategorynum, comtitle, comcontent, compageview, comuserid, comcreatedate, comisdelete 
 		from community
