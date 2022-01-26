@@ -36,7 +36,6 @@
 	</beans:bean>
 
 	<!-- 정적 파일 경로 세팅 -->
-<<<<<<< HEAD
 	<resources mapping="/resources/**" location="/resources/" />
 
 	<resources mapping="/docs/**" location="/resources/docs/" />
@@ -45,27 +44,6 @@
 	<resources mapping="/icons/**" location="/resources/icons/" />
 	<resources mapping="/img/**" location="/resources/img/" />
 
-
-	<!-- aop로 트랜잭션 주는 방식 -->
-	<!-- <tx:advice id="txAdvice" transaction-manager="transactionManager"> 
-		<tx:attributes> <tx:method name="txData*" propagation="REQUIRED" /> </tx:attributes> 
-		</tx:advice> <aop:config> <aop:pointcut expression="execution( * kr.co..*.*(..) 
-		)" id="firstTransactionMethod"/> <aop:advisor advice-ref="txAdvice" pointcut-ref="firstTransactionMethod"/> 
-		</aop:config> -->
-
-
-	<!--<interceptors>
-		<interceptor>
-			<mapping path="/member/mypage/**" />
-			<beans:bean
-				class="kr.co.goodee39.interceptor.LoginInterceptor" />
-		</interceptor>
-	</interceptors> --> 
-
-
-	 <!-- <tx:annotation-driven /> -->
-
-=======
 	<resources mapping="/resources/**" location="/resources/"/>
 	
 	<resources mapping="/docs/**" location="/resources/docs/"/>
@@ -75,5 +53,4 @@
 	<resources mapping="/img/**" location="/resources/img/"/>
 	
 	<tx:annotation-driven/>
->>>>>>> branch 'develop' of https://github.com/ParkJeongYoon/YoGiRoProject.git
 </beans:beans>
