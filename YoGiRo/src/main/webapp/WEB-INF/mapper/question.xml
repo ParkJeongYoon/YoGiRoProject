@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="questions">
+	<insert id="insertQuestions" parameterType="kr.co.goodee39.vo.QuestionVO">
+		insert into questions(qnum, userid, qtitle, qcreatedate )
+		values(${qnum}, ${userid}, ${qtitle}, ${qcreatedate)
+	</insert>
+	
+	<select id="selectQuestionsList" parameterType="questionVO" resultType="questionVO">
+		select qnum, userid, qtitle, qcreatedate, isdelete from questions
+		where isdelete = 'N'
+		order by qnum desc
+		limit #{start}, #{count}
+	</select>
+	
+	<select id="selectQuestions" parameterType="QuestionVO" resultType="QuestionVO">
+		select qnum, userid, qtitle, qcreatedate, qcontent, isdelete from questions
+		where isdelete = 'N'
+		and num=#{num}
+	</select>
+	
+	<insert id="insertAnswer" parameterType="kr.co.goodee39.vo.AnswerVO">
+		insert into questions(qnum, userid, qtitle, qcreatedate )
+		values(${qnum}, ${userid}, ${qtitle}, ${qcreatedate)
+	</insert>
+	
+	<select id="selectAnswer" resultType="kr.co.goodee39.vo.AnswerVO">
+		select anum, qnum, qtitle, qcreatedate, qcontent, isdelete from questions
+	</select>
+</mapper>
