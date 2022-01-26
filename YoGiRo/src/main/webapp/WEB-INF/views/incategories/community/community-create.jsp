@@ -88,7 +88,7 @@
 	 				<optgroup label="">기타</optgroup>
 	 			</select> -->
 				<ul>
-					<li><label for="comtitle">제목1 : </label><form:input path="comtitle"/></li>
+					<li><label for="comtitle">제목 : </label><form:input path="comtitle"/></li>
 					<li><form:textarea path="comcontent" id="editor" cols="50" rows="10"/></li>
 				</ul>
 			</form:form>

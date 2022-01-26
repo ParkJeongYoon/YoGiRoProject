@@ -98,7 +98,7 @@
 				<h2>맛집</h2>
 				<div class="post-container">
 					<h3>${CommunityVO.comtitle}</h3>
-					<p class="userid little">작성자1 : ${CommunityVO.comuserid}</p>
+					<p class="userid little">작성자 : ${CommunityVO.comuserid}</p>
 					<p class="comdate little">${CommunityVO.comcreatedate}</p>
 					<div class="line"></div>
 					<p class="content">${CommunityVO.comcontent}</p>
