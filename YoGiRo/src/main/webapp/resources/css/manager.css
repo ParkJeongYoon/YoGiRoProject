@@ -8,9 +8,7 @@
    aside {
       position: relative;
       height: 300px;
-      width: 230px;
-      margin-left: 5%;
-      margin-right: 5%;
+      width: 230px; 
       margin-top: 100px;
       display: flex;
    }
