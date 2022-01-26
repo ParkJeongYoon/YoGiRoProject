@@ -14,7 +14,7 @@ public class MainContoller {
 	
 	@GetMapping("/login/login-main")
 	public String login() {
-		return "/login/login-main";
+		return "/login/login_main";
 	}
 	
 	@GetMapping("/signup/signup-main")
@@ -39,10 +39,10 @@ public class MainContoller {
 		return "/incategories/course/course-main";
 	}
 	
-	@GetMapping("/incategories/community/community-main")
-	public String community() {
-		return "/incategories/community/community-main";
-	}
+//	@GetMapping("/incategories/community/community-main")
+//	public String community() {
+//		return "/incategories/community/community-main";
+//	}
 	
 	
 	

@@ -22,6 +22,8 @@ import org.w3c.dom.NodeList;
 import kr.co.goodee39.vo.CourseCommonVO;
 import kr.co.goodee39.vo.CourseDetailVO;
 import kr.co.goodee39.vo.CourseIntroVO;
+import kr.co.goodee39.vo.MyCourseCommonVO;
+import kr.co.goodee39.vo.MyCourseDetailVO;
 
 @Service
 public class CourseService {
@@ -420,16 +422,42 @@ public class CourseService {
 //
 //	}
 	
-	public void getCourseCommonToJSP(Model model) {
-		model.addAttribute("commonList",sqlSessionTemplate.selectList("course.getcoursecommon"));
+	public void getCourseCommonToJSP(Model model, CourseCommonVO vo) {
+		if(vo.getRegion()==null) {
+			vo.setRegion("서울");
+		}
+		System.out.println("서비스 : "+vo.getRegion());
+		model.addAttribute("commonList",sqlSessionTemplate.selectList("course.getcoursecommon",vo));
 	}
-	public void getCourseDetailToJSP(Model model) {
-		model.addAttribute("detailList",sqlSessionTemplate.selectList("course.getcoursedetail"));
+	public void getCourseDetailToJSP(Model model, CourseCommonVO vo) {
+		if(vo.getRegion()==null) {
+			vo.setRegion("서울");
+		}
+		CourseDetailVO vo1 = new CourseDetailVO();
+		vo1.setRegion(vo.getRegion());
+		model.addAttribute("detailList",sqlSessionTemplate.selectList("course.getcoursedetail",vo1));
 	}
 	public void getMyCourseCommonToJSP(Model model) {
 		model.addAttribute("myCommonList",sqlSessionTemplate.selectList("course.getmycoursecommon"));
 	}
 	public void getMyCourseDetailToJSP(Model model) {
 		model.addAttribute("myDetailList",sqlSessionTemplate.selectList("course.getmycoursedetail"));
+	}
+	
+	public void selectCourseCommonToDetailPage(Model model, CourseCommonVO vo) {
+		
+		model.addAttribute("coursecommontodetailpage",sqlSessionTemplate.selectOne("course.getcoursecommonwithid",vo));
+	}
+	public void selectCourseDetailToDetailPage(Model model, CourseDetailVO vo) {
+		
+		model.addAttribute("coursedetailtodetailpage",sqlSessionTemplate.selectList("course.getcoursedetailwithid",vo));
+	}
+	public void selectMyCourseCommonToDetailPage(Model model, MyCourseCommonVO vo) {
+		
+		model.addAttribute("mycoursecommontodetailpage",sqlSessionTemplate.selectOne("course.getmycoursecommonwithid",vo));
+	}
+	public void selectMyCourseDetailToDetailPage(Model model, MyCourseDetailVO vo) {
+		
+		model.addAttribute("mycoursedetailtodetailpage",sqlSessionTemplate.selectList("course.getmycoursedetailwithid",vo));
 	}
 }

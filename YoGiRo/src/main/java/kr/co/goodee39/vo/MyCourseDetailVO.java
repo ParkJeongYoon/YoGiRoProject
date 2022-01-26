@@ -8,7 +8,7 @@ public class MyCourseDetailVO {
 	String mycoursedetailimage;
 	String mycoursedetailoverview;
 	String mycoursedetailadd;
-	int isdelete;
+	int mycoursedetailisdelete;
 	public int getMycoursedetailid() {
 		return mycoursedetailid;
 	}
@@ -52,10 +52,11 @@ public class MyCourseDetailVO {
 	public void setMycoursedetailadd(String mycoursedetailadd) {
 		this.mycoursedetailadd = mycoursedetailadd;
 	}
-	public int getIsdelete() {
-		return isdelete;
+	public int getMycoursedetailisdelete() {
+		return mycoursedetailisdelete;
 	}
-	public void setIsdelete(int isdelete) {
-		this.isdelete = isdelete;
+	public void setMycoursedetailisdelete(int mycoursedetailisdelete) {
+		this.mycoursedetailisdelete = mycoursedetailisdelete;
 	}
+	
 }

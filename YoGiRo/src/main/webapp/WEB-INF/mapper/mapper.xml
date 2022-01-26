@@ -17,14 +17,14 @@
 		values( #{contentid},#{region},#{subdetailalt}, #{subdetailimg}, #{subdetailoverview}, #{subname})
 	</insert>
 	
-	<select id="getcoursecommon" resultType="kr.co.goodee39.vo.CourseCommonVO">
+	<select id="getcoursecommon" parameterType= "kr.co.goodee39.vo.CourseCommonVO" resultType="kr.co.goodee39.vo.CourseCommonVO">
 		select contentid,region,firstimage,firstimage2,overview,title,mapx,mapy,mlevel from coursecommon
-		where region="서울";
+		where region=#{region};
 	</select>
 	
-	<select id="getcoursedetail" resultType="kr.co.goodee39.vo.CourseDetailVO">
+	<select id="getcoursedetail"  parameterType= "kr.co.goodee39.vo.CourseDetailVO" resultType="kr.co.goodee39.vo.CourseDetailVO">
 		select contentid,region,subname, subdetailimg, subdetailoverview from coursedetail
-		where region="서울";
+		where region=#{region};
 	</select>
 	
 	<select id="getmycoursecommon" resultType="kr.co.goodee39.vo.MyCourseCommonVO">
@@ -37,4 +37,29 @@
 		from mycoursedetail;
 		
 	</select>
+	<!-- 아이디가져와서 select -->
+	<select id="getcoursecommonwithid" parameterType= "kr.co.goodee39.vo.CourseCommonVO" resultType="kr.co.goodee39.vo.CourseCommonVO">
+		select contentid,region,firstimage,firstimage2,overview,title,mapx,mapy,distance, taketime, mlevel from coursecommon
+		where contentid=#{contentid};
+	</select>
+	<select id="getcoursedetailwithid" parameterType= "kr.co.goodee39.vo.CourseDetailVO" resultType="kr.co.goodee39.vo.CourseDetailVO">
+		select contentid,region,subdetailalt, subname, subdetailimg, subdetailoverview from coursedetail
+		where contentid=#{contentid};
+	</select>
+	
+	<select id="getmycoursecommonwithid"  parameterType="kr.co.goodee39.vo.MyCourseCommonVO" resultType="kr.co.goodee39.vo.MyCourseCommonVO">
+		select mycoursecommonid,userid,mycoursecommontitle, mycoursemainimage, mycourseinfo,totaldistance ,totaltime ,mycoursecommonisdelete 
+		from mycoursecommon
+		where mycoursecommonisdelete = 0
+		and mycoursecommonid=#{mycoursecommonid};
+		
+	</select>
+	<select id="getmycoursedetailwithid"  parameterType="kr.co.goodee39.vo.MyCourseDetailVO" resultType="kr.co.goodee39.vo.MyCourseDetailVO">
+		select mycoursedetailid,mycoursecommonid,userid, mycoursedetailname, mycoursedetailimage,mycoursedetailoverview ,mycoursedetailadd,mycoursedetailisdelete 
+		from mycoursedetail
+		where mycoursedetailisdelete = 0
+		and mycoursecommonid=#{mycoursecommonid};
+		
+	</select>
+	
 </mapper>

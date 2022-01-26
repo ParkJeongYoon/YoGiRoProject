@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/default.css">
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <style>
 
 main {
@@ -169,20 +171,20 @@ table {
 .course_content {
 	border: 1px solid black;
 	border-radius: 30px;
-	width: 19vw;
+	width: 18vw;
 }
 
 .bg {
 	background-color: rgba(0, 0, 0, 0.5);
 	border-radius: 30px;
-	width: 19vw ;
+	width: 18vw ;
 	height: 100px;
 	position: absolute;
 }
 
 .div_image {
 	border-radius: 30px;
-	width: 19vw;
+	width: 18vw;
 	height: 100px;
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -236,19 +238,19 @@ table {
 		<main>
 			<aside>
 				<div class="sidemenubar">
-					<a href=""><div>
+					<a href="#" onclick="acyncMovePage('move-to-course-main-ajax?region=서울')"><div>
 							<h3>수도권</h3>
 							<i class="fas fa-angle-right"></i>
-						</div></a> <a href=""><div>
+						</div></a> <a href="#" onclick="acyncMovePage('move-to-course-main-ajax?region=강원')"><div>
 							<h3>강원권</h3>
 							<i class="fas fa-angle-right"></i>
-						</div></a> <a href=""><div>
+						</div></a> <a href="#" onclick="acyncMovePage('move-to-course-main-ajax?region=충청')"><div>
 							<h3>충청권</h3>
 							<i class="fas fa-angle-right"></i>
-						</div></a> <a href=""><div>
+						</div></a> <a href="#" onclick="acyncMovePage('move-to-course-main-ajax?region=전라')"><div>
 							<h3>전라권</h3>
 							<i class="fas fa-angle-right"></i>
-						</div></a> <a href=""><div>
+						</div></a> <a href="#" onclick="acyncMovePage('move-to-course-main-ajax?region=경상')"><div>
 							<h3>경상권</h3>
 							<i class="fas fa-angle-right"></i>
 						</div></a>
@@ -269,7 +271,7 @@ table {
 						<c:forEach var="i" begin="0" end="2">
 							<div id="course${i}" class="course_content">
 
-								<a href="" class="course-a">
+								<a href="course_detail?contentid=${commonList[i].contentid}" class="course-a">
 								
 									<div class="div_image"
 										style="background-image: url('${commonList[i].firstimage}')">
@@ -311,7 +313,7 @@ table {
 						<c:forEach var="j" begin="0" end="2">
 							<div id="my_course${j}" class="course_content">
 
-								<a href="">
+								<a href="mycourse_detail?mycoursecommonid=${myCommonList[j].mycoursecommonid}">
 									<div class="div_image"
 										style="background-image: url('${myCommonList[j].mycoursemainimage}')">
 										<div class="bg"></div>
@@ -344,5 +346,28 @@ table {
 
 		<jsp:include page="../../includes/footer.jsp"></jsp:include>
 	</div>
+	<script>
+ 
+    function acyncMovePage(url){
+        // ajax option
+        var ajaxOption = {
+                url : url,
+                async : true,
+                type : "GET",
+                dataType : "html",
+                cache : false
+        };
+        
+        $.ajax(ajaxOption).done(function(data){
+            // Contents 영역 삭제
+            $('#course_real_container').children().remove();
+            // Contents 영역 교체
+            $('#course_real_container').html(data);
+        });
+    }
+ 
+</script>
+
+
 </body>
 </html>
