@@ -145,7 +145,7 @@
 			<aside>
 				<div class="sidemenubar">
 					<a href=""><div>
-							<h3>맛집</h3>
+							<h3>맛집1</h3>
 							<i class="fas fa-angle-right sideright"></i>
 						</div></a> <a href=""><div>
 							<h3>축제</h3>
