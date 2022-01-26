@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://kit.fontawesome.com/79203d0d3b.js" crossorigin="anonymous"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/default.css">
 <style type="text/css">
@@ -145,7 +147,7 @@
 			<aside>
 				<div class="sidemenubar">
 					<a href=""><div>
-							<h3>맛집</h3>
+							<h3>맛집1</h3>
 							<i class="fas fa-angle-right sideright"></i>
 						</div></a> <a href=""><div>
 							<h3>축제</h3>
