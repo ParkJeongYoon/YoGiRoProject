@@ -18,7 +18,7 @@ public class MainContoller {
 	
 	@GetMapping("/login/login-main")
 	public String login() {
-		return "/login/login_main";
+		return "/login/login-main";
 	}
 	
 	@GetMapping("/signup/signup-main")
