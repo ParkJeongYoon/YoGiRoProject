@@ -97,11 +97,11 @@
 			<main>
 				<h2>맛집</h2>
 				<div class="post-container">
-					<h3>${ComVO.comtitle}</h3>
-					<p class="userid little">작성자 : ${ComVO.comuserid}</p>
-					<p class="comdate little">${ComVO.comcreatedate}</p>
+					<h3>${CommunityVO.comtitle}</h3>
+					<p class="userid little">작성자 : ${CommunityVO.comuserid}</p>
+					<p class="comdate little">${CommunityVO.comcreatedate}</p>
 					<div class="line"></div>
-					<p class="content">${ComVO.comcontent}</p>
+					<p class="content">${CommunityVO.comcontent}</p>
 				</div>
 				<div class="line"></div>
 			</main>
