@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class MainContoller {
 	@GetMapping("/member/mypage")
 	public String mypage() {
+		//wntj
 		return "/member/mypage";
 	}
 

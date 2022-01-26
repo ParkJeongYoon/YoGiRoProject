@@ -175,7 +175,7 @@ table input {
 			</div>
 		</aside>
 		<main>
-			<h1 style="display: block;">내정보수정</h1>
+			<h1 style="display: block;">내정보수정1</h1>
 			<div id="table-con">
 				<form id="memberFrm"
 					action="${ pageContext.request.contextPath }/member/update"
