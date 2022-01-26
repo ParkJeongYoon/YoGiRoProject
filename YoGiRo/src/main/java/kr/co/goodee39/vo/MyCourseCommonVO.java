@@ -9,6 +9,13 @@ public class MyCourseCommonVO {
 	String totaldistance;
 	String totaltime;
 	int mycoursecommonisdelete;
+	String mycourseregion;
+	public String getMycourseregion() {
+		return mycourseregion;
+	}
+	public void setMycourseregion(String mycourseregion) {
+		this.mycourseregion = mycourseregion;
+	}
 	public int getMycoursecommonid() {
 		return mycoursecommonid;
 	}

@@ -33,20 +33,24 @@ public class CourseController {
 	
 	@GetMapping("/move-to-course-main")
 	public String getCourseCommon(@ModelAttribute("CourseCommonVO") CourseCommonVO vo, Model model) {
+		MyCourseCommonVO mvo = new MyCourseCommonVO();
 		System.out.println(vo.getRegion());
 		ts.getCourseCommonToJSP(model,vo);
 		ts.getCourseDetailToJSP(model,vo);
-		ts.getMyCourseCommonToJSP(model);
-		ts.getMyCourseDetailToJSP(model);
+		mvo.setMycourseregion(vo.getRegion());
+		ts.getMyCourseCommonToJSP(model,mvo);
+		ts.getMyCourseDetailToJSP(model,mvo);
 		return "incategories/course/course-main";
 	}
 	@GetMapping("/move-to-course-main-ajax")
 	public String getCourseCommonAjax(@ModelAttribute("CourseCommonVO") CourseCommonVO vo, Model model) {
 		System.out.println("새로추가한곳"+vo.getRegion());
+		MyCourseCommonVO mvo = new MyCourseCommonVO();
 		ts.getCourseCommonToJSP(model,vo);
 		ts.getCourseDetailToJSP(model,vo);
-		ts.getMyCourseCommonToJSP(model);
-		ts.getMyCourseDetailToJSP(model);
+		mvo.setMycourseregion(vo.getRegion());
+		ts.getMyCourseCommonToJSP(model,mvo);
+		ts.getMyCourseDetailToJSP(model,mvo);
 		return "incategories/course/course-main-ajax";
 	}
 	

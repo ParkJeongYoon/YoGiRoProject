@@ -224,7 +224,15 @@ table {
 	width: 100%;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: flex-start;
+}
+
+.mycourse_content {
+	border: 1px solid black;
+	border-radius: 30px;
+	width: auto;
+	margin-right : 3vw;
+	margin-left : 2vw;
 }
 </style>
 </head>
@@ -284,17 +292,18 @@ table {
 
 
 						<c:forEach var="j" begin="0" end="2">
-							<div id="my_course${j}" class="course_content">
+							<c:if test="${myCommonList[j].mycoursecommonid != null}">
+								<div id="my_course${j}" class="mycourse_content">
 
-								<a href="mycourse_detail?mycoursecommonid=${myCommonList[j].mycoursecommonid}">
-									<div class="div_image"
-										style="background-image: url('${myCommonList[j].mycoursemainimage}')">
-										<div class="bg"></div>
-										<p>${myCommonList[j].mycoursecommontitle}</p>
-									</div>
-								</a>
+									<a href="mycourse_detail?mycoursecommonid=${myCommonList[j].mycoursecommonid}">
+										<div class="div_image"
+											style="background-image: url('${myCommonList[j].mycoursemainimage}')">
+											<div class="bg"></div>
+											<p>${myCommonList[j].mycoursecommontitle}</p>
+										</div>
+									</a>
 
-
+									
 								<c:forEach var="item2" items="${myDetailList}">
 
 									<c:if
@@ -309,6 +318,7 @@ table {
 									</c:if>
 								</c:forEach>
 							</div>
+							</c:if>
 						</c:forEach>
 					</div>
 				</div>
