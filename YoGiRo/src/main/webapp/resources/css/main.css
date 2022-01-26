@@ -14,21 +14,59 @@ main {
 .article-l {
     width: 40%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 .rok-thumbnail-box {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 85%;
+    height: 60%;
+}
+.rok-thumbnail-top {
+	width: 100%;
+	height: 10%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #93949A;
+}
+.rok-thumbnail-title {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	padding-left: 0.7rem;
+	font-size: 2rem;
+}
+.rok-thumbnail-main {
+	width: 100%;
+	height: 60%;
+	display: flex;
+	flex-wrap: wrap;
 }
 .rok-thumbnail {
-    width: 70%;
+	width: 50%;
+	object-fit: cover;
+}
+.rok-thumbnail-bottom {
+	width: 100%;
+	height: 30%;
+	display: flex;
+	background-color: #DEE2E6;
+}
+.rok-thumbnail-content {
+	display: flex;
+	font-size: 0.93em;
+	padding: 0.3rem;
+	line-height: 1.3em;
 }
 .article-r {
     width: 60%;
     height: 100%;
-    display: flex;
     justify-content: center;
     align-items: center;
 }

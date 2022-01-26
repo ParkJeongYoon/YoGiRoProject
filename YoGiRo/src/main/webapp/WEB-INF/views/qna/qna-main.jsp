@@ -63,6 +63,7 @@
 
 
         <jsp:include page="../includes/footer.jsp"></jsp:include>
+        
     </div>
 </body>
 </html>

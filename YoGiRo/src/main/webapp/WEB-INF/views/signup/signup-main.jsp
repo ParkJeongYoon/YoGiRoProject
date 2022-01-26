@@ -23,7 +23,6 @@
 						<li class="item center">이름</li>
 						<li class="item"><input type="text" name="name"
 							placeholder="이름을 입력하세요." autofocus required></li>
-
 					</ul>
 					<ul class="container">
 						<li class="item center">닉네임</li>

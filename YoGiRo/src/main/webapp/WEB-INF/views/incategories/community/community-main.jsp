@@ -211,7 +211,13 @@
 						if (content != null) {
 							query += "&content=" + content;
 						}
-
+						if (title != null) {
+							query += "&title=" + title;
+						}
+						if (content != null) {
+							query += "&content=" + content;
+						}
+						
 						pageContext.setAttribute("query", query);
 						%>
 						<c:choose>
