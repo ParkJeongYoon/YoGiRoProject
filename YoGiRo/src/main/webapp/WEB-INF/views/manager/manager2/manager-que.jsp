@@ -45,7 +45,7 @@
                                </tr>
                             </thead>
                             <tbody>
-                            	<p>${list[0].qnum}</p>
+                            	
                             	<c:forEach var="item" items="${list}" >
                             		<tr>
 	                                  <td>${item.qnum}</td>

@@ -34,7 +34,6 @@
 		background-color: #FAFAFA;
 		border: 1.3px solid #E7E7E7;
 		display: flex;
-/*		justify-content: center;*/
 		align-items: center;
 	}
 	.fa-angle-right {
@@ -57,6 +56,9 @@
 		height: 80%;
 		position: relative;
 	}
+	ul>li {
+		list-style: none;
+	}
 	/* 에디터 */
 	#editor {
 		width: 800px;
@@ -65,6 +67,7 @@
 </head>
 <body>
 <div class="container">
+	<jsp:include page="../../includes/header.jsp"></jsp:include>
 	<div class="main-container">
 		<aside>
 			<div class="sidemenubar">
@@ -76,10 +79,22 @@
 			</div>
 		</aside>
 	 	<main>
-	 		
-	 		<textarea name="content" id="editor"></textarea>
+	 		<form:form modelAttribute="comVO" action="${pageContext.request.contextPath}/com/create_result" >
+	 			<!-- <select>
+	 				<optgroup label="">맛집</optgroup>
+	 				<optgroup label="">축제</optgroup>
+	 				<optgroup label="">교통</optgroup>
+	 				<optgroup label="">추천 코스</optgroup>
+	 				<optgroup label="">기타</optgroup>
+	 			</select> -->
+				<ul>
+					<li><label for="comtitle">제목 : </label><form:input path="comtitle"/></li>
+					<li><form:textarea path="comcontent" id="editor" cols="50" rows="10"/></li>
+				</ul>
+			</form:form>
 	 	</main>
  	</div>
+ 	<jsp:include page="../../includes/footer.jsp"></jsp:include>
  </div>
 	<script>
 	    window.onload = function(){
