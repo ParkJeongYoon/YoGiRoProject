@@ -1,0 +1,60 @@
+/* 문의 내역 메인 */
+.community {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.main2 {
+    position: relative;
+}
+.main2>h1 {
+    font-size: 2rem;
+    margin-left: 5%;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+table, th, tr, td {
+    border-collapse: collapse;
+    vertical-align : middle;
+    height: 40px;
+ }
+ table {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+ }
+ thead {
+    background-color: #B2DFDB;
+    border: 1px solid #E7E7E7;
+ }
+ tr {
+    border-bottom: 1px solid #E7E7E7;
+ }
+
+
+ 
+
+.com-input {
+    position: absolute;
+    bottom: 3%;
+    right: 5%;
+}
+
+
+
+ #category {
+    height: 35px;
+
+ }
+ #search {
+    height: 35px;
+    width: 80px;
+    background-color: #B2DFDB ;
+    border: none;
+    
+ }
+ #search-text {
+    height: 30px;
+    width: 200px;
+ }
