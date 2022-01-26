@@ -27,14 +27,16 @@
 		where region=#{region};
 	</select>
 	
-	<select id="getmycoursecommon" resultType="kr.co.goodee39.vo.MyCourseCommonVO">
-		select mycoursecommonid,userid,mycoursecommontitle, mycoursemainimage, mycourseinfo,totaldistance ,totaltime ,mycoursecommonisdelete 
-		from mycoursecommon;
+	<select id="getmycoursecommon" parameterType= "kr.co.goodee39.vo.MyCourseCommonVO" resultType="kr.co.goodee39.vo.MyCourseCommonVO">
+		select mycoursecommonid,userid,mycoursecommontitle, mycoursemainimage, mycourseinfo,totaldistance ,totaltime ,mycoursecommonisdelete , mycourseregion
+		from mycoursecommon
+		where mycourseregion = #{mycourseregion};
 		
 	</select>
-	<select id="getmycoursedetail" resultType="kr.co.goodee39.vo.MyCourseDetailVO">
-		select mycoursedetailid,mycoursecommonid,userid, mycoursedetailname, mycoursedetailimage,mycoursedetailoverview ,mycoursedetailadd,mycoursedetailisdelete 
-		from mycoursedetail;
+	<select id="getmycoursedetail" parameterType= "kr.co.goodee39.vo.MyCourseDetailVO" resultType="kr.co.goodee39.vo.MyCourseDetailVO">
+		select mycoursedetailid,mycoursecommonid,userid, mycoursedetailname, mycoursedetailimage,mycoursedetailoverview ,mycoursedetailadd,mycoursedetailisdelete,mycourseregion 
+		from mycoursedetail
+		where mycourseregion = #{mycourseregion};
 		
 	</select>
 	<!-- 아이디가져와서 select -->

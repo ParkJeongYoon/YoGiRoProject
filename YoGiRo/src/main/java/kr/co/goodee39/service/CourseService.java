@@ -437,11 +437,19 @@ public class CourseService {
 		vo1.setRegion(vo.getRegion());
 		model.addAttribute("detailList",sqlSessionTemplate.selectList("course.getcoursedetail",vo1));
 	}
-	public void getMyCourseCommonToJSP(Model model) {
-		model.addAttribute("myCommonList",sqlSessionTemplate.selectList("course.getmycoursecommon"));
+	public void getMyCourseCommonToJSP(Model model,MyCourseCommonVO vo) {
+		if(vo.getMycourseregion()==null) {
+			vo.setMycourseregion("서울");
+		}
+		model.addAttribute("myCommonList",sqlSessionTemplate.selectList("course.getmycoursecommon",vo));
 	}
-	public void getMyCourseDetailToJSP(Model model) {
-		model.addAttribute("myDetailList",sqlSessionTemplate.selectList("course.getmycoursedetail"));
+	public void getMyCourseDetailToJSP(Model model,MyCourseCommonVO vo) {
+		if(vo.getMycourseregion()==null) {
+			vo.setMycourseregion("서울");
+		}
+		MyCourseDetailVO vo1 = new MyCourseDetailVO();
+		vo1.setMycourseregion(vo.getMycourseregion());
+		model.addAttribute("myDetailList",sqlSessionTemplate.selectList("course.getmycoursedetail",vo1));
 	}
 	
 	public void selectCourseCommonToDetailPage(Model model, CourseCommonVO vo) {

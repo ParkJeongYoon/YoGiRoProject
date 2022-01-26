@@ -9,6 +9,13 @@ public class MyCourseDetailVO {
 	String mycoursedetailoverview;
 	String mycoursedetailadd;
 	int mycoursedetailisdelete;
+	String mycourseregion;
+	public String getMycourseregion() {
+		return mycourseregion;
+	}
+	public void setMycourseregion(String mycourseregion) {
+		this.mycourseregion = mycourseregion;
+	}
 	public int getMycoursedetailid() {
 		return mycoursedetailid;
 	}
