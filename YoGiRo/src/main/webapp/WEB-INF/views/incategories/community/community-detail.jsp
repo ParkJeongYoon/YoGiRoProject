@@ -82,8 +82,8 @@
 </style>
 </head>
 <body>
-<jsp:include page="../../includes/header.jsp"></jsp:include>
 	<div class="container">
+		<jsp:include page="../../includes/header.jsp"></jsp:include>
 		<div class="main-container">
 			<aside>
 				<div class="sidemenubar">
@@ -106,6 +106,7 @@
 				<div class="line"></div>
 			</main>
 		</div>
+		<jsp:include page="../../includes/footer.jsp"></jsp:include>
 	</div>
 </body>
 </html>
