@@ -240,7 +240,7 @@
 	    	rokThumbnail3.setAttribute('src' , '${pageContext.request.contextPath}/img/main/jeonnam/haenam.jpg');
 	    	rokThumbnail4.setAttribute('src' , '${pageContext.request.contextPath}/img/main/jeonnam/teamuseum.jpg');
 	    	
-	    	rokThumbnailContent.innerHTML = "<p>전라북도는 대한민국의 서남부에 있는 도이다. 서쪽은 황해에 면하고, 동쪽으로 경상남도·경상북도, 남쪽으로 전라남도, 북쪽으로는 충청남도·충청북도와 경계를 이룬다. 행정구역은 6시와 8군이다. 도청 소재지는 전주시이다.</p>";
+	    	rokThumbnailContent.innerHTML = "<p>전라남도는 대한민국의 서남부에 있는 도이다. 광주광역시를 둘러싸며, 서쪽으로 황해에 면하고, 북쪽으로 전라북도, 동쪽으로는 소백산맥의 지리산과 섬진강을 경계로 경상남도, 남쪽으로는 남해를 경계로 제주특별자치도가 있다.</p>";
 	    });
 	
 	    document.querySelector("#CD47").addEventListener("mouseover" , function() {
@@ -266,7 +266,7 @@
 	    	rokThumbnail3.setAttribute('src' , '${pageContext.request.contextPath}/img/main/gyeongnam/hapcheon.jpg');
 	    	rokThumbnail4.setAttribute('src' , '${pageContext.request.contextPath}/img/main/gyeongnam/jinju.jpg');
 	    	
-	    	rokThumbnailContent.innerHTML = "<p>경상북도는 대한민국 동남부에 있는 도이다. 동쪽은 동해, 서쪽으로는 전라북도·충청북도, 남쪽으로는 대구광역시를 둘러싸며 울산광역시·경상남도와 접하고, 북쪽은 강원도와 경계를 이룬다. 행정구역은 10시 13군이며, 대한민국의 행정 구역 중 관할 면적이 가장 넓다.</p>";
+	    	rokThumbnailContent.innerHTML = "<p>경상남도는 대한민국 남동부에 있는 도이다. 남쪽으로는 남해, 동쪽으로는 부산광역시· 울산광역시, 서쪽으로는 전라남도·전라북도, 북쪽으로는 대구광역시·경상북도와 접한다. 행정 구역은 8시 10군이다. 경상남도청 소재지는 창원시 의창구이다.</p>";
 	    });
 	
 	    document.querySelector("#CD50").addEventListener("mouseover" , function() {
