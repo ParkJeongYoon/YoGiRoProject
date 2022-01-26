@@ -6,6 +6,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class MainContoller {
+	@GetMapping("/member/mypage")
+	public String mypage() {
+		return "/member/mypage";
+	}
 
 	@GetMapping("/qna/qna-main")
 	public String qnA() {
