@@ -323,5 +323,41 @@
 		</div>
 		<jsp:include page="../../includes/footer.jsp"></jsp:include>
 	</div>
+	<script type="text/javascript">
+	$(function() {
+		$("#create-btn").click(function() {
+			location.href = "${pageContext.request.contextPath}/incategories/community/community-create";
+		});
+		
+		$("#search").click(function() {
+			let category = $("#category").val();
+			let text = $("#search-text").val();
+			
+			if(category == "title") {
+				location.href = "${pageContext.request.contextPath}/incategories/community/community-main?title="+text;
+			}else if(category == "content") {
+				location.href = "${pageContext.request.contextPath}/incategories/community/community-main?content="+text;
+			}else if(category == "both") {
+				location.href = "${pageContext.request.contextPath}/incategories/community/community-main?title="+text+"&content="+text;
+			}
+		});
+		$('#search-text').on('keydown', function(e) {
+			var keyCode = e.which; // 눌린 키 기록
+
+			if (keyCode === 13) { // Enter Key
+				let category = $("#category").val();
+				let text = $("#search-text").val();
+				
+				if(category == "title") {
+					location.href = "${pageContext.request.contextPath}/incategories/community/community-main?title="+text;
+				}else if(category == "content") {
+					location.href = "${pageContext.request.contextPath}/incategories/community/community-main?content="+text;
+				}else if(category == "both") {
+					location.href = "${pageContext.request.contextPath}/incategories/community/community-main?title="+text+"&content="+text;
+				}
+			}
+		});
+	});
+</script>
 </body>
 </html>
