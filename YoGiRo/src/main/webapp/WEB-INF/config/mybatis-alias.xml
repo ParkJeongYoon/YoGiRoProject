@@ -4,5 +4,6 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="kr.co.goodee39.vo.CommunityVO" alias="communityVO"/>
+		<typeAlias type="kr.co.goodee39.vo.QuestionVO" alias="questionVO"/>
 	</typeAliases>
 </configuration>
