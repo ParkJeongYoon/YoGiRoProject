@@ -22,12 +22,5 @@
 		and num=#{num}
 	</select>
 	
-	<insert id="insertAnswer" parameterType="kr.co.goodee39.vo.AnswerVO">
-		insert into questions(qnum, userid, qtitle, qcreatedate )
-		values(${qnum}, ${userid}, ${qtitle}, ${qcreatedate)
-	</insert>
-	
-	<select id="selectAnswer" resultType="kr.co.goodee39.vo.AnswerVO">
-		select anum, qnum, qtitle, qcreatedate, qcontent, isdelete from questions
-	</select>
+
 </mapper>
