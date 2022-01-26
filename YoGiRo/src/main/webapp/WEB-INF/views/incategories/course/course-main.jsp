@@ -238,19 +238,19 @@ table {
 		<main>
 			<aside>
 				<div class="sidemenubar">
-					<a href=""><div>
+					<a href="#" onclick="acyncMovePage('move-to-course-main-ajax?region=서울')"><div>
 							<h3>수도권</h3>
 							<i class="fas fa-angle-right"></i>
-						</div></a> <a href=""><div>
+						</div></a> <a href="#" onclick="acyncMovePage('move-to-course-main-ajax?region=강원')"><div>
 							<h3>강원권</h3>
 							<i class="fas fa-angle-right"></i>
-						</div></a> <a href=""><div>
+						</div></a> <a href="#" onclick="acyncMovePage('move-to-course-main-ajax?region=충청')"><div>
 							<h3>충청권</h3>
 							<i class="fas fa-angle-right"></i>
-						</div></a> <a href=""><div>
+						</div></a> <a href="#" onclick="acyncMovePage('move-to-course-main-ajax?region=전라')"><div>
 							<h3>전라권</h3>
 							<i class="fas fa-angle-right"></i>
-						</div></a> <a href=""><div>
+						</div></a> <a href="#" onclick="acyncMovePage('move-to-course-main-ajax?region=경상')"><div>
 							<h3>경상권</h3>
 							<i class="fas fa-angle-right"></i>
 						</div></a>
@@ -346,5 +346,28 @@ table {
 
 		<jsp:include page="../../includes/footer.jsp"></jsp:include>
 	</div>
+	<script>
+ 
+    function acyncMovePage(url){
+        // ajax option
+        var ajaxOption = {
+                url : url,
+                async : true,
+                type : "GET",
+                dataType : "html",
+                cache : false
+        };
+        
+        $.ajax(ajaxOption).done(function(data){
+            // Contents 영역 삭제
+            $('#course_real_container').children().remove();
+            // Contents 영역 교체
+            $('#course_real_container').html(data);
+        });
+    }
+ 
+</script>
+
+
 </body>
 </html>
