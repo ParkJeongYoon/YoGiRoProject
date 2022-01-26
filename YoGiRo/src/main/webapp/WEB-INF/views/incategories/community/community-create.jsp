@@ -10,11 +10,10 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
 <style>
 	/* 사이드 메뉴바 */
-	.container {
+	.main-container {
 		width: 100%;
 		height: 800px;
 		display: flex;
-		
 	}
 	aside {
 		position: relative;
