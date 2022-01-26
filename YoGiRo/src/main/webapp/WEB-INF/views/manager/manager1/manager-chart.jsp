@@ -14,7 +14,7 @@
 <body>
 	<div class="container">
 		
-			<jsp:include page="header.jsp"></jsp:include>
+			<jsp:include page="../../includes/header.jsp"></jsp:include>
 		
 		
 			
@@ -45,7 +45,7 @@
 		   			</div>
 				   
 				   	
-				   	<div class="chart-box">
+				   	<div class="chart-box"> 
 				   		 <div>
 					        <canvas id="myChart" style="width:600px; height:500px;"></canvas>
 					     </div>
@@ -58,7 +58,7 @@
 				 </div>  
 		   </main>
 		</div>	 
-			
+			<jsp:include page="../../includes/footer.jsp"></jsp:include>
 	</div>
 	<script>
     // 우선 컨텍스트를 가져옵니다. 

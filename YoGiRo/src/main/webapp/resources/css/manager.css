@@ -48,10 +48,9 @@
    }
    .main2 {
    	  padding-left: 50px;
-   	  border: 1px solid crimson;
    	  width: 95%;
    	  height: 700px;
-   	  padding-top: 40px;
+   	  padding-top: 30px;
    } 
    .chart-text {
    	  display: flex;

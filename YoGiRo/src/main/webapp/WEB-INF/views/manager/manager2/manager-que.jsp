@@ -17,7 +17,7 @@
 	<div class="container">
 		
 		
-			<jsp:include page="header.jsp"></jsp:include>
+			<jsp:include page="../../includes/header.jsp"></jsp:include> 
 		<div class="middle-container">
 			<aside>
 			
@@ -124,7 +124,7 @@
 	   		</main>
    		</div>
    	 
-   		
+   		<jsp:include page="../../includes/footer.jsp"></jsp:include>
 	</div>
 </body>
 </html>
