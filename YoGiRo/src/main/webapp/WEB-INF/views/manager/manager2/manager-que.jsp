@@ -17,7 +17,7 @@
 	<div class="container">
 		
 		
-			<jsp:include page="header.jsp"></jsp:include>
+			<jsp:include page="../../includes/header.jsp"></jsp:include> 
 		<div class="middle-container">
 			<aside>
 			
@@ -45,7 +45,7 @@
                                </tr>
                             </thead>
                             <tbody>
-                            	<p>${list[0].qnum}</p>
+                             
                             	<c:forEach var="item" items="${list}" >
                             		<tr>
 	                                  <td>${item.qnum}</td>
@@ -123,8 +123,8 @@
 			 	</div>
 	   		</main>
    		</div>
-   		
-   		<jsp:include page="footer.jsp"></jsp:include>
+   	 
+   		<jsp:include page="../../includes/footer.jsp"></jsp:include>
 	</div>
 </body>
 </html>
