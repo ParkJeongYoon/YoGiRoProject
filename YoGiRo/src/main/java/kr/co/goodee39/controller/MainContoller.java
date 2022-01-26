@@ -18,7 +18,7 @@ public class MainContoller {
 	
 	@GetMapping("/login/login-main")
 	public String login() {
-		return "/login/login_main";
+		return "/login/login-main";
 	}
 	
 	@GetMapping("/signup/signup-main")
@@ -26,10 +26,10 @@ public class MainContoller {
 		return "/signup/signup-main";
 	}
 	
-	
+	  
 	
 	@GetMapping("/incategories/food/food-main")
-	public String food() {
+	public String food() { 
 		return "/incategories/food/food-main";
 	}
 	

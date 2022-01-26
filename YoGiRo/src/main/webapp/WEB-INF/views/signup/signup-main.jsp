@@ -72,7 +72,7 @@
 				</div>
 			</form>
 		</div>
+		<jsp:include page="../includes/footer.jsp"></jsp:include>
 	</div>
-	<jsp:include page="../includes/footer.jsp"></jsp:include>
 </body>
 </html>
