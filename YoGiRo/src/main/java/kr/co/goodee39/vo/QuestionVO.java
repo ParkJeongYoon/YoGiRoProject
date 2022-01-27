@@ -12,7 +12,7 @@ public class QuestionVO {
 	
 	
 	public QuestionVO() {
-		this.start = 1;
+		this.start = 0;
 		this.count = 10;
 	}
 	public int getQnum() {
