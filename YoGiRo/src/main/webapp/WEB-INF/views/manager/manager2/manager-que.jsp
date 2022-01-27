@@ -17,7 +17,7 @@
 	<div class="container">
 		
 		
-			<jsp:include page="../../includes/header.jsp"></jsp:include> 
+			<jsp:include page="../../includes/header.jsp"></jsp:include>
 		<div class="middle-container">
 			<aside>
 			
@@ -45,7 +45,6 @@
                                </tr>
                             </thead>
                             <tbody>
-                             
                             	<c:forEach var="item" items="${list}" >
                             		<tr>
 	                                  <td>${item.qnum}</td>
@@ -59,22 +58,55 @@
                             	
                             </tbody>
                          </table>
-                         <div class="paging" style="text-align: center; margin-top: 30px;">
-                         	<c:choose>
+                         
+                         
+                         <div class="pagenum" style="text-align: center; margin-top: 20px; ">
+                         	<%
+								int num = (Integer)request.getAttribute("num");
+								int count = (Integer)request.getAttribute("count");
+								int total = count/10+((count%10==0)?0:1);
+								int minBlock = (((num-1)/10)*10)+1;
+								int maxBlock = (((num-1)/10)+1)*10;
+								
+								pageContext.setAttribute("total", total);
+								pageContext.setAttribute("minBlock", minBlock);
+								pageContext.setAttribute("maxBlock", maxBlock);
+								
+								// 검색 데이터 연동
+								String query = "";
+								
+								String title = (String)request.getAttribute("title");
+								String content = (String)request.getAttribute("content");
+								
+								if(title != null){
+									query += "&title="+title;
+								}
+								
+								if(content != null){
+									query += "&content="+content;
+								}
+								
+								pageContext.setAttribute("query", query);
+							%>
+							<c:choose>
 								<c:when test="${(minBlock-1) < 1 }">
-									<span>◀◀</span>	
+									<span><i class="fas fa-angle-double-left"></i></span>	
 								</c:when>
 								<c:otherwise>
-									<a href="${pageContext.request.contextPath}/bbs/main?num=${minBlock-1}${query}">◀◀</a>
+									<a href="${pageContext.request.contextPath}/manager/manager2/manager-que?num=${minBlock-1}${query}">
+										<span><i class="fas fa-angle-double-left"></i></span>
+									</a>
 								</c:otherwise>
 							</c:choose>
 							&nbsp;&nbsp;
 							<c:choose>
 								<c:when test="${num==1 }">
-									<span>◀</span>
+									<span><i class="fas fa-chevron-left"></i></span>
 								</c:when>
 								<c:otherwise>
-									<a href="${pageContext.request.contextPath}/bbs/main?num=${num-1}${query}">◀</a>
+									<a href="${pageContext.request.contextPath}/manager/manager2/manager-que?num=${num-1}${query}">
+										<span><i class="fas fa-chevron-left"></i></span>
+									</a>
 								</c:otherwise>
 							</c:choose>
 							<c:forEach begin="${minBlock}" end="${(total<maxBlock)?total:maxBlock}" step="1" var="i">
@@ -83,39 +115,71 @@
 										<span>${i}</span>
 									</c:when>
 									<c:otherwise>
-										<a href="${pageContext.request.contextPath}/bbs/main?num=${i}${query}">${i}</a>
+										<a href="${pageContext.request.contextPath}/manager/manager2/manager-que?num=${i}${query}">${i}</a>
 									</c:otherwise>
 								</c:choose>
 						
 							</c:forEach>
 							<c:choose>
 								<c:when test="${num == total }">
-									<span>▶</span>
+									<span><i class="fas fa-chevron-right"></i></span>
 								</c:when>
 								<c:otherwise>
-									<a href="${pageContext.request.contextPath}/bbs/main?num=${num+1}${query}">▶</a>	
+									<a href="${pageContext.request.contextPath}/manager/manager2/manager-que?num=${num+1}${query}">
+										<span><i class="fas fa-chevron-right"></i></span>
+									</a>	
 								</c:otherwise>
 							</c:choose>
 							&nbsp;&nbsp;
 							<c:choose>
 								<c:when test="${maxBlock > total }">
-									<span>▶▶</span>	
+									<span> <i class="fas fa-angle-double-right"></i></span>	
 								</c:when>
 								<c:otherwise>
-									<a href="${pageContext.request.contextPath}/bbs/main?num=${maxBlock+1}${query}">▶▶</a>
+									<a href="${pageContext.request.contextPath}/manager/manager2/manager-que?num=${maxBlock+1}${query}">
+										<span> <i class="fas fa-angle-double-right"></i></span>
+									</a>
 								</c:otherwise>
 							</c:choose>
                          </div>
 							
 									
                         <div class="com-input">
-                            <select name="category" id="category">
-                                  <option value="comtitle">제목</option>
-                                  <option value="comcontent">내용</option>
-                                  <option value="comboth" selected>제목+내용</option>
-                            </select>
-                            <input id="search-text" type="text">
-                            <button id="search">검색</button>
+                            <c:choose>
+					<c:when test="${(title!=null)&&(content!=null)}">
+						<select name="category" id="category">
+							<option value="title">제목</option>
+							<option value="content">내용</option>
+							<option value="both" selected>제목+내용</option>
+						</select>
+						<input type="text" id="search-text" name="text" value="${title}" />
+					</c:when>
+					<c:when test="${title!=null}">
+						<select name="category" id="category">
+							<option value="title" selected>제목</option>
+							<option value="content">내용</option>
+							<option value="both">제목+내용</option>
+						</select>
+						<input type="text" id="search-text" name="text" value="${title}" />
+					</c:when>
+					<c:when test="${content!=null}">
+						<select name="category" id="category">
+							<option value="title">제목</option>
+							<option value="content" selected>내용</option>
+							<option value="both">제목+내용</option>
+						</select>
+						<input type="text" id="search-text" name="text" value="${content}" />
+					</c:when>
+					<c:otherwise>
+						<select name="category" id="category">
+							<option value="title">제목</option>
+							<option value="content">내용</option>
+							<option value="both">제목+내용</option>
+						</select>
+						<input type="text" id="search-text" name="text" />
+					</c:otherwise>
+				</c:choose>
+				<button id="search">검색</button>
                       
                         </div>
                     </div>
@@ -123,8 +187,41 @@
 			 	</div>
 	   		</main>
    		</div>
-   	 
    		<jsp:include page="../../includes/footer.jsp"></jsp:include>
+   		
 	</div>
+	<script type="text/javascript">
+	$(function() {
+		
+		$("#search").click(function() {
+			let category = $("#category").val();
+			let text = $("#search-text").val();
+			
+			if(category == "title") {
+				location.href = "${pageContext.request.contextPath}/manager/manager2/manager-que?title="+text;
+			}else if(category == "content") {
+				location.href = "${pageContext.request.contextPath}/manager/manager2/manager-que?content="+text;
+			}else if(category == "both") {
+				location.href = "${pageContext.request.contextPath}/manager/manager2/manager-que?title="+text+"&content="+text;
+			}
+		});
+		$('#search-text').on('keydown', function(e) {
+			var keyCode = e.which; // 눌린 키 기록
+
+			if (keyCode === 13) { // Enter Key
+				let category = $("#category").val();
+				let text = $("#search-text").val();
+				
+				if(category == "title") {
+					location.href = "${pageContext.request.contextPath}/manager/manager2/manager-que?title="+text;
+				}else if(category == "content") {
+					location.href = "${pageContext.request.contextPath}/manager/manager2/manager-que?content="+text;
+				}else if(category == "both") {
+					location.href = "${pageContext.request.contextPath}/manager/manager2/manager-que?title="+text+"&content="+text;
+				}
+			}
+		});
+	});
+	</script>
 </body>
 </html>
