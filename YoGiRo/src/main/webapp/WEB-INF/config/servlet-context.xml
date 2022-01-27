@@ -41,16 +41,9 @@
 	<resources mapping="/docs/**" location="/resources/docs/" />
 	<resources mapping="/css/**" location="/resources/css/" />
 	<resources mapping="/font/**" location="/resources/font/" />
+	<resources mapping="/js/**" location="/resources/js/"/>
 	<resources mapping="/icons/**" location="/resources/icons/" />
 	<resources mapping="/img/**" location="/resources/img/" />
-
-	<resources mapping="/resources/**" location="/resources/"/>
-	
-	<resources mapping="/docs/**" location="/resources/docs/"/>
-	<resources mapping="/css/**" location="/resources/css/"/>
-	<resources mapping="/js/**" location="/resources/js/"/>
-	<resources mapping="/icons/**" location="/resources/icons/"/>
-	<resources mapping="/img/**" location="/resources/img/"/>
 	
 	<tx:annotation-driven/>
 </beans:beans>
