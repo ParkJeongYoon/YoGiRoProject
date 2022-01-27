@@ -75,6 +75,12 @@ public class CourseController {
 		
 		return "incategories/course/mycourse-detail";
 	}
+	
+	@GetMapping("/add_my_course")
+	public String getAddMyCoursePage(Model model) {
+		
+		return "incategories/course/add_my_course";
+	}
 }
 
 

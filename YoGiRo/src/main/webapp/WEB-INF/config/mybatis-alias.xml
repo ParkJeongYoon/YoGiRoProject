@@ -5,9 +5,6 @@
 	<typeAliases>
 		<typeAlias type="kr.co.goodee39.vo.CommunityVO" alias="communityVO"/>
 		<typeAlias type="kr.co.goodee39.vo.QuestionVO" alias="questionVO"/>
-<<<<<<< HEAD
 		<typeAlias type="kr.co.goodee39.vo.MemberVO" alias="memberVO"/>
-=======
->>>>>>> branch 'develop' of https://github.com/ParkJeongYoon/YoGiRoProject.git
 	</typeAliases>
 </configuration>
