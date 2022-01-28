@@ -1,5 +1,7 @@
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +13,7 @@
 	href="${pageContext.request.contextPath}/resources/login/css/form.css">
 </head>
 <body class="body">
+<form:form action="${pageContext.request.contextPath}/user/signupResult">
 	<div class="container">
 
 		<jsp:include page="../includes/header.jsp"></jsp:include>
@@ -21,22 +24,23 @@
 				<div class="flex">
 					<ul class="container">
 						<li class="item center">이름</li>
-						<li class="item"><input type="text" name="name"
+						<li class="item"><input type="text" name="username"
 							placeholder="이름을 입력하세요." autofocus required></li>
 					</ul>
 					<ul class="container">
 						<li class="item center">닉네임</li>
-						<li class="item"><input type="text" placeholder="닉네임 3~12자 "
+						<li class="item"><input type="text" name="usernickname" placeholder="닉네임 3~12자 "
 							required></li>
 					</ul>
 					<ul class="container">
 						<li class="item center">아이디</li>
-						<li class="item"><input type="text" required></li>
+						<li class="item"><input type="text" name="userid" required></li>
+						<!-- jsp인데 인풋을 쓰고 네임과 안맞췄다? 자살각 -->
 					</ul>
 					<ul class="container">
 						<li class="item center">비밀번호</li>
 						<li class="item"><input type="password"
-							placeholder="영문+숫자 조합 8자리이상" required></li>
+							name = "userpassword" placeholder="영문+숫자 조합 8자리이상" required></li>
 						<li class="item"></li>
 					</ul>
 					<ul class="container">
@@ -46,12 +50,12 @@
 					</ul>
 					<ul class="container">
 						<li class="item center">이메일</li>
-						<li class="item"><input type="email"></li>
+						<li class="item"><input type="email" name="useremail"></li>
 						<li class="item"></li>
 					</ul>
 					<ul class="container">
 						<li class="item center">전화번호</li>
-						<li class="item"><input type="tel"></li>
+						<li class="item"><input type="tel" name="userphonenumber"></li>
 						<li class="item"></li>
 					</ul>
 					<div class="checkbox">
@@ -74,5 +78,6 @@
 		</div>
 		<jsp:include page="../includes/footer.jsp"></jsp:include>
 	</div>
+</form:form>
 </body>
 </html>

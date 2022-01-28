@@ -1,12 +1,12 @@
 package kr.co.goodee39.vo;
 
-public class MemberVO {
-	private String userid;
-	private String username;
-	private String usernickname;
-	private String userpassword;
-	private String useremail;
-	private String userphonenumber;
+public class UserVO {
+	public String userid;
+	public String username;
+	public String usernickname;
+	public String userpassword;
+	public String useremail;
+	public String userphonenumber;
 
 	public String getUserid() {
 		return userid;
