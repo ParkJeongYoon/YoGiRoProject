@@ -22,6 +22,16 @@
       </if> -->
    </where>
    </select>
+   <select id="selectUser_info" parameterType="userVO"
+		resultType="userVO">
+		select userid, username, usernickname, userpassword,
+		useremail, userphonenumber
+		from user
+		where
+         userid = #{userid}
+         and userpassword = #{userpassword}
+    
+	</select>
    <insert id="insertUser" parameterType="userVO">
       insert into 
       user(username, usernickname, userid, userpassword, useremail, userphonenumber)
@@ -51,4 +61,11 @@
    <delete id="deleteuser" parameterType="userVO">
       delete from user where user=#{userid}
    </delete>
+	<!-- 비밀번호 체크 -->
+	<select id="CheckPw" resultType="int">
+		select 
+			count(*)
+		from member
+		where userid=#{userid} and userpassword=#{userpassword}
+	</select>
 </mapper>
