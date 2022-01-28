@@ -9,13 +9,14 @@
     <script src="${pageContext.request.contextPath}/docs/js/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/docs/js/examples-base.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/docs/js/highlight.min.js"></script>
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=v14fqiw9zh&amp;submodules=panorama"></script>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=06jpeuhp1j&amp;submodules=panorama"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/docs/css/examples-base.css" />
     <script>
         var HOME_PATH = '${pageContext.request.contextPath}/docs';
     </script>
     
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/default.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/inmap/inmap.css">
     
 </head>
 <body class="body">
@@ -26,7 +27,14 @@
 
 
         <main>
-			<h1>inmap</h1>
+        	<div style="display: flex; flex-direction: column;">
+        		<div>
+        			<h1>inmap</h1>
+        		</div>
+        		<div class="test-weather" style="display: flex; flex-direction: column;">
+        			<!-- weather -->
+        		</div>
+        	</div>
 			
 			
 		    <!-- ========================================================================= -->
@@ -160,5 +168,264 @@
 		}
 	</script>
 	<!-- ========================================================================= -->
+	
+	
+	<!-- ========================================================================= -->
+	<!-- weatherAPI -->
+
+    <script type="text/javascript">
+		const testWeather = document.querySelector(".test-weather");
+		var apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid=&q=${city1}";
+		
+	    $.ajax({
+	        url: apiURI,
+	        type: "GET",
+	        dataType: "JSON",
+	        success: function(response) {
+	        	const cityDiv = document.createElement("div");
+	            const weatherDiv = document.createElement("div");
+	            const city = document.createElement("p");
+	            const weather = document.createElement("p");
+	            const icon = document.createElement("img");
+	            const temp = document.createElement("p");
+	            const feelsLike = document.createElement("p");
+	            const tempMin = document.createElement("p");
+	            const tempMax = document.createElement("p");
+	            const tempPressure = document.createElement("p");
+	            const tempHumidity = document.createElement("p");
+	            const windSpeed = document.createElement("p");
+	            const windDeg = document.createElement("p");
+	            const cloudsAll = document.createElement("p");
+				cityDiv.style.display = "flex";
+				cityDiv.style.flexDirection = "row";
+	            city.innerHTML = "지역: " + response.name + " / ";
+	            weather.innerHTML = "날씨: " + response.weather[0].description + " / ";
+	            icon.setAttribute("src" , "http://openweathermap.org/img/wn/" + response.weather[0].icon + ".png");
+	            temp.innerHTML = "기온: " + response.main.temp + " / ";
+	            feelsLike.innerHTML = "체감온도: " + response.main.feels_like + " / ";
+	            tempMin.innerHTML = "최저기온: " + response.main.temp_min + " / ";
+	            tempMax.innerHTML = "최고기온: " + response.main.temp_max + " / ";
+	            tempPressure.innerHTML = "대기압: " + response.main.pressure + " / ";
+	            tempHumidity.innerHTML = "습도: " + response.main.humidity + " / ";
+	            windSpeed.innerHTML = "풍속: " + response.wind.speed + " / ";
+	            windDeg.innerHTML = "풍향: " + response.wind.deg + " / ";
+	            cloudsAll.innerHTML = "구름: " + response.clouds.all;
+	            cityDiv.append(city);
+	            cityDiv.append(weather);
+	            cityDiv.append(icon);
+	            cityDiv.append(temp);
+	            cityDiv.append(feelsLike);
+	            cityDiv.append(tempMin);
+	            cityDiv.append(tempMax);
+	            cityDiv.append(tempPressure);
+	            cityDiv.append(tempHumidity);
+	            cityDiv.append(windSpeed);
+	            cityDiv.append(windDeg);
+	            cityDiv.append(cloudsAll);
+	            testWeather.append(cityDiv);
+	        }
+	    });
+		var apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid=&q=${city2}";
+		
+	    $.ajax({
+	        url: apiURI,
+	        type: "GET",
+	        dataType: "JSON",
+	        success: function(response) {
+	        	const cityDiv = document.createElement("div");
+	            const weatherDiv = document.createElement("div");
+	            const city = document.createElement("p");
+	            const weather = document.createElement("p");
+	            const icon = document.createElement("img");
+	            const temp = document.createElement("p");
+	            const feelsLike = document.createElement("p");
+	            const tempMin = document.createElement("p");
+	            const tempMax = document.createElement("p");
+	            const tempPressure = document.createElement("p");
+	            const tempHumidity = document.createElement("p");
+	            const windSpeed = document.createElement("p");
+	            const windDeg = document.createElement("p");
+	            const cloudsAll = document.createElement("p");
+				cityDiv.style.display = "flex";
+				cityDiv.style.flexDirection = "row";
+	            city.innerHTML = "지역: " + response.name + " / ";
+	            weather.innerHTML = "날씨: " + response.weather[0].description + " / ";
+	            icon.setAttribute("src" , "http://openweathermap.org/img/wn/" + response.weather[0].icon + ".png");
+	            temp.innerHTML = "기온: " + response.main.temp + " / ";
+	            feelsLike.innerHTML = "체감온도: " + response.main.feels_like + " / ";
+	            tempMin.innerHTML = "최저기온: " + response.main.temp_min + " / ";
+	            tempMax.innerHTML = "최고기온: " + response.main.temp_max + " / ";
+	            tempPressure.innerHTML = "대기압: " + response.main.pressure + " / ";
+	            tempHumidity.innerHTML = "습도: " + response.main.humidity + " / ";
+	            windSpeed.innerHTML = "풍속: " + response.wind.speed + " / ";
+	            windDeg.innerHTML = "풍향: " + response.wind.deg + " / ";
+	            cloudsAll.innerHTML = "구름: " + response.clouds.all;
+	            cityDiv.append(city);
+	            cityDiv.append(weather);
+	            cityDiv.append(icon);
+	            cityDiv.append(temp);
+	            cityDiv.append(feelsLike);
+	            cityDiv.append(tempMin);
+	            cityDiv.append(tempMax);
+	            cityDiv.append(tempPressure);
+	            cityDiv.append(tempHumidity);
+	            cityDiv.append(windSpeed);
+	            cityDiv.append(windDeg);
+	            cityDiv.append(cloudsAll);
+	            testWeather.append(cityDiv);
+	        }
+	    });
+		var apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid=&q=${city3}";
+		
+	    $.ajax({
+	        url: apiURI,
+	        type: "GET",
+	        dataType: "JSON",
+	        success: function(response) {
+	        	const cityDiv = document.createElement("div");
+	            const weatherDiv = document.createElement("div");
+	            const city = document.createElement("p");
+	            const weather = document.createElement("p");
+	            const icon = document.createElement("img");
+	            const temp = document.createElement("p");
+	            const feelsLike = document.createElement("p");
+	            const tempMin = document.createElement("p");
+	            const tempMax = document.createElement("p");
+	            const tempPressure = document.createElement("p");
+	            const tempHumidity = document.createElement("p");
+	            const windSpeed = document.createElement("p");
+	            const windDeg = document.createElement("p");
+	            const cloudsAll = document.createElement("p");
+				cityDiv.style.display = "flex";
+				cityDiv.style.flexDirection = "row";
+	            city.innerHTML = "지역: " + response.name + " / ";
+	            weather.innerHTML = "날씨: " + response.weather[0].description + " / ";
+	            icon.setAttribute("src" , "http://openweathermap.org/img/wn/" + response.weather[0].icon + ".png");
+	            temp.innerHTML = "기온: " + response.main.temp + " / ";
+	            feelsLike.innerHTML = "체감온도: " + response.main.feels_like + " / ";
+	            tempMin.innerHTML = "최저기온: " + response.main.temp_min + " / ";
+	            tempMax.innerHTML = "최고기온: " + response.main.temp_max + " / ";
+	            tempPressure.innerHTML = "대기압: " + response.main.pressure + " / ";
+	            tempHumidity.innerHTML = "습도: " + response.main.humidity + " / ";
+	            windSpeed.innerHTML = "풍속: " + response.wind.speed + " / ";
+	            windDeg.innerHTML = "풍향: " + response.wind.deg + " / ";
+	            cloudsAll.innerHTML = "구름: " + response.clouds.all;
+	            cityDiv.append(city);
+	            cityDiv.append(weather);
+	            cityDiv.append(icon);
+	            cityDiv.append(temp);
+	            cityDiv.append(feelsLike);
+	            cityDiv.append(tempMin);
+	            cityDiv.append(tempMax);
+	            cityDiv.append(tempPressure);
+	            cityDiv.append(tempHumidity);
+	            cityDiv.append(windSpeed);
+	            cityDiv.append(windDeg);
+	            cityDiv.append(cloudsAll);
+	            testWeather.append(cityDiv);
+	        }
+	    });
+		var apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid=&q=${city4}";
+		
+	    $.ajax({
+	        url: apiURI,
+	        type: "GET",
+	        dataType: "JSON",
+	        success: function(response) {
+	        	const cityDiv = document.createElement("div");
+	            const weatherDiv = document.createElement("div");
+	            const city = document.createElement("p");
+	            const weather = document.createElement("p");
+	            const icon = document.createElement("img");
+	            const temp = document.createElement("p");
+	            const feelsLike = document.createElement("p");
+	            const tempMin = document.createElement("p");
+	            const tempMax = document.createElement("p");
+	            const tempPressure = document.createElement("p");
+	            const tempHumidity = document.createElement("p");
+	            const windSpeed = document.createElement("p");
+	            const windDeg = document.createElement("p");
+	            const cloudsAll = document.createElement("p");
+				cityDiv.style.display = "flex";
+				cityDiv.style.flexDirection = "row";
+	            city.innerHTML = "지역: " + response.name + " / ";
+	            weather.innerHTML = "날씨: " + response.weather[0].description + " / ";
+	            icon.setAttribute("src" , "http://openweathermap.org/img/wn/" + response.weather[0].icon + ".png");
+	            temp.innerHTML = "기온: " + response.main.temp + " / ";
+	            feelsLike.innerHTML = "체감온도: " + response.main.feels_like + " / ";
+	            tempMin.innerHTML = "최저기온: " + response.main.temp_min + " / ";
+	            tempMax.innerHTML = "최고기온: " + response.main.temp_max + " / ";
+	            tempPressure.innerHTML = "대기압: " + response.main.pressure + " / ";
+	            tempHumidity.innerHTML = "습도: " + response.main.humidity + " / ";
+	            windSpeed.innerHTML = "풍속: " + response.wind.speed + " / ";
+	            windDeg.innerHTML = "풍향: " + response.wind.deg + " / ";
+	            cloudsAll.innerHTML = "구름: " + response.clouds.all;
+	            cityDiv.append(city);
+	            cityDiv.append(weather);
+	            cityDiv.append(icon);
+	            cityDiv.append(temp);
+	            cityDiv.append(feelsLike);
+	            cityDiv.append(tempMin);
+	            cityDiv.append(tempMax);
+	            cityDiv.append(tempPressure);
+	            cityDiv.append(tempHumidity);
+	            cityDiv.append(windSpeed);
+	            cityDiv.append(windDeg);
+	            cityDiv.append(cloudsAll);
+	            testWeather.append(cityDiv);
+	        }
+	    });var apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid=&q=${city5}";
+		
+	    $.ajax({
+	        url: apiURI,
+	        type: "GET",
+	        dataType: "JSON",
+	        success: function(response) {
+	        	const cityDiv = document.createElement("div");
+	            const weatherDiv = document.createElement("div");
+	            const city = document.createElement("p");
+	            const weather = document.createElement("p");
+	            const icon = document.createElement("img");
+	            const temp = document.createElement("p");
+	            const feelsLike = document.createElement("p");
+	            const tempMin = document.createElement("p");
+	            const tempMax = document.createElement("p");
+	            const tempPressure = document.createElement("p");
+	            const tempHumidity = document.createElement("p");
+	            const windSpeed = document.createElement("p");
+	            const windDeg = document.createElement("p");
+	            const cloudsAll = document.createElement("p");
+				cityDiv.style.display = "flex";
+				cityDiv.style.flexDirection = "row";
+	            city.innerHTML = "지역: " + response.name + " / ";
+	            weather.innerHTML = "날씨: " + response.weather[0].description + " / ";
+	            icon.setAttribute("src" , "http://openweathermap.org/img/wn/" + response.weather[0].icon + ".png");
+	            temp.innerHTML = "기온: " + response.main.temp + " / ";
+	            feelsLike.innerHTML = "체감온도: " + response.main.feels_like + " / ";
+	            tempMin.innerHTML = "최저기온: " + response.main.temp_min + " / ";
+	            tempMax.innerHTML = "최고기온: " + response.main.temp_max + " / ";
+	            tempPressure.innerHTML = "대기압: " + response.main.pressure + " / ";
+	            tempHumidity.innerHTML = "습도: " + response.main.humidity + " / ";
+	            windSpeed.innerHTML = "풍속: " + response.wind.speed + " / ";
+	            windDeg.innerHTML = "풍향: " + response.wind.deg + " / ";
+	            cloudsAll.innerHTML = "구름: " + response.clouds.all;
+	            cityDiv.append(city);
+	            cityDiv.append(weather);
+	            cityDiv.append(icon);
+	            cityDiv.append(temp);
+	            cityDiv.append(feelsLike);
+	            cityDiv.append(tempMin);
+	            cityDiv.append(tempMax);
+	            cityDiv.append(tempPressure);
+	            cityDiv.append(tempHumidity);
+	            cityDiv.append(windSpeed);
+	            cityDiv.append(windDeg);
+	            cityDiv.append(cloudsAll);
+	            testWeather.append(cityDiv);
+	        }
+	    });
+	</script>
+	<!-- ========================================================================= -->
+
 </body>
 </html>

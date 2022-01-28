@@ -4,14 +4,36 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="questions">
-	<insert id="insertQuestions" parameterType="kr.co.goodee39.vo.QuestionVO">
-		insert into questions(qnum, userid, qtitle, qcreatedate )
-		values(${qnum}, ${userid}, ${qtitle}, ${qcreatedate)
-	</insert>
+	<select id="selectQuestionsCount" parameterType="questionVO" resultType="int">
+		select count(*) from questions
+		where isdelete = 'N'
+		<choose>
+			<when test="qtitle != null and qcontent != null">
+				and (qtitle like #{qtitle} or qcontent like #{qcontent})
+			</when>
+			<when test="qtitle == null and qcontent != null">
+				and qcontent like #{qcontent}
+			</when>
+			<when test="qtitle != null and qcontent == null">
+				and qtitle like #{qtitle}
+			</when>
+		</choose>
+	</select>
 	
 	<select id="selectQuestionsList" parameterType="questionVO" resultType="questionVO">
 		select qnum, userid, qtitle, qcreatedate, isdelete from questions
 		where isdelete = 'N'
+		<choose>
+			<when test="qtitle != null and qcontent != null">
+				and (qtitle like #{qtitle} or qcontent like #{qcontent})
+			</when>
+			<when test="qtitle == null and qcontent != null">
+				and qcontent like #{qcontent}
+			</when>
+			<when test="qtitle != null and qcontent == null">
+				and qtitle like #{qtitle}
+			</when>
+		</choose>
 		order by qnum desc
 		limit #{start}, #{count}
 	</select>
@@ -22,5 +44,9 @@
 		and num=#{num}
 	</select>
 	
-
+	<insert id="insertQuestions" parameterType="kr.co.goodee39.vo.QuestionVO">
+		insert into questions(qnum, userid, qtitle, qcreatedate )
+		values(${qnum}, ${userid}, ${qtitle}, ${qcreatedate)
+	</insert>
+	
 </mapper>

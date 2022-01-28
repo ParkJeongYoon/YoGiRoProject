@@ -312,9 +312,6 @@ table {
 				</div>
 				<br /> <br />
 				<hr />
-				<br /><br />
-				<h1>YoGiRo 어때요?</h1>
-				
 				<br> <a href=""><h4 id="add_my_course">내 코스 올리기</h4></a> <br>
 				<br>
 				<div class="course_container">
