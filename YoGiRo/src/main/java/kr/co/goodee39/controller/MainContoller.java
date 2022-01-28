@@ -51,13 +51,26 @@ public class MainContoller {
 	
 	
 	
-		
-	@GetMapping("/inmap/inmap/{lat}/{latDecimal}/{lng}/{lngDecimal}/{zoom}")
+	@GetMapping("/inmap/inmap/{lat}/{latDecimal}/{lng}/{lngDecimal}/{zoom}/{city1}")
 	public String inMap(@PathVariable String lat,
 						@PathVariable String latDecimal,
 						@PathVariable String lng,
 						@PathVariable String lngDecimal,
-						@PathVariable String zoom) {
+						@PathVariable String zoom,
+						@PathVariable String city1) {
+		return "/inmap/inmap";
+	}	
+	@GetMapping("/inmap/inmap/{lat}/{latDecimal}/{lng}/{lngDecimal}/{zoom}/{city1}/{city2}/{city3}/{city4}/{city5}")
+	public String inMap(@PathVariable String lat,
+						@PathVariable String latDecimal,
+						@PathVariable String lng,
+						@PathVariable String lngDecimal,
+						@PathVariable String zoom,
+						@PathVariable String city1,
+						@PathVariable String city2,
+						@PathVariable String city3,
+						@PathVariable String city4,
+						@PathVariable String city5) {
 		return "/inmap/inmap";
 	}
 

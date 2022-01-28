@@ -82,9 +82,10 @@ header {
 .login-box-a:nth-child(n) {
 	font-family: 'twayair';
 	font-size: 1.2em;
+	margin-left: 1.37rem;
 }
-.login-box-a:nth-child(n) , .fa-globe {
-	margin-left: 1rem;
+.fa-question-circle , .fa-sign-in-alt , .fa-user-plus {
+	margin-left: 0.32em;
 }
 .header-nav {
     width: 100%;

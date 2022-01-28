@@ -10,9 +10,11 @@
         	<a href="${pageContext.request.contextPath}/member/mypage" class="mypage-box-a">마이페이지1</a>
         	<a href="${pageContext.request.contextPath}/manager/manager1/manager-chart" class="login-box-a">관리자</a>
             <a href="${pageContext.request.contextPath}/qna/qna-main" class="login-box-a">문의하기</a>
+            <i class="far fa-question-circle"></i>
             <a href="${pageContext.request.contextPath}/login/login-main" class="login-box-a">로그인</a>
+            <i class="fas fa-sign-in-alt"></i>
             <a href="${pageContext.request.contextPath}/signup/signup-main" class="login-box-a">회원가입</a>
-            <i class="fas fa-globe"></i>
+            <i class="fas fa-user-plus"></i>
         </div>
     </div>
     <nav class="header-nav">
