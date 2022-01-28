@@ -175,7 +175,7 @@
 
     <script type="text/javascript">
 		const testWeather = document.querySelector(".test-weather");
-		var apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid=e1841dfc9a295f4c08d9fb5d28497b20&q=${city1}";
+		var apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid=&q=${city1}";
 		
 	    $.ajax({
 	        url: apiURI,
@@ -225,7 +225,7 @@
 	            testWeather.append(cityDiv);
 	        }
 	    });
-		var apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid=e1841dfc9a295f4c08d9fb5d28497b20&q=${city2}";
+		var apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid=&q=${city2}";
 		
 	    $.ajax({
 	        url: apiURI,
@@ -275,7 +275,7 @@
 	            testWeather.append(cityDiv);
 	        }
 	    });
-		var apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid=e1841dfc9a295f4c08d9fb5d28497b20&q=${city3}";
+		var apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid=&q=${city3}";
 		
 	    $.ajax({
 	        url: apiURI,
@@ -325,7 +325,7 @@
 	            testWeather.append(cityDiv);
 	        }
 	    });
-		var apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid=e1841dfc9a295f4c08d9fb5d28497b20&q=${city4}";
+		var apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid=&q=${city4}";
 		
 	    $.ajax({
 	        url: apiURI,
@@ -374,7 +374,7 @@
 	            cityDiv.append(cloudsAll);
 	            testWeather.append(cityDiv);
 	        }
-	    });var apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid=e1841dfc9a295f4c08d9fb5d28497b20&q=${city5}";
+	    });var apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid=&q=${city5}";
 		
 	    $.ajax({
 	        url: apiURI,
