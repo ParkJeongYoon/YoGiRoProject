@@ -38,10 +38,10 @@ public class MainContoller {
 		return "/incategories/festa/festa-main";
 	}
 	
-	/*
-	 * @GetMapping("/incategories/course/course-main") public String course() {
-	 * return "/incategories/course/course-main"; }
-	 */
+	@GetMapping("/incategories/course/course-main")
+	public String course() {
+		return "/incategories/course/course-main";
+	}
 	
 //	@GetMapping("/incategories/community/community-main")
 //	public String community() {
