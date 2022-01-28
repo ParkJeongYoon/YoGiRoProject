@@ -21,11 +21,10 @@ public class MainContoller {
 		return "/login/login-main";
 	}
 	
-	@GetMapping("/signup/signup-main")
-	public String signup() {
-		return "/signup/signup-main";
-	}
-	
+	/*
+	 * @GetMapping("/signup/signup-main") public String signup() { return
+	 * "/signup/signup-main"; }
+	 */
 	  
 	
 	@GetMapping("/incategories/food/food-main")

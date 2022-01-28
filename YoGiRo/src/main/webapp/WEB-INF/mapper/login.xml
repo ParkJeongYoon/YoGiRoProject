@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="user">
-   <select id="selectuser" parameterType="userVO" resultType="userVO">
+   <select id="selectUser" parameterType="userVO" resultType="userVO">
    select userid, username, usernickname, userpassword, useremail, userphonenumber
    from user
    <where>
@@ -22,9 +22,10 @@
       </if>
    </where>
    </select>
-   <insert id="insertuser" parameterType="userVO">
-      insert into user(userid, username, usernickname, userpassword, useremail, userphonenumber)
-      values(#{userid}, #{username}, #{usernickname}, #{userpassword}, #{useremail}, #{userphonenumber})
+   <insert id="insertUser" parameterType="userVO">
+      insert into 
+      user(username, usernickname, userid, userpassword, useremail, userphonenumber)
+      values(#{username}, #{usernickname}, #{userid}, #{userpassword}, #{useremail}, #{userphonenumber})
    </insert>
    <update id="updateuser" parameterType="userVO">
       update user

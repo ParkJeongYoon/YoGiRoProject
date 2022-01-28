@@ -16,7 +16,7 @@
 <main class = "login_main">
 	<div id="login">
 		<div id="login_box">
-			<form class="login_content animate" action="${pageContext.request.contextPath}/user/login-main" method="post">
+			<form class="login_content animate" action="${pageContext.request.contextPath}/login" method="post">
 				<span class="close" title="back" onclick="goBack();">&times;</span>
 				<div class="login_inside">
 					<input type="text" placeholder="아이디 또는 이메일 입력" name="userid" required> 
