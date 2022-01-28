@@ -8,18 +8,18 @@
    select userid, username, usernickname, userpassword, useremail, userphonenumber
    from user
    <where>
-      <if test="uesrid!=null">
+      <if test="userid!=null">
          and userid = #{userid}
       </if>
-      <if test="usernickname!=null">
+      <!-- <if test="usernickname!=null">
          and usernickname = #{usernickname}
-      </if>
+      </if> -->
       <if test="userpassword!=null">
          and userpassword = #{userpassword}
       </if>
-      <if test="useremail!=null">
+      <!-- <if test="useremail!=null">
          and useremail = #{useremail}
-      </if>
+      </if> -->
    </where>
    </select>
    <insert id="insertUser" parameterType="userVO">

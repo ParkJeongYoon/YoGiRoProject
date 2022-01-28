@@ -19,7 +19,7 @@ public class LoginService {
 		String path = "";
 		if(vo1 != null) {
 			session.setAttribute("account", vo1);
-			path = "after-login-main";
+			path = "after-login_main";
 		}else {
 			path = "/login/login-main";
 		}
