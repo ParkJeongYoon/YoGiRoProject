@@ -177,48 +177,48 @@
 
     <script type="text/javascript">
     	function cityNameTranslate(engCityName) {
-			let KorCityName = "";
-			if (engCityName == "Seoul") {KorCityName = "서울특별시";}
-			else if (engCityName == "Busan") {KorCityName = "부산광역시";}
-			else if (engCityName == "Daegu") {KorCityName = "대구광역시";}
-			else if (engCityName == "Incheon") {KorCityName = "인천광역시";}
-			else if (engCityName == "Gwangju") {KorCityName = "광주광역시";}
-			else if (engCityName == "Daejeon") {KorCityName = "대전광역시";}
-			else if (engCityName == "Ulsan") {KorCityName = "울산광역시";}
-			else if (engCityName == "Namyangju") {KorCityName = "남양주시";}
-			else if (engCityName == "Gimpo-si") {KorCityName = "김포시";}
-			else if (engCityName == "Osan") {KorCityName = "오산시";}
-			else if (engCityName == "Yeoncheon-gun") {KorCityName = "연천군";}
-			else if (engCityName == "Gangneung") {KorCityName = "강릉시";}
-			else if (engCityName == "Chuncheon") {KorCityName = "춘천시";}
-			else if (engCityName == "Inje") {KorCityName = "인제군";}
-			else if (engCityName == "Yanggu") {KorCityName = "양구군";}
-			else if (engCityName == "Chungju") {KorCityName = "충주시";}
-			else if (engCityName == "Koesan") {	KorCityName = "괴산군";}
-			else if (engCityName == "Cheongju-si") {KorCityName = "청주시";}
-			else if (engCityName == "Yeongdong") {KorCityName = "영동군";}
-			else if (engCityName == "Gongju") {KorCityName = "공주시";}
-			else if (engCityName == "Taian") {KorCityName = "태안군";}
-			else if (engCityName == "Boryeong") {KorCityName = "보령시";}
-			else if (engCityName == "Cheonan") {KorCityName = "천안시";}
-			else if (engCityName == "Muju") {KorCityName = "무주군";}
-			else if (engCityName == "Jeonju") {KorCityName = "전주시";}
-			else if (engCityName == "Sunchang-chodeunghakgyo") {KorCityName = "순창군";}
-			else if (engCityName == "Imsil") {KorCityName = "임실군";}
-			else if (engCityName == "Suncheon") {KorCityName = "순천시";}
-			else if (engCityName == "Mokpo") {KorCityName = "목포시";}
-			else if (engCityName == "Haenam") {KorCityName = "해남군";}
-			else if (engCityName == "Naju") {KorCityName = "나주시";}
-			else if (engCityName == "Pohang") {KorCityName = "포항시";}
-			else if (engCityName == "Gimcheon") {KorCityName = "김천시";}
-			else if (engCityName == "Gyeongsan-si") {KorCityName = "경산시";}
-			else if (engCityName == "Andong") {KorCityName = "안동시";}
-			else if (engCityName == "Changwon") {KorCityName = "창원시";}
-			else if (engCityName == "Hamyang") {KorCityName = "함양군";}
-			else if (engCityName == "Namhae") {KorCityName = "남해군";}
-			else if (engCityName == "Yangsan") {KorCityName = "양산시";}
-			else if (engCityName == "Jeju-do") {KorCityName = "제주도특별자치도";}
-			return KorCityName;
+			let korCityName = "";
+			if (engCityName == "Seoul") {korCityName = "서울특별시";}
+			else if (engCityName == "Busan") {korCityName = "부산광역시";}
+			else if (engCityName == "Daegu") {korCityName = "대구광역시";}
+			else if (engCityName == "Incheon") {korCityName = "인천광역시";}
+			else if (engCityName == "Gwangju") {korCityName = "광주광역시";}
+			else if (engCityName == "Daejeon") {korCityName = "대전광역시";}
+			else if (engCityName == "Ulsan") {korCityName = "울산광역시";}
+			else if (engCityName == "Namyangju") {korCityName = "남양주시";}
+			else if (engCityName == "Gimpo-si") {korCityName = "김포시";}
+			else if (engCityName == "Osan") {korCityName = "오산시";}
+			else if (engCityName == "Yeoncheon-gun") {korCityName = "연천군";}
+			else if (engCityName == "Gangneung") {korCityName = "강릉시";}
+			else if (engCityName == "Chuncheon") {korCityName = "춘천시";}
+			else if (engCityName == "Inje") {korCityName = "인제군";}
+			else if (engCityName == "Yanggu") {korCityName = "양구군";}
+			else if (engCityName == "Chungju") {korCityName = "충주시";}
+			else if (engCityName == "Koesan") {	korCityName = "괴산군";}
+			else if (engCityName == "Cheongju-si") {korCityName = "청주시";}
+			else if (engCityName == "Yeongdong") {korCityName = "영동군";}
+			else if (engCityName == "Gongju") {korCityName = "공주시";}
+			else if (engCityName == "Taian") {korCityName = "태안군";}
+			else if (engCityName == "Boryeong") {korCityName = "보령시";}
+			else if (engCityName == "Cheonan") {korCityName = "천안시";}
+			else if (engCityName == "Muju") {korCityName = "무주군";}
+			else if (engCityName == "Jeonju") {korCityName = "전주시";}
+			else if (engCityName == "Sunchang-chodeunghakgyo") {korCityName = "순창군";}
+			else if (engCityName == "Imsil") {korCityName = "임실군";}
+			else if (engCityName == "Suncheon") {korCityName = "순천시";}
+			else if (engCityName == "Mokpo") {korCityName = "목포시";}
+			else if (engCityName == "Haenam") {korCityName = "해남군";}
+			else if (engCityName == "Naju") {korCityName = "나주시";}
+			else if (engCityName == "Pohang") {korCityName = "포항시";}
+			else if (engCityName == "Gimcheon") {korCityName = "김천시";}
+			else if (engCityName == "Gyeongsan-si") {korCityName = "경산시";}
+			else if (engCityName == "Andong") {korCityName = "안동시";}
+			else if (engCityName == "Changwon") {korCityName = "창원시";}
+			else if (engCityName == "Hamyang") {korCityName = "함양군";}
+			else if (engCityName == "Namhae") {korCityName = "남해군";}
+			else if (engCityName == "Yangsan") {korCityName = "양산시";}
+			else if (engCityName == "Jeju-do") {korCityName = "제주도특별자치도";}
+			return korCityName;
     	}
     	
     	function weatherIconDovora(originIconCode) {
