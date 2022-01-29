@@ -3,30 +3,41 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="member">
-   <select id="selectMember" parameterType="memberVO" resultType="memberVO">
+<mapper namespace="user">
+   <select id="selectUser" parameterType="userVO" resultType="userVO">
    select userid, username, usernickname, userpassword, useremail, userphonenumber
    from user
    <where>
-      <if test="uesrid!=null">
+      <if test="userid!=null">
          and userid = #{userid}
       </if>
-      <if test="usernickname!=null">
+      <!-- <if test="usernickname!=null">
          and usernickname = #{usernickname}
-      </if>
+      </if> -->
       <if test="userpassword!=null">
          and userpassword = #{userpassword}
       </if>
-      <if test="useremail!=null">
+      <!-- <if test="useremail!=null">
          and useremail = #{useremail}
-      </if>
+      </if> -->
    </where>
    </select>
-   <insert id="insertMember" parameterType="memberVO">
-      insert into member(userid, username, usernickname, userpassword, useremail, userphonenumber)
-      value(#{userid}, #{username}, #{usernickname}, #{userpassword}, #{useremail}, #{userphonenumber})
+   <select id="selectUser_info" parameterType="userVO"
+		resultType="userVO">
+		select userid, username, usernickname, userpassword,
+		useremail, userphonenumber
+		from user
+		where
+         userid = #{userid}
+         and userpassword = #{userpassword}
+    
+	</select>
+   <insert id="insertUser" parameterType="userVO">
+      insert into 
+      user(username, usernickname, userid, userpassword, useremail, userphonenumber)
+      values(#{username}, #{usernickname}, #{userid}, #{userpassword}, #{useremail}, #{userphonenumber})
    </insert>
-   <update id="updateMember" parameterType="memberVO">
+   <update id="updateuser" parameterType="userVO">
       update user
       <set>
          <if test="uesrid!=null">
@@ -47,7 +58,14 @@
       </set>
       where userid=#{userid}
    </update>
-   <delete id="deleteMember" parameterType="memberVO">
+   <delete id="deleteuser" parameterType="userVO">
       delete from user where user=#{userid}
    </delete>
+	<!-- 비밀번호 체크 -->
+	<select id="CheckPw" resultType="int">
+		select 
+			count(*)
+		from member
+		where userid=#{userid} and userpassword=#{userpassword}
+	</select>
 </mapper>

@@ -12,26 +12,25 @@ import kr.co.goodee39.service.LoginService;
 import kr.co.goodee39.vo.UserVO;
 
 @Controller
-@RequestMapping("/user")
-public class FormController {
+public class UserController {
 	
 	@Autowired
-	LoginService memberService;
+	LoginService loginservice;
 	
-	@PostMapping("/login/login-main")
+	@PostMapping("/login")
 	public String isLogin(UserVO vo, HttpSession session) {
-		return memberService.getuser(vo, session);
+		return loginservice.getuser(vo, session);
 	}
 	
-	@GetMapping("/signUp/signup-main")
+	@GetMapping("/signup/signup-main")
 	public String signUp(UserVO vo) {
-		return "signup/signup-main";
+		return "/signup/signup-main";
 	}
 	
 	@PostMapping("/signupResult")
 	public String signupResult(UserVO vo) {
-		memberService.setuser(vo);
-		return "/login/login";
+		loginservice.insertUser(vo);
+		return "/login/login-main";
 	}
 	
 }
