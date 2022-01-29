@@ -176,131 +176,71 @@
 	<!-- weatherAPI -->
 
     <script type="text/javascript">
-    	function cityNameTranslate(engcityName) {
-			let cityNameKr = "";
-			if (engcityName == "Seoul") {
-				cityNameKr = "서울특별시";
-			}else if (engcityName == "Busan") {
-				cityNameKr = "부산광역시";
-			}else if (engcityName == "Daegu") {
-				cityNameKr = "대구광역시";
-			}else if (engcityName == "Incheon") {
-				cityNameKr = "인천광역시";
-			}else if (engcityName == "Gwangju") {
-				cityNameKr = "광주광역시";
-			}else if (engcityName == "Daejeon") {
-				cityNameKr = "대전광역시";
-			}else if (engcityName == "Ulsan") {
-				cityNameKr = "울산광역시";
-			}else if (engcityName == "Namyangju") {
-				cityNameKr = "남양주시";
-			}else if (engcityName == "Gimpo-si") {
-				cityNameKr = "김포시";
-			}else if (engcityName == "Osan") {
-				cityNameKr = "오산시";
-			}else if (engcityName == "Yeoncheon-gun") {
-				cityNameKr = "연천군";
-			}else if (engcityName == "Gangneung") {
-				cityNameKr = "강릉시";
-			}else if (engcityName == "Chuncheon") {
-				cityNameKr = "춘천시";
-			}else if (engcityName == "Inje") {
-				cityNameKr = "인제군";
-			}else if (engcityName == "Yanggu") {
-				cityNameKr = "양구군";
-			}else if (engcityName == "Chungju") {
-				cityNameKr = "충주시";
-			}else if (engcityName == "Koesan") {
-				cityNameKr = "괴산군";
-			}else if (engcityName == "Cheongju-si") {
-				cityNameKr = "청주시";
-			}else if (engcityName == "Yeongdong") {
-				cityNameKr = "영동군";
-			}else if (engcityName == "Gongju") {
-				cityNameKr = "공주시";
-			}else if (engcityName == "Taian") {
-				cityNameKr = "태안군";
-			}else if (engcityName == "Boryeong") {
-				cityNameKr = "보령시";
-			}else if (engcityName == "Cheonan") {
-				cityNameKr = "천안시";
-			}else if (engcityName == "Muju") {
-				cityNameKr = "무주군";
-			}else if (engcityName == "Jeonju") {
-				cityNameKr = "전주시";
-			}else if (engcityName == "Sunchang-chodeunghakgyo") {
-				cityNameKr = "순창군";
-			}else if (engcityName == "Imsil") {
-				cityNameKr = "임실군";
-			}else if (engcityName == "Suncheon") {
-				cityNameKr = "순천시";
-			}else if (engcityName == "Mokpo") {
-				cityNameKr = "목포시";
-			}else if (engcityName == "Haenam") {
-				cityNameKr = "해남군";
-			}else if (engcityName == "Naju") {
-				cityNameKr = "나주시";
-			}else if (engcityName == "Pohang") {
-				cityNameKr = "포항시";
-			}else if (engcityName == "Gimcheon") {
-				cityNameKr = "김천시";
-			}else if (engcityName == "Gyeongsan-si") {
-				cityNameKr = "경산시";
-			}else if (engcityName == "Andong") {
-				cityNameKr = "안동시";
-			}else if (engcityName == "Changwon") {
-				cityNameKr = "창원시";
-			}else if (engcityName == "Hamyang") {
-				cityNameKr = "함양군";
-			}else if (engcityName == "Namhae") {
-				cityNameKr = "남해군";
-			}else if (engcityName == "Yangsan") {
-				cityNameKr = "양산시";
-			}else if (engcityName == "Jeju-do") {
-				cityNameKr = "제주도특별자치도";
-			}
-			return cityNameKr;
+    	function cityNameTranslate(engCityName) {
+			let KorCityName = "";
+			if (engCityName == "Seoul") {KorCityName = "서울특별시";}
+			else if (engCityName == "Busan") {KorCityName = "부산광역시";}
+			else if (engCityName == "Daegu") {KorCityName = "대구광역시";}
+			else if (engCityName == "Incheon") {KorCityName = "인천광역시";}
+			else if (engCityName == "Gwangju") {KorCityName = "광주광역시";}
+			else if (engCityName == "Daejeon") {KorCityName = "대전광역시";}
+			else if (engCityName == "Ulsan") {KorCityName = "울산광역시";}
+			else if (engCityName == "Namyangju") {KorCityName = "남양주시";}
+			else if (engCityName == "Gimpo-si") {KorCityName = "김포시";}
+			else if (engCityName == "Osan") {KorCityName = "오산시";}
+			else if (engCityName == "Yeoncheon-gun") {KorCityName = "연천군";}
+			else if (engCityName == "Gangneung") {KorCityName = "강릉시";}
+			else if (engCityName == "Chuncheon") {KorCityName = "춘천시";}
+			else if (engCityName == "Inje") {KorCityName = "인제군";}
+			else if (engCityName == "Yanggu") {KorCityName = "양구군";}
+			else if (engCityName == "Chungju") {KorCityName = "충주시";}
+			else if (engCityName == "Koesan") {	KorCityName = "괴산군";}
+			else if (engCityName == "Cheongju-si") {KorCityName = "청주시";}
+			else if (engCityName == "Yeongdong") {KorCityName = "영동군";}
+			else if (engCityName == "Gongju") {KorCityName = "공주시";}
+			else if (engCityName == "Taian") {KorCityName = "태안군";}
+			else if (engCityName == "Boryeong") {KorCityName = "보령시";}
+			else if (engCityName == "Cheonan") {KorCityName = "천안시";}
+			else if (engCityName == "Muju") {KorCityName = "무주군";}
+			else if (engCityName == "Jeonju") {KorCityName = "전주시";}
+			else if (engCityName == "Sunchang-chodeunghakgyo") {KorCityName = "순창군";}
+			else if (engCityName == "Imsil") {KorCityName = "임실군";}
+			else if (engCityName == "Suncheon") {KorCityName = "순천시";}
+			else if (engCityName == "Mokpo") {KorCityName = "목포시";}
+			else if (engCityName == "Haenam") {KorCityName = "해남군";}
+			else if (engCityName == "Naju") {KorCityName = "나주시";}
+			else if (engCityName == "Pohang") {KorCityName = "포항시";}
+			else if (engCityName == "Gimcheon") {KorCityName = "김천시";}
+			else if (engCityName == "Gyeongsan-si") {KorCityName = "경산시";}
+			else if (engCityName == "Andong") {KorCityName = "안동시";}
+			else if (engCityName == "Changwon") {KorCityName = "창원시";}
+			else if (engCityName == "Hamyang") {KorCityName = "함양군";}
+			else if (engCityName == "Namhae") {KorCityName = "남해군";}
+			else if (engCityName == "Yangsan") {KorCityName = "양산시";}
+			else if (engCityName == "Jeju-do") {KorCityName = "제주도특별자치도";}
+			return KorCityName;
     	}
     	
     	function weatherIconDovora(originIconCode) {
 			let dovoraIconName = "";
-			if (originIconCode == "01d") {
-				dovoraIconName = "day_clear";
-			}else if (originIconCode == "01n") {
-				dovoraIconName = "night_half_moon_clear";
-			}else if (originIconCode == "02d") {
-				dovoraIconName = "day_partial_cloud";
-			}else if (originIconCode == "02n") {
-				dovoraIconName = "night_half_moon_partial_cloud";
-			}else if (originIconCode == "03d") {
-				dovoraIconName = "cloudy";
-			}else if (originIconCode == "03n") {
-				dovoraIconName = "cloudy";
-			}else if (originIconCode == "04d") {
-				dovoraIconName = "angry_clouds";
-			}else if (originIconCode == "04n") {
-				dovoraIconName = "angry_clouds";
-			}else if (originIconCode == "09d") {
-				dovoraIconName = "rain";
-			}else if (originIconCode == "09d") {
-				dovoraIconName = "rain";
-			}else if (originIconCode == "10d") {
-				dovoraIconName = "day_rain";
-			}else if (originIconCode == "10n") {
-				dovoraIconName = "night_half_moon_rain";
-			}else if (originIconCode == "11d") {
-				dovoraIconName = "thunder";
-			}else if (originIconCode == "11n") {
-				dovoraIconName = "thunder";
-			}else if (originIconCode == "13d") {
-				dovoraIconName = "snow";
-			}else if (originIconCode == "13n") {
-				dovoraIconName = "snow";
-			}else if (originIconCode == "50d") {
-				dovoraIconName = "mist";
-			}else if (originIconCode == "50n") {
-				dovoraIconName = "mist";
-			}
+			if (originIconCode == "01d") {dovoraIconName = "day_clear";}
+			else if (originIconCode == "01n") {dovoraIconName = "night_half_moon_clear";}
+			else if (originIconCode == "02d") {dovoraIconName = "day_partial_cloud";}
+			else if (originIconCode == "02n") {dovoraIconName = "night_half_moon_partial_cloud";}
+			else if (originIconCode == "03d") {dovoraIconName = "cloudy";}
+			else if (originIconCode == "03n") {dovoraIconName = "cloudy";}
+			else if (originIconCode == "04d") {dovoraIconName = "angry_clouds";}
+			else if (originIconCode == "04n") {dovoraIconName = "angry_clouds";}
+			else if (originIconCode == "09d") {dovoraIconName = "rain";}
+			else if (originIconCode == "09d") {dovoraIconName = "rain";}
+			else if (originIconCode == "10d") {dovoraIconName = "day_rain";}
+			else if (originIconCode == "10n") {dovoraIconName = "night_half_moon_rain";}
+			else if (originIconCode == "11d") {dovoraIconName = "thunder";}
+			else if (originIconCode == "11n") {dovoraIconName = "thunder";}
+			else if (originIconCode == "13d") {dovoraIconName = "snow";}
+			else if (originIconCode == "13n") {dovoraIconName = "snow";}
+			else if (originIconCode == "50d") {dovoraIconName = "mist";}
+			else if (originIconCode == "50n") {dovoraIconName = "mist";}
 			return dovoraIconName;
     	}
     	
