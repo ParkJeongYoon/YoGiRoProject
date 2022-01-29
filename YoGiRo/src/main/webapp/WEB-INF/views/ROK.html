@@ -99,7 +99,7 @@
 	    }
 	    #CD44:hover {
 			cursor: pointer;
-	        fill: #9b59b6;
+	        fill: #3498db;
 	    }
 	    #CD45 {
 			cursor: pointer;
@@ -216,7 +216,7 @@
 		        <text id="LCD29" class="TEXT" x="127" y="707">&#xad11;&#xc8fc;&#xad11;&#xc5ed;&#xc2dc;</text> <!-- 광주광역시 -->
 		        <text id="LCD30" class="TEXT" x="221" y="463">&#xb300;&#xc804;&#xad11;&#xc5ed;&#xc2dc;</text> <!-- 대전광역시 -->
 		        <text id="LCD31" class="TEXT" x="531" y="622">&#xc6b8;&#xc0b0;&#xad11;&#xc5ed;&#xc2dc;</text> <!-- 울산광역시 -->
-		        <text id="LCD36" class="TEXT" x="199" y="418">&#xc138;&#xc885;&#xd2b9;&#xbcc4;&#xc790;&#xce58;&#xc2dc;</text> <!-- 세종특별자치시 -->
+		        <!-- <text id="LCD36" class="TEXT" x="199" y="418">&#xc138;&#xc885;&#xd2b9;&#xbcc4;&#xc790;&#xce58;&#xc2dc;</text> --> <!-- 세종특별자치시 -->
 		        <text id="LCD41" class="TEXT" x="216" y="245">&#xacbd;&#xae30;&#xb3c4;</text> <!-- 경기도 -->
 		        <text id="LCD42" class="TEXT" x="370" y="179">&#xac15;&#xc6d0;&#xb3c4;</text> <!-- 강원도 -->
 		        <text id="LCD43" class="TEXT" x="294" y="381">&#xcda9;&#xccad;&#xbd81;&#xb3c4;</text> <!-- 충청북도 -->
@@ -247,63 +247,77 @@
     });
     document.querySelector("#CD27").addEventListener("click" , function() {
     	location.href = "${pageContext.request.contextPath}/inmap/inmap/"
-						+ 35 + "/" + 8123428 + "/" + 128 + "/" + 4530244 + "/" + 10;
+						+ 35 + "/" + 8123428 + "/" + 128 + "/" + 4530244 + "/" + 10
+						+ "/Daegu";
     });
     document.querySelector("#CD28").addEventListener("click" , function() {
     	location.href = "${pageContext.request.contextPath}/inmap/inmap/"
-						+ 37 + "/" + 5145292 + "/" + 126 + "/" + 6041386 + "/" + 10;
+						+ 37 + "/" + 5145292 + "/" + 126 + "/" + 6041386 + "/" + 10
+						+ "/Incheon";
     });
     document.querySelector("#CD29").addEventListener("click" , function() {
     	location.href = "${pageContext.request.contextPath}/inmap/inmap/"
-						+ 35 + "/" + 17766797 + "/" + 126 + "/" + 7735886 + "/" + 11;
+						+ 35 + "/" + 17766797 + "/" + 126 + "/" + 7735886 + "/" + 11
+						+ "/Gwangju";
     });
     document.querySelector("#CD30").addEventListener("click" , function() {
     	location.href = "${pageContext.request.contextPath}/inmap/inmap/"
-						+ 36 + "/" + 3430795 + "/" + 127 + "/" + 3185886 + "/" + 11;
+						+ 36 + "/" + 3430795 + "/" + 127 + "/" + 3185886 + "/" + 11
+						+ "/Daejeon";
     });
     document.querySelector("#CD31").addEventListener("click" , function() {
     	location.href = "${pageContext.request.contextPath}/inmap/inmap/"
-						+ 35 + "/" + 5620296 + "/" + 129 + "/" + 2812886 + "/" + 11;
+						+ 35 + "/" + 5620296 + "/" + 129 + "/" + 2812886 + "/" + 11
+						+ "/Ulsan";
     });
     document.querySelector("#CD36").addEventListener("click" , function() {
     	location.href = "${pageContext.request.contextPath}/inmap/inmap/"
-						+ 36 + "/" + 5702515 + "/" + 127 + "/" + 1383491 + "/" + 11;
+    					+ 36 + "/" + 5360355 + "/" + 126 + "/" + 2334048 + "/" + 9
+						+ "/Gongju/Taian/Boryeong/Cheonan";
     });
     document.querySelector("#CD41").addEventListener("click" , function() {
     	location.href = "${pageContext.request.contextPath}/inmap/inmap/"
 						+ 37 + "/" + 5969884 + "/" + 126 + "/" + 5341113 + "/" + 9
-						+ "/Gyeonggi-do/Suwon/Uijeongbu-si/Osan/Pyeongtaek";
+						+ "/Namyangju/Gimpo-si/Osan/Yeoncheon-gun";
     });
     document.querySelector("#CD42").addEventListener("click" , function() {
     	location.href = "${pageContext.request.contextPath}/inmap/inmap/"
-						+ 37 + "/" + 8651842 + "/" + 127 + "/" + 6859622 + "/" + 8;
+						+ 37 + "/" + 8651842 + "/" + 127 + "/" + 6859622 + "/" + 8
+						+ "/Gangneung/Chuncheon/Inje/Yanggu";
     });
     document.querySelector("#CD43").addEventListener("click" , function() {
     	location.href = "${pageContext.request.contextPath}/inmap/inmap/"
-						+ 36 + "/" + 6360848 + "/" + 127 + "/" + 4051011 + "/" + 9;
+						+ 36 + "/" + 6360848 + "/" + 127 + "/" + 4051011 + "/" + 9
+						+ "/Chungju/Koesan/Cheongju-si/Yeongdong";
     });
     document.querySelector("#CD44").addEventListener("click" , function() {
     	location.href = "${pageContext.request.contextPath}/inmap/inmap/"
-						+ 36 + "/" + 5360355 + "/" + 126 + "/" + 2334048 + "/" + 9;
+						+ 36 + "/" + 5360355 + "/" + 126 + "/" + 2334048 + "/" + 9
+						+ "/Gongju/Taian/Boryeong/Cheonan";
     });
     document.querySelector("#CD45").addEventListener("click" , function() {
     	location.href = "${pageContext.request.contextPath}/inmap/inmap/"
-    					+ 35 + "/" + 7262779 + "/" + 126 + "/" + 3695928 + "/" + 9;
+    					+ 35 + "/" + 7262779 + "/" + 126 + "/" + 3695928 + "/" + 9
+    					+ "/Muju/Jeonju/Sunchang-chodeunghakgyo/Imsil";
     });
     document.querySelector("#CD46").addEventListener("click" , function() {
     	location.href = "${pageContext.request.contextPath}/inmap/inmap/"
-    					+ 34 + "/" + 6909732 + "/" + 125 + "/" + 3741626 + "/" + 8;
+    					+ 34 + "/" + 6909732 + "/" + 125 + "/" + 3741626 + "/" + 8
+    					+ "/Suncheon/Mokpo/Haenam/Naju";
     });
     document.querySelector("#CD47").addEventListener("click" , function() {
     	location.href = "${pageContext.request.contextPath}/inmap/inmap/"
-    					+ 36 + "/" + 5543823 + "/" + 128 + "/" + 7218208 + "/" + 8;
+    					+ 36 + "/" + 5543823 + "/" + 128 + "/" + 7218208 + "/" + 8
+    					+ "/Pohang/Gimcheon/Gyeongsan-si/Andong";
     });
     document.querySelector("#CD48").addEventListener("click" , function() {
     	location.href = "${pageContext.request.contextPath}/inmap/inmap/"
-    					+ 35 + "/" + 20802626 + "/" + 127 + "/" + 8306201 + "/" + 9;
+    					+ 35 + "/" + 20802626 + "/" + 127 + "/" + 8306201 + "/" + 9
+    					+ "/Changwon/Hamyang/Namhae/Yangsan";
     });
     document.querySelector("#CD50").addEventListener("click" , function() {
     	location.href = "${pageContext.request.contextPath}/inmap/inmap/"
-    					+ 33 + "/" + 4779071 + "/" + 126 + "/" + 2921598 + "/" + 10;
+    					+ 33 + "/" + 4779071 + "/" + 126 + "/" + 2921598 + "/" + 10
+    					+ "/Jeju-do";
     });
 </script>
