@@ -21,11 +21,10 @@ public class MainContoller {
 		return "/login/login-main";
 	}
 	
-	@GetMapping("/signup/signup-main")
-	public String signup() {
-		return "/signup/signup-main";
-	}
-	
+	/*
+	 * @GetMapping("/signup/signup-main") public String signup() { return
+	 * "/signup/signup-main"; }
+	 */
 	  
 	
 	@GetMapping("/incategories/food/food-main")
@@ -60,7 +59,7 @@ public class MainContoller {
 						@PathVariable String city1) {
 		return "/inmap/inmap";
 	}	
-	@GetMapping("/inmap/inmap/{lat}/{latDecimal}/{lng}/{lngDecimal}/{zoom}/{city1}/{city2}/{city3}/{city4}/{city5}")
+	@GetMapping("/inmap/inmap/{lat}/{latDecimal}/{lng}/{lngDecimal}/{zoom}/{city1}/{city2}/{city3}/{city4}")
 	public String inMap(@PathVariable String lat,
 						@PathVariable String latDecimal,
 						@PathVariable String lng,
@@ -69,8 +68,7 @@ public class MainContoller {
 						@PathVariable String city1,
 						@PathVariable String city2,
 						@PathVariable String city3,
-						@PathVariable String city4,
-						@PathVariable String city5) {
+						@PathVariable String city4) {
 		return "/inmap/inmap";
 	}
 
