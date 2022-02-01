@@ -38,10 +38,12 @@
 		limit #{start}, #{count}
 	</select>
 	
-	<select id="selectQuestions" parameterType="QuestionVO" resultType="QuestionVO">
-		select qnum, userid, qtitle, qcreatedate, qcontent, isdelete from questions
+	<select id="selectQuestions" parameterType="questionVO" resultType="questionVO">
+		select qnum, userid, qtitle, qcreatedate, qcontent, isdelete
+		from questions
 		where isdelete = 'N'
-		and num=#{num}
+		and qnum = #{qnum}
+		
 	</select>
 	
 	<insert id="insertQuestions" parameterType="kr.co.goodee39.vo.QuestionVO">
