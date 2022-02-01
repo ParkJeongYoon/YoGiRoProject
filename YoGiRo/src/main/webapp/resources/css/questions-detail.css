@@ -1,0 +1,71 @@
+/* 문의내역 상세페이지 css*/
+	  .main2-1 {
+	  	padding-left: 50px;
+   	  	width: 95%;
+   	  	height: 100%;
+   	  	padding-top: 30px;
+   	  	position:relative;
+   	  	margin-bottom: 45px;
+	  }
+	  #que-detail {
+	  	  margin-top: 70px;
+	  }
+	  .qtitle {
+          background-color: #B2DFDB;
+          color: #fff;
+          padding: 5px;
+          display: flex;
+          border-radius: 5px 5px 0px 0px;
+      }
+      .qtitle>div {
+          margin: 10px 0px;
+          margin-left: 30px;
+          padding-right: 30px;
+      }
+      .qtitle>div:first-child {
+          border-right: 1px solid azure;
+      }
+      .qtitle>div>h4 {
+          font-size: 1.3rem;
+          font-weight: bold;
+      }
+      .qcreatedate {
+      	  background-color: #fff;
+          border-bottom: 1px solid #eee;
+          display: flex;
+          position: relative;
+      }
+      .qcreatedate>div {
+        display: flex;
+        margin: 10px 5px;
+      }
+      .qcreatedate>div:last-child {
+        position: absolute;
+        right: 0;
+      }
+      .qcreatedate>div>div {
+          padding: 3px 30px;
+      }
+
+      .qcreatedate>div>div:first-child {
+        border-right: 1px solid gray;
+      }
+
+      .qcontent {
+      	  background-color: #fff;
+          border-bottom: 1px solid #eee;
+          min-height: 400px;
+      }
+      .qcontent>div {
+        padding: 40px;
+        min-height: 400px;
+      }
+      
+      #ans {
+      	background-color: #B2DFDB;
+      	position: absolute;
+      	right: 0;
+      	bottom: 0;
+      	padding: 8px 12px;
+      	margin-bottom: 5px;
+      }
