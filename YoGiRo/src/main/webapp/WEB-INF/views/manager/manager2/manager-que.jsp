@@ -33,6 +33,7 @@
 	   		<main>
 	   			<div class="main2">
 			   		<h1>문의 내역</h1>
+			   		<hr />
                     <div class="community" >
                         <table>
                             <thead>
@@ -49,7 +50,9 @@
                             		<tr>
 	                                  <td>${item.qnum}</td>
 	                                  <td>
+	                                  <a href="${pageContext.request.contextPath}/manager/manager2/manager-qued?qnum=${item.qnum}">
 	                                  	${item.qtitle}
+	                                  </a>
 	                                  </td>
 	                                  <td>${item.userid}</td>
 	                                  <td>${item.qcreatedate}</td>
