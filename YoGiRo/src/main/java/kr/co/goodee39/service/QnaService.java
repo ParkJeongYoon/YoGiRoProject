@@ -27,8 +27,6 @@ public class QnaService {
 			model.addAttribute("qcontent" , qcontent);
 			vo.setQcontent("%" + qcontent + "%");
 		}
-		System.out.println("service.selectList.title : " + qtitle);
-		System.out.println("service.selectList.content : " + qcontent);
 		model.addAttribute("list" , sqlSessionTemplate.selectList("questions.selectQuestionsList" , vo));
 		model.addAttribute("count" , sqlSessionTemplate.selectOne("questions.selectQuestionsCount" , vo));
 		model.addAttribute("qnum" , qnum);
