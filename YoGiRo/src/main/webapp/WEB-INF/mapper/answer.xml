@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="answer">
+  		<select id="selectAnswer" parameterType="answerVO" resultType="answerVO">
+		select anum, qnum, atitle, acreatedate, acontent, isdelete
+		from answer
+		where isdelete = 'N'
+		and qnum = #{qnum}
+		</select>
+		
+		<insert id="insertAnswer" parameterType="answerVO">
+		insert into answer(anum, qnum, atitle, acontent ,acreatedate )
+		values(#{anum}, #{qnum}, #{atitle}, #{acontent} , #{acreatedate})
+		</insert>
+  </mapper >
