@@ -18,6 +18,9 @@
 						http://www.springframework.org/schema/aop
 						http://www.springframework.org/schema/aop/spring-aop.xsd">
 	
+	
+   <beans:bean class="kr.co.goodee39.vo.QuestionVO" id="qvo"></beans:bean>
+	
 	<beans:bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<beans:property name="location">
 			<beans:value>/WEB-INF/properties/db.properties</beans:value>

@@ -79,7 +79,7 @@
     justify-content: center;
     align-items: center;
 }
-.pagination-box a {
+.pagination-box a , .pagination-box span {
     color: black;
     float: left;
     padding: 8px 16px;

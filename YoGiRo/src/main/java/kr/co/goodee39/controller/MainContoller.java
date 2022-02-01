@@ -10,11 +10,6 @@ public class MainContoller {
 	public String mypage() {
 		return "/member/mypage";
 	}
-
-	@GetMapping("/qna/qna-main")
-	public String qnA() {
-		return "/qna/qna-main";
-	}
 	
 	@GetMapping("/login/login-main")
 	public String login() {
