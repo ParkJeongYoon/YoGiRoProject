@@ -17,6 +17,19 @@
 		values( #{contentid},#{region},#{subdetailalt}, #{subdetailimg}, #{subdetailoverview}, #{subname})
 	</insert>
 	
+	<insert id="insertmycoursecommon" parameterType="kr.co.goodee39.vo.MyCourseCommonVO"
+			useGeneratedKeys="true" keyProperty="mycoursecommonid">
+		insert into mycoursecommon(userid, mycoursecommontitle, mycoursemainimage, mycourseinfo,totaldistance ,totaltime ,mycoursecommonisdelete , mycourseregion)
+		values(#{userid},#{mycoursecommontitle},#{mycoursemainimage},#{mycourseinfo},#{totaldistance},#{totaltime},#{mycoursecommonisdelete},#{mycourseregion})
+	</insert>
+	<insert id="insertmycoursedetail" parameterType="kr.co.goodee39.vo.CourseDetailVO">
+		insert into mycoursedetail( mycoursecommonid,userid, mycoursedetailname, mycoursedetailimage,mycoursedetailoverview ,mycoursedetailadd,mycoursedetailisdelete,mycourseregion)
+		values( #{mycoursecommonid},#{userid},#{mycoursedetailname}, #{mycoursedetailimage}, #{mycoursedetailoverview}, #{mycoursedetailadd}, #{mycoursedetailisdelete}, #{mycourseregion})
+	</insert>
+	
+	
+	
+	
 	<select id="getcoursecommon" parameterType= "kr.co.goodee39.vo.CourseCommonVO" resultType="kr.co.goodee39.vo.CourseCommonVO">
 		select contentid,region,firstimage,firstimage2,overview,title,mapx,mapy,mlevel from coursecommon
 		where region=#{region};
@@ -30,18 +43,21 @@
 	<select id="getmycoursecommon" parameterType= "kr.co.goodee39.vo.MyCourseCommonVO" resultType="kr.co.goodee39.vo.MyCourseCommonVO">
 		select mycoursecommonid,userid,mycoursecommontitle, mycoursemainimage, mycourseinfo,totaldistance ,totaltime ,mycoursecommonisdelete , mycourseregion
 		from mycoursecommon
-		where mycourseregion = #{mycourseregion};
-		
+		where mycoursecommonisdelete = 0
+		and mycourseregion = #{mycourseregion};
+	
 	</select>
+	
 	<select id="getmycoursedetail" parameterType= "kr.co.goodee39.vo.MyCourseDetailVO" resultType="kr.co.goodee39.vo.MyCourseDetailVO">
 		select mycoursedetailid,mycoursecommonid,userid, mycoursedetailname, mycoursedetailimage,mycoursedetailoverview ,mycoursedetailadd,mycoursedetailisdelete,mycourseregion 
 		from mycoursedetail
-		where mycourseregion = #{mycourseregion};
+		where mycoursedetailisdelete = 0
+		and mycourseregion = #{mycourseregion};
 		
 	</select>
 	<!-- 아이디가져와서 select -->
 	<select id="getcoursecommonwithid" parameterType= "kr.co.goodee39.vo.CourseCommonVO" resultType="kr.co.goodee39.vo.CourseCommonVO">
-		select contentid,region,firstimage,firstimage2,overview,title,mapx,mapy,distance, taketime, mlevel from coursecommon
+		select contentid,themecode,region,firstimage,firstimage2,overview,title,mapx,mapy,distance, taketime, mlevel from coursecommon
 		where contentid=#{contentid};
 	</select>
 	<select id="getcoursedetailwithid" parameterType= "kr.co.goodee39.vo.CourseDetailVO" resultType="kr.co.goodee39.vo.CourseDetailVO">
@@ -49,19 +65,23 @@
 		where contentid=#{contentid};
 	</select>
 	
-	<select id="getmycoursecommonwithid"  parameterType="kr.co.goodee39.vo.MyCourseCommonVO" resultType="kr.co.goodee39.vo.MyCourseCommonVO">
-		select mycoursecommonid,userid,mycoursecommontitle, mycoursemainimage, mycourseinfo,totaldistance ,totaltime ,mycoursecommonisdelete 
-		from mycoursecommon
-		where mycoursecommonisdelete = 0
-		and mycoursecommonid=#{mycoursecommonid};
-		
+	<select parameterType="kr.co.goodee39.vo.MyCourseCommonVO" id="getmycoursecommonwithid" resultType="kr.co.goodee39.vo.MyCourseCommonVO">
+		select mycoursecommonid,userid,mycoursecommontitle, mycoursemainimage, mycourseinfo,totaldistance ,totaltime ,mycoursecommonisdeletefrom mycoursecommonwhere mycoursecommonisdelete = 0and mycoursecommonid=#{mycoursecommonid}; 
 	</select>
-	<select id="getmycoursedetailwithid"  parameterType="kr.co.goodee39.vo.MyCourseDetailVO" resultType="kr.co.goodee39.vo.MyCourseDetailVO">
-		select mycoursedetailid,mycoursecommonid,userid, mycoursedetailname, mycoursedetailimage,mycoursedetailoverview ,mycoursedetailadd,mycoursedetailisdelete 
-		from mycoursedetail
-		where mycoursedetailisdelete = 0
-		and mycoursecommonid=#{mycoursecommonid};
-		
+
+	<select parameterType="kr.co.goodee39.vo.MyCourseDetailVO" id="getmycoursedetailwithid" resultType="kr.co.goodee39.vo.MyCourseDetailVO">
+		select mycoursedetailid,mycoursecommonid,userid, mycoursedetailname, mycoursedetailimage,mycoursedetailoverview ,mycoursedetailadd,mycoursedetailisdeletefrom mycoursedetailwhere mycoursedetailisdelete = 0and mycoursecommonid=#{mycoursecommonid}; 
 	</select>
 	
+	<!-- mycourse -->
+	
+	
+	<insert id="insertthemecomments" parameterType="kr.co.goodee39.vo.ThemeCommentVO">
+		insert into themecomment( themepostid,themecode,userid,themecommentcontent,themecommentdate)
+		values( #{themepostid},#{themecode},#{userid}, #{themecommentcontent}, #{themecommentdate})
+	</insert>
+	<select parameterType="kr.co.goodee39.vo.ThemeCommentVO" id="selectthemecomments" resultType="kr.co.goodee39.vo.ThemeCommentVO">
+		select themepostid,themecode,userid, themecommentcontent, themecommentdate from themecomment
+		where themecode=#{themecode} and themepostid=#{themepostid}; 
+	</select>
 </mapper>

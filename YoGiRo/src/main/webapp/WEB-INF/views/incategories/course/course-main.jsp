@@ -279,7 +279,7 @@ table {
 						<c:forEach var="i" begin="0" end="2">
 							<div id="course${i}" class="course_content">
 
-								<a href="course_detail?contentid=${commonList[i].contentid}" class="course-a">
+								<a href="course_detail?contentid=${commonList[i].contentid}&themecode='2'" class="course-a">
 								
 									<div class="div_image"
 										style="background-image: url('${commonList[i].firstimage}')">
@@ -316,9 +316,6 @@ table {
 				<h1>YoGiRo 어때요?</h1>
 				
 				<br> <a href="${pageContext.request.contextPath}/add_my_course"><h4 id="add_my_course">내 코스 올리기</h4></a> <br>
-
-				<br> <a href=""><h4 id="add_my_course">내 코스 올리기</h4></a> <br>
-
 				<br>
 				<div class="course_container">
 					<div id="user_course">
@@ -357,7 +354,7 @@ table {
 				</div>
 			</div>
 		</main>
-
+		
 
 		<br><br><br><br><br><br>
 		<jsp:include page="../../includes/footer.jsp"></jsp:include>

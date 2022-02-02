@@ -12,7 +12,13 @@ public class CourseCommonVO {
 	String mlevel;
 	String distance;
 	String taketime;
-	
+	String themecode;
+	public String getThemecode() {
+		return themecode;
+	}
+	public void setThemecode(String themecode) {
+		this.themecode = themecode;
+	}
 	public String getMlevel() {
 		return mlevel;
 	}

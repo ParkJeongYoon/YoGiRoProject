@@ -4,8 +4,10 @@ import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -24,6 +26,7 @@ import kr.co.goodee39.vo.CourseDetailVO;
 import kr.co.goodee39.vo.CourseIntroVO;
 import kr.co.goodee39.vo.MyCourseCommonVO;
 import kr.co.goodee39.vo.MyCourseDetailVO;
+import kr.co.goodee39.vo.ThemeCommentVO;
 
 @Service
 public class CourseService {
@@ -467,5 +470,47 @@ public class CourseService {
 	public void selectMyCourseDetailToDetailPage(Model model, MyCourseDetailVO vo) {
 		
 		model.addAttribute("mycoursedetailtodetailpage",sqlSessionTemplate.selectList("course.getmycoursedetailwithid",vo));
+	}
+	
+	public void insertMyCourseCommon(HttpServletRequest request) {
+		MyCourseCommonVO mcvo = new MyCourseCommonVO();
+		mcvo.setMycoursecommontitle(request.getParameter("mycoursecommontitle"));
+		mcvo.setMycourseinfo(request.getParameter("mycourseinfo"));
+		mcvo.setMycourseregion(request.getParameter("mycourseregion"));
+		// 나중에 userid 가져와서 넣는 로직 넣기 
+		
+		mcvo.setUserid("pjy4722");
+		// 이미지 넣는 로직 넣기
+		
+		System.out.println("두번가는거 확인");
+		sqlSessionTemplate.insert("course.insertmycoursecommon",mcvo);
+		insertMyCourseDetail(request,mcvo);
+	}
+	public void insertMyCourseDetail(HttpServletRequest request,MyCourseCommonVO mcvo) {
+		int i = 0;
+		MyCourseDetailVO mdvo = new MyCourseDetailVO();
+		mdvo.setMycoursecommonid(mcvo.getMycoursecommonid());
+		mdvo.setUserid(mcvo.getUserid());
+		while(request.getParameter("mycoursedetailname"+Integer.toString(i))!=null) {
+			
+			// 이미지 넣는 로직 넣기
+			mdvo.setMycoursedetailname(request.getParameter("mycoursedetailname"+Integer.toString(i)));
+			mdvo.setMycoursedetailoverview(request.getParameter("mycoursedetailoverview"+Integer.toString(i)));
+			mdvo.setMycourseregion(mcvo.getMycourseregion());
+			sqlSessionTemplate.insert("course.insertmycoursedetail",mdvo);
+			
+			i++;
+			System.out.println("마이코스세부추가중");
+		}
+		
+	}
+	
+	public void insertThemeComment(ThemeCommentVO vo) {
+		sqlSessionTemplate.insert("course.insertthemecomments",vo);
+	}
+	
+	public List<ThemeCommentVO> selectBoardCommentByCode(ThemeCommentVO vo) {
+		List<ThemeCommentVO> themeCommentVO = sqlSessionTemplate.selectList("course.selectthemecomments",vo);
+		return themeCommentVO;
 	}
 }
