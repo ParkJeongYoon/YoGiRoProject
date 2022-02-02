@@ -194,7 +194,7 @@ hr {
 		<br><br><br><br><br>
 		</main>  
 
-		
+		 
 		<jsp:include page="../../includes/footer.jsp"></jsp:include>
 	</div>
 </body>

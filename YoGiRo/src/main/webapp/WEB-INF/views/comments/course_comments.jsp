@@ -25,7 +25,7 @@
             </div>
             <div>
                 <table class="table">                    
-                    <tr>
+                    <tr> 
                         <td>
                             <textarea style="width: 1100px" rows="3" cols="30" id="themecommentcontent" name="themecommentcontent" placeholder="댓글을 입력하세요"></textarea>
                             <br>

@@ -7,7 +7,6 @@
             <a style="display: inline;" href="${pageContext.request.contextPath}/"><h1 class="logo">YoGiRo</h1></a>
         </div>
         <div class="login-box">
-        	<a href="${pageContext.request.contextPath}/member/mypage" class="mypage-box-a">마이페이지1</a>
         	<a href="${pageContext.request.contextPath}/manager/manager1/manager-chart" class="login-box-a">관리자</a>
             <a href="${pageContext.request.contextPath}/qna/qna-main" class="login-box-a">문의하기</a>
             <i class="far fa-question-circle"></i>

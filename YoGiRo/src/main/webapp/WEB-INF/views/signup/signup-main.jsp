@@ -7,20 +7,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/default.css">
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/login/css/form.css">
 </head>
 <body class="body">
-<form:form action="${pageContext.request.contextPath}/user/signupResult">
+
 	<div class="container">
 
 		<jsp:include page="../includes/header.jsp"></jsp:include>
 
 		<div class="register">
 			<h3>회원가입</h3>
-			<form action="">
+			<form action="${pageContext.request.contextPath}/signupResult" method="post">
 				<div class="flex">
 					<ul class="container">
 						<li class="item center">이름</li>
@@ -78,6 +80,5 @@
 		</div>
 		<jsp:include page="../includes/footer.jsp"></jsp:include>
 	</div>
-</form:form>
 </body>
 </html>
