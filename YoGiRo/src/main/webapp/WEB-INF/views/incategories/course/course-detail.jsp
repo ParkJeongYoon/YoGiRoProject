@@ -192,7 +192,7 @@ hr {
 			</c:forEach>
 		<jsp:include page="../../comments/course_comments.jsp" ></jsp:include>
 		<br><br><br><br><br>
-		</main>
+		</main>  
 
 		
 		<jsp:include page="../../includes/footer.jsp"></jsp:include>

@@ -32,7 +32,7 @@
                             <div>
                                 <a href='#' onClick="fn_comment('${result.code }')" class="btn pull-right btn-success">등록</a>
                             </div>
-                        </td>
+                        </td>  
                     </tr>
                 </table>
             </div>
