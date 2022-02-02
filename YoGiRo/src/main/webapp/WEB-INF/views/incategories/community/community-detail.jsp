@@ -95,7 +95,7 @@
 				</div>
 			</aside>
 			<main>
-				<h2>맛집</h2>
+				<h2>맛집1</h2>
 				<div class="post-container">
 					<h3>${CommunityVO.comtitle}</h3>
 					<p class="userid little">작성자 : ${CommunityVO.comuserid}</p>
