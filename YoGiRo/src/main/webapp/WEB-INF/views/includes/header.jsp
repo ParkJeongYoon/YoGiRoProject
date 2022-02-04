@@ -27,7 +27,7 @@
         </div>
     </div>
     <nav class="header-nav">
-        <a href="${pageContext.request.contextPath}/move-to-food-main" class="header-nav-a">음식점 </a>
+        <a href="${pageContext.request.contextPath}/move-to-food-main" class="header-nav-a">음식점</a>
         <a href="${pageContext.request.contextPath}/incategories/festa/festa-main" class="header-nav-a">축제</a>
         <a href="${pageContext.request.contextPath}/move-to-course-main" class="header-nav-a">코스</a>
         <a href="${pageContext.request.contextPath}/incategories/community/community-main" class="header-nav-a">커뮤니티</a>
