@@ -226,7 +226,7 @@
 					<c:forEach var="item" items="${list}">
 						<tr>
 							<td>${item.comid}</td>
-							<td><a href="${pageContext.request.contextPath}/com/detail?comid=${item.comid}">${item.comtitle}</a></td>
+							<td><a href="${pageContext.request.contextPath}/incategories/community/detail?comid=${item.comid}">${item.comtitle}</a></td>
 							<td>${item.comuserid}</td>
 							<td>${item.comcreatedate}</td>
 							<td>${item.compageview}</td>
@@ -266,7 +266,7 @@
 						<i class="fas fa-angle-left pagingarrow-left2"></i>
 					</c:when>
 					<c:otherwise>
-						<a href="${pageContext.request.contextPath}/com/main?comcategorynum=${ComVO.comcategorynum}&num=${minBlock-1}${query}">
+						<a href="${pageContext.request.contextPath}/incategories/community/community-main?comcategorynum=${ComVO.comcategorynum}&num=${minBlock-1}${query}">
 							<i class="fas fa-angle-left"></i>
 							<i class="fas fa-angle-left pagingarrow-left2"></i>
 						</a>
@@ -277,7 +277,7 @@
 						<i class="fas fa-angle-left pagingarrow-left"></i>
 					</c:when>
 					<c:otherwise>
-						<a href="${pageContext.request.contextPath}/com/main?comcategorynum=${ComVO.comcategorynum}&num=${num-1}${query}">
+						<a href="${pageContext.request.contextPath}/incategories/community/community-main?comcategorynum=${ComVO.comcategorynum}&num=${num-1}${query}">
 							<i class="fas fa-angle-left pagingarrow-left"></i>
 						</a>
 					</c:otherwise>
@@ -288,7 +288,7 @@
 							<b>${i}</b>
 						</c:when>
 						<c:otherwise>
-							<a href="${pageContext.request.contextPath}/com/main?comcategorynum=${ComVO.comcategorynum}&num=${i}${query}">${i}</a>
+							<a href="${pageContext.request.contextPath}/incategories/community/community-main?comcategorynum=${ComVO.comcategorynum}&num=${i}${query}">${i}</a>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
@@ -297,7 +297,7 @@
 						<i class="fas fa-angle-right pagingarrow-right"></i>
 					</c:when>
 					<c:otherwise>
-						<a href="${pageContext.request.contextPath}/com/main?comcategorynum=${ComVO.comcategorynum}&num=${num+1}${query}">
+						<a href="${pageContext.request.contextPath}/incategories/community/community-main?comcategorynum=${ComVO.comcategorynum}&num=${num+1}${query}">
 							<i class="fas fa-angle-right pagingarrow-right"></i>
 						</a>
 					</c:otherwise>
@@ -310,7 +310,7 @@
 						</span>
 					</c:when>
 					<c:otherwise>
-						<a href="${pageContext.request.contextPath}/com/main?comcategorynum=${ComVO.comcategorynum}&num=${maxBlock+1}${query}">
+						<a href="${pageContext.request.contextPath}/incategories/community/community-main?comcategorynum=${ComVO.comcategorynum}&num=${maxBlock+1}${query}">
 							<i class="fas fa-angle-right pagingarrow-right2"></i><i class="fas fa-angle-right"></i>
 						</a>
 					</c:otherwise>
@@ -357,7 +357,7 @@
 <script type="text/javascript">
 	$(function() {
 		$("#create-btn").click(function() {
-			location.href = "${pageContext.request.contextPath}/com/create";
+			location.href = "${pageContext.request.contextPath}/incategories/community/create";
 		});
 		
 		$("#search").click(function() {
@@ -365,11 +365,11 @@
 			let text = $("#search-text").val();
 			
 			if(category == "title") {
-				location.href = "${pageContext.request.contextPath}/com/main?title="+text;
+				location.href = "${pageContext.request.contextPath}/incategories/community/community-main?title="+text;
 			}else if(category == "content") {
-				location.href = "${pageContext.request.contextPath}/com/main?content="+text;
+				location.href = "${pageContext.request.contextPath}/incategories/community/community-main?content="+text;
 			}else if(category == "both") {
-				location.href = "${pageContext.request.contextPath}/com/main?title="+text+"&content="+text;
+				location.href = "${pageContext.request.contextPath}/incategories/community/community-main?title="+text+"&content="+text;
 			}
 		});
 		$('#search-text').on('keydown', function(e) {
@@ -380,11 +380,11 @@
 				let text = $("#search-text").val();
 				
 				if(category == "title") {
-					location.href = "${pageContext.request.contextPath}/com/main?title="+text;
+					location.href = "${pageContext.request.contextPath}/incategories/community/community-main?title="+text;
 				}else if(category == "content") {
-					location.href = "${pageContext.request.contextPath}/com/main?content="+text;
+					location.href = "${pageContext.request.contextPath}/incategories/community/community-main?content="+text;
 				}else if(category == "both") {
-					location.href = "${pageContext.request.contextPath}/com/main?title="+text+"&content="+text;
+					location.href = "${pageContext.request.contextPath}/incategories/community/community-main?title="+text+"&content="+text;
 				}
 			}
 		});
