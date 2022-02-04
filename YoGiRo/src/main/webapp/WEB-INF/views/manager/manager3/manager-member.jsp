@@ -56,7 +56,7 @@
 		   		
 		   		<div class="pagenum" style="text-align: center; margin-top: 20px; ">
                       <%
-                        int usernum = (Integer)request.getAttribute("usernum");
+                        int usernum = (Integer)request.getAttribute("usernumber");
                         int count = (Integer)request.getAttribute("count");
                         int total = count/10+((count%10==0)?0:1);
                         int minBlock = (((usernum-1)/10)*10)+1;
