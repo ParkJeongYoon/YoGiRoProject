@@ -12,6 +12,9 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <style>
+
+ @import url('http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css');
+ 
 .sr-only {
 	position: absolute;
 	width: 1px;
@@ -21,6 +24,22 @@
 	overflow: hidden;
 	clip: rect(0, 0, 0, 0);
 	border: 0;
+}
+
+#info{
+	position: absolute;
+	right : 0;
+	display : inline-block;
+	background-color : pink;
+}
+#mycoursecommontitle{
+	font-size : 16px;
+}
+#firstimgtitle{
+	display : inline-block;
+}
+#mycourseregionlabel{
+	display : inline-block;
 }
 </style>
 </head>
@@ -33,12 +52,13 @@
 			<h1>내 코스 작성</h1>
 			<br>
 			<p id="info">
-				<i></i>는 필수
+				<i class="xi-check-min"></i>는 필수
 			</p>
-			<br>
+			<br><br><br><br><br>
 			<h2>
-				<i></i>공통정보
+				<i class="xi-check-min"></i>공통정보
 			</h2>
+			<br><br><br>
 			<div>
 				<form action="${pageContext.request.contextPath}/create_my_course" method="POST">
 					<ul>
@@ -49,19 +69,21 @@
 
 
 					<br>
-					<h3>대표 이미지 첨부 :</h3>
+					<h3 id="firstimgtitle">대표 이미지 첨부 :</h3>
 					<label for="upload">파일 추가 : </label><input type="file"
 						name="upload" id="upload" /> <br>
+					<br> 
 					<h3>개요 :</h3>
 					<li><textarea name="mycourseinfo" id="mycourseinfo" cols="50"
 							rows="10"></textarea></li> <br> <br> <br> <br> <br>
 					<br> <br>
 					<h2>코스</h2>
+					<br> <br>
 					<li><label for="totaldistance">총 거리 : </label><input
 						type="text" name="totaldistance" id="totaldistance" /></li> <br>
 					<li><label for="totaltime">소요 시간 : </label><input type="text"
 						id="totaltime" name="totaltime" /></li> <br>
-					<li><label for="mycourseregion">권역 : </label></li>
+					<li><label for="mycourseregion" id="mycourseregionlabel">권역 : </label>
 					<select name="mycourseregion" id="mycourseregion">
 						<option value="서울">수도권</option>
 						<option value="강원">강원권</option>
@@ -70,11 +92,13 @@
 						<option value="경상">경상권</option>
 					
 					</select>
+					</li>
 					 <br>
 
 
 					<br> <br> <br> <br> <br> <br> <br>
 					<h2>코스 정보</h2>
+					<br> <br>
 					<div id="my_course_detail">
 						<ul>
 							<li><label for="mycoursedetailname0">장소 이름 : </label> 

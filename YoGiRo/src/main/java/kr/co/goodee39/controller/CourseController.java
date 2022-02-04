@@ -104,7 +104,7 @@ public class CourseController {
 		System.out.println(request.getParameter("mycoursedetailname2"));
 		
 		ts.insertMyCourseCommon(request);// 이 함수 안에 detail도 넣음 
-		return "incategories/course/course-main";
+		return "redirect:/move-to-course-main";
 	}
 	@ResponseBody
 	@GetMapping("/addComment")

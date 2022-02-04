@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="food">
+	<select id="getfood" parameterType="kr.co.goodee39.vo.FoodVO" resultType="kr.co.goodee39.vo.FoodVO">
+		select foodid, themecode,contentid,region,  firstimage, firstimage2, overview, title, mapx, mapy,mlevel,chkcreditcardfood,discountinfofood,firstmenu,infocenterfood,kidsfacility,opendatefood,opentimefood,packing,parkingfood,reservationfood,restdatefood,scalefood,seat,smoking,treatmenu,lcnsno
+		from food
+		where region=#{region};
+	</select>
+	<select id="getfoodwithid" parameterType= "kr.co.goodee39.vo.FoodVO" resultType="kr.co.goodee39.vo.FoodVO">
+		select foodid, themecode,contentid,region,  firstimage, firstimage2, overview, title, mapx, mapy,mlevel,chkcreditcardfood,discountinfofood,firstmenu,infocenterfood,kidsfacility,opendatefood,opentimefood,packing,parkingfood,reservationfood,restdatefood,scalefood,seat,smoking,treatmenu,lcnsno
+		from food
+		where contentid=#{contentid};
+	</select>
+	<select id="getfoodimgwithid" parameterType= "kr.co.goodee39.vo.FoodImageVO" resultType="kr.co.goodee39.vo.FoodImageVO">
+		select contentid,imgname,originimgurl,serialnum,smallimageurl
+		from foodimage
+		where contentid=#{contentid};
+	</select>
+</mapper>
