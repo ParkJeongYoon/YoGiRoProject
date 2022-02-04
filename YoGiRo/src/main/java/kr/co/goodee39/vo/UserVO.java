@@ -7,6 +7,24 @@ public class UserVO {
 	public String userpassword;
 	public String useremail;
 	public String userphonenumber;
+	public String ismanager;
+	public String isblock;
+
+	public String getIsmanager() {
+		return ismanager;
+	}
+
+	public void setIsmanager(String ismanager) {
+		this.ismanager = ismanager;
+	}
+
+	public String getIsblock() {
+		return isblock;
+	}
+
+	public void setIsblock(String isblock) {
+		this.isblock = isblock;
+	}
 
 	public String getUserid() {
 		return userid;

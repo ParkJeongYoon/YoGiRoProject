@@ -5,7 +5,7 @@
   
 <mapper namespace="user">
    <select id="selectUser" parameterType="userVO" resultType="userVO">
-   select userid, username, usernickname, userpassword, useremail, userphonenumber
+   select userid, username, usernickname, userpassword, useremail, userphonenumber, ismanager, isblock
    from user
    <where>
       <if test="userid!=null">
@@ -25,7 +25,7 @@
    <select id="selectUser_info" parameterType="userVO"
 		resultType="userVO">
 		select userid, username, usernickname, userpassword,
-		useremail, userphonenumber
+		useremail, userphonenumber, ismanager, isblock
 		from user
 		where
          userid = #{userid}
@@ -65,7 +65,7 @@
 	<select id="CheckPw" resultType="int">
 		select 
 			count(*)
-		from member
+		from user
 		where userid=#{userid} and userpassword=#{userpassword}
 	</select>
 </mapper>

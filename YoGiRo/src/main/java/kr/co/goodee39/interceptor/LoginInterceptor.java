@@ -6,15 +6,15 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 
-public class LoginInterceptor implements HandlerInterceptor{
-	
+public class LoginInterceptor implements HandlerInterceptor {
+
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		HttpSession session = request.getSession();
-		if(session.getAttribute("account") == null) {
+		if (session.getAttribute("account") == null) {
 			session.invalidate();
-			response.sendRedirect(request.getContextPath()); // /Ex30BBS/
+			response.sendRedirect(request.getContextPath());
 			return false;
 		}
 		return true;
