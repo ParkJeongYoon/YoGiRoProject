@@ -55,5 +55,11 @@
 		</interceptor>
 	</interceptors>
 	
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+   		<beans:property name="maxUploadSize" value="52428800"/>
+   		<beans:property name="maxUploadSizePerFile" value="52428800"/>
+   		<beans:property name="maxInMemorySize" value="0"/>
+   </beans:bean>
+	
 	<tx:annotation-driven/>
 </beans:beans>
