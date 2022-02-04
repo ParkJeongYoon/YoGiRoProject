@@ -45,5 +45,12 @@
 	<resources mapping="/icons/**" location="/resources/icons/" />
 	<resources mapping="/img/**" location="/resources/img/" />
 	
+	<interceptors>
+		<interceptor>
+			<mapping path="/after-login_main/maib/**"/>
+			<beans:bean class="kr.co.goodee39.interceptor.LoginInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
 	<tx:annotation-driven/>
 </beans:beans>

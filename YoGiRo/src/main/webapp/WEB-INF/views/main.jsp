@@ -1,5 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -11,7 +12,13 @@
     <div class="container">
         
 		<jsp:include page="includes/header.jsp"></jsp:include>
-
+		
+		<c:if test="${sessionScope.account.ismanager eq 'Y'}">
+			<a href="#">관리자</a>
+		</c:if>
+		<c:if test="${sessionScope.account.ismanager eq 'N'}">
+			<p>일반</p>
+		</c:if>
 
 
         <main>

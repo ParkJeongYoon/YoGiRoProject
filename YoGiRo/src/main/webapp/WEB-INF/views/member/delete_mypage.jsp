@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -150,64 +150,48 @@ td {
 							<h3>내 정보</h3>
 							<i class="fas fa-angle-right"></i>
 						</div>
-					</a> 
-					<a href=""><div>
+					</a> <a href=""><div>
 							<h3>즐겨찾기</h3>
 							<i class="fas fa-angle-right"></i>
-							</div></a> 
-					<a href=""><div>
+						</div></a> <a href=""><div>
 							<h3>문의 내역</h3>
 							<i class="fas fa-angle-right"></i>
-							</div></a> 
-					<a href="${pageContext.request.contextPath}/member/mycommunity"><div>
+						</div></a> <a href="${pageContext.request.contextPath}/member/mycommunity"><div>
 							<h3>내 글 보기</h3>
 							<i class="fas fa-angle-right"></i>
-							</div></a> 
-					<a href=""><div>
+						</div></a> <a href=""><div>
 							<h3>내 코스</h3>
 							<i class="fas fa-angle-right"></i>
-							</div></a> 
-					<a href=""><div>
+						</div></a> <a href=""><div>
 							<h3>내 음식점</h3>
 							<i class="fas fa-angle-right"></i>
-							</div></a>
+						</div></a>
 				</div>
 			</aside>
 			<main>
 				<h1 style="display: block;">내정보</h1>
 				<div id="table-con">
-					<form action="${pageContext.request.contextPath}/update_do" name="memberfrm" method="post">
+					<form action="${pageContext.request.contextPath}/delete_Result"
+						name="delForm" id="delForm" method="post">
 						<table cellpadding="30" cellspacing="50">
-							<tr>
-								<td class="info_title">이름</td>
-								<td class="info_box">${account.username}</td>
-							</tr>
-							<tr>
-								<td class="info_title">닉네임</td>
-								<td class="info_box">${account.usernickname}</td>
-							</tr>
 							<tr>
 								<td class="info_title">아이디</td>
 								<td class="info_box">${account.userid}</td>
 							</tr>
 							<tr>
 								<td class="info_title">비밀번호</td>
-								<td class="info_box">${account.userpassword}</td>
-							</tr>
-							<tr>               
-								<td class="info_title">전화번호</td>
-								<td class="info_box">${account.userphonenumber}</td>
+								<td class="info_box"><input type="password" id="userpassword" name="userpassword" required="required"></td>
 							</tr>
 							<tr>
-								<td class="info_title">이메일</td>
-								<td class="info_box">${account.useremail}</td>
-							</tr>
-							<tr>
-							
-								<td colspan="2">
-									<button id="updatebtn" type="submit" class="info_btn">정보수정</button>
-									<button id="deletebtn"  type="button" class="info_btn">탈퇴</button>
-								</td>
+							<td colspan="2">
+								<button id="delbtn" type="submit" class="info_btn">탈퇴</button>
+								<button id="cancle" type="button" class="info_btn">취소</button>
+								<div>
+									<c:if test="${msg == false}">
+										비밀번호가 맞지 않습니다.
+									</c:if>
+								</div>
+							</td>
 							</tr>
 						</table>
 					</form>
@@ -217,13 +201,44 @@ td {
 		<jsp:include page="../includes/footer.jsp"></jsp:include>
 	</div>
 	<script type="text/javascript">
-	$(function(){
-		$("#deletebtn").click(function(){
-			if(confirm("정말로 탈퇴하시겠습니까?")){
-				location.href="${pageContext.request.contextPath}/delete_do"
-			}
-		});
-	});
+	$(document).ready(function(){
+			// 취소
+			$("#cancle").on("click", function(){
+				
+				location.href = "${pageContext.request.contextPath}/member/mypage";
+						    
+			})
+		
+			$("#delbtn").on("click", function(){
+				if($("#userpassowrd").val()==""){
+					alert("비밀번호를 입력해주세요.");
+					$("#userpassword").focus();
+					return false;
+				}
+				$.ajax({
+					url : "${pageContext.request.contextPath}/passChk",
+					type : "POST",
+					dataType : "json",
+					data : $("#delForm").serializeArray(),
+					success: function(data){
+						
+						if(data==0){
+							alert("패스워드가 틀렸습니다.");
+							return;
+						}else{
+							if(confirm("회원탈퇴하시겠습니까?")){
+								$("#delForm").submit();
+							}
+							
+						}
+					}
+				})
+				
+			});
+			
+				
+			
+		})
 	</script>
 
 </body>

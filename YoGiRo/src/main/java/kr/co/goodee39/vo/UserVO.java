@@ -1,6 +1,7 @@
 package kr.co.goodee39.vo;
 
 public class UserVO {
+	
 	private String userid;
 	private String username;
 	private String usernickname;
@@ -17,6 +18,7 @@ public class UserVO {
 		this.start = 0;
 		this.count = 10;
 	}
+
 	public String getUserid() {
 		return userid;
 	}
