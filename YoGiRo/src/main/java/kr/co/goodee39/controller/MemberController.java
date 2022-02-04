@@ -20,18 +20,18 @@ public class MemberController {
 	MemberService userService;
 	
 	@GetMapping("/manager/manager3/manager-member")
-	public String getUserList(Model model, @RequestParam(defaultValue = "1") int usernum,
+	public String getUserList(Model model, @RequestParam(defaultValue = "1") int usernumber,
 										   @RequestParam(defaultValue="") String userid,
 										   @RequestParam(defaultValue="") String useremail) {
-		userService.getUserList(model, usernum, userid, useremail);
+		userService.getUserList(model, usernumber, userid, useremail);
 		return "/manager/manager3/manager-member";
 	}
 	
 	@GetMapping("/manager/manager4/manager-block-member")
-	public String getBlockUserList(Model model, @RequestParam(defaultValue = "1") int usernum,
+	public String getBlockUserList(Model model, @RequestParam(defaultValue = "1") int usernumber,
 										   @RequestParam(defaultValue="") String userid,
 										   @RequestParam(defaultValue="") String useremail) {
-		userService.getUserBlock(model, usernum, userid, useremail);
+		userService.getUserBlock(model, usernumber, userid, useremail);
 		return "/manager/manager4/manager-block-member";
 	}
 	

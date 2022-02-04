@@ -268,7 +268,7 @@ table {
 						<button id="search_btn">검색</button>
 					</div>
 				</div>
-
+ 
 				<div class="food_container">
 					<div id="main_food">
 

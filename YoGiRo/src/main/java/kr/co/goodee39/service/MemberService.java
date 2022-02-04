@@ -15,9 +15,9 @@ public class MemberService {
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
 	
-	public void getUserList(Model model, int usernum, String userid, String useremail) {
+	public void getUserList(Model model, int usernumber, String userid, String useremail) {
 		UserVO vo = new UserVO();
-		vo.setStart((usernum-1)*vo.getCount());
+		vo.setStart((usernumber-1)*vo.getCount());
 		
 		if(!userid.equals("")) {
 			model.addAttribute("userid", userid);
@@ -28,9 +28,9 @@ public class MemberService {
 			vo.setUseremail("%"+useremail+"%");;
 		}
 		
-		model.addAttribute("list", sqlSessionTemplate.selectList("user.selectUserList",vo));
-		model.addAttribute("count", sqlSessionTemplate.selectOne("user.selectUserCount", vo));
-		model.addAttribute("usernum", usernum);
+		model.addAttribute("list", sqlSessionTemplate.selectList("member.selectUserList",vo));
+		model.addAttribute("count", sqlSessionTemplate.selectOne("member.selectUserCount", vo));
+		model.addAttribute("usernumber", usernumber);
 		
 		
 	}
@@ -48,7 +48,7 @@ public class MemberService {
 			vo.setUseremail("%"+useremail+"%");;
 		}
 		
-		model.addAttribute("list", sqlSessionTemplate.selectList("user.selectUserBlock", vo));
+		model.addAttribute("list", sqlSessionTemplate.selectList("member.selectUserBlock", vo));
 		model.addAttribute("usernum", usernum);
 	}
 }

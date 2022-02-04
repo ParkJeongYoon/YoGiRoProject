@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="comcomment">
+  	<select id="selectCommentList" parameterType="comcomVO" resultType="comcomVO">
+		select comcommentid, comcommentcontent, comuserid, comcreatedate, comid
+		from communitycomment
+		where comid = #{comid} and comcommentisdelete='N' 
+	</select>
+	
+	<select id="selectUserComment" parameterType="comcomVO" resultType="comcomVO">
+		select comcommentid, comcommentcontent, comuserid, comcreatedate, comid
+		from communitycomment
+		where comuserid = #{comuserid} and comcommentisdelete='N'
+	</select>
+	<insert id="insertComment" parameterType="comcomVO" useGeneratedKeys="true" keyProperty="comcommentid">
+		insert into communitycomment(comcommentcontent, comuserid, comcreatedate, comid)
+		values(#{comcommentcontent}, #{comuserid}, #{comcreatedate}, #{comid})
+	</insert>
+	<update id="updateComment" parameterType="comcomVO">
+		update communitycomment set comcommentcontent = #{comcommentcontent}
+		where comcommentid = #{comcommentid}
+		and comuserid = #{comuserid}
+	</update>
+	<update id="deleteComment" parameterType="comcomVO">
+		update communitycomment set comcommentisdelete='Y' 
+		where comcommentid = #{comcommentid} 
+		and comuserid = #{comuserid}
+	</update>
+  </mapper>

@@ -67,22 +67,27 @@ public class UserVO {
 	public void setIsmanager(String ismanager) {
 		this.ismanager = ismanager;
 	}
-	
-	public int getUsernum() {
+
+	public int getUsernumber() {
 		return usernumber;
 	}
-	public void setUsernum(int usernum) {
-		this.usernumber = usernum;
+
+	public void setUsernumber(int usernumber) {
+		this.usernumber = usernumber;
 	}
+
 	public int getStart() {
 		return start;
 	}
+
 	public void setStart(int start) {
 		this.start = start;
 	}
+
 	public int getCount() {
 		return count;
 	}
+
 	public void setCount(int count) {
 		this.count = count;
 	}

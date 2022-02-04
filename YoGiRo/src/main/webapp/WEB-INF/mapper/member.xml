@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="member">
+  	<select id="selectUserCount" parameterType="UserVO" resultType="int">
+  		select count(*) from user
+		where isblock = 'N'
+		<choose>
+			
+			<when test="userid == null and useremail != null">
+				and useremail like #{useremail}
+			</when>
+			<when test="userid != null and useremail == null">
+				and userid like #{userid}
+			</when>
+		</choose>
+  	</select>
+  	<select id="selectUserList" parameterType="UserVO" resultType="UserVO">
+  		select userid, username, usernumber, usernickname, userpassword, useremail, userphonenumber, isblock, ismanager
+		from user
+		where isblock = 'N'
+		<choose>
+			
+			<when test="userid == null and useremail != null">
+				and useremail like #{useremail}
+			</when>
+			<when test="userid != null and useremail == null">
+				and userid like #{userid}
+			</when>
+		</choose>
+		order by usernumber desc
+		limit #{start}, #{count}
+  	</select>
+  	
+  	<select id="selectUserBlock" parameterType="UserVO" resultType="UserVO">
+  		select userid, username, usernumber, usernickname, userpassword, useremail, userphonenumber, isblock, ismanager
+		from user
+		where isblock = 'Y'
+		order by usernumber desc
+		limit #{start}, #{count}
+  	</select>
+  	
+	
+	<delete id="deleteUser" parameterType="userVO">
+      update user set  isblock= 'Y' where userid = #{userid}
+   	</delete>
+</mapper>
