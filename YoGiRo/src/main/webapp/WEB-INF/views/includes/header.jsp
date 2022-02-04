@@ -8,11 +8,22 @@
             <a style="display: inline;" href="${pageContext.request.contextPath}/"><h1 class="logo">YoGiRo</h1></a>
         </div>
         <div class="login-box">
-        	<a href="" class="login-box-a">?마이?페?이지?<i class="far fa-address-card"></i></a>
-        	<a href="${pageContext.request.contextPath}/manager/manager1/manager-chart" class="login-box-a">사이트관리<i class="fas fa-chalkboard-teacher"></i></a>
+			<c:if test="${sessionScope.account.userid ne null}">
+				<a href="${pageContext.request.contextPath}/mypage" class="login-box-a">마이페이지<i class="far fa-address-card"></i></a>
+			</c:if>
+			<c:if test="${sessionScope.account.ismanager eq 'Y'}">
+				<a href="${pageContext.request.contextPath}/manager/manager1/manager-chart" class="login-box-a">사이트관리<i class="fas fa-chalkboard-teacher"></i></a>
+			</c:if>
             <a href="${pageContext.request.contextPath}/qna/qna-main" class="login-box-a">문의하기<i class="far fa-question-circle"></i></a>
-            <a href="${pageContext.request.contextPath}/login/login-main" class="login-box-a">로그인<i class="fas fa-sign-in-alt"></i></a>
-            <a href="${pageContext.request.contextPath}/signup/signup-main" class="login-box-a">회원가입<i class="fas fa-user-plus"></i></a>
+            <c:choose>
+            	<c:when test="${sessionScope.account.userid ne null}">
+            		<a href="${pageContext.request.contextPath}/includes/logout" class="login-box-a">로그아웃<i class="fas fa-sign-out-alt"></i></a>
+            	</c:when>
+            	<c:otherwise>
+            		<a href="${pageContext.request.contextPath}/login/login-main" class="login-box-a">로그인<i class="fas fa-sign-in-alt"></i></a>
+            		<a href="${pageContext.request.contextPath}/signup/signup-main" class="login-box-a">회원가입<i class="fas fa-user-plus"></i></a>
+            	</c:otherwise>
+            </c:choose>
         </div>
     </div>
     <nav class="header-nav">
