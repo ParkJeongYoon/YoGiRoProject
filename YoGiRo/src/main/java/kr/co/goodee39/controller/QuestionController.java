@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.goodee39.service.QuestionService;
-import kr.co.goodee39.vo.AnswerVO;
+
 import kr.co.goodee39.vo.QuestionVO;
 
 
