@@ -3,6 +3,7 @@
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
 import kr.co.goodee39.vo.CommunityVO;
@@ -14,20 +15,27 @@ public class CommunityService {
 	SqlSessionTemplate sqlSessionTemplate;
 	
 	
-	public void selectComList(Model model, int num, String title, String content) {
-		CommunityVO vo = new CommunityVO();
-		vo.setStart((num-1)*vo.getCount());
+	public void selectComList(CommunityVO vo, Model model, int num, String title, String content) {
+		CommunityVO vo1 = new CommunityVO();
+		
+		if(vo.getComcategorynum()==0) { 
+			 vo1.setComcategorynum(1); 
+		 }else {
+			 vo1.setComcategorynum(vo.getComcategorynum());
+		 }
+		
+		vo1.setStart((num-1)*vo1.getCount()); // (page - 1) *10
 		if(!title.equals("")) {
 			model.addAttribute("title", title);
-			vo.setComtitle("%"+title+"%");
+			vo1.setComtitle("%"+title+"%");
 		}
 		if(!content.equals("")) {
 			model.addAttribute("content", content);
-			vo.setComcontent("%"+content+"%");
+			vo1.setComcontent("%"+content+"%");
 		}
 		
-		model.addAttribute("count", sqlSessionTemplate.selectOne("community.selectComCount"));
-		model.addAttribute("list", sqlSessionTemplate.selectList("community.selectComList", vo));
+		model.addAttribute("count", sqlSessionTemplate.selectOne("community.selectComCount", vo1));
+		model.addAttribute("list", sqlSessionTemplate.selectList("community.selectComList", vo1));
 		model.addAttribute("num", num);
 	}
 	
@@ -41,13 +49,30 @@ public class CommunityService {
 		vo.setComcontent(vo2.getComcontent());
 		vo.setComuserid(vo2.getComuserid());
 		vo.setComcreatedate(vo2.getComcreatedate());
-
+		
+		model.addAttribute("comVO", sqlSessionTemplate.selectOne("community.selectCom", vo));
 	}
 	
 	public void updateViewCount(Model model, CommunityVO vo) {
 
-		model.addAttribute("ComVO", sqlSessionTemplate.selectOne("community.viewCount", vo));
+		model.addAttribute("comVO", sqlSessionTemplate.selectOne("community.viewCount", vo));
 		
+	}
+	
+	@Transactional
+	public void insertCom(Model model,CommunityVO vo) {
+		sqlSessionTemplate.insert("community.insertCom", vo);
+		// model.addAttribute("comVO", )
+		System.out.println(vo.getComid());
+
+	}
+	
+	public void updateCom(CommunityVO vo) {
+		sqlSessionTemplate.update("community.updateCom", vo);
+	}
+	
+	public void deleteCom(CommunityVO vo) {
+		sqlSessionTemplate.delete("community.deleteCom", vo);
 	}
 
 }
