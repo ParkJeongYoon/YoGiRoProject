@@ -9,7 +9,7 @@ public class ManagerController {
 	@GetMapping("/manager/manager1/manager-chart")
 	public String chart() {
 		return "/manager/manager1/manager-chart";
-	}
+	}		
 	    
 	@GetMapping("/manager/manager6/manager-delete-community")
 	public String delete() {
