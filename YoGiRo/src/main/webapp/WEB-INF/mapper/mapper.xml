@@ -66,11 +66,17 @@
 	</select>
 	
 	<select parameterType="kr.co.goodee39.vo.MyCourseCommonVO" id="getmycoursecommonwithid" resultType="kr.co.goodee39.vo.MyCourseCommonVO">
-		select mycoursecommonid,userid,mycoursecommontitle, mycoursemainimage, mycourseinfo,totaldistance ,totaltime ,mycoursecommonisdeletefrom mycoursecommonwhere mycoursecommonisdelete = 0and mycoursecommonid=#{mycoursecommonid}; 
+		select mycoursecommonid,userid,mycoursecommontitle, mycoursemainimage, mycourseinfo,totaldistance ,totaltime ,mycoursecommonisdelete
+		from mycoursecommon
+		where mycoursecommonisdelete = 0 
+		and mycoursecommonid=#{mycoursecommonid}; 
 	</select>
 
 	<select parameterType="kr.co.goodee39.vo.MyCourseDetailVO" id="getmycoursedetailwithid" resultType="kr.co.goodee39.vo.MyCourseDetailVO">
-		select mycoursedetailid,mycoursecommonid,userid, mycoursedetailname, mycoursedetailimage,mycoursedetailoverview ,mycoursedetailadd,mycoursedetailisdeletefrom mycoursedetailwhere mycoursedetailisdelete = 0and mycoursecommonid=#{mycoursecommonid}; 
+		select mycoursedetailid,mycoursecommonid,userid, mycoursedetailname, mycoursedetailimage,mycoursedetailoverview ,mycoursedetailadd,mycoursedetailisdelete
+		from mycoursedetail
+		where mycoursedetailisdelete = 0
+		and mycoursecommonid=#{mycoursecommonid}; 
 	</select>
 	
 	<!-- mycourse -->

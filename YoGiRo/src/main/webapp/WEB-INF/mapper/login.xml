@@ -5,7 +5,7 @@
   
 <mapper namespace="user">
    <select id="selectUser" parameterType="userVO" resultType="userVO">
-   select userid, username, usernickname, userpassword, useremail, userphonenumber
+   select userid, username, usernickname, userpassword, useremail, userphonenumber, ismanager, isblock
    from user
    <where>
       <if test="userid!=null">
@@ -25,7 +25,7 @@
    <select id="selectUser_info" parameterType="userVO"
 		resultType="userVO">
 		select userid, username, usernickname, userpassword,
-		useremail, userphonenumber
+		useremail, userphonenumber, ismanager, isblock
 		from user
 		where
          userid = #{userid}
@@ -37,35 +37,19 @@
       user(username, usernickname, userid, userpassword, useremail, userphonenumber)
       values(#{username}, #{usernickname}, #{userid}, #{userpassword}, #{useremail}, #{userphonenumber})
    </insert>
-   <update id="updateuser" parameterType="userVO">
+   <update id="updateUser" parameterType="userVO">
       update user
-      <set>
-         <if test="uesrid!=null">
-         and username = #{username}
-         </if>
-         <if test="usernickname!=null">
-         and usernickname = #{usernickname}
-         </if>
-         <if test="userpassword!=null">
-         and userpassword = #{userpassword}
-         </if>
-         <if test="useremail!=null">
-         and useremail = #{useremail}
-         </if>
-         <if test="userphonenumber!=null">
-         and userphonenumber = #{userphonenumber}
-         </if>
-      </set>
+      set
+         username = #{username},usernickname = #{usernickname},userpassword = #{userpassword},
+         useremail = #{useremail},userphonenumber = #{userphonenumber}
       where userid=#{userid}
    </update>
-   <delete id="deleteuser" parameterType="userVO">
-      delete from user where user=#{userid}
+   <delete id="deleteUser" parameterType="userVO">
+      delete from user where user=#{userid} and userpassword=#{userpassword}
    </delete>
-	<!-- 비밀번호 체크 -->
-	<select id="CheckPw" resultType="int">
-		select 
-			count(*)
-		from member
-		where userid=#{userid} and userpassword=#{userpassword}
+   <select id="passChk" parameterType="userVO">
+	SELECT COUNT(*) FROM user
+	WHERE USERID = #{userId}
+	  AND USERPASS = #{userPass}
 	</select>
 </mapper>
