@@ -11,7 +11,11 @@ public class ManagerController {
 		return "/manager/manager1/manager-chart";
 	}
 	
+	
+	
 
+	
+	
 	
 	@GetMapping("/manager/manager6/manager-delete-community")
 	public String delete() {
