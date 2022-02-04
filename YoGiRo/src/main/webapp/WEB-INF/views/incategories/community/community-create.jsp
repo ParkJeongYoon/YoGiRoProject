@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +10,8 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/default.css">
 <script src="https://kit.fontawesome.com/79203d0d3b.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <style>
 	/* 사이드 메뉴바 */
 	.main-container {
@@ -70,25 +74,31 @@
 	<div class="main-container">
 		<aside>
 			<div class="sidemenubar">
-				<a href=""><div><h3>맛집</h3><i class="fas fa-angle-right"></i></div></a>
-				<a href=""><div><h3>축제</h3><i class="fas fa-angle-right"></i></div></a>
-				<a href=""><div><h3>교통</h3><i class="fas fa-angle-right"></i></div></a>
-				<a href=""><div><h3>추천 코스</h3><i class="fas fa-angle-right"></i></div></a>
-				<a href=""><div><h3>기타</h3><i class="fas fa-angle-right"></i></div></a>
+				<a href="${pageContext.request.contextPath}/incategories/community/community-main" onclick="acyncMovePage('main-ajax?comcategorynum=1')"><div><h3>맛집</h3><i class="fas fa-angle-right sideright"></i></div></a>
+				<a href="${pageContext.request.contextPath}/incategories/community/community-main?comcategorynum=2" onclick="acyncMovePage('main-ajax?comcategorynum=2')"><div><h3>축제</h3><i class="fas fa-angle-right sideright"></i></div></a>
+				<a href="${pageContext.request.contextPath}/incategories/community/community-main?comcategorynum=3" onclick="acyncMovePage('main-ajax?comcategorynum=3')"><div><h3>교통</h3><i class="fas fa-angle-right sideright"></i></div></a>
+				<a href="${pageContext.request.contextPath}/incategories/community/community-main?comcategorynum=4" onclick="acyncMovePage('main-ajax?comcategorynum=4')"><div><h3>추천 코스</h3><i class="fas fa-angle-right sideright"></i></div></a>
+				<a href="${pageContext.request.contextPath}/incategories/community/community-main?comcategorynum=5" onclick="acyncMovePage('main-ajax?comcategorynum=5')"><div><h3>기타</h3><i class="fas fa-angle-right sideright"></i></div></a>
 			</div>
 		</aside>
 	 	<main>
-	 		<form:form modelAttribute="comVO" action="${pageContext.request.contextPath}/com/create_result" >
-	 			<!-- <select>
-	 				<optgroup label="">맛집</optgroup>
-	 				<optgroup label="">축제</optgroup>
-	 				<optgroup label="">교통</optgroup>
-	 				<optgroup label="">추천 코스</optgroup>
-	 				<optgroup label="">기타</optgroup>
-	 			</select> -->
+	 		<form:form modelAttribute="ComVO"
+				action="${pageContext.request.contextPath}/incategories/community/create_result">
 				<ul>
-					<li><label for="comtitle">제목 : </label><form:input path="comtitle"/></li>
-					<li><form:textarea path="comcontent" id="editor" cols="50" rows="10"/></li>
+					<li><form:select path="comcategorynum">
+							<form:option value="1">맛집</form:option>
+							<form:option value="2">축제</form:option>
+							<form:option value="3">교통</form:option>
+							<form:option value="4">추천 코스</form:option>
+							<form:option value="5">기타</form:option>
+						</form:select> <form:input path="comtitle" placeholder="제목을 입력해주세요" /></li>
+					<li><form:textarea path="comcontent" id="editor" cols="50"
+							rows="10" /></li>
+					<li><form:button id="btn">전송</form:button></li>
+					<form:hidden path="comuserid"
+						value="${sessionScope.account.userid}" />
+					<%-- <form:hidden path="ownername" value="${sessionScope.account.name}"/>
+					<form:hidden path="filelist"/> --%>
 				</ul>
 			</form:form>
 	 	</main>
@@ -96,9 +106,34 @@
  	<jsp:include page="../../includes/footer.jsp"></jsp:include>
  </div>
 	<script>
-	    window.onload = function(){
-	       ck = CKEDITOR.replace("editor");
-	    };    
+	window.onload = function() {
+		ck = CKEDITOR
+				.replace(
+						"editor",
+						{
+							filebrowserUploadUrl : "${pageContext.request.contextPath}/comimg/imageUpload",
+							enterMode : '2'
+						}); // 파일업로드 컨트롤러로 보내기
+	};
+
+	// 사이드메뉴 ajax 이동
+	function acyncMovePage(url) {
+		// ajax option
+		var ajaxOption = {
+			url : url,
+			async : true,
+			type : "GET",
+			dataType : "html",
+			cache : false
+		};
+
+		$.ajax(ajaxOption).done(function(data) {
+			// Contents 영역 삭제
+			$('#main-content').children().remove();
+			// Contents 영역 교체
+			$('#main-content').html(data);
+		});
+	};
     </script>
 </body>
 </html>

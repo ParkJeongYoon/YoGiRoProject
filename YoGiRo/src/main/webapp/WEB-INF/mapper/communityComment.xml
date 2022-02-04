@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="comcomment">
+  	<select id="selectCommentList" parameterType="comcomVO" resultType="comcomVO">
+		select comcommentid, comcommentcontent, comuserid, comcreatedate, comid
+		from communitycomment
+		where comid = #{comid} and comcommentisdelete='N' 
+	</select>
+	
+	<select id="selectUserComment" parameterType="comcomVO" resultType="comcomVO">
+		select comcommentid, comcommentcontent, comuserid, comcreatedate, comid
+		from communitycomment
+		where comuserid = #{comuserid} and comcommentisdelete='N'
+	</select>
+	<insert id="insertComment" parameterType="comcomVO" useGeneratedKeys="true" keyProperty="comcommentid">
+	<!-- userGenerateKeys가 오토인크리먼트 되는 값+1을 가져오는데 그 값은 keyProperty에 지정한 값 -->
+	<!-- 실제 생성된 값을 알려주는 것. num으로 식별해서 접근하는것 -->
+	<!-- 인서트한 뒤의 넘버값을 가져온다 -->
+	<!-- useGeneratedKeys : 오토인크리먼트를 통해서 인덱스 키를 생성하고있느냐의 여부 -->
+	<!-- keyProperty : num을 지목하는 것뿐임 -->
+		insert into communitycomment(comcommentcontent, comuserid, comcreatedate, comid)
+		values(#{comcommentcontent}, #{comuserid}, #{comcreatedate}, #{comid})
+	</insert>
+	<update id="updateComment" parameterType="comcomVO">
+		update communitycomment set comcommentcontent = #{comcommentcontent}
+		where comcommentid = #{comcommentid}
+		and comuserid = #{comuserid}
+	</update>
+	<update id="deleteComment" parameterType="comcomVO">
+		<!-- delete from communitycomment 
+		where comcommentid = #{comcommentid}
+		and comuserid = #{comuserid} -->
+		update communitycomment set comcommentisdelete='Y' 
+		where comcommentid = #{comcommentid} 
+		and comuserid = #{comuserid}
+	</update>
+  </mapper>
