@@ -129,7 +129,7 @@ function getCommentList(){
                     html += data[i].comment + "<tr><td></td></tr>";
                     html += "</table></div>";
                     html += "</div>";
-                }
+                } 
                 
             } else {
                 
