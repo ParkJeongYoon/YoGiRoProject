@@ -10,7 +10,7 @@ public class UserVO {
 	private String userphonenumber;
 	private String isblock;
 	private String ismanager;
-	private int usernum;
+	private int usernumber;
 	private int start;
 	private int count;
 	
@@ -69,10 +69,10 @@ public class UserVO {
 	}
 	
 	public int getUsernum() {
-		return usernum;
+		return usernumber;
 	}
 	public void setUsernum(int usernum) {
-		this.usernum = usernum;
+		this.usernumber = usernum;
 	}
 	public int getStart() {
 		return start;

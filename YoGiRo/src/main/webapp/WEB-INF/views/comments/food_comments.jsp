@@ -13,7 +13,31 @@
 <title>Insert title here</title>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>	
+<style>
+#themecommentcontent{
+	display : inline-block;
+}
+.btn-success{
+	padding : 5px 10px;
+	background-color :#DAE9F8;
+	border-radius : 10px;
+	right : 0;
+	display : inline-block;
+}
+td div {
+	display: flex;
+	justify-content: flex-end;
+}
+
+
+#comment-list-item{
 	
+	border-bottom : 1px solid #ccc;
+	padding-bottom : 10px;
+	padding-top : 10px;
+	width : 85%;
+}
+</style>
 </head>
 <body>
 	<div class="container">
@@ -52,7 +76,6 @@
  * 댓글 등록하기(Ajax)
  */
 function fn_comment(code){
-    alert("들어옴?");
     $.ajax({
         type:'GET',
         url : '${pageContext.request.contextPath}/addComment?themecode=${foodtodetailpage.themecode}&themepostid=${foodtodetailpage.contentid}',
@@ -61,14 +84,13 @@ function fn_comment(code){
             if(data=="success")
             {
 
-                alert("성공");
                 getCommentList();
                 $("#comment").val("");
             }
         },
         error:function(request,status,error){
             //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-            alert("에러");
+           
        }
         
     });
@@ -90,7 +112,7 @@ function getCommentList(){
     
     $.ajax({
         type:'GET',
-        url : "<c:url value='commentList?themecode=${foodtodetailpage.themecode}&themepostid=${foodtodetailpage.contentid}'/>",
+        url : "<c:url value='commentList?themecode=${foodtodetailpage.themecode}&themepostid=${foodtodetailpage.contentid&userid=${sessionScope.account.userid}}'/>",
         dataType : "json",
         data:$("#commentForm").serialize(),
         contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
@@ -103,7 +125,7 @@ function getCommentList(){
                 
                 for(i=0; i<data.length; i++){
                     html += "<div>";
-                    html += "<div><table class='table'><h6><strong>"+data[i].writer+"</strong></h6>";
+                    html += "<div id='comment-list-item'><table class='table'><h6><strong>"+data[i].writer+"</strong></h6>";
                     html += data[i].comment + "<tr><td></td></tr>";
                     html += "</table></div>";
                     html += "</div>";
