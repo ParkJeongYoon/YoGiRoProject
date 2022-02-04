@@ -125,7 +125,6 @@ public class CourseController {
 		
 		try {
 			//uservo에서 가져온 userid넣는 로직 추가 요
-			vo.setUserid("pjy4722");
 			vo.setThemecommentdate(formatedNow);
 			
 			ts.insertThemeComment(vo);

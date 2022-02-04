@@ -268,12 +268,12 @@ table {
 						<button id="search_btn">검색</button>
 					</div>
 				</div>
-
+ 
 				<div class="food_container">
 					<div id="main_food">
 
 						<c:forEach var="i" begin="0" end="5">
-							<div id="food${i}" class="food_content">
+							<div id="food${i}" class="food_content"> 
 
 								<a href="food_detail?contentid=${foodList[i].contentid}&themecode=3" class="course-a">
 								
