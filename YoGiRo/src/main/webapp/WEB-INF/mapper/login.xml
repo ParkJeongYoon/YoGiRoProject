@@ -40,8 +40,8 @@
    <update id="updateUser" parameterType="userVO">
       update user
       set
-         username = #{username},usernickname = #{usernickname},userpassword = #{userpassword},
-         useremail = #{useremail},userphonenumber = #{userphonenumber}
+         username = #{username}, usernickname = #{usernickname}, userpassword = #{userpassword},
+         useremail = #{useremail}, userphonenumber = #{userphonenumber}
       where userid=#{userid}
    </update>
    <delete id="deleteUser" parameterType="userVO">

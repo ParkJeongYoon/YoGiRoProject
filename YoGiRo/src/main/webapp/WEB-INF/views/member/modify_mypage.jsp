@@ -139,7 +139,7 @@ td {
 </head>
 <body>
 
-	<jsp:include page="../includes/after-login_header.jsp"></jsp:include>
+	<jsp:include page="../includes/header.jsp"></jsp:include>
 
 	<div class="container">
 		<div class="main-container">
