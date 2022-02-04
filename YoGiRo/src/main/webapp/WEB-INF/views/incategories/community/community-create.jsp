@@ -98,7 +98,7 @@
 					<form:hidden path="comuserid"
 						value="${sessionScope.account.userid}" />
 					<%-- <form:hidden path="ownername" value="${sessionScope.account.name}"/>
-					<form:hidden path="filelist"/> --%>
+					<form:hidden path="filelist"/> 1--%>
 				</ul>
 			</form:form>
 	 	</main>

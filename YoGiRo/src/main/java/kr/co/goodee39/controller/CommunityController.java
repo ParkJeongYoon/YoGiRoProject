@@ -66,7 +66,7 @@ public class CommunityController {
 	
 	@PostMapping("/create_result")
 	public String setComCreate(@ModelAttribute("ComVO") CommunityVO vo, Model model) {
-		// ComVO com = new ComVO();
+		// ComVO com = new ComVO();1
 		vo.setComcreatedate(new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA).format(new Date()));
 		comService.insertCom(model, vo);
 		return "redirect:/incategories/community/community-main";
@@ -75,7 +75,7 @@ public class CommunityController {
 	@GetMapping("/modify")
 	public String modifyBBS(@ModelAttribute CommunityVO vo, Model model) {
 		comService.selectCom(model, vo);
-		return "com_modify";
+		return "/incategories/community/community-modify";
 	}
 	
 	@PostMapping("/modify_result")

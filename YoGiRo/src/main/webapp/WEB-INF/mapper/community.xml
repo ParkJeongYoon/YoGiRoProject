@@ -64,5 +64,6 @@
 	</update>
 	<delete id="deleteCom" parameterType="communityVO">
 		update community set comisdelete='Y' where comid = #{comid}
+		<!--  -->
 	</delete>
   </mapper>

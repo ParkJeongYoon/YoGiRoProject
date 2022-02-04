@@ -114,7 +114,7 @@
 	ul>li {
 		list-style: none;
 	}
-	/* 에디터 */
+	/* 에디터 1*/
 	#editor {
 		width: 800px;
 	}

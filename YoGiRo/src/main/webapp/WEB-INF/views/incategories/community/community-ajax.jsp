@@ -401,7 +401,7 @@
 	        };
 	        
 	        $.ajax(ajaxOption).done(function(data){
-	            // Contents 영역 삭제
+	            // Contents 영역 삭제1
 	            $('#main-content').children().remove();
 	            // Contents 영역 교체
 	            $('#main-content').html(data);

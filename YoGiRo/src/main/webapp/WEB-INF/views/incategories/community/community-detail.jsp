@@ -392,7 +392,7 @@ main>h1 {
 									edit_div.remove();
 								});
 								
-								// 수정완료 버튼 클릭 시 이벤트
+								// 수정완료 버튼 클릭 시 이벤트1
 								edit_modify.addEventListener("click", function() {
 									// alert("수정완료 버튼 클릭");
 									if(confirm("수정하시겠습니까")){
@@ -451,13 +451,13 @@ main>h1 {
 			});
 		};
 		
-		// 글 삭제
+		// 글 삭제1
 		$("#delete").click(function() {
 			if (confirm("정말로 삭제하시겠습니까?")) {
 				location.href = "${pageContext.request.contextPath}/incategories/community/delete?comid=${ComVO.comid}";
 			}
 		});
-		// 글 수정
+		// 글 수정1
 		$("#modify").click(function() {
 			location.href = "${pageContext.request.contextPath}/incategories/community/modify?comid=${ComVO.comid}";
 		});

@@ -391,7 +391,7 @@ thead>tr>th:nth-child(5) {
 						.on(
 								'keydown',
 								function(e) {
-									var keyCode = e.which; // 눌린 키 기록
+									var keyCode = e.which; // 눌린 키 기록 뭐지
 
 									if (keyCode === 13) { // Enter Key
 										let category = $("#category").val();
