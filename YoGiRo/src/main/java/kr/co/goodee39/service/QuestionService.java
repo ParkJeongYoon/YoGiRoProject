@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import kr.co.goodee39.vo.AnswerVO;
 import kr.co.goodee39.vo.QuestionVO;
 
 @Service
@@ -27,8 +26,8 @@ public class QuestionService {
 			vo.setQcontent("%"+qcontent+"%");
 		}
 		
-		model.addAttribute("qlist", sqlSessionTemplate.selectList("questions.selectQuestionsList" , vo));
-		model.addAttribute("count", sqlSessionTemplate.selectOne("questions.selectQuestionsCount" , vo));
+		model.addAttribute("list", sqlSessionTemplate.selectList("questions.selectQuestionsList",vo));
+		model.addAttribute("count", sqlSessionTemplate.selectOne("questions.selectQuestionsCount", vo));
 		model.addAttribute("qnum", qnum);
 	}
 	
@@ -37,7 +36,6 @@ public class QuestionService {
 		model.addAttribute("questionVO", sqlSessionTemplate.selectOne("questions.selectQuestions", vo));
 		
 	}
-
 
 	
 }
