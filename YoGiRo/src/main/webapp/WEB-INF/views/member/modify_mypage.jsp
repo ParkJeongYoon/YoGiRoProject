@@ -110,19 +110,22 @@ td {
 }
 
 .info {
+	width: 80%;
 	height: 100%;
 	border-style: none;
-	font-size: 1.1rem;
+	font-size: 1rem;
 	margin-left: 20px;
 }
 
-.info_title {
+.info_title2 {
+	width:30%;
 	background: #B2DFDB;
 	color: white;
 }
 
 .info_box {
 	background-color: white;
+
 }
 
 .info_btn {
@@ -179,28 +182,28 @@ td {
 					<form action="${pageContext.request.contextPath}/update_result" method="post" >
 						<table cellpadding="30" cellspacing="50">
 							<tr>
-								<td class="info_title">이름</td>
-								<td class="info_box"><input type="text" value="${account.username}" id="username" name="username"> </td>
+								<td class="info_title2">이름</td>
+								<td class="info_box"><input class="info" type="text" value="${account.username}" id="username" name="username"> </td>
 							</tr>
 							<tr>
-								<td class="info_title">닉네임</td>
-								<td class="info_box"><input type="text" value="${account.usernickname}" id="usernickname" name="usernickname" ></td>
+								<td class="info_title2">닉네임</td>
+								<td class="info_box"><input class="info" type="text" value="${account.usernickname}" id="usernickname" name="usernickname" ></td>
 							</tr>
 							<tr>
-								<td class="info_title">아이디</td>
-								<td class="info_box"><input type="text" value="${account.userid }" id="userid" name="userid" readonly></td>
+								<td class="info_title2">아이디</td>
+								<td class="info_box"><input class="info" type="text" value="${account.userid }" id="userid" name="userid" readonly></td>
 							</tr>
 							<tr>
-								<td class="info_title">비밀번호</td>
-								<td class="info_box"><input type="password" id="userpassword" name="userpassword" required="required"></td>
+								<td class="info_title2">비밀번호</td>
+								<td class="info_box"><input class="info" type="password" id="userpassword" name="userpassword" required="required"></td>
 							</tr>
 							<tr>               
-								<td class="info_title">전화번호</td>
-								<td class="info_box"><input type="text" value="${account.userphonenumber}" id="userphonenumber" name="userphonenumber"></td>
+								<td class="info_title2">전화번호</td>
+								<td class="info_box"><input class="info" type="text" value="${account.userphonenumber}" id="userphonenumber" name="userphonenumber"></td>
 							</tr>
 							<tr>
-								<td class="info_title">이메일</td>
-								<td class="info_box"><input type="text" value="${account.useremail}" id="useremail" name="useremail"></td>
+								<td class="info_title2">이메일</td>
+								<td class="info_box"><input class="info" type="text" value="${account.useremail}" id="useremail" name="useremail"></td>
 							</tr>
 							<tr>
 								<td colspan="2">

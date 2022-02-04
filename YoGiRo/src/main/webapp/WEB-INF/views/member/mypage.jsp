@@ -106,23 +106,26 @@ tr {
 
 td {
 	text-align: center;
+	font-size:1rem;
 }
 
 .info {
 	width: 80%;
 	height: 100%;
 	border-style: none;
-	font-size: 1.1rem;
+	font-size: 1rem;
 	margin-left: 20px;
 }
 
 .info_title {
+	width:30%;
 	background: #B2DFDB;
 	color: white;
 }
 
 .info_box {
 	background-color: white;
+	color:black;
 }
 
 .info_btn {
