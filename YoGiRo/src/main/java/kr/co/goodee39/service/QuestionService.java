@@ -26,7 +26,7 @@ public class QuestionService {
 			vo.setQcontent("%"+qcontent+"%");
 		}
 		
-		model.addAttribute("list", sqlSessionTemplate.selectList("questions.selectQuestionsList",vo));
+		model.addAttribute("qlist", sqlSessionTemplate.selectList("questions.selectQuestionsList",vo));
 		model.addAttribute("count", sqlSessionTemplate.selectOne("questions.selectQuestionsCount", vo));
 		model.addAttribute("qnum", qnum);
 	}
