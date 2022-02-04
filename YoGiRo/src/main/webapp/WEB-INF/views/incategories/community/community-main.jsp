@@ -172,19 +172,19 @@ thead>tr>th:nth-child(5) {
 		<div class="main-container">
 			<aside>
 				<div class="sidemenubar">
-					<a href="#" onclick="acyncMovePage('main-ajax?comcategorynum=1')"><div>
+					<a href="#" onclick="acyncMovePage('community-ajax?comcategorynum=1')"><div>
 							<h3>맛집</h3>
 							<i class="fas fa-angle-right sideright"></i>
-						</div></a> <a href="#" onclick="acyncMovePage('main-ajax?comcategorynum=2')"><div>
+						</div></a> <a href="#" onclick="acyncMovePage('community-ajax?comcategorynum=2')"><div>
 							<h3>축제</h3>
 							<i class="fas fa-angle-right sideright"></i>
-						</div></a> <a href="#" onclick="acyncMovePage('main-ajax?comcategorynum=3')"><div>
+						</div></a> <a href="#" onclick="acyncMovePage('community-ajax?comcategorynum=3')"><div>
 							<h3>교통</h3>
 							<i class="fas fa-angle-right sideright"></i>
-						</div></a> <a href="#" onclick="acyncMovePage('main-ajax?comcategorynum=4')"><div>
+						</div></a> <a href="#" onclick="acyncMovePage('community-ajax?comcategorynum=4')"><div>
 							<h3>추천 코스</h3>
 							<i class="fas fa-angle-right sideright"></i>
-						</div></a> <a href="#" onclick="acyncMovePage('main-ajax?comcategorynum=5')"><div>
+						</div></a> <a href="#" onclick="acyncMovePage('community-ajax?comcategorynum=5')"><div>
 							<h3>기타</h3>
 							<i class="fas fa-angle-right sideright"></i>
 						</div></a>

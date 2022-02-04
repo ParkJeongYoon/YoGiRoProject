@@ -36,11 +36,13 @@ public class CommunityController {
 		return "/incategories/community/community-main";
 	}
 	
-	@GetMapping("/main-ajax")
+	@GetMapping("/community-ajax")
 	public String getComAjaxList(@ModelAttribute("ComVO") CommunityVO vo, Model model, 
 					@RequestParam(defaultValue = "1") int num,
 			 		@RequestParam(defaultValue = "") String title,
 			 		@RequestParam(defaultValue = "") String content) {
+		System.out.println(vo.getComcategorynum());
+		
 		if(vo.getComcategorynum()==0) { 
 			vo.setComcategorynum(1); 
 		}
