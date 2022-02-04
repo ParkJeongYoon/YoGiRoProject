@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -109,7 +110,6 @@ td {
 }
 
 .info {
-	width: 80%;
 	height: 100%;
 	border-style: none;
 	font-size: 1.1rem;
@@ -174,39 +174,38 @@ td {
 				</div>
 			</aside>
 			<main>
-				<h1 style="display: block;">내정보</h1>
+				<h1 style="display: block;">내정보수정</h1>
 				<div id="table-con">
-					<form action="${pageContext.request.contextPath}/update_do" name="memberfrm" method="post">
+					<form action="${pageContext.request.contextPath}/update_result" method="post" >
 						<table cellpadding="30" cellspacing="50">
 							<tr>
 								<td class="info_title">이름</td>
-								<td class="info_box">${account.username}</td>
+								<td class="info_box"><input type="text" value="${account.username}" id="username" name="username"> </td>
 							</tr>
 							<tr>
 								<td class="info_title">닉네임</td>
-								<td class="info_box">${account.usernickname}</td>
+								<td class="info_box"><input type="text" value="${account.usernickname}" id="usernickname" name="usernickname" ></td>
 							</tr>
 							<tr>
 								<td class="info_title">아이디</td>
-								<td class="info_box">${account.userid}</td>
+								<td class="info_box"><input type="text" value="${account.userid }" id="userid" name="userid" readonly></td>
 							</tr>
 							<tr>
 								<td class="info_title">비밀번호</td>
-								<td class="info_box">${account.userpassword}</td>
+								<td class="info_box"><input type="password" id="userpassword" name="userpassword" required="required"></td>
 							</tr>
 							<tr>               
 								<td class="info_title">전화번호</td>
-								<td class="info_box">${account.userphonenumber}</td>
+								<td class="info_box"><input type="text" value="${account.userphonenumber}" id="userphonenumber" name="userphonenumber"></td>
 							</tr>
 							<tr>
 								<td class="info_title">이메일</td>
-								<td class="info_box">${account.useremail}</td>
+								<td class="info_box"><input type="text" value="${account.useremail}" id="useremail" name="useremail"></td>
 							</tr>
 							<tr>
-							
 								<td colspan="2">
-									<button id="updatebtn" type="submit" class="info_btn">정보수정</button>
-									<button id="deletebtn"  type="button" class="info_btn">탈퇴</button>
+									<button id="updatebtn" type="submit" class="info_btn">수정하기</button>
+									<button id="cancle" class="info_btn" type="button">취소</button>
 								</td>
 							</tr>
 						</table>
@@ -216,15 +215,50 @@ td {
 		</div>
 		<jsp:include page="../includes/footer.jsp"></jsp:include>
 	</div>
-	<script type="text/javascript">
-	$(function(){
-		$("#deletebtn").click(function(){
-			if(confirm("정말로 탈퇴하시겠습니까?")){
-				location.href="${pageContext.request.contextPath}/delete_do"
+	<script>
+	$(document).ready(function(){
+		// 취소
+		$("#cancle").on("click", function(){
+			
+			location.href = "${pageContext.request.contextPath}/member/mypage";
+					    
+		})
+		
+		$("#updatebtn").on("click", function(){
+			if($("#userpassword").val()==""){
+				alert("비밀번호를 입력해주세요.");
+				$("#userpassword").focus();
+				return false;
+			}
+			if($("#username").val()==""){
+				alert("성명을 입력해주세요.");
+				$("#username").focus();
+				return false;
+			}
+			if($("#usernickname").val()==""){
+				alert("닉네임을 입력해주세요.");
+				$("#usernickname").focus();
+				return false;
+			}
+			if($("#useremail").val()==""){
+				alert("이메일을 입력해주세요.");
+				$("#useremail").focus();
+				return false;
+			}
+			if($("#userphonenumber").val()==""){
+				alert("전화번호를 입력해주세요.");
+				$("#userphonenumber").focus();
+				return false;
+			}
+			else{
+				alert("다시 로그인 해주세요.");
 			}
 		});
+		
+			
+		
 	});
+	
 	</script>
-
 </body>
 </html>
