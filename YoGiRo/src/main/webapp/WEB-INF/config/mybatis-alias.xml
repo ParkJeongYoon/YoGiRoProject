@@ -3,9 +3,10 @@
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
+		<typeAlias type="kr.co.goodee39.vo.UserVO" alias="userVO"/>
 		<typeAlias type="kr.co.goodee39.vo.CommunityVO" alias="communityVO"/>
 		<typeAlias type="kr.co.goodee39.vo.QuestionVO" alias="questionVO"/>
-		<typeAlias type="kr.co.goodee39.vo.UserVO" alias="userVO"/>
 		<typeAlias type="kr.co.goodee39.vo.AnswerVO" alias="answerVO"/>
+		<typeAlias type="kr.co.goodee39.vo.AnswerVO" alias="qnaVO"/>
 	</typeAliases>
 </configuration>

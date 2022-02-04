@@ -2,7 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
-<html class="vh">
+<html>
 <head>
 	<meta charset="UTF-8">
 	<title>create title here</title>
@@ -10,8 +10,8 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/default.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/qnacss/qna-main.css">
 </head>
-<body class="body vh">
-    <div class="container vh">
+<body class="body">
+    <div class="container">
 		<jsp:include page="../includes/header.jsp"></jsp:include>
 
 
@@ -31,12 +31,16 @@
 						</tr>
 					</thead>
 					<tbody class="qna-list-main">
-						<c:forEach var="item" items="${list}">
+						<c:forEach var="item" items="${qlist}">
 							<tr>
 								<td>${item.qnum}</td>
-								<td><!-- <a href="${pageContext.request.contextPath}/bbs/detail?qnum=${item.qnum}"> -->${item.qtitle}<!-- </a> --></td>
+								<td>
+									<c:forEach var="sp" begin="1" end="${item.depth}">&nbsp;&nbsp;</c:forEach>
+									<c:if test="${item.depth > 0}">ㄴRe : </c:if>
+									<!-- <a href="${pageContext.request.contextPath}/bbs/detail?qnum=${item.qnum}"> -->${item.qtitle}<!-- </a> -->
+								</td>
 								<td>${item.userid}</td>
-								<td>??</td>
+								<td>${item.readcount}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -131,7 +135,9 @@
 
             <aside class="qna-aside">
                 <div class="qna-list-bottom-inner-left">
-                    <button type="submit" class="button-sty qna-create">글쓰기 <i class="fas fa-pen"></i></button>
+	                <%-- <c:if test="      ${sessionScope.account.id != null}      "> --%>
+                    	<button type="submit" class="button-sty qna-create">글쓰기 <i class="fas fa-pen"></i></button>
+					<%-- </c:if> --%>
                 </div>
                 <div class="qna-list-bottom-inner-right">
                     <div class="search-bar">

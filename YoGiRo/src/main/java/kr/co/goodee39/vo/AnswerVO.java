@@ -3,6 +3,8 @@ package kr.co.goodee39.vo;
 public class AnswerVO {
 	private int anum;
 	private int qnum;
+	private String userid;
+	private String ismanager;
 	private String atitle;
 	private String acreatedate;
 	private String acontent;
@@ -18,6 +20,18 @@ public class AnswerVO {
 	}
 	public void setQnum(int qnum) {
 		this.qnum = qnum;
+	}
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+	public String getIsmanager() {
+		return ismanager;
+	}
+	public void setIsmanager(String ismanager) {
+		this.ismanager = ismanager;
 	}
 	public String getAtitle() {
 		return atitle;
@@ -43,6 +57,5 @@ public class AnswerVO {
 	public void setIsdelete(String isdelete) {
 		this.isdelete = isdelete;
 	}
-	
 	
 }

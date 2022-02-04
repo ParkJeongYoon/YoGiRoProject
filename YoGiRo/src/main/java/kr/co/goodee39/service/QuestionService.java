@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import kr.co.goodee39.vo.AnswerVO;
 import kr.co.goodee39.vo.QuestionVO;
 
 @Service
@@ -13,9 +14,9 @@ public class QuestionService {
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
 	
-	public void getQUEList(Model model, int num, String qtitle, String qcontent) {
+	public void getQUEList(Model model, int qnum, String qtitle, String qcontent) {
 		QuestionVO vo = new QuestionVO();
-		vo.setStart((num-1)*vo.getCount());
+		vo.setStart((qnum-1)*vo.getCount());
 		if(!qtitle.equals("")) {
 			model.addAttribute("qtitle", qtitle);
 			// %를 넣음으로써 title에 해당하는 글만 가져오는 역할
@@ -26,9 +27,9 @@ public class QuestionService {
 			vo.setQcontent("%"+qcontent+"%");
 		}
 		
-		model.addAttribute("list", sqlSessionTemplate.selectList("questions.selectQuestionsList",vo));
-		model.addAttribute("count", sqlSessionTemplate.selectOne("questions.selectQuestionsCount", vo));
-		model.addAttribute("num", num);
+		model.addAttribute("qlist", sqlSessionTemplate.selectList("questions.selectQuestionsList" , vo));
+		model.addAttribute("count", sqlSessionTemplate.selectOne("questions.selectQuestionsCount" , vo));
+		model.addAttribute("qnum", qnum);
 	}
 	
 	public void getQUE(Model model, QuestionVO vo) {
@@ -36,6 +37,7 @@ public class QuestionService {
 		model.addAttribute("questionVO", sqlSessionTemplate.selectOne("questions.selectQuestions", vo));
 		
 	}
+
 
 	
 }

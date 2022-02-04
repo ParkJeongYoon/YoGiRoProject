@@ -46,7 +46,7 @@
                                </tr>
                             </thead>
                             <tbody>
-                            	<c:forEach var="item" items="${list}" >
+                            	<c:forEach var="item" items="${qlist}" >
                             		<tr>
 	                                  <td>${item.qnum}</td>
 	                                  <td>
@@ -63,13 +63,13 @@
                          </table>
                          
                          
-                         <div class="pagenum" style="text-align: center; margin-top: 20px; ">
+                         <div class="pageqnum" style="text-align: center; margin-top: 20px; ">
                          	<%
-								int num = (Integer)request.getAttribute("num");
+								int qnum = (Integer)request.getAttribute("qnum");
 								int count = (Integer)request.getAttribute("count");
 								int total = count/10+((count%10==0)?0:1);
-								int minBlock = (((num-1)/10)*10)+1;
-								int maxBlock = (((num-1)/10)+1)*10;
+								int minBlock = (((qnum-1)/10)*10)+1;
+								int maxBlock = (((qnum-1)/10)+1)*10;
 								
 								pageContext.setAttribute("total", total);
 								pageContext.setAttribute("minBlock", minBlock);
@@ -78,15 +78,15 @@
 								// 검색 데이터 연동
 								String query = "";
 								
-								String title = (String)request.getAttribute("title");
-								String content = (String)request.getAttribute("content");
+								String qtitle = (String)request.getAttribute("qtitle");
+								String qcontent = (String)request.getAttribute("qcontent");
 								
-								if(title != null){
-									query += "&title="+title;
+								if(qtitle != null){
+									query += "&qtitle="+qtitle;
 								}
 								
-								if(content != null){
-									query += "&content="+content;
+								if(qcontent != null){
+									query += "&qcontent="+qcontent;
 								}
 								
 								pageContext.setAttribute("query", query);
@@ -96,39 +96,39 @@
 									<span><i class="fas fa-angle-double-left"></i></span>	
 								</c:when>
 								<c:otherwise>
-									<a href="${pageContext.request.contextPath}/manager/manager2/manager-que?num=${minBlock-1}${query}">
+									<a href="${pageContext.request.contextPath}/manager/manager2/manager-que?qnum=${minBlock-1}${query}">
 										<span><i class="fas fa-angle-double-left"></i></span>
 									</a>
 								</c:otherwise>
 							</c:choose>
 							&nbsp;&nbsp;
 							<c:choose>
-								<c:when test="${num==1 }">
+								<c:when test="${qnum==1 }">
 									<span><i class="fas fa-chevron-left"></i></span>
 								</c:when>
 								<c:otherwise>
-									<a href="${pageContext.request.contextPath}/manager/manager2/manager-que?num=${num-1}${query}">
+									<a href="${pageContext.request.contextPath}/manager/manager2/manager-que?qnum=${qnum-1}${query}">
 										<span><i class="fas fa-chevron-left"></i></span>
 									</a>
 								</c:otherwise>
 							</c:choose>
 							<c:forEach begin="${minBlock}" end="${(total<maxBlock)?total:maxBlock}" step="1" var="i">
 								<c:choose>
-									<c:when test="${num == i}">
+									<c:when test="${qnum == i}">
 										<span>${i}</span>
 									</c:when>
 									<c:otherwise>
-										<a href="${pageContext.request.contextPath}/manager/manager2/manager-que?num=${i}${query}">${i}</a>
+										<a href="${pageContext.request.contextPath}/manager/manager2/manager-que?qnum=${i}${query}">${i}</a>
 									</c:otherwise>
 								</c:choose>
 						
 							</c:forEach>
 							<c:choose>
-								<c:when test="${num == total }">
+								<c:when test="${qnum == total }">
 									<span><i class="fas fa-chevron-right"></i></span>
 								</c:when>
 								<c:otherwise>
-									<a href="${pageContext.request.contextPath}/manager/manager2/manager-que?num=${num+1}${query}">
+									<a href="${pageContext.request.contextPath}/manager/manager2/manager-que?qnum=${qnum+1}${query}">
 										<span><i class="fas fa-chevron-right"></i></span>
 									</a>	
 								</c:otherwise>
@@ -139,7 +139,7 @@
 									<span> <i class="fas fa-angle-double-right"></i></span>	
 								</c:when>
 								<c:otherwise>
-									<a href="${pageContext.request.contextPath}/manager/manager2/manager-que?num=${maxBlock+1}${query}">
+									<a href="${pageContext.request.contextPath}/manager/manager2/manager-que?qnum=${maxBlock+1}${query}">
 										<span> <i class="fas fa-angle-double-right"></i></span>
 									</a>
 								</c:otherwise>
@@ -149,34 +149,34 @@
 									
                         <div class="com-input">
                             <c:choose>
-					<c:when test="${(title!=null)&&(content!=null)}">
+					<c:when test="${(qtitle!=null)&&(qcontent!=null)}">
 						<select name="category" id="category">
-							<option value="title">제목</option>
-							<option value="content">내용</option>
+							<option value="qtitle">제목</option>
+							<option value="qcontent">내용</option>
 							<option value="both" selected>제목+내용</option>
 						</select>
-						<input type="text" id="search-text" name="text" value="${title}" />
+						<input type="text" id="search-text" name="text" value="${qtitle}" />
 					</c:when>
-					<c:when test="${title!=null}">
+					<c:when test="${qtitle!=null}">
 						<select name="category" id="category">
-							<option value="title" selected>제목</option>
-							<option value="content">내용</option>
+							<option value="qtitle" selected>제목</option>
+							<option value="qcontent">내용</option>
 							<option value="both">제목+내용</option>
 						</select>
-						<input type="text" id="search-text" name="text" value="${title}" />
+						<input type="text" id="search-text" name="text" value="${qtitle}" />
 					</c:when>
-					<c:when test="${content!=null}">
+					<c:when test="${qcontent!=null}">
 						<select name="category" id="category">
-							<option value="title">제목</option>
-							<option value="content" selected>내용</option>
+							<option value="qtitle">제목</option>
+							<option value="qcontent" selected>내용</option>
 							<option value="both">제목+내용</option>
 						</select>
-						<input type="text" id="search-text" name="text" value="${content}" />
+						<input type="text" id="search-text" name="text" value="${qcontent}" />
 					</c:when>
 					<c:otherwise>
 						<select name="category" id="category">
-							<option value="title">제목</option>
-							<option value="content">내용</option>
+							<option value="qtitle">제목</option>
+							<option value="qcontent">내용</option>
 							<option value="both">제목+내용</option>
 						</select>
 						<input type="text" id="search-text" name="text" />
@@ -200,12 +200,12 @@
 			let category = $("#category").val();
 			let text = $("#search-text").val();
 			
-			if(category == "title") {
-				location.href = "${pageContext.request.contextPath}/manager/manager2/manager-que?title="+text;
-			}else if(category == "content") {
-				location.href = "${pageContext.request.contextPath}/manager/manager2/manager-que?content="+text;
+			if(category == "qtitle") {
+				location.href = "${pageContext.request.contextPath}/manager/manager2/manager-que?qtitle="+text;
+			}else if(category == "qcontent") {
+				location.href = "${pageContext.request.contextPath}/manager/manager2/manager-que?qcontent="+text;
 			}else if(category == "both") {
-				location.href = "${pageContext.request.contextPath}/manager/manager2/manager-que?title="+text+"&content="+text;
+				location.href = "${pageContext.request.contextPath}/manager/manager2/manager-que?qtitle="+text+"&qcontent="+text;
 			}
 		});
 		$('#search-text').on('keydown', function(e) {
@@ -215,12 +215,12 @@
 				let category = $("#category").val();
 				let text = $("#search-text").val();
 				
-				if(category == "title") {
-					location.href = "${pageContext.request.contextPath}/manager/manager2/manager-que?title="+text;
-				}else if(category == "content") {
-					location.href = "${pageContext.request.contextPath}/manager/manager2/manager-que?content="+text;
+				if(category == "qtitle") {
+					location.href = "${pageContext.request.contextPath}/manager/manager2/manager-que?qtitle="+text;
+				}else if(category == "qcontent") {
+					location.href = "${pageContext.request.contextPath}/manager/manager2/manager-que?qcontent="+text;
 				}else if(category == "both") {
-					location.href = "${pageContext.request.contextPath}/manager/manager2/manager-que?title="+text+"&content="+text;
+					location.href = "${pageContext.request.contextPath}/manager/manager2/manager-que?qtitle="+text+"&qcontent="+text;
 				}
 			}
 		});

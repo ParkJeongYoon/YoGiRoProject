@@ -11,6 +11,14 @@
 		and qnum = #{qnum}
 		</select>
 		
+		<select id="selectAnswerList" parameterType="answerVO" resultType="answerVO">
+		select anum , qnum , userid , ismanager , atitle, acreatedate, acontent, isdelete
+		from answer
+		where ismanager = 'Y'
+		and isdelete = 'N'
+		and qnum = #{qnum}
+		</select>
+		
 		<insert id="insertAnswer" parameterType="answerVO">
 		insert into answer(anum, qnum, atitle, acontent ,acreatedate )
 		values(#{anum}, #{qnum}, #{atitle}, #{acontent} , #{acreatedate})

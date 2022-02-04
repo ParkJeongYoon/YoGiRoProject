@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="qna">
+	<!-- 전체 글갯수 및 페이징 -->
+	<select id="selectQnaCount" parameterType="qnaVO" resultType="int">
+		select count(*)
+		from qna
+		where isdelete = 'N'
+		<choose>
+			<when test="qtitle != null and qcontent != null">
+				and (qtitle like #{qtitle} or qcontent like #{qcontent})
+			</when>
+			<when test="qtitle == null and qcontent != null">
+				and qcontent like #{qcontent}
+			</when>
+			<when test="qtitle != null and qcontent == null">
+				and qtitle like #{qtitle}
+			</when>
+		</choose>
+	</select>
+	
+	
+	<!-- 글작성 -->
+	<select id="selectQnaByNum" parameterType="int" resultType="qnaVO">
+		select qnum , groupid , parent , depth , readcount , userid , qtitle , qcreatedate , qcontent , isdelete
+		from qna
+		where qnum = #{qnum}
+	</select>
+	<insert id="insertQna" parameterType="qnaVO">
+		insert into qna(qtitle , qcontent , userid , qcreatedate)
+		values(#{qtitle} , #{qcontent} , #{userid} , #{qcreatedate})
+	</insert>
+	
+</mapper>
