@@ -28,8 +28,8 @@ public class MemberService {
 			vo.setUseremail("%"+useremail+"%");;
 		}
 		
-		model.addAttribute("list", sqlSessionTemplate.selectList("user.selectUserList",vo));
-		model.addAttribute("count", sqlSessionTemplate.selectOne("user.selectUserCount", vo));
+		model.addAttribute("list", sqlSessionTemplate.selectList("member.selectUserList",vo));
+		model.addAttribute("count", sqlSessionTemplate.selectOne("member.selectUserCount", vo));
 		model.addAttribute("usernum", usernum);
 		
 		
@@ -48,7 +48,7 @@ public class MemberService {
 			vo.setUseremail("%"+useremail+"%");;
 		}
 		
-		model.addAttribute("list", sqlSessionTemplate.selectList("user.selectUserBlock", vo));
+		model.addAttribute("list", sqlSessionTemplate.selectList("member.selectUserBlock", vo));
 		model.addAttribute("usernum", usernum);
 	}
 }
