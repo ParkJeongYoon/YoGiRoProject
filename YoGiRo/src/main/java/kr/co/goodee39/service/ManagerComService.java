@@ -15,7 +15,7 @@ public class ManagerComService {
 	
 	public void selectComList(Model model, int comid, String title, String content) {
 		CommunityVO vo = new CommunityVO();
-		vo.setStart((comid-1)*vo.getCount());
+		vo.setStart((comid-1)*vo.getCount()); 
 		if(!title.equals("")) {
 			model.addAttribute("title", title);
 			vo.setComtitle("%"+title+"%");

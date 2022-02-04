@@ -14,7 +14,7 @@ public class ManagerComController {
 	@Autowired
 	private ManagerComService comService;
 	
-	@GetMapping("/manager/manager5/manager-community")
+	@GetMapping("/manager/manager5/manager-community") 
 	public String getCommList(Model model, @RequestParam(defaultValue = "1") int comid,
 			 		@RequestParam(defaultValue = "") String comtitle,
 			 		@RequestParam(defaultValue = "") String comcontent) {
