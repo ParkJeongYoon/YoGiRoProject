@@ -11,5 +11,6 @@
 		<typeAlias type="kr.co.goodee39.vo.AnswerVO" alias="qnaVO"/>
 =======
 		<typeAlias type="kr.co.goodee39.vo.UserVO" alias="userVO"/>
+>>>>>>> branch 'develop' of https://github.com/ParkJeongYoon/YoGiRoProject.git
 	</typeAliases>
 </configuration>

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.co.goodee39.service.AnswerService;
 import kr.co.goodee39.service.QuestionService;
 import kr.co.goodee39.vo.AnswerVO;
 import kr.co.goodee39.vo.QuestionVO;
@@ -25,10 +26,10 @@ public class QuestionController {
 	
 	
 	@GetMapping("/manager/manager2/manager-que")
-	public String getQUEList(Model model, @RequestParam(defaultValue = "1") int num,
+	public String getQUEList(Model model, @RequestParam(defaultValue = "1") int qnum,
 										@RequestParam(defaultValue="") String qtitle,
 										@RequestParam(defaultValue="") String qcontent) {
-		service.getQUEList(model, num, qtitle, qcontent);
+		service.getQUEList(model, qnum, qtitle, qcontent);
 		return "/manager/manager2/manager-que";
 	}
 	
@@ -40,5 +41,16 @@ public class QuestionController {
 		return "/manager/manager2/manager-qued";
 	}
 	
+	
+	
+//	@GetMapping("/qna/qna-main")
+//	public String getQnaList(Model model,
+//							@RequestParam(defaultValue = "1") int qnum,
+//							@RequestParam(defaultValue = "") String qtitle,
+//							@RequestParam(defaultValue = "") String qcontent) {
+//		service.getQUEList(model , qnum , qtitle , qcontent);
+//
+//		return "qna/qna-main";
+//	}
 	
 }

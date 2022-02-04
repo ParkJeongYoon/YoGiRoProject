@@ -38,6 +38,7 @@
 		limit #{start}, #{count}
 	</select>
 	
+	
 	<select id="selectQuestions" parameterType="questionVO" resultType="questionVO">
 		select qnum, userid, qtitle, qcreatedate, qcontent, isdelete
 		from questions
