@@ -190,10 +190,11 @@ hr {
 
 				<c:set var="i" value="${i+1}"></c:set>
 			</c:forEach>
-		</main>
+		<jsp:include page="../../comments/course_comments.jsp" ></jsp:include>
+		<br><br><br><br><br>
+		</main>  
 
-
-
+		 
 		<jsp:include page="../../includes/footer.jsp"></jsp:include>
 	</div>
 </body>
