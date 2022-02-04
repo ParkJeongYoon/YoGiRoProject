@@ -30,7 +30,7 @@ public class MemberService {
 		
 		model.addAttribute("list", sqlSessionTemplate.selectList("member.selectUserList",vo));
 		model.addAttribute("count", sqlSessionTemplate.selectOne("member.selectUserCount", vo));
-		model.addAttribute("usernum", usernumber);
+		model.addAttribute("usernumber", usernumber);
 		
 		
 	}

@@ -18,7 +18,7 @@
 		</choose>
   	</select>
   	<select id="selectUserList" parameterType="UserVO" resultType="UserVO">
-  		select userid, username, usernum, usernickname, userpassword, useremail, userphonenumber, isblock, ismanager
+  		select userid, username, usernumber, usernickname, userpassword, useremail, userphonenumber, isblock, ismanager
 		from user
 		where isblock = 'N'
 		<choose>
@@ -30,15 +30,15 @@
 				and userid like #{userid}
 			</when>
 		</choose>
-		order by usernum desc
+		order by usernumber desc
 		limit #{start}, #{count}
   	</select>
   	
   	<select id="selectUserBlock" parameterType="UserVO" resultType="UserVO">
-  		select userid, username, usernum, usernickname, userpassword, useremail, userphonenumber, isblock, ismanager
+  		select userid, username, usernumber, usernickname, userpassword, useremail, userphonenumber, isblock, ismanager
 		from user
 		where isblock = 'Y'
-		order by usernum desc
+		order by usernumber desc
 		limit #{start}, #{count}
   	</select>
   	
