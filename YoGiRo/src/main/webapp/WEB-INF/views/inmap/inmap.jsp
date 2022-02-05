@@ -1,5 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,14 +33,6 @@ aside {
 	height: 80vh;
 	width: 30%;
 	margin-right: 30px;
-}
-
-.side {
-	width: 100%;
-	height: 33%;
-	background-color: #e7e7e7;
-	border-radius: 15px;
-	margin-bottom: 30px;
 }
 
 /* 메인 컨텐츠 */
@@ -129,6 +122,51 @@ input[type='checkbox']:checked+label {
 	padding: 20px 0;
 	border-radius: 0 0 15px 15px;
 }
+
+.side {
+	width: 100%;
+	height: 33%;
+	background-color: #e7e7e7;
+	border-radius: 5px;
+	margin-bottom: 30px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 1% 3%;
+	justify-content: space-around;
+	padding: 15px;
+	align-self: start;
+	align-content: space-around;
+}
+
+.course_p, .food_p {
+	visibility: hidden;
+	color: #fff;
+	font-size: 0.9rem;
+	height: 70px;
+	width: 100%;
+	/* display: inherit; */
+	/* line-height: 65px; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.food, .course {
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+}
+
+.course_image:hover .course_p, .food_image:hover .food_p {
+	visibility: inherit;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.course_image, .food_image{
+	width: 100%;
+	height: 70px;
+	text-align: center;
+}
 </style>
 </head>
 <body class="body">
@@ -136,9 +174,39 @@ input[type='checkbox']:checked+label {
 		<jsp:include page="../includes/header.jsp"></jsp:include>
 		<div class="main-container">
 			<aside>
-				<div class="side-food side"></div>
-				<div class="side-fasta side"></div>
-				<div class="side-course side"></div>
+				<div class="side-food side">
+					<c:forEach var="i" begin="3" end="8">
+						<div class="food-container">
+							<a href="food_detail?contentid=${foodList[i].contentid}&themecode=3" class="food">
+								<div class="food_image" style="background: center / cover no-repeat url('${foodList[i].firstimage}')">
+									<p class="food_p">${foodList[i].title}</p>
+								</div>
+							</a>
+						</div>
+					</c:forEach>
+				</div>
+				<div class="side-fasta side">
+					<c:forEach var="i" begin="3" end="8">
+						<div class="food-container">
+							<a href="food_detail?contentid=${foodList[i].contentid}&themecode=3" class="food">
+								<div class="food_image" style="background: center / cover no-repeat url('${foodList[i].firstimage}')">
+									<p class="food_p">${foodList[i].title}</p>
+								</div>
+							</a>
+						</div>
+					</c:forEach>
+				</div>
+				<div class="side-course side">
+					<c:forEach var="i" begin="3" end="8">
+						<div class="course-container">
+							<a href="course_detail?contentid=${commonList[i].contentid}&themecode='2'" class="course">
+								<div class="course_image" style="background: center / cover no-repeat url('${commonList[i].firstimage}')">
+									<p class="course_p">${commonList[i].title}</p>
+								</div>
+							</a>
+						</div>
+					</c:forEach>
+				</div>
 			</aside>
 			<main>
 				<div class="content" style="display: flex; flex-direction: column;">
@@ -152,7 +220,7 @@ input[type='checkbox']:checked+label {
 								<div id="map">
 									<div class="btn-container">
 										<input type="checkbox" id="oasis-btn" style="display: none;"> 
-										<label for="oasis-btn" class="btnbar">휴게소</label> 
+										<label for="oasis-btn" class="btnbar1">휴게소</label> 
 										<input type="checkbox" id="petrol-btn" style="display: none;"> 
 										<label for="petrol-btn" class="btnbar">주유소</label> 
 										<input type="checkbox" id="accident-btn" style="display: none;"> 
