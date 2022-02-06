@@ -142,30 +142,46 @@ input[type='checkbox']:checked+label {
 	visibility: hidden;
 	color: #fff;
 	font-size: 0.9rem;
-	height: 70px;
-	width: 100%;
-	/* display: inherit; */
-	/* line-height: 65px; */
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	/* height: 70px; */
+	width: 80px;
+	overflow: hidden;
+  	text-overflow: ellipsis;
+  	white-space: normal;
+  	line-height: 0.9rem;
+  	max-height: 70px;
+  	word-wrap: break-word; 
+  	display: -webkit-box; 
+  	-webkit-line-clamp: 3; 
+  	-webkit-box-orient: vertical;
 }
 
 .food, .course {
 	width: 100%;
-	height: 100%;
+	height: 70px;
 	background-color: #fff;
 }
-
-.course_image:hover .course_p, .food_image:hover .food_p {
-	visibility: inherit;
+.backcolor {
+	width: 100%;
+	height: 70px;
+	display: flex;
+	visibility: hidden;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+}
+.course_image:hover .backcolor, .food_image:hover .backcolor {
+	visibility: visible;
 	background-color: rgba(0, 0, 0, 0.5);
 }
 
+.course_image:hover .course_p, .food_image:hover .food_p {
+	visibility: visible;
+}
+
 .course_image, .food_image{
+	display: flex;
 	width: 100%;
 	height: 70px;
-	text-align: center;
 }
 </style>
 </head>
@@ -179,7 +195,9 @@ input[type='checkbox']:checked+label {
 						<div class="food-container">
 							<a href="food_detail?contentid=${foodList[i].contentid}&themecode=3" class="food">
 								<div class="food_image" style="background: center / cover no-repeat url('${foodList[i].firstimage}')">
-									<p class="food_p">${foodList[i].title}</p>
+									<div class="backcolor">
+										<p class="food_p">${foodList[i].title}</p>
+									</div>
 								</div>
 							</a>
 						</div>
@@ -190,7 +208,9 @@ input[type='checkbox']:checked+label {
 						<div class="food-container">
 							<a href="food_detail?contentid=${foodList[i].contentid}&themecode=3" class="food">
 								<div class="food_image" style="background: center / cover no-repeat url('${foodList[i].firstimage}')">
-									<p class="food_p">${foodList[i].title}</p>
+									<div class="backcolor">
+										<p class="food_p">${foodList[i].title}</p>
+									</div>
 								</div>
 							</a>
 						</div>
@@ -201,7 +221,9 @@ input[type='checkbox']:checked+label {
 						<div class="course-container">
 							<a href="course_detail?contentid=${commonList[i].contentid}&themecode='2'" class="course">
 								<div class="course_image" style="background: center / cover no-repeat url('${commonList[i].firstimage}')">
-									<p class="course_p">${commonList[i].title}</p>
+									<div class="backcolor">
+										<p class="course_p">${commonList[i].title}</p>
+									</div>
 								</div>
 							</a>
 						</div>
