@@ -9,5 +9,11 @@
 		<typeAlias type="kr.co.goodee39.vo.AnswerVO" alias="qnaVO"/>
 		<typeAlias type="kr.co.goodee39.vo.UserVO" alias="userVO"/>
 		<typeAlias type="kr.co.goodee39.vo.ComCommentVO" alias="comcomVO"/>
+		<typeAlias type="kr.co.goodee39.vo.FoodVO" alias="FoodVO"/>
+		<typeAlias type="kr.co.goodee39.vo.MyFoodVO" alias="MyFoodVO"/>
+		<typeAlias type="kr.co.goodee39.vo.CourseCommonVO" alias="CourseCommonVO"/>
+		<typeAlias type="kr.co.goodee39.vo.CourseDetailVO" alias="CourseDetailVO"/>
+		<typeAlias type="kr.co.goodee39.vo.MyCourseCommonVO" alias="MyCourseCommonVO"/>
+		<typeAlias type="kr.co.goodee39.vo.MyCourseDetailVO" alias="MyCourseDetailVO"/>
 	</typeAliases>
 </configuration>

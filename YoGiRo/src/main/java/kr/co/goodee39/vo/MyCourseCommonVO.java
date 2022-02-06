@@ -10,6 +10,26 @@ public class MyCourseCommonVO {
 	String totaltime;
 	int mycoursecommonisdelete;
 	String mycourseregion;
+	int start;
+	int count;
+	
+	public MyCourseCommonVO() {
+		// TODO Auto-generated constructor stub
+		this.start = 0;
+		this.count = 9;
+	}
+	public int getStart() {
+		return start;
+	}
+	public void setStart(int start) {
+		this.start = start;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	public String getMycourseregion() {
 		return mycourseregion;
 	}

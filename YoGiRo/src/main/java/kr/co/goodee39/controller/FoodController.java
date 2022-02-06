@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.goodee39.service.FoodService;
 import kr.co.goodee39.vo.CourseCommonVO;
@@ -12,6 +13,8 @@ import kr.co.goodee39.vo.CourseDetailVO;
 import kr.co.goodee39.vo.FoodImageVO;
 import kr.co.goodee39.vo.FoodVO;
 import kr.co.goodee39.vo.MyCourseCommonVO;
+import kr.co.goodee39.vo.MyCourseDetailVO;
+import kr.co.goodee39.vo.MyFoodVO;
 
 @Controller
 public class FoodController {
@@ -21,9 +24,11 @@ public class FoodController {
 	 
 	 @GetMapping("/move-to-food-main")
 		public String getFood(@ModelAttribute("FoodVO") FoodVO vo, Model model) {
-			//MyCourseCommonVO mvo = new MyCourseCommonVO();
+			MyFoodVO mfv = new MyFoodVO();
 			System.out.println(vo.getRegion());
 			fs.getFoodToJSP(model, vo);
+			mfv.setRegion(vo.getRegion());
+			fs.getMyFoodToJSP(model, mfv);
 			//fs.getCourseCommonToJSP(model,vo);
 			//fs.getCourseDetailToJSP(model,vo);
 			//mvo.setMycourseregion(vo.getRegion());
@@ -36,6 +41,9 @@ public class FoodController {
 		public String getFoodAjax(@ModelAttribute("FoodVO") FoodVO vo, Model model) {
 			System.out.println("새로추가한곳"+vo.getRegion());
 			fs.getFoodToJSP(model, vo);
+			MyFoodVO mfv = new MyFoodVO();
+			mfv.setRegion(vo.getRegion());
+			fs.getMyFoodToJSP(model, mfv);
 			/*MyCourseCommonVO mvo = new MyCourseCommonVO();
 			ts.getCourseCommonToJSP(model,vo);
 			ts.getCourseDetailToJSP(model,vo);
@@ -70,10 +78,44 @@ public class FoodController {
 			return "incategories/food/add_my_food";
 		}
 	 
+	 @GetMapping("/myfood_detail")
+		public String getMyFoodDetailPage(@ModelAttribute("MyFoodVO") MyFoodVO vo ,Model model) {
+			/*MyCourseDetailVO mdv = new MyCourseDetailVO();
+			mdv.setMycoursecommonid(vo.getMycoursecommonid());
+			
+			ts.selectMyCourseCommonToDetailPage(model, vo);
+			ts.selectMyCourseDetailToDetailPage(model, mdv);
+			*/
+		 	
+		 	fs.selectMyFoodToDetailPage(model, vo);
+			return "incategories/food/myfood-detail";
+		}
 	 
 	 
 	 
-	 //------------- comment
 	 
+	 //----------------- 더보기
+	 
+	 
+	 @GetMapping("/food_more")
+		public String moveToFoodMorePage(Model model, @RequestParam(defaultValue = "1") int num,
+														@RequestParam(defaultValue="") String title,
+														@RequestParam(defaultValue="") String treatmenu,
+														@RequestParam(defaultValue="서울") String region) {
+			
+		 	fs.selectFoodList(model, num, title, treatmenu,region);
+		 	
+			return "incategories/food/food_more";
+		}
+	 
+	 @GetMapping("/myfood_more")
+		public String moveToMyFoodMorePage(Model model, @RequestParam(defaultValue = "1") int num,
+														@RequestParam(defaultValue="") String myfoodname,
+														@RequestParam(defaultValue="") String myfooddetail,
+														@RequestParam(defaultValue="서울") String region) {
+			
+		 	fs.selectMyFoodList(model, num, myfoodname, myfooddetail, region);
+			return "incategories/food/myfood_more";
+		}
 	 
 }

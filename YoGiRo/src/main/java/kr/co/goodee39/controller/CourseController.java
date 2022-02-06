@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.goodee39.service.CourseService;
@@ -163,6 +164,32 @@ public class CourseController {
         return new ResponseEntity(json.toString(), responseHeaders, HttpStatus.CREATED);
         
     }
+	
+	
+	
+	 //----------------- 더보기
+	
+	
+	@GetMapping("/course_more")
+	public String moveToCourseMorePage(Model model, @RequestParam(defaultValue = "1") int num,
+													@RequestParam(defaultValue="") String title,
+													@RequestParam(defaultValue="") String overview,
+													@RequestParam(defaultValue="서울") String region) {
+		
+	 	ts.selectCourseList(model, num, title, overview,region);
+	 	
+		return "incategories/course/course_more";
+	}
+ 
+	@GetMapping("/mycourse_more")
+	public String moveToMyCourseMorePage(Model model, @RequestParam(defaultValue = "1") int num,
+													@RequestParam(defaultValue="") String mycoursecommontitle,
+													@RequestParam(defaultValue="") String mycourseinfo,
+													@RequestParam(defaultValue="서울") String region) {
+		
+	 	ts.selectMyCourseList(model, num, mycoursecommontitle, mycourseinfo, region);
+		return "incategories/course/mycourse_more";
+	}
 }
 
 

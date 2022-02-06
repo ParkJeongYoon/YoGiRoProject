@@ -90,4 +90,79 @@
 		select themepostid,themecode,userid, themecommentcontent, themecommentdate from themecomment
 		where themecode=#{themecode} and themepostid=#{themepostid}; 
 	</select>
+	
+	
+	<!-- 더보기, 검색  -->
+	
+		<select id="selectCourseCount" parameterType="CourseCommonVO" resultType="int">
+		select count(*)
+		from coursecommon
+		where region = #{region}
+		<choose>
+			<when test="title != null and overview != null">
+				and (title like #{title} or overview like #{overview})
+			</when>
+			<when test="title == null and overview != null">
+				and overview like #{overview}
+			</when>
+			<when test="title != null and overview == null">
+				and title like #{title}
+			</when>
+		</choose>
+	</select>
+	
+	<select id="selectCourseList" parameterType="CourseCommonVO" resultType="CourseCommonVO">
+		select contentid,themecode,region,firstimage,firstimage2,overview,title,mapx,mapy,distance, taketime, mlevel 
+		from coursecommon
+		where region = #{region}
+		<choose>
+			<when test="title != null and overview != null">
+				and (title like #{title} or overview like #{overview})
+			</when>
+			<when test="title == null and overview != null">
+				and overview like #{overview}
+			</when>
+			<when test="title != null and overview == null">
+				and title like #{title}
+			</when>
+		</choose>
+		order by contentid desc
+		limit #{start}, #{count}
+	</select>
+	
+	<select id="selectMyCourseCount" parameterType="MyCourseCommonVO" resultType="int">
+		select count(*)
+		from mycoursecommon
+		where mycourseregion = #{mycourseregion}
+		<choose>
+			<when test="mycoursecommontitle != null and mycourseinfo != null">
+				and (mycoursecommontitle like #{mycoursecommontitle} or mycourseinfo like #{mycourseinfo})
+			</when>
+			<when test="mycoursecommontitle == null and mycourseinfo != null">
+				and mycourseinfo like #{mycourseinfo}
+			</when>
+			<when test="mycoursecommontitle != null and mycourseinfo == null">
+				and mycoursecommontitle like #{mycoursecommontitle}
+			</when>
+		</choose>
+	</select>
+	
+	<select id="selectMyCourseList" parameterType="MyCourseCommonVO" resultType="MyCourseCommonVO">
+		select mycoursecommonid,userid,mycoursecommontitle, mycoursemainimage, mycourseinfo,totaldistance ,totaltime ,mycoursecommonisdelete , mycourseregion
+		from mycoursecommon
+		where mycourseregion = #{mycourseregion}
+		<choose>
+			<when test="mycoursecommontitle != null and mycourseinfo != null">
+				and (mycoursecommontitle like #{mycoursecommontitle} or mycourseinfo like #{mycourseinfo})
+			</when>
+			<when test="mycoursecommontitle == null and mycourseinfo != null">
+				and mycourseinfo like #{mycourseinfo}
+			</when>
+			<when test="mycoursecommontitle != null and mycourseinfo == null">
+				and mycoursecommontitle like #{mycoursecommontitle}
+			</when>
+		</choose>
+		order by mycoursecommonid desc
+		limit #{start}, #{count}
+	</select>
 </mapper>
