@@ -41,4 +41,19 @@ public class QuestionController {
 	}
 	
 	
+	
+	
+	
+	
+	
+	@GetMapping("/qna/qna-main")
+	public String getQnaList(Model model,
+								@RequestParam(defaultValue = "1") int qnum,
+								@RequestParam(defaultValue="") String qtitle,
+								@RequestParam(defaultValue="") String qcontent) {
+		service.getQUEList(model, qnum, qtitle, qcontent);
+		return "/qna/qna-main";
+	}
+	
+	
 }

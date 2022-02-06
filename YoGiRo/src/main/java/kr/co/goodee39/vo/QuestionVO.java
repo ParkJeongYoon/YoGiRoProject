@@ -6,6 +6,7 @@ public class QuestionVO {
 	private String qtitle;
 	private String qcreatedate;
 	private String qcontent;
+	private String isans;
 	private String isdelete;
 	private int start;
 	private int count;
@@ -44,6 +45,12 @@ public class QuestionVO {
 	}
 	public void setQcontent(String qcontent) {
 		this.qcontent = qcontent;
+	}
+	public String getIsans() {
+		return isans;
+	}
+	public void setIsans(String isans) {
+		this.isans = isans;
 	}
 	public String getIsdelete() {
 		return isdelete;

@@ -147,6 +147,22 @@ main>h1 {
 	position: absolute;
 	right: 0;
 }
+/* 댓글 리스트 */
+#comment-list > div > button {
+	width: 35px;
+	height: 25px;
+	background-color: #fff;
+	border: 1px solid gray;
+	border-radius: 2px;
+	padding-bottom: 25px;
+	text-align: center;
+}
+
+#comment-list > div {
+	margin: 5px;
+	position: relative;
+	border-bottom: 1px solid lightgray;
+}
 </style>
 </head>
 <body>
@@ -235,7 +251,7 @@ main>h1 {
 								}
 							});
 							
-							div.append(delete_button);
+							/* div.append(delete_button); */
 							
 							// 수정 버튼
 							const modify_button = document.createElement("button");
@@ -252,6 +268,7 @@ main>h1 {
 								
 								const edit_modify = document.createElement("button");
 								edit_modify.innerText = "수정완료";
+								edit_modify.style.width = "60px";
 								const edit_cancel = document.createElement("button");
 								edit_cancel.innerText = "취소";
 								
@@ -294,6 +311,7 @@ main>h1 {
 							});
 							
 							div.append(modify_button);
+							div.append(delete_button);
 						}
 						
 						div.prepend(p);

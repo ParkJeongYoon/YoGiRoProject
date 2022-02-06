@@ -6,7 +6,6 @@
 		<typeAlias type="kr.co.goodee39.vo.CommunityVO" alias="communityVO"/>
 		<typeAlias type="kr.co.goodee39.vo.QuestionVO" alias="questionVO"/>
 		<typeAlias type="kr.co.goodee39.vo.AnswerVO" alias="answerVO"/>
-		<typeAlias type="kr.co.goodee39.vo.AnswerVO" alias="qnaVO"/>
 		<typeAlias type="kr.co.goodee39.vo.UserVO" alias="userVO"/>
 		<typeAlias type="kr.co.goodee39.vo.ComCommentVO" alias="comcomVO"/>
 		<typeAlias type="kr.co.goodee39.vo.FoodVO" alias="FoodVO"/>

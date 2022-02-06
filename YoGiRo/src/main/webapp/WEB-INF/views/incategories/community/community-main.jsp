@@ -28,20 +28,13 @@ aside {
 	margin-top: 100px;
 }
 
-.sidemenubar {
-	/*position: absolute;
-		left: 0;
-		top: 150px;*/
-	
-}
-
 .sidemenubar>a>div {
 	width: 180px;
 	height: 47px;
 	background-color: #FAFAFA;
 	border: 1.3px solid #E7E7E7;
 	display: flex;
-	/*		justify-content: center;*/
+	/*	justify-content: center;*/
 	align-items: center;
 }
 
@@ -134,6 +127,17 @@ thead>tr>th:nth-child(5) {
 	width: 80px;
 	position: absolute;
 	right: 10px;
+	background-color: #fff;
+	border-radius: 2px;
+	border: 1px solid gray;
+}
+
+#create-btn {
+	height: 35px;
+	width: 80px;
+	background-color: #fff;
+	border-radius: 2px;
+	border: 1px solid gray;
 }
 
 #search-text {
@@ -322,7 +326,9 @@ thead>tr>th:nth-child(5) {
 							</c:choose>
 						</div>
 					</div>
-					<input id="create-btn" type="button" value="글쓰기">
+					<c:if test="${sessionScope.account.userid!=null}">
+						<input id="create-btn" type="button" value="글쓰기">
+					</c:if>
 					<c:choose>
 						<c:when test="${(title!=null)&&(content!=null)}">
 							<select name="category" id="category">
