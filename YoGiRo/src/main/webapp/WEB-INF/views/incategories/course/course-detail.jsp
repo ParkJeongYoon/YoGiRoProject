@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/default.css">
+<script type="text/javascript"
+	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=q47hthbmmp&submodules=geocoder"></script>
 <style>
 main {
 	width: 1600px;
