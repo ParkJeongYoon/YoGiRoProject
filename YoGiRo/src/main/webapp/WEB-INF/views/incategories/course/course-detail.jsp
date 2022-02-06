@@ -149,6 +149,7 @@ hr {
 				src="${coursecommontodetailpage.firstimage}" alt="" /> 
 			
 			</c:if>
+			
 			<br />
 			<br /><br />
 			<hr />

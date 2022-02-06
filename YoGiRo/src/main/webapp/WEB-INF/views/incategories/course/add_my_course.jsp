@@ -163,6 +163,33 @@
 			div.remove();
 			num--;
 		}
+		
+		$(function(){
+			$("#submit").click(function(){
+				const formData = new FormData();
+				const $upload = $("#upload");
+				//let files = $upload[0].files;
+				formData.append("uploadFile", $upload);
+				//for (var i = 0; i < files.length; i++) {
+				//		
+				//}
+				
+				$.ajax({
+					url : '${pageContext.request.contextPath}/course/uploadfile',
+					processData : false,
+					contentType : false,
+					data : formData,
+					type : "post",
+					datatype : "json",
+					success: function(result){
+						//console.log(JSON.stringify(result));
+						$("#filelist").val(JSON.stringify(result));
+						$("#BBSVO").submit();
+					}
+				});
+			});
+		});
+		
 	</script>
 </body>
 </html>
