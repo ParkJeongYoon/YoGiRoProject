@@ -130,6 +130,11 @@ hr {
 #overview{
 	font-weight : bold;
 }
+/* 맵 div */
+#map {
+	width: 40%;
+	height: 400px;
+}
 </style>
 </head>
 <body class="body">
@@ -147,8 +152,9 @@ hr {
 			<c:if test="${coursecommontodetailpage.firstimage != null}">
 				<img id="common-img"
 				src="${coursecommontodetailpage.firstimage}" alt="" /> 
-			
+				
 			</c:if>
+			<div id="map"></div>
 			<br />
 			<br /><br />
 			<hr />
@@ -197,5 +203,29 @@ hr {
 		 
 		<jsp:include page="../../includes/footer.jsp"></jsp:include>
 	</div>
+	<script type="text/javascript">
+		/* 네이버 지도 api */
+		let y = ${coursecommontodetailpage.mapy};
+		let x = ${coursecommontodetailpage.mapx};
+		
+		var position = new naver.maps.LatLng(y, x);
+	
+		var map = new naver.maps.Map('map', {
+		    center: position,
+		    zoom: 10
+		});
+	
+		var markerOptions = {
+		    position: position,
+		    map: map,
+		    icon: {
+		    	url : '${pageContext.request.contextPath}/img/mapmarker/red-marker40.png',
+		        size: new naver.maps.Size(40, 40),
+		        anchor: new naver.maps.Point(20, 40)
+		    }
+		};
+	
+		var marker = new naver.maps.Marker(markerOptions);
+	</script>
 </body>
 </html>
