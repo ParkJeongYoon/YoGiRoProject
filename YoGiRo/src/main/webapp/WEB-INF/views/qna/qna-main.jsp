@@ -27,7 +27,6 @@
 							<th>번호</th>
 							<th>제목</th>
 							<th>작성자</th>
-							<th>조회</th>
 						</tr>
 					</thead>
 					<tbody class="qna-list-main">
@@ -35,12 +34,9 @@
 							<tr>
 								<td>${item.qnum}</td>
 								<td>
-									<c:forEach var="sp" begin="1" end="${item.depth}">&nbsp;&nbsp;</c:forEach>
-									<c:if test="${item.depth > 0}">ㄴRe : </c:if>
-									<!-- <a href="${pageContext.request.contextPath}/bbs/detail?qnum=${item.qnum}"> -->${item.qtitle}<!-- </a> -->
+									<!-- <a href="${pageContext.request.contextPath}/bbs/detail?qnum=${item.qnum}"> -->${item.qtitle}<c:if test="${item.isans eq 'Y'}">&nbsp;&nbsp;<i class="far fa-lightbulb"></i></c:if><!-- </a> -->
 								</td>
 								<td>${item.userid}</td>
-								<td>${item.readcount}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -135,9 +131,7 @@
 
             <aside class="qna-aside">
                 <div class="qna-list-bottom-inner-left">
-	                <%-- <c:if test="      ${sessionScope.account.id != null}      "> --%>
-                    	<button type="submit" class="button-sty qna-create">글쓰기 <i class="fas fa-pen"></i></button>
-					<%-- </c:if> --%>
+                   	<button type="submit" class="button-sty qna-create">글쓰기 <i class="fas fa-pen"></i></button>
                 </div>
                 <div class="qna-list-bottom-inner-right">
                     <div class="search-bar">
@@ -185,6 +179,12 @@
     
     
     <script type="text/javascript">
+   		if (${sessionScope.account.userid ne null}) {
+      			document.querySelector(".qna-create").style.display = 'block';
+		}else {
+			document.querySelector(".qna-create").style.display = 'none';
+		}
+    
     	document.querySelector(".qna-create").addEventListener("click" , function() {
     		location.href = "${pageContext.request.contextPath}/qna/qna-create";
     	});

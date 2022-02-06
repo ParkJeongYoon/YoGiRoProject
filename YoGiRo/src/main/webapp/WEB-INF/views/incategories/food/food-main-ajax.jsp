@@ -173,6 +173,7 @@ table {
 .food_content {
 	width: 18vw;
 	margin-bottom: 20px;
+	overflow : hidden;
 }
 
 
@@ -224,11 +225,12 @@ table {
 }
 
 .myfood_content {
-	border: 1px solid black;
-	border-radius: 30px;
-	width: auto;
-	margin-right : 3vw;
+	width: 19vw;
+	margin-right : 2vw;
 	margin-left : 2vw;
+}
+p {
+	overflow :hidden;
 }
 </style>
 </head>
@@ -237,8 +239,7 @@ table {
 				<div id="food_top">
 					<h1>음식점</h1>
 					<div id="search_box">
-						<input type="text" id="search">
-						<button id="search_btn">검색</button>
+						<button id="search_btn" onclick="location.href='food_more?region=${foodList[0].region}'">더보기</button>
 					</div>
 				</div>
 
@@ -271,23 +272,26 @@ table {
 				<hr />
 				<br /><br />
 				<h1>맛집 리뷰!</h1>
-				
+				<div id="search_box">
+						<button id="search_btn" onclick="location.href='myfood_more?region=${foodList[0].region}'">더보기</button>
+					</div>
+					<br><br>
 				<br> <a href="${pageContext.request.contextPath}/add_my_food"><h4 id="add_my_food">나의 맛집 올리기</h4></a> <br>
 				<br>
 				<div class="food_container">
 					<div id="user_food">
 
-<!--
 						<c:forEach var="j" begin="0" end="2">
-							<c:if test="${myCommonList[j].mycoursecommonid != null}">
-								<div id="my_course${j}" class="myfood_content">
+							<c:if test="${myFoodList[j].myfoodid != null}">
+								<div id="my_food${j}" class="myfood_content">
 
-									<a href="myfood_detail?mycoursecommonid=${myCommonList[j].mycoursecommonid}">
+									<a href="myfood_detail?myfoodid=${myFoodList[j].myfoodid}">
 										<div class="div_image"
-											style="background-image: url('${myCommonList[j].mycoursemainimage}')">
-											<div class="bg"></div>
-											<p>${myCommonList[j].mycoursecommontitle}</p>
+											style="background-image: url('${myFoodList[j].myfoodimg}')">
+											
+											
 										</div>
+										<p>${myFoodList[j].myfoodname}</p>
 									</a>
 
 									
@@ -295,7 +299,6 @@ table {
 							</div>
 							</c:if>
 						</c:forEach>
-						-->
 					</div>
 				</div>
 			</div>

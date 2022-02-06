@@ -36,6 +36,31 @@ public class QuestionService {
 		model.addAttribute("questionVO", sqlSessionTemplate.selectOne("questions.selectQuestions", vo));
 		
 	}
-
+	
+	
+	
+	
+	
+	
+	
+	public void getQnaList(Model model,
+							int qnum,
+							String qtitle,
+							String qcontent) {
+		QuestionVO vo = new QuestionVO();
+		vo.setStart((qnum-1) * vo.getCount());
+		if(!qtitle.equals("")) {
+			model.addAttribute("qtitle" , qtitle);
+			vo.setQtitle("%" + qtitle + "%");
+		}
+		if(!qcontent.equals("")) {
+			model.addAttribute("qcontent" , qcontent);
+			vo.setQcontent("%" + qcontent + "%");
+		}
+		
+		model.addAttribute("qlist" , sqlSessionTemplate.selectList("questions.selectQuestionsList",vo));
+		model.addAttribute("count" , sqlSessionTemplate.selectOne("questions.selectQuestionsCount", vo));
+		model.addAttribute("qnum" , qnum);
+	}
 	
 }

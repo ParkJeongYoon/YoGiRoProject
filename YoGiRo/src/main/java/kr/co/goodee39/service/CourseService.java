@@ -24,8 +24,10 @@ import org.w3c.dom.NodeList;
 import kr.co.goodee39.vo.CourseCommonVO;
 import kr.co.goodee39.vo.CourseDetailVO;
 import kr.co.goodee39.vo.CourseIntroVO;
+import kr.co.goodee39.vo.FoodVO;
 import kr.co.goodee39.vo.MyCourseCommonVO;
 import kr.co.goodee39.vo.MyCourseDetailVO;
+import kr.co.goodee39.vo.MyFoodVO;
 import kr.co.goodee39.vo.ThemeCommentVO;
 
 @Service
@@ -513,4 +515,43 @@ public class CourseService {
 		List<ThemeCommentVO> themeCommentVO = sqlSessionTemplate.selectList("course.selectthemecomments",vo);
 		return themeCommentVO;
 	}
+	
+	//-----------------------------더보기
+	
+		public void selectCourseList(Model model, int num, String title, String overview,String region) {
+			CourseCommonVO vo = new CourseCommonVO();
+			vo.setStart((num-1)*vo.getCount());
+			if(!title.equals("")) {
+				model.addAttribute("title", title);
+				vo.setTitle("%"+title+"%");
+			}
+			if(!overview.equals("")) {
+				model.addAttribute("overview", overview);
+				vo.setOverview("%"+overview+"%");
+			}
+			vo.setRegion(region);
+			model.addAttribute("list", sqlSessionTemplate.selectList("course.selectCourseList", vo));
+			model.addAttribute("count", sqlSessionTemplate.selectOne("course.selectCourseCount", vo));
+			model.addAttribute("num", num);
+			model.addAttribute("region",region);
+		}
+		
+		public void selectMyCourseList(Model model, int num, String mycoursecommontitle, String mycourseinfo,String region) {
+			MyCourseCommonVO vo = new MyCourseCommonVO();
+			vo.setStart((num-1)*vo.getCount());
+			if(!mycoursecommontitle.equals("")) {
+				model.addAttribute("mycoursecommontitle", mycoursecommontitle);
+				vo.setMycoursecommontitle("%"+mycoursecommontitle+"%");
+			}
+			if(!mycourseinfo.equals("")) {
+				model.addAttribute("mycourseinfo", mycourseinfo);
+				vo.setMycourseinfo("%"+mycourseinfo+"%");
+			}
+			vo.setMycourseregion(region);
+			model.addAttribute("list", sqlSessionTemplate.selectList("course.selectMyCourseList", vo));
+			model.addAttribute("count", sqlSessionTemplate.selectOne("course.selectMyCourseCount", vo));
+			model.addAttribute("num", num);
+			model.addAttribute("region",region);
+		}
+		
 }
