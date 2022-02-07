@@ -106,15 +106,15 @@
 	 		<form:form modelAttribute="ComVO"
 				action="${pageContext.request.contextPath}/incategories/community/create_result">
 				<ul>
-					<li><form:select path="comcategorynum">
+					<li><form:select id="comcategorynum" path="comcategorynum">
 							<form:option value="1">맛집</form:option>
 							<form:option value="2">축제</form:option>
 							<form:option value="3">교통</form:option>
 							<form:option value="4">추천 코스</form:option>
 							<form:option value="5">기타</form:option>
 						</form:select> <form:input id="comtitle" path="comtitle" placeholder="제목을 입력해주세요" /></li>
-					<li><form:textarea path="comcontent" id="editor" cols="50"
-							rows="10" /></li>
+					<li><form:textarea path="comcontent" id="editor" cols="50" rows="10" /></li>
+					<%-- <li><form:button id="btn">임시저장</form:button></li> --%>
 					<li><form:button id="btn">전송</form:button></li>
 					<form:hidden path="comuserid"
 						value="${sessionScope.account.userid}" />
@@ -136,7 +136,9 @@
 							enterMode : '2'
 						}); // 파일업로드 컨트롤러로 보내기
 	};
-
+	
+	// 임시저장
+	
 	// 사이드메뉴 ajax 이동
 	function acyncMovePage(url) {
 		// ajax option

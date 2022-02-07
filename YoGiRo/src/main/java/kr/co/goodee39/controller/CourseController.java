@@ -46,6 +46,7 @@ import kr.co.goodee39.vo.AttachImageVO;
 import kr.co.goodee39.vo.MyCourseCommonVO;
 import kr.co.goodee39.vo.MyCourseDetailVO;
 import kr.co.goodee39.vo.ThemeCommentVO;
+import kr.co.goodee39.vo.UserVO;
 
 @Controller
 public class CourseController {
