@@ -180,7 +180,7 @@ td {
 							<tr>
 								<td class="info_title">아이디</td>
 								<td class="info_box"><input type="text" id="userid" name="userid"
-									value="${account.userid}" required="required" readonly></td>
+									value="${sessionScope.account.userid}" required="required" readonly></td>
 							</tr>
 							<tr>
 								<td class="info_title">비밀번호</td>
