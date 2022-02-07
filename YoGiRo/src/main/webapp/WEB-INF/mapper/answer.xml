@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="answer">
-  		<select id="selectAnswer" parameterType="answerVO" resultType="answerVO">
+  		<!-- <select id="selectAnswer" parameterType="answerVO" resultType="answerVO">
 		select anum, qnum, atitle, acreatedate, acontent, isdelete
 		from answer
 		where isdelete = 'N'
@@ -20,7 +20,38 @@
 		</select>
 		
 		<insert id="insertAnswer" parameterType="answerVO">
-		insert into answer(anum, qnum, atitle, acontent ,acreatedate )
+		insert into answer(anum, qnum, atitle, acontent ,acreatedate)
 		values(#{anum}, #{qnum}, #{atitle}, #{acontent} , #{acreatedate})
-		</insert>
+		</insert> -->
+		
+		
+		
+		
+	<select id="selectAnswerList" parameterType="answerVO" resultType="answerVO">
+		select anum , qnum , userid , ismanager , atitle , acreatedate , acontent , isdelete
+		from answer
+		where qnum = #{qnum}
+	</select>
+	
+	<select id="selectUserAnswer" parameterType="answerVO" resultType="answerVO">
+		select anum , qnum , userid , ismanager , atitle , acreatedate , acontent , isdelete
+		from answer
+		where userid = #{userid}
+	</select>
+	
+	<insert id="insertAnswer" parameterType="answerVO" useGeneratedKeys="true" keyProperty="num">
+		insert into answer(qnum , userid , ismanager , atitle , acreatedate , acontent)
+		values(#{qnum} , #{userid} , #{ismanager} , #{atitle} , #{acreatedate} , #{acontent})
+	</insert>
+	<insert id="insertIsans" parameterType="answerVO">
+		insert into questions(isans)
+		values('Y')
+	</insert>
+	
+	<!-- 컨트롤러에 해킹방지를 위한 세션에 담은 넘버값을 '쿼리에 맞을 경우'를 핸들링 하기 위해서 'and writernum = #{writernum}'추가했다. -->
+	<update id="deleteAnswer" parameterType="answerVO">
+		update answer set isdelete = 'Y'
+		where anum = #{anum}
+		and ismanager = #{ismanager}
+	</update>
   </mapper >
