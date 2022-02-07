@@ -10,10 +10,7 @@
 	content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>Document</title>
 <script src="${pageContext.request.contextPath}/docs/js/jquery-1.9.1.js"></script>
-<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/docs/js/examples-base.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/docs/js/highlight.min.js"></script> --%>
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=q47hthbmmp&amp;submodules=geocoder"></script>
-<%-- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/docs/css/examples-base.css" /> --%>
 <script>
 	var HOME_PATH = '${pageContext.request.contextPath}/docs';
 </script>
@@ -23,8 +20,9 @@
 .main-container {
 	display: flex;
 	width: 100%;
-	height: 90vh;
+	height: 93vh;
 	margin-top: 90px;
+	margin-bottom: 50px;
 }
 
 /* 왼쪽 사이드메뉴 */
@@ -32,15 +30,16 @@ aside {
 	position: relative;
 	height: 82vh;
 	width: 30%;
-	margin-right: 30px;
+	margin-right: 20px;
 }
 
 /* 메인 컨텐츠 */
 main {
 	width: 70%;
-	height: 89vh;
+	height: 100%;
 	background-color: #e7e7e7;
 	position: relative;
+	border-radius: 15px;
 }
 
 .test-weather {
@@ -63,7 +62,7 @@ main {
 
 #map {
 	width: 62vw;
-	height: 68vh;
+	height: 69vh;
 	margin-bottom: 2%;
 	position: relative;
 }
@@ -123,18 +122,26 @@ input[type='checkbox']:checked+label {
 	padding: 20px 0;
 	border-radius: 0 0 15px 15px;
 }
-
+.side1 {
+	width: 100%;
+	height: 36%;
+	background-color: #e7e7e7;
+	border-radius: 15px;
+	margin-bottom: 20px;
+}
+.side1 > h2 {
+	/* margin: 30px 0 0px 10px; */
+	padding: 10px 0 0 12px;
+	font-size: 1.3rem;
+}
 .side {
 	width: 100%;
-	height: 33%;
-	background-color: #e7e7e7;
-	border-radius: 5px;
-	margin-bottom: 30px;
+	height: 80%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	gap: 1% 3%;
 	justify-content: space-around;
-	padding: 15px;
+	padding: 0 15px 15px 15px;
 	align-self: start;
 	align-content: space-around;
 }
@@ -191,44 +198,53 @@ input[type='checkbox']:checked+label {
 		<jsp:include page="../includes/header.jsp"></jsp:include>
 		<div class="main-container">
 			<aside>
-				<div class="side-food side">
-					<c:forEach var="i" begin="3" end="8">
-						<div class="food-container">
-							<a href="food_detail?contentid=${foodList[i].contentid}&themecode=3" class="food">
-								<div class="food_image" style="background: center / cover no-repeat url('${foodList[i].firstimage}')">
-									<div class="backcolor">
-										<p class="food_p">${foodList[i].title}</p>
+				<div class="side1">
+				<h2>음식점</h2>
+					<div class="side-food side">
+						<c:forEach var="i" begin="3" end="8">
+							<div class="food-container">
+								<a href="${pageContext.request.contextPath}/food_detail?contentid=${foodList[i].contentid}&themecode=3" class="food">
+									<div class="food_image" style="background: center / cover no-repeat url('${foodList[i].firstimage}')">
+										<div class="backcolor">
+											<p class="food_p">${foodList[i].title}</p>
+										</div>
 									</div>
-								</div>
-							</a>
-						</div>
-					</c:forEach>
+								</a>
+							</div>
+						</c:forEach>
+					</div>
 				</div>
-				<div class="side-fasta side">
-					<c:forEach var="i" begin="3" end="8">
-						<div class="food-container">
-							<a href="food_detail?contentid=${foodList[i].contentid}&themecode=3" class="food">
-								<div class="food_image" style="background: center / cover no-repeat url('${foodList[i].firstimage}')">
-									<div class="backcolor">
-										<p class="food_p">${foodList[i].title}</p>
+				<div class="side1">
+					<h2>축제</h2>
+					<div class="side-fasta side">
+						<c:forEach var="i" begin="3" end="8">
+							<div class="food-container">
+								<a href="${pageContext.request.contextPath}/food_detail?contentid=${foodList[i].contentid}&themecode=3" class="food">
+									<div class="food_image" style="background: center / cover no-repeat url('${foodList[i].firstimage}')">
+										<div class="backcolor">
+											<p class="food_p">${foodList[i].title}</p>
+										</div>
 									</div>
-								</div>
-							</a>
-						</div>
-					</c:forEach>
+								</a>
+							</div>
+						</c:forEach>
+					</div>
 				</div>
-				<div class="side-course side">
-					<c:forEach var="i" begin="3" end="8">
-						<div class="course-container">
-							<a href="course_detail?contentid=${commonList[i].contentid}&themecode='2'" class="course">
-								<div class="course_image" style="background: center / cover no-repeat url('${commonList[i].firstimage}')">
-									<div class="backcolor">
-										<p class="course_p">${commonList[i].title}</p>
+				<div class="side1">
+					<h2>코스</h2>
+					<div class="side-course side">
+						<c:forEach var="i" begin="3" end="8">
+							<div class="course-container">
+								<a href="${pageContext.request.contextPath}/course_detail?contentid=${commonList[i].contentid}&themecode='2'" class="course">
+									<div class="course_image" style="background: center / cover no-repeat url('${commonList[i].firstimage}')">
+										<div class="backcolor">
+											<p class="course_p">${commonList[i].title}</p>
+										</div>
 									</div>
-								</div>
-							</a>
-						</div>
-					</c:forEach>
+								</a>
+							</div>
+						</c:forEach>
+					</div>
 				</div>
 			</aside>
 			<main>

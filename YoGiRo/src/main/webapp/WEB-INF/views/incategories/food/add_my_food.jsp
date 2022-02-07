@@ -43,6 +43,10 @@
 #regionlabel {
 	display: inline-block;
 }
+#myfooddetail {
+		width: 100%;
+		height: 100%;
+}
 </style>
 </head>
 <body class="body">
@@ -110,6 +114,14 @@
 
 		<jsp:include page="../../includes/footer.jsp"></jsp:include>
 	</div>
-
+	<script type="text/javascript">
+	// 에디터
+	window.onload = function() {
+		ck = CKEDITOR.replace("myfooddetail",{
+				filebrowserUploadUrl : '${pageContext.request.contextPath}/add_my_food/imageUpload',
+				enterMode : '2'
+		}); // 파일업로드 컨트롤러로 보내기
+	};
+	</script>
 </body>
 </html>
