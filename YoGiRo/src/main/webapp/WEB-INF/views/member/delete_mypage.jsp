@@ -184,11 +184,11 @@ td {
 							</tr>
 							<tr>
 								<td class="info_title">비밀번호</td>
-								<td class="info_box"><input type="password" id="userpassword" name="userpassword" value="${account.userpassword}"></td>
+								<td class="info_box"><input type="password" id="userpassword" name="userpassword" value="${sessionScope.account.userpassword}"></td>
 							</tr>
 							<tr>
 								<td class="info_title">비밀번호확인</td>
-								<td class="info_box"><input type="password" id="userpasswordCheck" name="userpassword"></td>
+								<td class="info_box"><input type="password" id="userpasswordCheck" name="userpasswordCheck"></td>
 							</tr>
 							<tr>
 							<td colspan="2">

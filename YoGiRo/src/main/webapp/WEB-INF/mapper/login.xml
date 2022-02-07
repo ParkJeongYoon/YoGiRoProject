@@ -44,7 +44,7 @@
          useremail = #{useremail}, userphonenumber = #{userphonenumber}
       where userid=#{userid}
    </update>
-   <delete id="deleteUser" parameterType="userVO">
+   <delete id="deleteUser" parameterType="kr.co.goodee39.vo.UserVO">
       delete from user where userid=#{userid} and userpassword=#{userpassword}
    </delete>
    
