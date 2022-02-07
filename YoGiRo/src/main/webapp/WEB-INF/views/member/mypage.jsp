@@ -106,23 +106,26 @@ tr {
 
 td {
 	text-align: center;
+	font-size:1rem;
 }
 
 .info {
 	width: 80%;
 	height: 100%;
 	border-style: none;
-	font-size: 1.1rem;
+	font-size: 1rem;
 	margin-left: 20px;
 }
 
 .info_title {
+	width:30%;
 	background: #B2DFDB;
 	color: white;
 }
 
 .info_box {
 	background-color: white;
+	color:black;
 }
 
 .info_btn {
@@ -139,7 +142,7 @@ td {
 </head>
 <body>
 
-	<jsp:include page="../includes/after-login_header.jsp"></jsp:include>
+	<jsp:include page="../includes/header.jsp"></jsp:include>
 
 	<div class="container">
 		<div class="main-container">
@@ -151,23 +154,23 @@ td {
 							<i class="fas fa-angle-right"></i>
 						</div>
 					</a> 
-					<a href=""><div>
+					<a href="${pageContext.request.contextPath}/myfavorite"><div>
 							<h3>즐겨찾기</h3>
 							<i class="fas fa-angle-right"></i>
 							</div></a> 
-					<a href=""><div>
+					<a href="${pageContext.request.contextPath}/myqna"><div>
 							<h3>문의 내역</h3>
 							<i class="fas fa-angle-right"></i>
 							</div></a> 
-					<a href="${pageContext.request.contextPath}/member/mycommunity"><div>
+					<a href="${pageContext.request.contextPath}/mycommunity"><div>
 							<h3>내 글 보기</h3>
 							<i class="fas fa-angle-right"></i>
 							</div></a> 
-					<a href=""><div>
+					<a href="${pageContext.request.contextPath}/mycourse"><div>
 							<h3>내 코스</h3>
 							<i class="fas fa-angle-right"></i>
 							</div></a> 
-					<a href=""><div>
+					<a href="${pageContext.request.contextPath}/myrestaurant"><div>
 							<h3>내 음식점</h3>
 							<i class="fas fa-angle-right"></i>
 							</div></a>
