@@ -317,8 +317,10 @@ table {
 						<button id="search_btn" onclick="location.href='mycourse_more?region=${commonList[0].region}'">더보기</button>
 					</div>
 				<br /><br />
+				<c:if test="${sessionScope.account.userid != null}">
 				<br> <a href="${pageContext.request.contextPath}/add_my_course"><h4 id="add_my_course">내 코스 올리기</h4></a> <br>
 				<br>
+				</c:if>
 				<div class="course_container">
 					<div id="user_course">
 

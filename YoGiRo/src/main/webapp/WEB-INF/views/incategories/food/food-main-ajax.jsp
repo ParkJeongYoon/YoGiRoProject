@@ -276,8 +276,10 @@ p {
 						<button id="search_btn" onclick="location.href='myfood_more?region=${foodList[0].region}'">더보기</button>
 					</div>
 					<br><br>
+					<c:if test="${sessionScope.account.userid != null}">
 				<br> <a href="${pageContext.request.contextPath}/add_my_food"><h4 id="add_my_food">나의 맛집 올리기</h4></a> <br>
 				<br>
+				</c:if>
 				<div class="food_container">
 					<div id="user_food">
 
