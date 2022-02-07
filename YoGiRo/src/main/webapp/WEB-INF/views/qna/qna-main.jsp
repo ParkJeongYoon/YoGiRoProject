@@ -2,22 +2,22 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
-<html>
+<html class="vh">
 <head>
 	<meta charset="UTF-8">
 	<title>create title here</title>
+	
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/icons/fontawesome-free-5.15.4-web/css/all.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/default.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/qnacss/qna-main.css">
 </head>
-<body class="body">
-    <div class="container">
+<body class="body vh">
+    <div class="container vh">
 		<jsp:include page="../includes/header.jsp"></jsp:include>
 
 
 
         <main class="qna-main">
-        
 			<h1 class="qna-title">문의하기</h1>
 
 			<section class="qna-section">
@@ -27,7 +27,6 @@
 							<th>번호</th>
 							<th>제목</th>
 							<th>작성자</th>
-							<th>조회</th>
 						</tr>
 					</thead>
 					<tbody class="qna-list-main">
@@ -35,12 +34,9 @@
 							<tr>
 								<td>${item.qnum}</td>
 								<td>
-									<c:forEach var="sp" begin="1" end="${item.depth}">&nbsp;&nbsp;</c:forEach>
-									<c:if test="${item.depth > 0}">ㄴRe : </c:if>
-									<!-- <a href="${pageContext.request.contextPath}/bbs/detail?qnum=${item.qnum}"> -->${item.qtitle}<!-- </a> -->
+									<a href="${pageContext.request.contextPath}/qna/qna-detail?qnum=${item.qnum}">${item.qtitle}<c:if test="${item.isans eq 'Y'}">&nbsp;&nbsp;<i class="far fa-lightbulb"></i></c:if></a>
 								</td>
 								<td>${item.userid}</td>
-								<td>${item.readcount}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -135,9 +131,7 @@
 
             <aside class="qna-aside">
                 <div class="qna-list-bottom-inner-left">
-	                <%-- <c:if test="      ${sessionScope.account.id != null}      "> --%>
-                    	<button type="submit" class="button-sty qna-create">글쓰기 <i class="fas fa-pen"></i></button>
-					<%-- </c:if> --%>
+                   	<button type="submit" class="button-sty qna-create">글쓰기 <i class="fas fa-pen"></i></button>
                 </div>
                 <div class="qna-list-bottom-inner-right">
                     <div class="search-bar">
@@ -174,17 +168,28 @@
                     </div>
                 </div>
             </aside>
-			
         </main>
 
 
 
         <jsp:include page="../includes/footer.jsp"></jsp:include>
-        
     </div>
     
     
     <script type="text/javascript">
+    	document.querySelector("button").addEventListener("click" , function() {
+    		this.setAttribute("disabled" , "");
+			let setTo = setTimeout(function(){
+				document.querySelector(".qna-create").removeAttribute("disabled");
+			}, 1000);
+    	});
+    	
+   		if (${sessionScope.account.userid ne null}) {
+      			document.querySelector(".qna-create").style.display = 'block';
+		}else {
+			document.querySelector(".qna-create").style.display = 'none';
+		}
+    
     	document.querySelector(".qna-create").addEventListener("click" , function() {
     		location.href = "${pageContext.request.contextPath}/qna/qna-create";
     	});

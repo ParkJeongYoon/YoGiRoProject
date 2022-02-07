@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/default.css">
+	<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <style>
 main {
 	width: 1600px;
@@ -146,9 +148,10 @@ hr {
 			<p id="title">${mycoursecommontodetailpage.mycoursecommontitle}</p>
 			<br /><br /><br /> 
 			<c:if test="${mycoursecommontodetailpage.mycoursemainimage != null}">
-				<img id="common-img"
-				src="${mycoursecommontodetailpage.mycoursemainimage}" alt="" /> 
-			
+				<div id="uploadResult">
+					<img id="common-img"
+					src="/display?fileName=${mycoursecommontodetailpage.mycoursemainimage}" alt="" /> 
+				</div>
 			</c:if>
 			<br />
 			<br /><br />
@@ -199,5 +202,12 @@ hr {
 
 		<jsp:include page="../../includes/footer.jsp"></jsp:include>
 	</div>
+	<script>
+		$(document).ready(function{
+			let uploadReslut = $("#uploadReslut");
+			
+		});
+	</script>
+	
 </body>
 </html>

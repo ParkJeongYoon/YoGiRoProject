@@ -9,25 +9,6 @@
 <script src="https://kit.fontawesome.com/79203d0d3b.js" crossorigin="anonymous"></script>
 <script type="text/javascript"src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <style>
-	* {
-		padding: 0;
-		margin: 0;
-		text-decoration: none;
-		font-family: 'Noto Sans KR', 'Noto Sans KR Black', 'Noto Sans KR Light', 'Noto Sans KR Medium', 'Noto Sans KR Thin';
-	}
-	body {
-		display: flex;
-		width: 100vw;
-		flex-direction: column;
-	}
-	/* 헤더 */
-	header {
-		margin-left: 5%;
-		margin-right: 5%;
-		position: relative;
-		height: 100px;
-		width: 90%;
-	}
 	a:visited {
 		color: black;
 	}
@@ -317,7 +298,9 @@
 				</c:choose>
 			</div>
 		</div>
-		<input id="create-btn" type="button" value="글쓰기">
+		<c:if test="${sessionScope.account.userid!=null}">
+			<input id="create-btn" type="button" value="글쓰기">
+		</c:if>
 		<c:choose>
 			<c:when test="${(title!=null)&&(content!=null)}">
 				<select name="category" id="category">
@@ -401,7 +384,7 @@
 	        };
 	        
 	        $.ajax(ajaxOption).done(function(data){
-	            // Contents 영역 삭제
+	            // Contents 영역 삭제1
 	            $('#main-content').children().remove();
 	            // Contents 영역 교체
 	            $('#main-content').html(data);

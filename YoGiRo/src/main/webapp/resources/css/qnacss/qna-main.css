@@ -1,16 +1,15 @@
 @charset "UTF-8";
 
-/*.vh {
+.vh {
     width: 100%;
     height: 100%;
-}*/
+}
 
 .qna-main {
   	margin-top: 1rem;
   	margin-bottom: 1rem;
     width: 100%;
-    /*height: calc(100vh - 250px);*/
-    height: 50rem;
+    height: calc(100vh - 250px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -46,13 +45,10 @@
 	width: 7%;
 }
 .qna-list-top th:nth-child(2) {
-	width: 65%;
+	width: 73%;
 }
 .qna-list-top th:nth-child(3) {
-	width: 15%;
-}
-.qna-list-top th:nth-child(4) {
-	width: 8%;
+	width: 20%;
 }
 
 .qna-list-main tr:nth-child(n) {
@@ -64,13 +60,10 @@
 	width: 7%;
 }
 .qna-list-main th:nth-child(2) {
-	width: 65%;
+	width: 73%;
 }
 .qna-list-main th:nth-child(3) {
-	width: 15%;
-}
-.qna-list-main th:nth-child(4) {
-	width: 8%;
+	width: 20%;
 }
 
 .pagination-box {

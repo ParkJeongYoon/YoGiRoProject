@@ -3,11 +3,16 @@ package kr.co.goodee39.controller;
 
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.goodee39.service.QuestionService;
@@ -40,5 +45,40 @@ public class QuestionController {
 		return "/manager/manager2/manager-qued";
 	}
 	
+	
+	
+	
+	
+	
+	
+	@GetMapping("/qna/qna-main")
+	public String getQnaList(Model model,
+								@RequestParam(defaultValue = "1") int qnum,
+								@RequestParam(defaultValue="") String qtitle,
+								@RequestParam(defaultValue="") String qcontent) {
+		service.selectQnaList(model, qnum, qtitle, qcontent);
+		return "/qna/qna-main";
+	}
+	
+	@GetMapping("/qna/qna-detail")
+	public String getBBSDetail(Model model , QuestionVO vo) {
+		service.selectQnaDetail(model , vo);
+		return "/qna/qna-detail";
+	}
+	
+	
+	@GetMapping("/qna/qna-create")
+	public String getQnaCreate(QuestionVO vo) {
+		return "/qna/qna-create";
+	}
+	
+	@PostMapping("/qna/qna-create-result")
+	public String setQnaCreate(QuestionVO vo) {
+		
+		vo.setQcreatedate(new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA).format(new Date()));
+		service.insertQna(vo);
+
+		return "redirect:/qna/qna-main";
+	}
 	
 }

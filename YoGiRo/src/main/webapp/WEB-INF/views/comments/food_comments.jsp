@@ -51,11 +51,23 @@ td div {
                 <table class="table">                    
                     <tr> 
                         <td>
-                            <textarea style="width: 1100px" rows="3" cols="30" id="themecommentcontent" name="themecommentcontent" placeholder="댓글을 입력하세요"></textarea>
-                            <br>
-                            <div>
-                                <a href='#' onClick="fn_comment('${result.code }')" class="btn pull-right btn-success">등록</a>
-                            </div>
+                            <c:if test="${sessionScope.account.userid != null}">
+									<textarea style="width: 1100px" rows="2" cols="30"
+										id="themecommentcontent" name="themecommentcontent"
+										placeholder="댓글을 입력하세요"></textarea>
+									<br>
+									<div>
+										<a href='#' onClick="fn_comment('${result.code }')"
+											class="btn pull-right btn-success">등록</a>
+									</div>
+								</c:if> <c:if test="${sessionScope.account.userid == null}">
+									<textarea style="width: 1100px" rows="2" cols="30"
+										id="themecommentcontent" name="themecommentcontent"
+										placeholder="댓글을 입력하려면 로그인이 필요합니다."></textarea>
+									<br>
+									
+								</c:if>
+                            
                         </td>  
                     </tr>
                 </table>
@@ -78,7 +90,7 @@ td div {
 function fn_comment(code){
     $.ajax({
         type:'GET',
-        url : '${pageContext.request.contextPath}/addComment?themecode=${foodtodetailpage.themecode}&themepostid=${foodtodetailpage.contentid}',
+        url : '${pageContext.request.contextPath}/addComment?themecode=${foodtodetailpage.themecode}&themepostid=${foodtodetailpage.contentid}&userid=${sessionScope.account.userid}',
         data:$("#commentForm").serialize(),
         success : function(data){
             if(data=="success")
@@ -112,7 +124,7 @@ function getCommentList(){
     
     $.ajax({
         type:'GET',
-        url : "<c:url value='commentList?themecode=${foodtodetailpage.themecode}&themepostid=${foodtodetailpage.contentid&userid=${sessionScope.account.userid}}'/>",
+        url : "<c:url value='commentList?themecode=${foodtodetailpage.themecode}&themepostid=${foodtodetailpage.contentid}'/>",
         dataType : "json",
         data:$("#commentForm").serialize(),
         contentType: "application/x-www-form-urlencoded; charset=UTF-8", 

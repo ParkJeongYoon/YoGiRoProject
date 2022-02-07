@@ -1,5 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,23 +30,15 @@
 /* 왼쪽 사이드메뉴 */
 aside {
 	position: relative;
-	height: 80vh;
+	height: 82vh;
 	width: 30%;
 	margin-right: 30px;
-}
-
-.side {
-	width: 100%;
-	height: 33%;
-	background-color: #e7e7e7;
-	border-radius: 15px;
-	margin-bottom: 30px;
 }
 
 /* 메인 컨텐츠 */
 main {
 	width: 70%;
-	height: 87vh;
+	height: 89vh;
 	background-color: #e7e7e7;
 	position: relative;
 }
@@ -106,6 +99,7 @@ input[type='checkbox']:checked+label {
 
 .content {
 	height: 87vh;
+	padding-top: 15px;
 }
 
 .btnbar {
@@ -129,6 +123,67 @@ input[type='checkbox']:checked+label {
 	padding: 20px 0;
 	border-radius: 0 0 15px 15px;
 }
+
+.side {
+	width: 100%;
+	height: 33%;
+	background-color: #e7e7e7;
+	border-radius: 5px;
+	margin-bottom: 30px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 1% 3%;
+	justify-content: space-around;
+	padding: 15px;
+	align-self: start;
+	align-content: space-around;
+}
+
+.course_p, .food_p {
+	visibility: hidden;
+	color: #fff;
+	font-size: 0.9rem;
+	/* height: 70px; */
+	width: 80px;
+	overflow: hidden;
+  	text-overflow: ellipsis;
+  	white-space: normal;
+  	line-height: 0.9rem;
+  	max-height: 70px;
+  	word-wrap: break-word; 
+  	display: -webkit-box; 
+  	-webkit-line-clamp: 3; 
+  	-webkit-box-orient: vertical;
+}
+
+.food, .course {
+	width: 100%;
+	height: 70px;
+	background-color: #fff;
+}
+.backcolor {
+	width: 100%;
+	height: 70px;
+	display: flex;
+	visibility: hidden;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+}
+.course_image:hover .backcolor, .food_image:hover .backcolor {
+	visibility: visible;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.course_image:hover .course_p, .food_image:hover .food_p {
+	visibility: visible;
+}
+
+.course_image, .food_image{
+	display: flex;
+	width: 100%;
+	height: 70px;
+}
 </style>
 </head>
 <body class="body">
@@ -136,9 +191,45 @@ input[type='checkbox']:checked+label {
 		<jsp:include page="../includes/header.jsp"></jsp:include>
 		<div class="main-container">
 			<aside>
-				<div class="side-food side"></div>
-				<div class="side-fasta side"></div>
-				<div class="side-course side"></div>
+				<div class="side-food side">
+					<c:forEach var="i" begin="3" end="8">
+						<div class="food-container">
+							<a href="food_detail?contentid=${foodList[i].contentid}&themecode=3" class="food">
+								<div class="food_image" style="background: center / cover no-repeat url('${foodList[i].firstimage}')">
+									<div class="backcolor">
+										<p class="food_p">${foodList[i].title}</p>
+									</div>
+								</div>
+							</a>
+						</div>
+					</c:forEach>
+				</div>
+				<div class="side-fasta side">
+					<c:forEach var="i" begin="3" end="8">
+						<div class="food-container">
+							<a href="food_detail?contentid=${foodList[i].contentid}&themecode=3" class="food">
+								<div class="food_image" style="background: center / cover no-repeat url('${foodList[i].firstimage}')">
+									<div class="backcolor">
+										<p class="food_p">${foodList[i].title}</p>
+									</div>
+								</div>
+							</a>
+						</div>
+					</c:forEach>
+				</div>
+				<div class="side-course side">
+					<c:forEach var="i" begin="3" end="8">
+						<div class="course-container">
+							<a href="course_detail?contentid=${commonList[i].contentid}&themecode='2'" class="course">
+								<div class="course_image" style="background: center / cover no-repeat url('${commonList[i].firstimage}')">
+									<div class="backcolor">
+										<p class="course_p">${commonList[i].title}</p>
+									</div>
+								</div>
+							</a>
+						</div>
+					</c:forEach>
+				</div>
 			</aside>
 			<main>
 				<div class="content" style="display: flex; flex-direction: column;">
@@ -152,7 +243,7 @@ input[type='checkbox']:checked+label {
 								<div id="map">
 									<div class="btn-container">
 										<input type="checkbox" id="oasis-btn" style="display: none;"> 
-										<label for="oasis-btn" class="btnbar">휴게소</label> 
+										<label for="oasis-btn" class="btnbar1">휴게소</label> 
 										<input type="checkbox" id="petrol-btn" style="display: none;"> 
 										<label for="petrol-btn" class="btnbar">주유소</label> 
 										<input type="checkbox" id="accident-btn" style="display: none;"> 
@@ -409,7 +500,7 @@ input[type='checkbox']:checked+label {
     	
     	// 날씨 html
 		const testWeather = document.querySelector(".test-weather");
-		let apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid= {{API인증키}} &q=${city1}";
+		let apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid=d799280283e40d2254954068f65817bd&q=${city1}";
 		
 	    $.ajax({
 	        url: apiURI,
@@ -446,7 +537,7 @@ input[type='checkbox']:checked+label {
 	    });
 	    
 	    
-		apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid= {{API인증키}} &q=${city2}";
+		apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid=d799280283e40d2254954068f65817bd&q=${city2}";
 		
 	    $.ajax({
 	        url: apiURI,
@@ -483,7 +574,7 @@ input[type='checkbox']:checked+label {
 	    });
 	    
 	    
-		apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid= {{API인증키}} &q=${city3}";
+		apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid=d799280283e40d2254954068f65817bd&q=${city3}";
 		
 	    $.ajax({
 	        url: apiURI,
@@ -520,7 +611,7 @@ input[type='checkbox']:checked+label {
 	    });
 	    
 	    
-		apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid= {{API인증키}} &q=${city4}";
+		apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid=d799280283e40d2254954068f65817bd&q=${city4}";
 		
 	    $.ajax({
 	        url: apiURI,
@@ -562,7 +653,7 @@ input[type='checkbox']:checked+label {
 	<script type="text/javascript">
 		// 휴게소 api
 			function initMap1(index) {
-				var apiURI = "http://data.ex.co.kr/openapi/locationinfo/locationinfoRest?key={{휴게소API인증키}}&type=json&numOfRows=99&pageNo="
+				var apiURI = "http://data.ex.co.kr/openapi/locationinfo/locationinfoRest?key=9479065828&type=json&numOfRows=99&pageNo="
 						+ index;
 				$.ajax({
 					url : apiURI,
@@ -585,7 +676,7 @@ input[type='checkbox']:checked+label {
 
 			// 주유소 api
 			function initMap2(index) {
-				var apiURI = "http://data.ex.co.kr/openapi/business/curStateStation?key= {{주유소API인증키}} &type=json&numOfRows=99&pageNo="
+				var apiURI = "http://data.ex.co.kr/openapi/business/curStateStation?key=9479065828&type=json&numOfRows=99&pageNo="
 						+ index;
 				$.ajax({
 					url : apiURI,
@@ -611,7 +702,7 @@ input[type='checkbox']:checked+label {
 
 			// 돌발사고 api
 			function initMap3() {
-				var apiURI = "https://openapi.its.go.kr:9443/eventInfo?apiKey={{API인증키}}&type=all&eventType=all&getType=json";
+				var apiURI = "https://openapi.its.go.kr:9443/eventInfo?apiKey=6cfdfd1f1e134f228a0d84a57f3de6e6&type=all&eventType=all&getType=json";
 				$.ajax({
 					url : apiURI,
 					dataType : "json",

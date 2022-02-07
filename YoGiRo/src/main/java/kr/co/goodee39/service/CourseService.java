@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -24,9 +25,12 @@ import org.w3c.dom.NodeList;
 import kr.co.goodee39.vo.CourseCommonVO;
 import kr.co.goodee39.vo.CourseDetailVO;
 import kr.co.goodee39.vo.CourseIntroVO;
+import kr.co.goodee39.vo.FoodVO;
 import kr.co.goodee39.vo.MyCourseCommonVO;
 import kr.co.goodee39.vo.MyCourseDetailVO;
+import kr.co.goodee39.vo.MyFoodVO;
 import kr.co.goodee39.vo.ThemeCommentVO;
+import kr.co.goodee39.vo.UserVO;
 
 @Service
 public class CourseService {
@@ -473,15 +477,19 @@ public class CourseService {
 	}
 	
 	public void insertMyCourseCommon(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		UserVO vo = new UserVO();
+		vo= (UserVO)session.getAttribute("account");
 		MyCourseCommonVO mcvo = new MyCourseCommonVO();
 		mcvo.setMycoursecommontitle(request.getParameter("mycoursecommontitle"));
 		mcvo.setMycourseinfo(request.getParameter("mycourseinfo"));
 		mcvo.setMycourseregion(request.getParameter("mycourseregion"));
 		// 나중에 userid 가져와서 넣는 로직 넣기 
 		
-		mcvo.setUserid("pjy4722");
+		mcvo.setUserid(vo.getUserid());
 		// 이미지 넣는 로직 넣기
 		
+		mcvo.setMycoursemainimage(request.getParameter("mycoursemainimage"));
 		System.out.println("두번가는거 확인");
 		sqlSessionTemplate.insert("course.insertmycoursecommon",mcvo);
 		insertMyCourseDetail(request,mcvo);
@@ -513,4 +521,44 @@ public class CourseService {
 		List<ThemeCommentVO> themeCommentVO = sqlSessionTemplate.selectList("course.selectthemecomments",vo);
 		return themeCommentVO;
 	}
+	
+	//-----------------------------더보기
+	
+		public void selectCourseList(Model model, int num, String title, String overview,String region) {
+			CourseCommonVO vo = new CourseCommonVO();
+			vo.setStart((num-1)*vo.getCount());
+			if(!title.equals("")) {
+				model.addAttribute("title", title);
+				vo.setTitle("%"+title+"%");
+			}
+			if(!overview.equals("")) {
+				model.addAttribute("overview", overview);
+				vo.setOverview("%"+overview+"%");
+			}
+			vo.setRegion(region);
+			model.addAttribute("list", sqlSessionTemplate.selectList("course.selectCourseList", vo));
+			model.addAttribute("count", sqlSessionTemplate.selectOne("course.selectCourseCount", vo));
+			model.addAttribute("num", num);
+			model.addAttribute("region",region);
+		}
+		
+		public void selectMyCourseList(Model model, int num, String mycoursecommontitle, String mycourseinfo,String region) {
+			MyCourseCommonVO vo = new MyCourseCommonVO();
+			vo.setStart((num-1)*vo.getCount());
+			if(!mycoursecommontitle.equals("")) {
+				model.addAttribute("mycoursecommontitle", mycoursecommontitle);
+				vo.setMycoursecommontitle("%"+mycoursecommontitle+"%");
+			}
+			if(!mycourseinfo.equals("")) {
+				model.addAttribute("mycourseinfo", mycourseinfo);
+				vo.setMycourseinfo("%"+mycourseinfo+"%");
+			}
+			vo.setMycourseregion(region);
+			
+			model.addAttribute("list", sqlSessionTemplate.selectList("course.selectMyCourseList", vo));
+			model.addAttribute("count", sqlSessionTemplate.selectOne("course.selectMyCourseCount", vo));
+			model.addAttribute("num", num);
+			model.addAttribute("region",region);
+		}
+		
 }

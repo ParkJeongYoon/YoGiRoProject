@@ -241,8 +241,7 @@ table {
 				<div id="course_top">
 					<h1>코스</h1>
 					<div id="search_box">
-						<input type="text" id="search">
-						<button id="search_btn">검색</button>
+						<button id="search_btn" onclick="location.href='course_more?region=${commonList[0].region}'">더보기</button>
 					</div>
 				</div>
 
@@ -287,8 +286,14 @@ table {
 				<hr />
 				<br /><br />
 				<h1>YoGiRo 어때요?</h1>
+				<div id="search_box">
+						<button id="search_btn" onclick="location.href='mycourse_more?region=${commonList[0].region}'">더보기</button>
+					</div>
+				<br /><br />
+				<c:if test="${sessionScope.account.userid != null}">
 				<br> <a href="${pageContext.request.contextPath}/add_my_course"><h4 id="add_my_course">내 코스 올리기</h4></a> <br>
 				<br>
+				</c:if>
 				<div class="course_container">
 					<div id="user_course">
 

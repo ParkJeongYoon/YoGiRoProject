@@ -59,7 +59,7 @@
 				<i class="xi-check-min"></i>공통정보
 			</h2>
 			<br><br><br>
-			<div>
+			
 				<form action="${pageContext.request.contextPath}/create_my_course" method="POST">
 					<ul>
 						<li><label for="mycourse_commontitle">코스 제목 : </label> <input
@@ -71,7 +71,8 @@
 					<br>
 					<h3 id="firstimgtitle">대표 이미지 첨부 :</h3>
 					<label for="upload">파일 추가 : </label><input type="file"
-						name="upload" id="upload" /> <br>
+						name="uploadFile" id="uploadFile" /> <br>
+					<div id="add_image_div"></div>
 					<br> 
 					<h3>개요 :</h3>
 					<li><textarea name="mycourseinfo" id="mycourseinfo" cols="50"
@@ -162,6 +163,75 @@
 			//라인 삭제
 			div.remove();
 			num--;
+		}
+		/* 이미지 업로드 */
+		$("input[type='file']").on("change", function(e){
+			
+			let formData = new FormData();
+			let fileInput = $('input[name="uploadFile"]');
+			let fileList = fileInput[0].files;
+			let fileObj = fileList[0];
+			
+			if(!fileCheck(fileObj.name, fileObj.size)){
+				return false;
+			}
+			
+			formData.append("uploadFile", fileObj);
+			
+			$.ajax({
+				url: '${pageContext.request.contextPath}/uploadAjaxAction',
+		    	processData : false,
+		    	contentType : false,
+		    	data : formData,
+		    	type : 'POST',
+		    	dataType : 'json',
+		    	success : function(result){
+			    	console.log(result);
+			    	showUploadImage(result);
+			    },
+		    	error : function(result){
+		    		alert("이미지 파일이 아닙니다.");
+		    	}
+			});	
+			
+		});
+		
+		/* var, method related with attachFile */
+		let regex = new RegExp("(.*?)\.(jpg|png)$");
+		let maxSize = 1048576; //1MB
+		
+		function fileCheck(fileName, fileSize){
+
+			if(fileSize >= maxSize){
+				alert("파일 사이즈 초과");
+				return false;
+			}
+				  
+			if(!regex.test(fileName)){
+				alert("해당 종류의 파일은 업로드할 수 없습니다.");
+				return false;
+			}
+			
+			return true;		
+			
+		}
+		
+		/* input 추가 */
+		function showUploadImage(uploadResultArr){
+			/* 전달받은 데이터 검증 */
+			if(!uploadResultArr || uploadResultArr.length == 0){return}
+			
+			let uploadResult = $("#add_image_div");
+			
+			let obj = uploadResultArr[0];
+			
+			let str = "";
+			
+			//let fileCallPath = obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName;
+			let fileCallPath = obj.uploadPath.replace(/\\/g, '/') +"/"+ obj.uuid + "_" + obj.fileName;
+			str += "<input type='hidden' name='mycoursemainimage' value='"+ fileCallPath +"'>";
+			
+			uploadResult.append(str);
 		}
 	</script>
 </body>

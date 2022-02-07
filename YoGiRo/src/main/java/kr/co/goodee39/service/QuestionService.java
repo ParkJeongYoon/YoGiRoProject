@@ -36,6 +36,46 @@ public class QuestionService {
 		model.addAttribute("questionVO", sqlSessionTemplate.selectOne("questions.selectQuestions", vo));
 		
 	}
-
+	
+	
+	
+	
+	
+	
+	
+	public void selectQnaList(Model model,
+							int qnum,
+							String qtitle,
+							String qcontent) {
+		QuestionVO vo = new QuestionVO();
+		vo.setStart((qnum-1) * vo.getCount());
+		if(!qtitle.equals("")) {
+			model.addAttribute("qtitle" , qtitle);
+			vo.setQtitle("%" + qtitle + "%");
+		}
+		if(!qcontent.equals("")) {
+			model.addAttribute("qcontent" , qcontent);
+			vo.setQcontent("%" + qcontent + "%");
+		}
+		
+		model.addAttribute("qlist" , sqlSessionTemplate.selectList("questions.selectQuestionsList",vo));
+		model.addAttribute("count" , sqlSessionTemplate.selectOne("questions.selectQuestionsCount", vo));
+		model.addAttribute("qnum" , qnum);
+	}
+	
+	public void selectQnaDetail(Model model , QuestionVO vo1) {
+		QuestionVO vo2 = sqlSessionTemplate.selectOne("questions.selectQuestionsDetail" , vo1);
+		vo1.setQnum(vo2.getQnum());
+		vo1.setUserid(vo2.getUserid());
+		vo1.setQtitle(vo2.getQtitle());
+		vo1.setQcreatedate(vo2.getQcreatedate());
+		vo1.setQcontent(vo2.getQcontent());
+		vo1.setIsans(vo2.getIsans());
+	}
+	
+	
+	public void insertQna(QuestionVO vo) {
+		sqlSessionTemplate.insert("questions.insertQuestions" , vo);
+	}
 	
 }

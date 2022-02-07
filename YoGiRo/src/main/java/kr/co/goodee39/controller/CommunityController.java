@@ -36,11 +36,13 @@ public class CommunityController {
 		return "/incategories/community/community-main";
 	}
 	
-	@GetMapping("/main-ajax")
+	@GetMapping("/community-ajax")
 	public String getComAjaxList(@ModelAttribute("ComVO") CommunityVO vo, Model model, 
 					@RequestParam(defaultValue = "1") int num,
 			 		@RequestParam(defaultValue = "") String title,
 			 		@RequestParam(defaultValue = "") String content) {
+		System.out.println(vo.getComcategorynum());
+		
 		if(vo.getComcategorynum()==0) { 
 			vo.setComcategorynum(1); 
 		}
@@ -64,7 +66,7 @@ public class CommunityController {
 	
 	@PostMapping("/create_result")
 	public String setComCreate(@ModelAttribute("ComVO") CommunityVO vo, Model model) {
-		// ComVO com = new ComVO();
+		// ComVO com = new ComVO();1
 		vo.setComcreatedate(new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA).format(new Date()));
 		comService.insertCom(model, vo);
 		return "redirect:/incategories/community/community-main";
@@ -73,7 +75,7 @@ public class CommunityController {
 	@GetMapping("/modify")
 	public String modifyBBS(@ModelAttribute CommunityVO vo, Model model) {
 		comService.selectCom(model, vo);
-		return "com_modify";
+		return "/incategories/community/community-modify";
 	}
 	
 	@PostMapping("/modify_result")

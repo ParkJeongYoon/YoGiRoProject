@@ -53,7 +53,7 @@
 	}
 	/* 메인 */
 	main {
-		margin-top: 50px;
+		margin-top: 100px;
 		margin-left: 30px;
 		width: 70%;
 		height: 80%;
@@ -64,7 +64,28 @@
 	}
 	/* 에디터 */
 	#editor {
-		width: 800px;
+		width: 100%;
+		height: 100%;
+	}
+	#comtitle {
+		width: 87%;
+		height: 35px;
+		border: 1px solid lightgray;
+		position: absolute;
+		right: 0;
+	}
+	#comcategorynum {
+		width: 13%;
+		height: 35px;
+		border: 1px solid lightgray;
+	}
+	#btn {
+		width: 60px;
+		height: 35px;
+		position: absolute;
+		right: 0;
+		background-color: #fff;
+		border: 1px solid lightgray; 
 	}
 </style>
 </head>
@@ -91,14 +112,14 @@
 							<form:option value="3">교통</form:option>
 							<form:option value="4">추천 코스</form:option>
 							<form:option value="5">기타</form:option>
-						</form:select> <form:input path="comtitle" placeholder="제목을 입력해주세요" /></li>
+						</form:select> <form:input id="comtitle" path="comtitle" placeholder="제목을 입력해주세요" /></li>
 					<li><form:textarea path="comcontent" id="editor" cols="50"
 							rows="10" /></li>
 					<li><form:button id="btn">전송</form:button></li>
 					<form:hidden path="comuserid"
 						value="${sessionScope.account.userid}" />
 					<%-- <form:hidden path="ownername" value="${sessionScope.account.name}"/>
-					<form:hidden path="filelist"/> --%>
+					<form:hidden path="filelist"/> 1--%>
 				</ul>
 			</form:form>
 	 	</main>

@@ -8,8 +8,6 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/default.css">
-<script type="text/javascript"
-	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=q47hthbmmp&submodules=geocoder"></script>
 <style>
 main {
 	width: 1600px;
@@ -132,11 +130,6 @@ hr {
 #overview{
 	font-weight : bold;
 }
-/* 맵 div */
-#map {
-	width: 40%;
-	height: 400px;
-}
 </style>
 </head>
 <body class="body">
@@ -144,53 +137,44 @@ hr {
 
 		<jsp:include page="../../includes/header.jsp"></jsp:include>
 
-
-
+		
+		<h1>나의 맛집</h1>
 		<main>
-			<h1>코스</h1>
+		
+			<h1>나의 맛집</h1>
 			<br /><br /><br /><br />
-			<p id="title">${coursecommontodetailpage.title}</p>
+			<p id="title">${myfoodtodetailpage.myfoodname}</p>
 			<br /><br /><br /> 
-			<c:if test="${coursecommontodetailpage.firstimage != null}">
+			<c:if test="${myfoodtodetailpage.myfoodimg != null}">
 				<img id="common-img"
-				src="${coursecommontodetailpage.firstimage}" alt="" /> 
-				
+				src="${myfoodtodetailpage.myfoodimg}" alt="" /> 
+			
 			</c:if>
-
-			<div id="map"></div>
-
 			<br />
 			<br /><br />
 			<hr />
 			<br><br>
 			<h2>개요</h2>
 			<br><br />
-
-			<p>${coursecommontodetailpage.overview}</p>
+			<p>주소 : ${myfoodtodetailpage.myfoodaddress}</p>
+			<p>맛집 설명 : ${myfoodtodetailpage.myfooddetail}</p>
 			<br /><br /><br /><br /><br /><br />
-			<h2>코스</h2>
-			<br /><br />
-			<p>총 거리 : ${coursecommontodetailpage.distance}</p>
-			<p>소요시간 : ${coursecommontodetailpage.taketime}</p>
-			<br /><br /><br /><br /><br /><br />
-			<hr />
-			<br /><br /><br />
 
 			<c:set var="i" value="1" />
 
-			<c:forEach var="item" items="${coursedetailtodetailpage}">
-				<h2>${i}코스:${item.subname}</h2>
+			<%-- <c:forEach var="item" items="${mycoursedetailtodetailpage}">
+				<h2>${i}코스:${item.mycoursedetailname}</h2>
 				<br />
 				<div id="course_detail_container">
 					<div id="course_detail_img">
 						
-							<img src="${item.subdetailimg}" alt="" id="detail_img"/>
+							<img src="${item.mycoursedetailimage}" alt="" id="detail_img"/>
 						
 					</div>
 					<div id="course_detail_overview">
 						<p id="overview"> <<코스개요>> </p>
 						<br />
-						<p>${item.subdetailoverview}</p>
+						<p>${item.mycoursedetailoverview}</p>
 					</div>
 				</div>
 				<br /><br /><br /><br /><br /><br /><br />
@@ -199,37 +183,14 @@ hr {
 				
 
 				<c:set var="i" value="${i+1}"></c:set>
-			</c:forEach>
-		<jsp:include page="../../comments/course_comments.jsp" ></jsp:include>
-		<br><br><br><br><br>
-		</main>  
+			</c:forEach> --%>
+			
+			
+		</main>
 
-		 
+
+
 		<jsp:include page="../../includes/footer.jsp"></jsp:include>
 	</div>
-	<script type="text/javascript">
-		/* 네이버 지도 api */
-		let y = ${coursecommontodetailpage.mapy};
-		let x = ${coursecommontodetailpage.mapx};
-		
-		var position = new naver.maps.LatLng(y, x);
-	
-		var map = new naver.maps.Map('map', {
-		    center: position,
-		    zoom: 10
-		});
-	
-		var markerOptions = {
-		    position: position,
-		    map: map,
-		    icon: {
-		    	url : '${pageContext.request.contextPath}/img/mapmarker/red-marker40.png',
-		        size: new naver.maps.Size(40, 40),
-		        anchor: new naver.maps.Point(20, 40)
-		    }
-		};
-	
-		var marker = new naver.maps.Marker(markerOptions);
-	</script>
 </body>
 </html>

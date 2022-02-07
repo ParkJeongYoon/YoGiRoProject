@@ -1,6 +1,7 @@
 package kr.co.goodee39.vo;
 
 public class FoodVO {
+	
 	int foodid;
 	int themecode;
 	String chkcreditcardfood;
@@ -28,6 +29,27 @@ public class FoodVO {
 	String mapx;
 	String mapy;
 	String mlevel;
+	int start;
+	int count;
+	
+	public FoodVO() {
+		// TODO Auto-generated constructor stub
+		
+		this.start = 0;
+		this.count = 12;
+	}
+	public int getStart() {
+		return start;
+	}
+	public void setStart(int start) {
+		this.start = start;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	public String getFirstimage() {
 		return firstimage;
 	}

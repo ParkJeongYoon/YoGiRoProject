@@ -19,4 +19,88 @@
 		from foodimage
 		where contentid=#{contentid};
 	</select>
+	
+	<select id="getmyfood" parameterType="kr.co.goodee39.vo.MyFoodVO" resultType="kr.co.goodee39.vo.MyFoodVO">
+		select myfoodid, userid,region,themecode,  myfoodname, myfoodaddress, myfoodimg, myfooddetail, isdelete
+		from myfood
+		where region=#{region};
+	</select>
+	<select id="getmyfoodwithid" parameterType="kr.co.goodee39.vo.MyFoodVO" resultType="kr.co.goodee39.vo.MyFoodVO">
+		select myfoodid, userid,region,themecode,  myfoodname, myfoodaddress, myfoodimg, myfooddetail, isdelete
+		from myfood
+		where isdelete = 0 
+		and myfoodid=#{myfoodid}; 
+	</select>
+	
+	<select id="selectFoodCount" parameterType="FoodVO" resultType="int">
+		select count(*)
+		from food
+		where region = #{region}
+		<choose>
+			<when test="title != null and treatmenu != null">
+				and (title like #{title} or treatmenu like #{treatmenu})
+			</when>
+			<when test="title == null and treatmenu != null">
+				and treatmenu like #{treatmenu}
+			</when>
+			<when test="title != null and treatmenu == null">
+				and title like #{title}
+			</when>
+		</choose>
+	</select>
+	
+	<select id="selectFoodList" parameterType="FoodVO" resultType="FoodVO">
+		select foodid,themecode,contentid,region,  firstimage, firstimage2, overview, title, mapx, mapy,mlevel,chkcreditcardfood,discountinfofood,firstmenu,infocenterfood,kidsfacility,opendatefood,opentimefood,packing,parkingfood,reservationfood,restdatefood,scalefood,seat,smoking,treatmenu,lcnsno
+		from food
+		where region = #{region}
+		<choose>
+			<when test="title != null and treatmenu != null">
+				and (title like #{title} or treatmenu like #{treatmenu})
+			</when>
+			<when test="title == null and treatmenu != null">
+				and treatmenu like #{treatmenu}
+			</when>
+			<when test="title != null and treatmenu == null">
+				and title like #{title}
+			</when>
+		</choose>
+		order by foodid desc
+		limit #{start}, #{count}
+	</select>
+	
+	<select id="selectMyFoodCount" parameterType="MyFoodVO" resultType="int">
+		select count(*)
+		from myfood
+		where region = #{region}
+		<choose>
+			<when test="myfoodname != null and myfooddetail != null">
+				and (myfoodname like #{myfoodname} or myfooddetail like #{myfooddetail})
+			</when>
+			<when test="myfoodname == null and myfooddetail != null">
+				and myfooddetail like #{myfooddetail}
+			</when>
+			<when test="myfoodname != null and myfooddetail == null">
+				and myfoodname like #{myfoodname}
+			</when>
+		</choose>
+	</select>
+	
+	<select id="selectMyFoodList" parameterType="MyFoodVO" resultType="MyFoodVO">
+		select myfoodid, userid,region,themecode,  myfoodname, myfoodaddress, myfoodimg, myfooddetail, isdelete
+		from myfood
+		where region = #{region}
+		<choose>
+			<when test="myfoodname != null and myfooddetail != null">
+				and (myfoodname like #{myfoodname} or myfooddetail like #{myfooddetail})
+			</when>
+			<when test="myfoodname == null and myfooddetail != null">
+				and myfooddetail like #{myfooddetail}
+			</when>
+			<when test="myfoodname != null and myfooddetail == null">
+				and myfoodname like #{myfoodname}
+			</when>
+		</choose>
+		order by myfoodid desc
+		limit #{start}, #{count}
+	</select>
 </mapper>

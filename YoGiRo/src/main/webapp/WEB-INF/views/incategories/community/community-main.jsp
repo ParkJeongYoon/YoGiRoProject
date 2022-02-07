@@ -28,20 +28,13 @@ aside {
 	margin-top: 100px;
 }
 
-.sidemenubar {
-	/*position: absolute;
-		left: 0;
-		top: 150px;*/
-	
-}
-
 .sidemenubar>a>div {
 	width: 180px;
 	height: 47px;
 	background-color: #FAFAFA;
 	border: 1.3px solid #E7E7E7;
 	display: flex;
-	/*		justify-content: center;*/
+	/*	justify-content: center;*/
 	align-items: center;
 }
 
@@ -134,6 +127,17 @@ thead>tr>th:nth-child(5) {
 	width: 80px;
 	position: absolute;
 	right: 10px;
+	background-color: #fff;
+	border-radius: 2px;
+	border: 1px solid gray;
+}
+
+#create-btn {
+	height: 35px;
+	width: 80px;
+	background-color: #fff;
+	border-radius: 2px;
+	border: 1px solid gray;
 }
 
 #search-text {
@@ -172,19 +176,19 @@ thead>tr>th:nth-child(5) {
 		<div class="main-container">
 			<aside>
 				<div class="sidemenubar">
-					<a href="#" onclick="acyncMovePage('main-ajax?comcategorynum=1')"><div>
+					<a href="#" onclick="acyncMovePage('community-ajax?comcategorynum=1')"><div>
 							<h3>맛집</h3>
 							<i class="fas fa-angle-right sideright"></i>
-						</div></a> <a href="#" onclick="acyncMovePage('main-ajax?comcategorynum=2')"><div>
+						</div></a> <a href="#" onclick="acyncMovePage('community-ajax?comcategorynum=2')"><div>
 							<h3>축제</h3>
 							<i class="fas fa-angle-right sideright"></i>
-						</div></a> <a href="#" onclick="acyncMovePage('main-ajax?comcategorynum=3')"><div>
+						</div></a> <a href="#" onclick="acyncMovePage('community-ajax?comcategorynum=3')"><div>
 							<h3>교통</h3>
 							<i class="fas fa-angle-right sideright"></i>
-						</div></a> <a href="#" onclick="acyncMovePage('main-ajax?comcategorynum=4')"><div>
+						</div></a> <a href="#" onclick="acyncMovePage('community-ajax?comcategorynum=4')"><div>
 							<h3>추천 코스</h3>
 							<i class="fas fa-angle-right sideright"></i>
-						</div></a> <a href="#" onclick="acyncMovePage('main-ajax?comcategorynum=5')"><div>
+						</div></a> <a href="#" onclick="acyncMovePage('community-ajax?comcategorynum=5')"><div>
 							<h3>기타</h3>
 							<i class="fas fa-angle-right sideright"></i>
 						</div></a>
@@ -322,7 +326,9 @@ thead>tr>th:nth-child(5) {
 							</c:choose>
 						</div>
 					</div>
-					<input id="create-btn" type="button" value="글쓰기">
+					<c:if test="${sessionScope.account.userid!=null}">
+						<input id="create-btn" type="button" value="글쓰기">
+					</c:if>
 					<c:choose>
 						<c:when test="${(title!=null)&&(content!=null)}">
 							<select name="category" id="category">
@@ -391,7 +397,7 @@ thead>tr>th:nth-child(5) {
 						.on(
 								'keydown',
 								function(e) {
-									var keyCode = e.which; // 눌린 키 기록
+									var keyCode = e.which; // 눌린 키 기록 뭐지
 
 									if (keyCode === 13) { // Enter Key
 										let category = $("#category").val();

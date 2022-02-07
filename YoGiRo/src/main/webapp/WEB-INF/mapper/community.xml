@@ -6,7 +6,7 @@
   	<select id="selectComCount" parameterType="communityVO" resultType="int">
 		select count(*)
 		from community
-		where comisdelete = 'N'
+		where comisdelete = 'N' and comcategorynum like #{comcategorynum}
 		<choose>
 			<when test="comtitle != null and comcontent != null">
 				and (comtitle like #{comtitle} or comcontent like #{comcontent})
@@ -22,7 +22,7 @@
 	<select id="selectComList" parameterType="communityVO" resultType="communityVO">
 		select comid, comcategorynum, comtitle, comcontent, compageview, comuserid, comcreatedate, comisdelete 
 		from community
-		where comisdelete = 'N'
+		where comisdelete = 'N' and comcategorynum like #{comcategorynum}
 		<choose>
 			<when test="comtitle != null and comcontent != null">
 				and (comtitle like #{comtitle} or comcontent like #{comcontent})
@@ -64,5 +64,6 @@
 	</update>
 	<delete id="deleteCom" parameterType="communityVO">
 		update community set comisdelete='Y' where comid = #{comid}
+		<!--  -->
 	</delete>
   </mapper>
