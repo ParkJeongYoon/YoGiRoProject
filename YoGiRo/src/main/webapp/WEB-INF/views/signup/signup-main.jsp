@@ -27,22 +27,22 @@
 					<ul class="container">
 						<li class="item center">이름</li>
 						<li class="item"><input type="text" name="username"
-							placeholder="이름을 입력하세요." autofocus required></li>
+							placeholder="이름을 입력하세요." minlength="2" maxlength="5" autofocus required></li>
 					</ul>
 					<ul class="container">
 						<li class="item center">닉네임</li>
 						<li class="item"><input type="text" name="usernickname" placeholder="닉네임 3~12자 "
-							required></li>
+							minlength="3" maxlength="8" required></li>
 					</ul>
 					<ul class="container">
 						<li class="item center">아이디</li>
-						<li class="item"><input type="text" name="userid" required></li>
+						<li class="item"><input type="text" name="userid" required minlength="3" maxlength="8"></li>
 						<!-- jsp인데 인풋을 쓰고 네임과 안맞췄다? 자살각 -->
 					</ul>
 					<ul class="container">
 						<li class="item center">비밀번호</li>
 						<li class="item"><input type="password"
-							name = "userpassword" placeholder="영문+숫자 조합 8자리이상" required></li>
+							name = "userpassword" placeholder="영문+숫자 조합 8자리이상" minlength="8" maxlength="20" required></li>
 						<li class="item"></li>
 					</ul>
 					<ul class="container">
@@ -52,7 +52,7 @@
 					</ul>
 					<ul class="container">
 						<li class="item center">이메일</li>
-						<li class="item"><input type="email" name="useremail"></li>
+						<li class="item"><input type="email" name="useremail" minlength="8" maxlength="40" required></li>
 						<li class="item"></li>
 					</ul>
 					<ul class="container">
@@ -66,7 +66,7 @@
 							<p>이용약관 및 개인정보처리방침에 동의합니다. (필수)</p>
 						</div>
 						<div>
-							<input type="checkbox" id="check2"> <label for="check1"></label>
+							<input type="checkbox" id="check2"> <label for="check2"></label>
 							<p>마케팅 활용 동의 및 광고 수신에 동의합니다. (선택)</p>
 						</div>
 						<ul class="container">
