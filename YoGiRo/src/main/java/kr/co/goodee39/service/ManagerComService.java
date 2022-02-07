@@ -17,7 +17,7 @@ public class ManagerComService {
 		CommunityVO vo = new CommunityVO();
 		vo.setStart((comid-1)*vo.getCount()); 
 		if(!title.equals("")) {
-			model.addAttribute("title", title);
+			model.addAttribute("title", title);  
 			vo.setComtitle("%"+title+"%");
 		}
 		if(!content.equals("")) {
