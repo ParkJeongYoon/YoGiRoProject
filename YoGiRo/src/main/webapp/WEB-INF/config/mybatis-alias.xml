@@ -14,5 +14,6 @@
 		<typeAlias type="kr.co.goodee39.vo.CourseDetailVO" alias="CourseDetailVO"/>
 		<typeAlias type="kr.co.goodee39.vo.MyCourseCommonVO" alias="MyCourseCommonVO"/>
 		<typeAlias type="kr.co.goodee39.vo.MyCourseDetailVO" alias="MyCourseDetailVO"/>
+		<typeAlias type="kr.co.goodee39.vo.FestaVO" alias="FestaVO"/>
 	</typeAliases>
 </configuration>
