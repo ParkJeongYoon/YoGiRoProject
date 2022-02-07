@@ -30,7 +30,7 @@
 /* 왼쪽 사이드메뉴 */
 aside {
 	position: relative;
-	height: 80vh;
+	height: 82vh;
 	width: 30%;
 	margin-right: 30px;
 }
@@ -38,7 +38,7 @@ aside {
 /* 메인 컨텐츠 */
 main {
 	width: 70%;
-	height: 87vh;
+	height: 89vh;
 	background-color: #e7e7e7;
 	position: relative;
 }
@@ -99,6 +99,7 @@ input[type='checkbox']:checked+label {
 
 .content {
 	height: 87vh;
+	padding-top: 15px;
 }
 
 .btnbar {

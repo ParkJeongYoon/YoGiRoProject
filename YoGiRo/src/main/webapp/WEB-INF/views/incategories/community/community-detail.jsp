@@ -9,8 +9,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/default.css">
-<script src="https://kit.fontawesome.com/79203d0d3b.js"
-	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/79203d0d3b.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/icons/fontawesome-free-5.15.4-web/css/all.css">
 	<script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <style type="text/css">
@@ -61,7 +61,8 @@ main {
 	width: 70%;
 	height: 80%;
 	position: relative;
-	margin-top: 50px;
+	margin-top: 100px;
+	margin-left: 25px;
 }
 
 main>h1 {
@@ -69,10 +70,10 @@ main>h1 {
 }
 /* 글 */
 .post-container {
-	margin-top: 20px;
-	margin-left: 5px;
 	width: 100%;
 	height: 100%;
+	background-color: #fafafa;
+	padding-left: 5px;
 }
 
 .userid {
@@ -83,6 +84,7 @@ main>h1 {
 	width: 70%;
 	height: 80%;
 	padding: 15px;
+	padding-top: 25px;
 }
 
 .content:after {
@@ -93,13 +95,29 @@ main>h1 {
 
 .little {
 	font-size: 0.9rem;
+	display: inline-block;
+	margin-bottom: 5px;
 }
-
+.fa-user{
+	padding-left: 5px;
+}
+.fa-clock {
+	position: absolute;
+	right: 90px;
+	top: 79px;
+}
 .comdate {
 	position: absolute;
 	right: 10px;
+	top: 77px;
 }
-
+.userid{
+	margin-left: 3px;
+}
+.title{
+	padding: 7px;
+	font-size: 1.4rem;
+}
 .line {
 	border-bottom: 1px solid lightgray;
 	width: 100%;
@@ -107,20 +125,20 @@ main>h1 {
 
 .comment-container {
 	width: 100%;
-	margin-top: 35px;
+	margin-top: 40px;
 }
 
 #comment {
 	width: 100%;
-	border: 1px solid gray;
+	border: 1px solid lightgray;
 	border-radius: 2px;
 	margin-top: 34px;
 }
 
 #set-comment {
 	width: 80px;
-	height: 30px;
-	border: 1px solid gray;
+	height: 35px;
+	border: 1px solid lightgray;
 	outline: 0;
 	background-color: #fff;
 	border-radius: 2px;
@@ -129,8 +147,8 @@ main>h1 {
 
 #modify, #delete {
 	width: 50px;
-	height: 30px;
-	border: 1px solid gray;
+	height: 35px;
+	border: 1px solid lightgray;
 	outline: 0;
 	background-color: #fff;
 	border-radius: 2px;
@@ -152,16 +170,22 @@ main>h1 {
 	width: 35px;
 	height: 25px;
 	background-color: #fff;
-	border: 1px solid gray;
+	border: 1px solid lightgray;
 	border-radius: 2px;
 	padding-bottom: 25px;
 	text-align: center;
+	
 }
 
 #comment-list > div {
 	margin: 5px;
 	position: relative;
-	border-bottom: 1px solid lightgray;
+	border: 1px solid lightgray;
+	background-color: #fafafa;
+}
+#comment-list > div > h3, #comment-list > div > p {
+	padding-bottom: 5px;
+	padding-left: 5px;
 }
 </style>
 </head>
@@ -180,8 +204,10 @@ main>h1 {
 			</aside>
 			<main>
 				<div class="post-container">
-					<h3>${ComVO.comtitle}</h3>
-					<p class="userid little">작성자 : ${ComVO.comuserid}</p>
+					<h3 class="title">${ComVO.comtitle}</h3>
+					<i class="fa fa-solid fa-user"></i>
+					<p class="userid little">${ComVO.comuserid}</p>
+					<i class="fa fa-solid fa-clock"></i>
 					<p class="comdate little">${ComVO.comcreatedate}</p>
 					<div class="line"></div>
 					<p class="content">${ComVO.comcontent}</p>
@@ -192,7 +218,6 @@ main>h1 {
 					<button id="modify">수정</button>
 					<button id="delete">삭제</button>
 				</c:if>
-				<div class="line"></div>
 				<div class="comment-container">
 					<div class="line"></div>
 					<div id="comment-list"></div>
