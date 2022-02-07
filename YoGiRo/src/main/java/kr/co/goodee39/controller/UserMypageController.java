@@ -1,4 +1,4 @@
-	package kr.co.goodee39.controller;
+package kr.co.goodee39.controller;
 
 import java.util.List;
 
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.goodee39.service.LoginService;
 import kr.co.goodee39.service.UserMypageService;
@@ -51,10 +52,18 @@ public class UserMypageController {
 	return "/member/delete_mypage";
 	
 	}
-	
-	@PostMapping("/passChk")
-	public String passChk(UserVO vo){
-		us.passChk(vo);
+	@PostMapping("/delete_Result")
+	public String UserDeleteResult(UserVO vo, HttpSession session) {
+		us.deleteUser(vo, session);
 		return "main";
+	}
+	
+	@PostMapping(value="/passChk", produces="application/text; charset=utf8")
+	
+	@ResponseBody
+	public String passChk(UserVO vo){
+		
+		int result = us.passChk(vo);
+		return Integer.toString(result);
 	}
 }

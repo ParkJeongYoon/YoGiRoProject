@@ -154,23 +154,23 @@ td {
 							<i class="fas fa-angle-right"></i>
 						</div>
 					</a> 
-					<a href=""><div>
+					<a href="${pageContext.request.contextPath}/myfavorite"><div>
 							<h3>즐겨찾기</h3>
 							<i class="fas fa-angle-right"></i>
 							</div></a> 
-					<a href=""><div>
+					<a href="${pageContext.request.contextPath}/myqna"><div>
 							<h3>문의 내역</h3>
 							<i class="fas fa-angle-right"></i>
 							</div></a> 
-					<a href="${pageContext.request.contextPath}/member/mycommunity"><div>
+					<a href="${pageContext.request.contextPath}/mycommunity"><div>
 							<h3>내 글 보기</h3>
 							<i class="fas fa-angle-right"></i>
 							</div></a> 
-					<a href=""><div>
+					<a href="${pageContext.request.contextPath}/mycourse"><div>
 							<h3>내 코스</h3>
 							<i class="fas fa-angle-right"></i>
 							</div></a> 
-					<a href=""><div>
+					<a href="${pageContext.request.contextPath}/myrestaurant"><div>
 							<h3>내 음식점</h3>
 							<i class="fas fa-angle-right"></i>
 							</div></a>

@@ -124,6 +124,9 @@ td {
 .info_box {
 	background-color: white;
 }
+.info_box > input {
+	border-style: none;
+}
 
 .info_btn {
 	margin-top: 20px;
@@ -176,21 +179,21 @@ td {
 						<table cellpadding="30" cellspacing="50">
 							<tr>
 								<td class="info_title">아이디</td>
-								<td class="info_box">${account.userid}</td>
+								<td class="info_box"><input type="text" id="userid" name="userid"
+									value="${account.userid}" required="required" readonly></td>
 							</tr>
 							<tr>
 								<td class="info_title">비밀번호</td>
-								<td class="info_box"><input type="password" id="userpassword" name="userpassword" required="required"></td>
+								<td class="info_box"><input type="password" id="userpassword" name="userpassword" value="${account.userpassword}"></td>
+							</tr>
+							<tr>
+								<td class="info_title">비밀번호확인</td>
+								<td class="info_box"><input type="password" id="userpasswordCheck" name="userpassword"></td>
 							</tr>
 							<tr>
 							<td colspan="2">
 								<button id="delbtn" type="submit" class="info_btn">탈퇴</button>
 								<button id="cancle" type="button" class="info_btn">취소</button>
-								<div>
-									<c:if test="${msg == false}">
-										비밀번호가 맞지 않습니다.
-									</c:if>
-								</div>
 							</td>
 							</tr>
 						</table>
@@ -210,36 +213,45 @@ td {
 			})
 		
 			$("#delbtn").on("click", function(){
-				if($("#userpassowrd").val()==""){
+				if($("#userpasswordCheck").val()==""){
 					alert("비밀번호를 입력해주세요.");
-					$("#userpassword").focus();
-					return false;
+					$("#userpasswordCheck").focus();
+					return;
 				}
+				
+				/* 비밀번호 같은지 확인 */
+				if($("#userpasswordCheck").val() != $("#userpassword").val()){
+					alert("비밀번호가 일치하지 않습니다.");
+					$("#userpasswordCheck").focus();
+					return;
+				}
+					
+				/* 비밀번호가 맞는지 확인 */
 				$.ajax({
 					url : "${pageContext.request.contextPath}/passChk",
 					type : "POST",
 					dataType : "json",
 					data : $("#delForm").serializeArray(),
 					success: function(data){
-						
 						if(data==0){
-							alert("패스워드가 틀렸습니다.");
+							alert("비밀번호가 틀렸습니다.");
 							return;
 						}else{
-							if(confirm("회원탈퇴하시겠습니까?")){
+							var result = confirm('정말 탈퇴 하시겠습니까?');
+							if(result){
 								$("#delForm").submit();
 							}
 							
 						}
+					},
+					error:function(){
+						alert("서버 에러");
 					}
-				})
+				});
 				
 			});
-			
 				
-			
 		})
 	</script>
-
 </body>
 </html>
