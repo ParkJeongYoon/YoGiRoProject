@@ -1,10 +1,13 @@
 package kr.co.goodee39.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.goodee39.service.FoodService;
@@ -75,9 +78,21 @@ public class FoodController {
 		public String getAddMyCoursePage(Model model) {
 			//MyCourseCommonVO vo = new MyCourseCommonVO();
 			//model.addAttribute("MyCourseCommonVO",vo);
+		 	MyFoodVO mfv = new MyFoodVO();
+		 	model.addAttribute("MyFoodVO",mfv);
 			return "incategories/food/add_my_food";
 		}
-	 
+	 @PostMapping("/create_my_food")
+		public String getCreateMyCoursePage(Model model,HttpServletRequest request) {
+			//구현해야함 ------------------------
+		 
+		 
+		 
+		 
+		 
+			//ts.insertMyCourseCommon(request);// 이 함수 안에 detail도 넣음 
+			return "redirect:/move-to-course-main";
+		}
 	 @GetMapping("/myfood_detail")
 		public String getMyFoodDetailPage(@ModelAttribute("MyFoodVO") MyFoodVO vo ,Model model) {
 			/*MyCourseDetailVO mdv = new MyCourseDetailVO();
