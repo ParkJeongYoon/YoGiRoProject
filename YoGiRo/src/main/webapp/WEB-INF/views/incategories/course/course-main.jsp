@@ -395,7 +395,7 @@ table {
 			}
 			
 		});
-					
+					 
 	
 	});
     function acyncMovePage(url){
