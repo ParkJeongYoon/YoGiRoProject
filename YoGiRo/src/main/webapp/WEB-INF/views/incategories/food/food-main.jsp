@@ -232,6 +232,16 @@ table {
 p {
 	overflow :hidden;
 }
+.image_wrap {
+    width: 100%;
+    height: 100%;
+}	
+.image_wrap img {
+    width : 19vw;
+    height: 11vw;
+    display: block;
+    border-radius : 15px;
+}
 </style>
 </head>
 <body class="body">
@@ -316,11 +326,10 @@ p {
 								<div id="my_food${j}" class="myfood_content">
 
 									<a href="myfood_detail?myfoodid=${myFoodList[j].myfoodid}">
-										<div class="div_image"
-											style="background-image: url('${myFoodList[j].myfoodimg}')">
+										<div class="image_wrap" data-myfoodimg="${myFoodList[j].myfoodimg}" >
+										<img>
+										</div><br>
 											
-											
-										</div>
 										<p>${myFoodList[j].myfoodname}</p>
 									</a>
 
@@ -340,7 +349,27 @@ p {
 		<jsp:include page="../../includes/footer.jsp"></jsp:include>
 	</div>
 	<script>
- 
+	$(document).ready(function() {
+		/* 이미지 삽입 */
+		$(".image_wrap").each(function(i, obj){
+			
+			const bobj = $(obj);
+			if(bobj.data("myfoodimg")){
+				const filecall = bobj.data("myfoodimg");
+				
+				const fileCallPath = encodeURIComponent(filecall);
+				
+				$(this).find("img").attr('src', '${pageContext.request.contextPath}/display?fileName=' + fileCallPath);
+				
+			}else{
+				$(this).find("img").attr('src', '${pageContext.request.contextPath}/resources/img/noimg.jpg');
+				
+			}
+			
+		});
+					
+	
+	});
     function acyncMovePage(url){
         // ajax option
         var ajaxOption = {

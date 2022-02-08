@@ -2,6 +2,9 @@ package kr.co.goodee39.service;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +17,7 @@ import kr.co.goodee39.vo.FoodVO;
 import kr.co.goodee39.vo.MyCourseCommonVO;
 import kr.co.goodee39.vo.MyCourseDetailVO;
 import kr.co.goodee39.vo.MyFoodVO;
+import kr.co.goodee39.vo.UserVO;
 
 @Service
 public class FoodService {
@@ -57,7 +61,21 @@ public class FoodService {
 		vo1.setMycourseregion(vo.getMycourseregion());
 		model.addAttribute("myDetailList",sqlSessionTemplate.selectList("course.getmycoursedetail",vo1));
 	}*/
-	
+	public void insertMyFood(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		UserVO vo = new UserVO();
+		vo= (UserVO)session.getAttribute("account");
+		MyFoodVO mfvo = new MyFoodVO();
+		
+		mfvo.setMyfoodname(request.getParameter("myfoodname"));
+		mfvo.setMyfoodaddress(request.getParameter("myfoodaddress"));
+		mfvo.setMyfoodimg(request.getParameter("myfoodimg"));
+		mfvo.setMyfooddetail(request.getParameter("myfooddetail"));
+		mfvo.setUserid(vo.getUserid());
+		mfvo.setRegion(request.getParameter("region"));
+		System.out.println("두번가는거 확인");
+		sqlSessionTemplate.insert("food.insertmyfood",mfvo);
+	}
 	
 	//-----------------------------더보기
 	

@@ -234,6 +234,17 @@ table {
 	margin-right : 3vw;
 	margin-left : 2vw;
 }
+
+.image_wrap {
+    width: 100%;
+    height: 100%;
+}	
+.image_wrap img {
+    width : 19vw;
+    height: 11vw;
+    display: block;
+    border-radius : 15px;
+}
 </style>
 </head>
 <body class="body">
@@ -330,9 +341,11 @@ table {
 								<div id="my_course${j}" class="mycourse_content">
 
 									<a href="mycourse_detail?mycoursecommonid=${myCommonList[j].mycoursecommonid}">
-										<div class="div_image"
-											style="background-image: url('${myCommonList[j].mycoursemainimage}')">
-											<div class="bg"></div>
+										
+										<div class="image_wrap div_image" data-mycoursemainimage="${myCommonList[j].mycoursemainimage}" >
+										<img>
+										<div class="bg">
+										</div><br>
 											<p>${myCommonList[j].mycoursecommontitle}</p>
 										</div>
 									</a>
@@ -364,7 +377,27 @@ table {
 		<jsp:include page="../../includes/footer.jsp"></jsp:include>
 	</div>
 	<script>
- 
+	$(document).ready(function() {
+		/* 이미지 삽입 */
+		$(".image_wrap").each(function(i, obj){
+			
+			const bobj = $(obj);
+			if(bobj.data("mycoursemainimage")){
+				const filecall = bobj.data("mycoursemainimage");
+				
+				const fileCallPath = encodeURIComponent(filecall);
+				
+				$(this).find("img").attr('src', '${pageContext.request.contextPath}/display?fileName=' + fileCallPath);
+				
+			}else{
+				$(this).find("img").attr('src', '${pageContext.request.contextPath}/resources/img/noimg.jpg');
+				
+			}
+			
+		});
+					
+	
+	});
     function acyncMovePage(url){
         // ajax option
         var ajaxOption = {

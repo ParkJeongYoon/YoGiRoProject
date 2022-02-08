@@ -85,7 +85,7 @@
 				<br>
 				<h3 id="firstimgtitle">대표 이미지 첨부 :</h3>
 				<label for="upload">파일 추가 : </label><input type="file"
-					name="uploadFile" id="uploadFile" /> <br>
+					name="uploadFile" id="uploadFile" onchange="f_changeFunc(this)"/> <br>
 				<div id="add_image_div"></div>
 				<br>
 				<h3>맛집 설명 :</h3>
@@ -116,13 +116,81 @@
 		<jsp:include page="../../includes/footer.jsp"></jsp:include>
 	</div>
 	<script type="text/javascript">
-	// 에디터
-	window.onload = function() {
-		ck = CKEDITOR.replace("myfooddetail",{
-				filebrowserUploadUrl : '${pageContext.request.contextPath}/add_my_food/imageUpload',
-				enterMode : '2'
-		}); // 파일업로드 컨트롤러로 보내기
-	};
+		// 에디터
+		window.onload = function() {
+			ck = CKEDITOR.replace("myfooddetail",{
+					filebrowserUploadUrl : '${pageContext.request.contextPath}/add_my_food/imageUpload',
+					enterMode : '2'
+			}); // 파일업로드 컨트롤러로 보내기
+		};
+		
+		/* 대표 이미지 업로드 */
+		function f_changeFunc(obj){
+			let formData = new FormData();
+			let fileInput = $(obj);
+			let fileList = fileInput[0].files;
+			let fileObj = fileList[0];
+			
+			if(!fileCheck(fileObj.name, fileObj.size)){
+				return false;
+			}
+			
+			formData.append("uploadFile", fileObj);
+			
+			$.ajax({
+				url: '${pageContext.request.contextPath}/uploadAjaxAction',
+		    	processData : false,
+		    	contentType : false,
+		    	data : formData,
+		    	type : 'POST',
+		    	dataType : 'json',
+		    	success : function(result){
+			    	console.log(result);
+			    	showUploadImage(result);			    	
+			    },
+		    	error : function(result){
+		    		alert("이미지 파일이 아닙니다.");
+		    	}
+			});	
+		}
+		
+		/* var, method related with attachFile */
+		let regex = new RegExp("(.*?)\.(jpg|png)$");
+		let maxSize = 1048576; //1MB
+		
+		function fileCheck(fileName, fileSize){
+
+			if(fileSize >= maxSize){
+				alert("파일 사이즈 초과");
+				return false;
+			}
+				  
+			if(!regex.test(fileName)){
+				alert("해당 종류의 파일은 업로드할 수 없습니다.");
+				return false;
+			}
+			
+			return true;		
+			
+		}
+		
+		/* input 추가 */
+		function showUploadImage(uploadResultArr){
+			/* 전달받은 데이터 검증 */
+			if(!uploadResultArr || uploadResultArr.length == 0){return}
+			let uploadResult = $("#add_image_div");
+			
+			let obj = uploadResultArr[0];
+			
+			let str = "";
+			
+			//let fileCallPath = obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName;
+			let fileCallPath = encodeURIComponent(obj.uploadPath.replace(/\\/g, '/') +"/"+ obj.uuid + "_" + obj.fileName);
+			
+			str += "<input type='hidden' name='myfoodimg' value='"+ obj.uploadPath.replace(/\\/g, '/') +"/"+obj.uuid +"_" +obj.fileName+"'>";
+			
+			uploadResult.append(str);
+		}
 	</script>
 </body>
 </html>

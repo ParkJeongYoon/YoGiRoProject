@@ -94,15 +94,11 @@ public class FoodController {
 			return "incategories/food/add_my_food";
 		}
 	 @PostMapping("/create_my_food")
-		public String getCreateMyCoursePage(Model model,HttpServletRequest request) {
+		public String getCreateMyFoodPage(Model model,HttpServletRequest request) {
 			//구현해야함 ------------------------
-		 	
+		 	fs.insertMyFood(request);
 		 
-		 
-		 
-		 
-			//ts.insertMyCourseCommon(request);// 이 함수 안에 detail도 넣음 
-			return "redirect:/move-to-course-main";
+			return "redirect:/move-to-food-main";
 		}
 	 @GetMapping("/myfood_detail")
 		public String getMyFoodDetailPage(@ModelAttribute("MyFoodVO") MyFoodVO vo ,Model model) {

@@ -167,9 +167,9 @@ table {
 }
 
 .food_content {
-	width: 18vw;
-	margin-bottom: 20px;
-	overflow: hidden;
+	width: 19vw;
+	margin-right: 2vw;
+	margin-left: 2vw;
 }
 
 .div_image {
@@ -216,12 +216,14 @@ table {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
+	flex-wrap: wrap;
 }
 
 .myfood_content {
-	width: 19vw;
-	margin-right: 2vw;
+	width: 18vw;
 	margin-left: 2vw;
+	margin-right: 2vw;
+	margin-bottom : 20px;
 }
 
 p {
@@ -266,7 +268,16 @@ span {
 	justify-content: center;
 	align-items: center; 
 }
-
+.image_wrap {
+    width: 100%;
+    height: 100%;
+}	
+.image_wrap img {
+    width : 300px;
+    height: 200px;
+    display: block;
+    border-radius : 15px;
+}
 </style>
 </head>
 <body class="body">
@@ -274,7 +285,7 @@ span {
 
 		<jsp:include page="../../includes/header.jsp"></jsp:include>
 
-
+		
 
 		<main>
 			<aside>
@@ -308,8 +319,12 @@ span {
 
 				<div id="food_real_container">	
 				<br /><br />
+				<h1>맛집 리뷰</h1>
+				
+				<c:if test="${sessionScope.account.userid != null}">
 				<br> <a href="${pageContext.request.contextPath}/add_my_food"><h4 id="add_my_food">나의 맛집 올리기</h4></a> <br>
 				<br>
+				</c:if>
 				<c:if test="${list[0].myfoodid == null}">
 							
 								<div class="food_content_null">
@@ -323,13 +338,13 @@ span {
 						
 						<c:forEach var="item" items="${list}">
 						<c:if test="${item.myfoodid != null}">
-							<div class="food_content">
+							<div class="myfood_content">
 
 								<a href="myfood_detail?myfoodid=${item.myfoodid}"
 									class="course-a">
-
-									<div class="div_image"
-										style="background-image: url('${item.myfoodimg}')"></div>
+									<div class="image_wrap" data-myfoodimg="${item.myfoodimg}" >
+										<img>
+									</div><br>
 									<p>${item.myfoodname}</p>
 								</a>
 
@@ -491,6 +506,29 @@ span {
 	<jsp:include page="../../includes/footer.jsp"></jsp:include>
 
 	<script>
+	
+	
+		$(document).ready(function() {
+			/* 이미지 삽입 */
+			$(".image_wrap").each(function(i, obj){
+				
+				const bobj = $(obj);
+				if(bobj.data("myfoodimg")){
+					const filecall = bobj.data("myfoodimg");
+					
+					const fileCallPath = encodeURIComponent(filecall);
+					
+					$(this).find("img").attr('src', '${pageContext.request.contextPath}/display?fileName=' + fileCallPath);
+					
+				}else{
+					$(this).find("img").attr('src', '${pageContext.request.contextPath}/resources/img/noimg.jpg');
+					
+				}
+				
+			});
+						
+		
+		});
 		function acyncMovePage(url) {
 			// ajax option
 			var ajaxOption = {

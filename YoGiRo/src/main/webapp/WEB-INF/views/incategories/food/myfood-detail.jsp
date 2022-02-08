@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/default.css">
+	<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <style>
 main {
 	width: 1600px;
@@ -138,26 +140,25 @@ hr {
 		<jsp:include page="../../includes/header.jsp"></jsp:include>
 
 		
-		<h1>나의 맛집</h1>
 		<main>
 		
 			<h1>나의 맛집</h1>
 			<br /><br /><br /><br />
 			<p id="title">${myfoodtodetailpage.myfoodname}</p>
 			<br /><br /><br /> 
-			<c:if test="${myfoodtodetailpage.myfoodimg != null}">
-				<img id="common-img"
-				src="${myfoodtodetailpage.myfoodimg}" alt="" /> 
 			
-			</c:if>
+				<div id="uploadResult">
+					
+				</div>
+			
 			<br />
 			<br /><br />
 			<hr />
 			<br><br>
 			<h2>개요</h2>
 			<br><br />
-			<p>주소 : ${myfoodtodetailpage.myfoodaddress}</p>
-			<p>맛집 설명 : ${myfoodtodetailpage.myfooddetail}</p>
+			<p>주소 : ${myfoodtodetailpage.myfoodaddress}</p><br>
+			<p>맛집 설명 : </p><br><br><br><p>${myfoodtodetailpage.myfooddetail}</p>
 			<br /><br /><br /><br /><br /><br />
 
 			<c:set var="i" value="1" />
@@ -192,5 +193,20 @@ hr {
 
 		<jsp:include page="../../includes/footer.jsp"></jsp:include>
 	</div>
+	
+	<script type="text/javascript">
+		let uploadResult = $("#uploadResult");	
+	 	
+	 	$(document).ready(function(){
+	 		let str = "";
+	 		let strr = "<c:out value='${myfoodtodetailpage.myfoodimg}'/>";
+	 		let fileCallPath = encodeURIComponent(strr);
+	 		str += "<img id='common-img' src='${pageContext.request.contextPath}/display?fileName=" + fileCallPath +"'>";
+	 		
+	 		uploadResult.html(str); 
+	 		
+	 	});
+	
+	</script>
 </body>
 </html>

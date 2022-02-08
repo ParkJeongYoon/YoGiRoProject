@@ -103,4 +103,11 @@
 		order by myfoodid desc
 		limit #{start}, #{count}
 	</select>
+	
+	
+	<insert id="insertmyfood" parameterType="kr.co.goodee39.vo.MyFoodVO"
+			useGeneratedKeys="true" keyProperty="myfoodid">
+		insert into myfood(userid, region, myfoodname, myfoodaddress,myfoodimg ,myfooddetail )
+		values(#{userid},#{region},#{myfoodname},#{myfoodaddress},#{myfoodimg},#{myfooddetail})
+	</insert>
 </mapper>
