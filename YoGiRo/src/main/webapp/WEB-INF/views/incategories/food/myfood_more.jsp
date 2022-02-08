@@ -160,16 +160,17 @@ table {
 
 #main_food {
 	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	flex-wrap: wrap;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(4, 1fr);
+	gap: 20px;
+	justify-content: center; /* 수평 가운데 정렬 */
 }
 
 .food_content {
-	width: 19vw;
-	margin-right: 2vw;
-	margin-left: 2vw;
+	margin-bottom: 20px;
+	overflow: hidden;
+	text-align: center;
 }
 
 .div_image {
@@ -213,17 +214,17 @@ table {
 
 #user_food {
 	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	flex-wrap: wrap;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	gap: 20px;
+	justify-content: center; /* 수평 가운데 정렬 */
 }
 
 .myfood_content {
-	width: 18vw;
-	margin-left: 2vw;
-	margin-right: 2vw;
-	margin-bottom : 20px;
+	margin-bottom: 20px;
+	overflow: hidden;
+	text-align: center;
 }
 
 p {

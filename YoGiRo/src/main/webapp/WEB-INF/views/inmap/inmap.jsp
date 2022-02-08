@@ -204,11 +204,21 @@ input[type='checkbox']:checked+label {
 						<c:forEach var="i" begin="3" end="8">
 							<div class="food-container">
 								<a href="${pageContext.request.contextPath}/food_detail?contentid=${foodList[i].contentid}&themecode=3" class="food">
+									
+									<c:if test="${foodList[i].firstimage != null}">
 									<div class="food_image" style="background: center / cover no-repeat url('${foodList[i].firstimage}')">
 										<div class="backcolor">
 											<p class="food_p">${foodList[i].title}</p>
 										</div>
 									</div>
+									</c:if>
+									<c:if test="${foodList[i].firstimage == null}">
+										<div class="food_image" style="background: center / cover no-repeat url('${pageContext.request.contextPath}/resources/img/noimg.jpg')">
+											<div class="backcolor">
+												<p class="food_p">${foodList[i].title}</p>
+											</div>
+										</div>
+									</c:if>
 								</a>
 							</div>
 						</c:forEach>
@@ -220,11 +230,20 @@ input[type='checkbox']:checked+label {
 						<c:forEach var="i" begin="3" end="8">
 							<div class="festa-container">
 								<a href="${pageContext.request.contextPath}/festa_detail?contentid=${festatoinmap[i].contentid}&themecode=1" class="festa">
-									<div class="festa_image" style="background: center / cover no-repeat url('${festatoinmap[i].firstimage}')">
-										<div class="backcolor">
-											<p class="festa_p">${festatoinmap[i].title}</p>
+									<c:if test="${festatoinmap[i].firstimage != null}">
+										<div class="festa_image" style="background: center / cover no-repeat url('${festatoinmap[i].firstimage}')">
+											<div class="backcolor">
+												<p class="festa_p">${festatoinmap[i].title}</p>
+											</div>
 										</div>
-									</div>
+									</c:if>
+									<c:if test="${festatoinmap[i].firstimage == null}">
+										<div class="festa_image" style="background: center / cover no-repeat url('${pageContext.request.contextPath}/resources/img/noimg.jpg')">
+											<div class="backcolor">
+												<p class="festa_p">${festatoinmap[i].title}</p>
+											</div>
+										</div>
+									</c:if>
 								</a>
 							</div>
 						</c:forEach>
@@ -236,11 +255,20 @@ input[type='checkbox']:checked+label {
 						<c:forEach var="i" begin="3" end="8">
 							<div class="course-container">
 								<a href="${pageContext.request.contextPath}/course_detail?contentid=${commonList[i].contentid}&themecode='2'" class="course">
-									<div class="course_image" style="background: center / cover no-repeat url('${commonList[i].firstimage}')">
-										<div class="backcolor">
-											<p class="course_p">${commonList[i].title}</p>
+									<c:if test="${commonList[i].firstimage != null}">
+										<div class="course_image" style="background: center / cover no-repeat url('${commonList[i].firstimage}')">
+											<div class="backcolor">
+												<p class="course_p">${commonList[i].title}</p>
+											</div>
 										</div>
-									</div>
+									</c:if>
+									<c:if test="${commonList[i].firstimage == null}">
+										<div class="course_image" style="background: center / cover no-repeat url('${pageContext.request.contextPath}/resources/img/noimg.jpg')">
+											<div class="backcolor">
+												<p class="course_p">${commonList[i].title}</p>
+											</div>
+										</div>
+									</c:if>
 								</a>
 							</div>
 						</c:forEach>

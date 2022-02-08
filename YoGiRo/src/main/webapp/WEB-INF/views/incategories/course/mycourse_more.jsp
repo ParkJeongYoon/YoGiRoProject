@@ -146,6 +146,8 @@ table {
 	background-color: green;
 }
 
+
+
 .course_container {
 	width: 100%;
 	height: auto;
@@ -154,27 +156,29 @@ table {
 	flex-wrap: wrap;
 }
 
-#main_course {
+#main_course1 {
 	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	flex-wrap: wrap;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	gap: 20px;
+	justify-content: center; /* 수평 가운데 정렬 */
 }
 
-.course_content {
-	width: 18vw;
+.course_content1 {
 	margin-bottom: 20px;
 	overflow: hidden;
+	text-align: center;
 }
 
 .div_image {
 	border-radius: 30px;
-	height: 240px;
+	height: 250px;
 	width: 18vw;
 	background-size: cover;
 	background-repeat: no-repeat;
 	max-width: 100%;
+	margin-bottom: 20px;
 }
 
 .div_image p {
@@ -206,18 +210,7 @@ table {
 	margin-top: 5px;
 }
 
-#user_food {
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-}
 
-.mycourse_content {
-	width: 19vw;
-	margin-right: 2vw;
-	margin-left: 2vw;
-}
 
 p {
 	overflow: hidden;
@@ -237,45 +230,27 @@ span {
 	padding-left: 5px;
 	padding-right: 5px;
 }
-
-#search-container {
+#search-container{
 	display: flex;
 	justify-content: end;
-	height: 35px;
+	height : 35px;
 }
-
-#search-container>select {
-	position: relative;
+#search-container> select{
+	position : relative;
 }
-
-#search-container>input {
-	position: relative;
+#search-container> input{
+	position : relative;
 }
-
-#search-container>button {
-	position: relative;
-	width: 60px;
+#search-container> button{
+	position : relative;
+	width : 60px;
 }
-
-.course_content_null {
-	width: 100%;
-	height: 300px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-#common-img{
-	border-radius : 15px;
-}
-
-/* 상품 이미지 관련 */
 .image_wrap {
     width: 100%;
     height: 100%;
 }	
 .image_wrap img {
-    width : 350px;
+    width : 300px;
     height: 200px;
     display: block;
     border-radius : 15px;
@@ -337,10 +312,10 @@ span {
 
 
 				<div class="course_container">
-					<div id="main_course">
+					<div id="main_course1">
 
 						 <c:forEach var="item" items="${list}">
-							<div class="course_content">
+							<div class="course_content1">
 
 								<a
 									href="mycourse_detail?mycoursecommonid=${item.mycoursecommonid}"

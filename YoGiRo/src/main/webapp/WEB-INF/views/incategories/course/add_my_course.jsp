@@ -14,7 +14,15 @@
 <style>
 
  @import url('http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css');
- 
+ main {
+	background-color: #FAFAFA;
+	border-radius : 15px;
+	padding : 50px;
+}
+#myfoodtitle {
+	border-bottom : 2px solid gray;
+	display : inline-block;
+}
 .sr-only {
 	position: absolute;
 	width: 1px;
@@ -41,19 +49,45 @@
 #mycourseregionlabel{
 	display : inline-block;
 }
+
+.noenter{
+	display : inline-block;
+	margin-right : 10px;
+}
+#send{
+	padding : 10px 30px;
+	font-size : large; 
+	background-color : #B2DFDB;
+	border-radius : 15px;
+	box-sizing: border-box; 
+    margin: 0 auto; 
+    position: relative;
+    display:block;
+    width : 200px;
+
+}
+#add_course_btn{
+	background-color : #B2DFDB;
+	border-radius : 15px;
+	padding : 5px 10px;
+}
+
+#delete_btn{
+	background-color : #F8B4D6;
+	border-radius : 15px;
+	padding : 5px 10px;
+	margin-bottom : 15px;
+}
 </style>
 </head>
 <body class="body">
 	<div class="container">
 		<jsp:include page="../../includes/header.jsp"></jsp:include>
-
+		<br> <br> <br> <br> <br>
 		<main>
-			<br> <br> <br> <br> <br>
-			<h1>내 코스 작성</h1>
+			
+			<h1 id="myfoodtitle">내 코스 작성</h1>
 			<br>
-			<p id="info">
-				<i class="xi-check-min"></i>는 필수
-			</p>
 			<br><br><br><br><br>
 			<h2>
 				<i class="xi-check-min"></i>공통정보
@@ -62,29 +96,28 @@
 			
 				<form action="${pageContext.request.contextPath}/create_my_course" method="POST">
 					<ul>
-						<li><label for="mycourse_commontitle">코스 제목 : </label> <input
-							type="text" id="mycoursecommontitle" name="mycoursecommontitle"></li>
+						<li><label for="mycourse_commontitle"><h3 class="noenter">코스 제목 : </h3></label> <input
+							type="text" id="mycoursecommontitle" name="mycoursecommontitle"></li><br>
 
 					</ul>
 
 
 					<br>
-					<h3 id="firstimgtitle">대표 이미지 첨부 :</h3>
-					<label for="upload">파일 추가 : </label><input type="file"
-						name="uploadFile0" id="uploadFile0" onchange="f_changeFunc(this)"/> <br>
+					<label for="upload"><h3 class="noenter">파일 추가 : </h3></label><input type="file"
+						name="uploadFile0" id="uploadFile0" onchange="f_changeFunc(this)"/> <br><br>
 					<div id="add_image_div0"></div>
 					<br> 
-					<h3>개요 :</h3>
+					<h3>개요 :</h3><br>
 					<li><textarea name="mycourseinfo" id="mycourseinfo" cols="50"
 							rows="10"></textarea></li> <br> <br> <br> <br> <br>
 					<br> <br>
-					<h2>코스</h2>
+					<h2><i class="xi-check-min"></i>코스</h2>
 					<br> <br>
-					<li><label for="totaldistance">총 거리 : </label><input
-						type="text" name="totaldistance" id="totaldistance" /></li> <br>
-					<li><label for="totaltime">소요 시간 : </label><input type="text"
-						id="totaltime" name="totaltime" /></li> <br>
-					<li><label for="mycourseregion" id="mycourseregionlabel">권역 : </label>
+					<li><label for="totaldistance"><h3 class="noenter">총 거리 : </h3></label><input
+						type="text" name="totaldistance" id="totaldistance" /></li> <br><br>
+					<li><label for="totaltime"><h3 class="noenter">소요 시간 : </h3></label><input type="text"
+						id="totaltime" name="totaltime" /></li> <br><br>
+					<li><label for="mycourseregion" id="mycourseregionlabel"><h3 class="noenter">권역 : </h3></label>
 					<select name="mycourseregion" id="mycourseregion">
 						<option value="서울">수도권</option>
 						<option value="강원">강원권</option>
@@ -98,31 +131,31 @@
 
 
 					<br> <br> <br> <br> <br> <br> <br>
-					<h2>코스 정보</h2>
+					<h2><i class="xi-check-min"></i>코스 정보</h2>
 					<br> <br>
 					<div id="my_course_detail">
 						<ul>
-							<li><label for="mycoursedetailname1">장소 이름 : </label> 
-							<input type="text" name="mycoursedetailname1" id="mycoursedetailname1" /></li>
+							<li><label for="mycoursedetailname1"><h3 class="noenter">장소 이름 : </h3></label> 
+							<input type="text" name="mycoursedetailname1" id="mycoursedetailname1" /></li><br>
 							<br>
-							<label for="uploadFile1">코스 이미지 첨부 :</label>
+							<label for="uploadFile1"><h3 class="noenter">코스 이미지 첨부 :</h3></label>
 							<input type="file" name="uploadFile1" id="uploadFile1" onchange="f_changeFunc(this)"/> <br>
-							<div id="add_image_div1"></div>
+							<div id="add_image_div1"></div><br>
 							<br> 
-							<li><label for="mycoursedetailoverview1">장소 설명 : </label> 
+							<li><label for="mycoursedetailoverview1"><h3 class="noenter">장소 설명 : </h3></label> 
 							<input type="text" id="mycoursedetailoverview1"
-								name="mycoursedetailoverview1" /></li>
+								name="mycoursedetailoverview1" /></li><br>
 							<br>
 						</ul>
 					</div>
 
 					<%-- <c:set var="num" value="1" /> --%>
 					
-					<a onclick="addForm();">코스추가</a>
+					<a onclick="addForm();" style="cursor: pointer" id="add_course_btn">코스추가</a>
 
 					<div id="add_my_course_detail" class="sr-only">
 						<div id="form_input">
-							<button type="button" onclick="delForm(this);">삭제</button>
+							<button type="button" onclick="delForm(this);" id="delete_btn">삭제</button>
 							<li>
 							<label for="mycoursedetailname">장소 이름 : </label>
 							<input type="text" name="mycoursedetailname" id="mycoursedetailname" />
@@ -143,7 +176,7 @@
 						</div>
 					</div>
 					<br><br><br><br>
-					<input type="submit" value="전송" />
+					<input type="submit"  id="send" value="등록" style="cursor: pointer"/>
 					<br><br><br><br>
 				</form>
 				

@@ -8,6 +8,9 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/default.css">
+<script type="text/javascript"
+	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=q47hthbmmp&submodules=geocoder"></script>
+<style>
 <style>
 main {
 	width: 1600px;
@@ -130,6 +133,19 @@ hr {
 #overview{
 	font-weight : bold;
 }
+/* 맵 div */
+#map {
+	width: 90%;
+	height: 400px;
+	border-radius :15px;
+}
+#imgandmap_container{
+	display: grid;
+	/* display: inline-grid; */
+	grid-template-columns: 1fr 1fr;
+	row-gap: 10px;
+	
+}
 </style>
 </head>
 <body class="body">
@@ -144,11 +160,16 @@ hr {
 			<br /><br /><br /><br />
 			<p id="title">${foodtodetailpage.title}</p>
 			<br /><br /><br /> 
-			<c:if test="${foodtodetailpage.firstimage != null}">
-				<img id="common-img"
-				src="${foodtodetailpage.firstimage}" alt="" /> 
+			<div id="imgandmap_container">
+				<c:if test="${foodtodetailpage.firstimage != null}">
+					<img id="common-img"
+					src="${foodtodetailpage.firstimage}" alt="" /> 
+				
+				</c:if>
 			
-			</c:if>
+				<!-- 네이버 지도 -->
+				<div id="map"></div>
+			</div>
 			<br />
 			<br /><br />
 			<hr />
@@ -213,5 +234,30 @@ hr {
 		 
 		<jsp:include page="../../includes/footer.jsp"></jsp:include>
 	</div>
+	<script type="text/javascript">
+		/* 네이버 지도 api */
+		let y = ${foodtodetailpage.mapy};
+		let x = ${foodtodetailpage.mapx};
+		/* let level = ${festatodetailpage.mlevel}; */
+		
+		var position = new naver.maps.LatLng(y, x);
+	
+		var map = new naver.maps.Map('map', {
+		    center: position,
+		    zoom: 10
+		});
+	
+		var markerOptions = {
+		    position: position,
+		    map: map,
+		    icon: {
+		    	url : '${pageContext.request.contextPath}/img/mapmarker/red-marker40.png',
+		        size: new naver.maps.Size(40, 40),
+		        anchor: new naver.maps.Point(20, 40)
+		    }
+		};
+	
+		var marker = new naver.maps.Marker(markerOptions);
+	</script>
 </body>
 </html>

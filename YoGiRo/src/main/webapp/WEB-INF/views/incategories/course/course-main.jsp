@@ -138,13 +138,15 @@ table {
 #search_btn {
 	height: 35px;
 	width: 80px;
-	position: absolute;
-	right: 0px;
-	background-color: #1DC078;
+	/* position: absolute;
+	right: 0px; */
+	float : right;
+	background-color: #B2DFDB;
+	border-radius : 15px;
 }
 
 #search_btn:hover {
-	background-color: green;
+	background-color: #92C8FF;
 }
 
 #search {
@@ -163,9 +165,10 @@ table {
 
 #main_course {
 	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+	justify-content: center; /* 수평 가운데 정렬 */
 }
 
 .course_content {
@@ -222,29 +225,19 @@ table {
 
 #user_course {
 	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+	justify-content: center; /* 수평 가운데 정렬 */
 }
 
 .mycourse_content {
 	border: 1px solid black;
 	border-radius: 30px;
-	width: auto;
-	margin-right : 3vw;
-	margin-left : 2vw;
+	width: 18vw;
 }
 
-.image_wrap {
-    width: 100%;
-    height: 100%;
-}	
-.image_wrap img {
-    width : 19vw;
-    height: 11vw;
-    display: block;
-    border-radius : 15px;
-}
+
 </style>
 </head>
 <body class="body">
@@ -252,8 +245,7 @@ table {
 
 		<jsp:include page="../../includes/header.jsp"></jsp:include>
 
-
-
+		<br><br>
 		<main>
 			<aside>
 				<div class="sidemenubar">
@@ -327,7 +319,7 @@ table {
 				<div id="search_box">
 						<button id="search_btn" onclick="location.href='mycourse_more?region=${commonList[0].region}'">더보기</button>
 					</div>
-				<br /><br />
+				<br />
 				<c:if test="${sessionScope.account.userid != null}">
 				<br> <a href="${pageContext.request.contextPath}/add_my_course"><h4 id="add_my_course">내 코스 올리기</h4></a> <br>
 				<br>
@@ -339,17 +331,13 @@ table {
 						<c:forEach var="j" begin="0" end="2">
 							<c:if test="${myCommonList[j].mycoursecommonid != null}">
 								<div id="my_course${j}" class="mycourse_content">
-
+								
 									<a href="mycourse_detail?mycoursecommonid=${myCommonList[j].mycoursecommonid}">
-										
-										<div class="image_wrap div_image" data-mycoursemainimage="${myCommonList[j].mycoursemainimage}" >
-										<img>
-										<div class="bg">
-										</div><br>
+										<div class="image_wrap div_image" data-mycoursemainimage="${myCommonList[j].mycoursemainimage}">
+											<div class="bg"></div>
 											<p>${myCommonList[j].mycoursecommontitle}</p>
 										</div>
 									</a>
-
 									
 								<c:forEach var="item2" items="${myDetailList}">
 
@@ -387,10 +375,10 @@ table {
 				
 				const fileCallPath = encodeURIComponent(filecall);
 				
-				$(this).find("img").attr('src', '${pageContext.request.contextPath}/display?fileName=' + fileCallPath);
+				$(this).attr('style', "background-image: url('${pageContext.request.contextPath}/display?fileName="+fileCallPath+"')");
 				
 			}else{
-				$(this).find("img").attr('src', '${pageContext.request.contextPath}/resources/img/noimg.jpg');
+				$(this).attr('style', "background-image: url('${pageContext.request.contextPath}/resources/img/noimg.jpg')");
 				
 			}
 			

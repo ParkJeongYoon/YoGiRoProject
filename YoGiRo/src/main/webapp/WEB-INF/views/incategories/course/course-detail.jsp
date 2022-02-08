@@ -134,8 +134,16 @@ hr {
 }
 /* 맵 div */
 #map {
-	width: 40%;
+	width: 90%;
 	height: 400px;
+	border-radius :15px;
+}
+#imgandmap_container{
+	display: grid;
+	/* display: inline-grid; */
+	grid-template-columns: 1fr 1fr;
+	row-gap: 10px;
+	
 }
 </style>
 </head>
@@ -151,14 +159,15 @@ hr {
 			<br /><br /><br /><br />
 			<p id="title">${coursecommontodetailpage.title}</p>
 			<br /><br /><br /> 
-			<c:if test="${coursecommontodetailpage.firstimage != null}">
-				<img id="common-img"
-				src="${coursecommontodetailpage.firstimage}" alt="" /> 
-				
-			</c:if>
-
-			<div id="map"></div>
-
+			<div id="imgandmap_container">
+				<c:if test="${coursecommontodetailpage.firstimage != null}">
+					<img id="common-img"
+					src="${coursecommontodetailpage.firstimage}" alt="" /> 
+					
+				</c:if>
+	
+				<div id="map"></div>
+			</div>
 			<br />
 			<br /><br />
 			<hr />
