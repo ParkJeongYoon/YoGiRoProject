@@ -84,8 +84,8 @@
 		height: 35px;
 		position: absolute;
 		right: 0;
-		background-color: #fff;
-		border: 1px solid lightgray; 
+		background-color: #B2DFDB;
+		/* border: 1px solid lightgray;  */
 	}
 </style>
 </head>
