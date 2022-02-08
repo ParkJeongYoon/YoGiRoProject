@@ -79,7 +79,7 @@
 		        	<div class="qna-question-content">${questionVO.qcontent}</div>
 	        	</section>
 	        	
-	        	<section class="qna-answer">
+	        	<section class="qna-answer" style="margin-bottom: 20px;">
 					
 	        	</section>
         	</div>
@@ -250,7 +250,7 @@
 			
 			$(".delete").click(function() {
 				if (confirm("정말로 삭제하시겠습니까?")) {
-					location.href = "${pageContext.request.contextPath}/qna/qna-delete?qnum=${questionVO.qnum}";
+					location.href = "${pageContext.request.contextPath}/manager/manager2/manager-que-delete?qnum=${questionVO.qnum}";
 				}
 			});
 			
