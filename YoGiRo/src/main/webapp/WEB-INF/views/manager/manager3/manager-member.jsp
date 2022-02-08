@@ -36,18 +36,20 @@
 		   		<table>
 		   			
 		   				<thead>
-                               <tr>                                                                    
+                               <tr>      
+                               	  <th>차단여부</th>                                                              
                                   <th>회원아이디</th>                                  
                                   <th>회원이메일</th>
-                                  <th>차단여부</th>
+                                  
                                </tr>
                         </thead>
                             <tbody> 
                             <c:forEach var="user" items="${list}" >                         	
                             	<tr>
+                            	   <td><label><input type="checkbox" name="bloCheck" value="${user.userid}"></label></td>
 	                               <td>${user.userid}</td>	                               
 	                               <td>${user.useremail}</td>
-	                               <td><label><input type="checkbox" name="bloCheck" value="${user.userid}"></label></td>
+	                               
                                	</tr>
                             </c:forEach>                        	
                             </tbody>		   			              
@@ -178,15 +180,6 @@
 	</div>
 	<script type="text/javascript">
 		$(function(){
-			$("#block").click(function(){
-				let chk_val = [];
-				$("input:checkbox[name=bloCheck]:checked").each(function()){
-					chk_val.push
-				}
-				
-				
-			})
-			
 			
 			$("#search").click(function() {
 		         let category = $("#category").val();
