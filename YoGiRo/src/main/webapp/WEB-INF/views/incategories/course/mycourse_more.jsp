@@ -7,10 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert mycoursecommontitle here</title>
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/default.css">
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/default.css"></link>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 
 <style>
 main {
@@ -148,8 +146,6 @@ table {
 	background-color: green;
 }
 
-
-
 .course_container {
 	width: 100%;
 	height: auto;
@@ -174,12 +170,11 @@ table {
 
 .div_image {
 	border-radius: 30px;
-	height: 250px;
+	height: 240px;
 	width: 18vw;
 	background-size: cover;
 	background-repeat: no-repeat;
 	max-width: 100%;
-	margin-bottom: 20px;
 }
 
 .div_image p {
@@ -242,27 +237,48 @@ span {
 	padding-left: 5px;
 	padding-right: 5px;
 }
-#search-container{
+
+#search-container {
 	display: flex;
 	justify-content: end;
-	height : 35px;
+	height: 35px;
 }
-#search-container> select{
-	position : relative;
+
+#search-container>select {
+	position: relative;
 }
-#search-container> input{
-	position : relative;
+
+#search-container>input {
+	position: relative;
 }
-#search-container> button{
-	position : relative;
-	width : 60px;
+
+#search-container>button {
+	position: relative;
+	width: 60px;
 }
-.course_content_null{
-	width : 100%;
-	height : 300px;
-	display : flex;
+
+.course_content_null {
+	width: 100%;
+	height: 300px;
+	display: flex;
 	justify-content: center;
-	align-items: center; 
+	align-items: center;
+}
+
+#common-img{
+	border-radius : 15px;
+}
+
+/* 상품 이미지 관련 */
+.image_wrap {
+    width: 100%;
+    height: 100%;
+}	
+.image_wrap img {
+    width : 350px;
+    height: 200px;
+    display: block;
+    border-radius : 15px;
 }
 </style>
 </head>
@@ -311,179 +327,179 @@ span {
 					</div>
 				</div>
 				<c:if test="${list[0].mycoursecommonid == null}">
-							
-								<div class="course_content_null">
-								
-									<p>내용이 없습니다.</p>
-								</div>
-							
-							</c:if>
+
+					<div class="course_content_null">
+
+						<p>내용이 없습니다.</p>
+					</div>
+
+				</c:if>
 
 
 				<div class="course_container">
 					<div id="main_course">
 
-						<c:forEach var="item" items="${list}">
+						 <c:forEach var="item" items="${list}">
 							<div class="course_content">
 
-								<a href="mycourse_detail?mycoursecommonid=${item.mycoursecommonid}"
+								<a
+									href="mycourse_detail?mycoursecommonid=${item.mycoursecommonid}"
 									class="course-a">
-
-									<div class="div_image"
-										style="background-image: url('${item.mycoursemainimage}')"></div>
+									<div class="image_wrap" data-mycoursemainimage="${item.mycoursemainimage}" >
+										<img>
+									</div><br>
 									<p>${item.mycoursecommontitle}</p>
-								</a>
-
-
-
+								</a> 
 							</div>
-						</c:forEach>
+						</c:forEach> 
 
 					</div>
 
 
 
 				</div>
-			
-
-		<hr />
-
-		<hr />
 
 
+				<hr />
 
-	<div id="page">
-		<!-- num -> 1~10 11~20 21~30 => ((num-1)/10)+1 -->
-		<%
-		// 현재 페이지
-		int num = (Integer) request.getAttribute("num");
-		// 전체 데이터 개수
-		int count = (Integer) request.getAttribute("count");
-		// 전체 페이지 개수
-		int total = count / 10 + ((count % 10 == 0) ? 0 : 1);
-		// 한 블럭에서 가장 작은 번호를 가지는 페이지 번호
-		int minBlock = (((num - 1) / 10) * 10) + 1;
-		// 한 블럭에서 가장 큰 번호를 가지는 페이지 번호
-		int maxBlock = (((num - 1) / 10) + 1) * 10;
-		String region = (String)request.getAttribute("region");
-		pageContext.setAttribute("total", total);
-		pageContext.setAttribute("minBlock", minBlock);
-		pageContext.setAttribute("maxBlock", maxBlock);
+				<hr />
 
-		// 검색 데이터 연동
-		String query = "";
 
-		String mycoursecommontitle = (String) request.getAttribute("mycoursecommontitle");
-		String mycourseinfo = (String) request.getAttribute("mycourseinfo");
 
-		if (mycoursecommontitle != null) {
-			query += "&mycoursecommontitle=" + mycoursecommontitle;
-		}
+				<div id="page">
+					<!-- num -> 1~10 11~20 21~30 => ((num-1)/10)+1 -->
+					<%
+					// 현재 페이지
+					int num = (Integer) request.getAttribute("num");
+					// 전체 데이터 개수
+					int count = (Integer) request.getAttribute("count");
+					// 전체 페이지 개수
+					int total = count / 10 + ((count % 10 == 0) ? 0 : 1);
+					// 한 블럭에서 가장 작은 번호를 가지는 페이지 번호
+					int minBlock = (((num - 1) / 10) * 10) + 1;
+					// 한 블럭에서 가장 큰 번호를 가지는 페이지 번호
+					int maxBlock = (((num - 1) / 10) + 1) * 10;
+					String region = (String) request.getAttribute("region");
+					pageContext.setAttribute("total", total);
+					pageContext.setAttribute("minBlock", minBlock);
+					pageContext.setAttribute("maxBlock", maxBlock);
 
-		if (mycourseinfo != null) {
-			query += "&mycourseinfo=" + mycourseinfo;
-		}
+					// 검색 데이터 연동
+					String query = "";
 
-		pageContext.setAttribute("query", query);
-		%>
-		<c:choose>
-			<c:when test="${(minBlock-1) < 1 }">
-				<span>◀◀</span>
-			</c:when>
-			<c:otherwise>
-				<a
-					href="${pageContext.request.contextPath}/mycourse_more?num=${minBlock-1}${query}&region=${region}">◀◀</a>
-			</c:otherwise>
-		</c:choose>
-		&nbsp;&nbsp;
-		<c:choose>
-			<c:when test="${num==1 }">
-				<span>◀</span>
-			</c:when>
-			<c:otherwise>
-				<a
-					href="${pageContext.request.contextPath}/mycourse_more?num=${num-1}${query}&region=${region}">◀</a>
-			</c:otherwise>
-		</c:choose>
-		<c:forEach begin="${minBlock}"
-			end="${(total<maxBlock)?total:maxBlock}" step="1" var="i">
-			<c:choose>
-				<c:when test="${num == i}">
-					<span>${i}</span>
-				</c:when>
-				<c:otherwise>
-					<a
-						href="${pageContext.request.contextPath}/mycourse_more?num=${i}${query}&region=${region}">${i}</a>
-				</c:otherwise>
-			</c:choose>
+					String mycoursecommontitle = (String) request.getAttribute("mycoursecommontitle");
+					String mycourseinfo = (String) request.getAttribute("mycourseinfo");
 
-		</c:forEach>
-		<c:choose>
-			<c:when test="${num == total }">
-				<span>▶</span>
-			</c:when>
-			<c:otherwise>
-				<a
-					href="${pageContext.request.contextPath}/mycourse_more?num=${num+1}${query}&region=${region}">▶</a>
-			</c:otherwise>
-		</c:choose>
-		&nbsp;&nbsp;
-		<c:choose>
-			<c:when test="${maxBlock > total }">
-				<span>▶▶</span>
-			</c:when>
-			<c:otherwise>
-				<a
-					href="${pageContext.request.contextPath}/mycourse_more?num=${maxBlock+1}${query}&region=${region}">▶▶</a>
-			</c:otherwise>
-		</c:choose>
+					if (mycoursecommontitle != null) {
+						query += "&mycoursecommontitle=" + mycoursecommontitle;
+					}
+
+					if (mycourseinfo != null) {
+						query += "&mycourseinfo=" + mycourseinfo;
+					}
+
+					pageContext.setAttribute("query", query);
+					%>
+					<c:choose>
+						<c:when test="${(minBlock-1) < 1 }">
+							<span>◀◀</span>
+						</c:when>
+						<c:otherwise>
+							<a
+								href="${pageContext.request.contextPath}/mycourse_more?num=${minBlock-1}${query}&region=${region}">◀◀</a>
+						</c:otherwise>
+					</c:choose>
+					&nbsp;&nbsp;
+					<c:choose>
+						<c:when test="${num==1 }">
+							<span>◀</span>
+						</c:when>
+						<c:otherwise>
+							<a
+								href="${pageContext.request.contextPath}/mycourse_more?num=${num-1}${query}&region=${region}">◀</a>
+						</c:otherwise>
+					</c:choose>
+					<c:forEach begin="${minBlock}"
+						end="${(total<maxBlock)?total:maxBlock}" step="1" var="i">
+						<c:choose>
+							<c:when test="${num == i}">
+								<span>${i}</span>
+							</c:when>
+							<c:otherwise>
+								<a
+									href="${pageContext.request.contextPath}/mycourse_more?num=${i}${query}&region=${region}">${i}</a>
+							</c:otherwise>
+						</c:choose>
+
+					</c:forEach>
+					<c:choose>
+						<c:when test="${num == total }">
+							<span>▶</span>
+						</c:when>
+						<c:otherwise>
+							<a
+								href="${pageContext.request.contextPath}/mycourse_more?num=${num+1}${query}&region=${region}">▶</a>
+						</c:otherwise>
+					</c:choose>
+					&nbsp;&nbsp;
+					<c:choose>
+						<c:when test="${maxBlock > total }">
+							<span>▶▶</span>
+						</c:when>
+						<c:otherwise>
+							<a
+								href="${pageContext.request.contextPath}/mycourse_more?num=${maxBlock+1}${query}&region=${region}">▶▶</a>
+						</c:otherwise>
+					</c:choose>
+				</div>
+				<hr />
+
+				<div id="search-container">
+					<%
+					if ((mycoursecommontitle != null) && (mycourseinfo != null)) {
+					%>
+					<select name="category" id="search_category">
+						<option value="mycoursecommontitle">제목</option>
+						<option value="mycourseinfo">내용</option>
+						<option value="both" selected>제목+내용</option>
+					</select> <input type="text" id="text" name="text"
+						value="${mycoursecommontitle}" />
+					<%
+					} else if (mycoursecommontitle != null) {
+					%>
+					<select name="category" id="search_category">
+						<option value="mycoursecommontitle" selected>제목</option>
+						<option value="mycourseinfo">내용</option>
+						<option value="both">제목+내용</option>
+					</select> <input type="text" id="text" name="text"
+						value="${mycoursecommontitle}" />
+
+					<%
+					} else if (mycourseinfo != null) {
+					%>
+					<select name="category" id="search_category">
+						<option value="mycoursecommontitle">제목</option>
+						<option value="mycourseinfo" selected>내용</option>
+						<option value="both">제목+내용</option>
+					</select> <input type="text" id="text" name="text" value="${mycourseinfo}" />
+					<%
+					} else {
+					%>
+					<select name="category" id="search_category">
+						<option value="mycoursecommontitle">제목</option>
+						<option value="mycourseinfo">내용</option>
+						<option value="both">제목+내용</option>
+					</select> <input type="text" id="text" name="text" />
+					<%
+					}
+					%>
+					<button id="search">검색</button>
+				</div>
+
+			</div>
 	</div>
-	<hr />
 
-	<div id="search-container">
-		<%
-		if ((mycoursecommontitle != null) && (mycourseinfo != null)) {
-		%>
-		<select name="category" id="search_category">
-			<option value="mycoursecommontitle">제목</option>
-			<option value="mycourseinfo">내용</option>
-			<option value="both" selected>제목+내용</option>
-		</select> <input type="text" id="text" name="text" value="${mycoursecommontitle}" />
-		<%
-		} else if (mycoursecommontitle != null) {
-		%>
-		<select name="category" id="search_category">
-			<option value="mycoursecommontitle" selected>제목</option>
-			<option value="mycourseinfo">내용</option>
-			<option value="both">제목+내용</option>
-		</select> <input type="text" id="text" name="text" value="${mycoursecommontitle}" />
-
-		<%
-		} else if (mycourseinfo != null) {
-		%>
-		<select name="category" id="search_category">
-			<option value="mycoursecommontitle">제목</option>
-			<option value="mycourseinfo" selected>내용</option>
-			<option value="both">제목+내용</option>
-		</select> <input type="text" id="text" name="text" value="${mycourseinfo}" />
-		<%
-		} else {
-		%>
-		<select name="category" id="search_category">
-			<option value="mycoursecommontitle">제목</option>
-			<option value="mycourseinfo">내용</option>
-			<option value="both">제목+내용</option>
-		</select> <input type="text" id="text" name="text" />
-		<%
-		}
-		%>
-		<button id="search">검색</button>
-	</div>
-	
-	</div>
-	</div>
-
-		</main>
+	</main>
 	<br>
 	<br>
 	<br>
@@ -493,6 +509,30 @@ span {
 	<jsp:include page="../../includes/footer.jsp"></jsp:include>
 
 	<script>
+	
+
+		$(document).ready(function() {
+			/* 이미지 삽입 */
+			$(".image_wrap").each(function(i, obj){
+				
+				const bobj = $(obj);
+				if(bobj.data("mycoursemainimage")){
+					const filecall = bobj.data("mycoursemainimage");
+					
+					const fileCallPath = encodeURIComponent(filecall);
+					
+					$(this).find("img").attr('src', '${pageContext.request.contextPath}/display?fileName=' + fileCallPath);
+					
+				}else{
+					$(this).find("img").attr('src', '${pageContext.request.contextPath}/resources/img/noimg.jpg');
+					
+				}
+				
+			});
+						
+		
+		});
+		
 		function acyncMovePage(url) {
 			// ajax option
 			var ajaxOption = {
@@ -510,24 +550,30 @@ span {
 				$('#course_real_container').html(data);
 			});
 		}
-		
-		
+
 		$(function() {
-			
-			
-			$("#search").click(function(){
-				let category = $("#search_category").val();
-				let text = $("#text").val();
-				
-				if(category == "mycoursecommontitle"){
-					location.href = "${pageContext.request.contextPath}/mycourse_more?mycoursecommontitle="+text+"&region=${region}";	
-				}else if(category == "mycourseinfo"){
-					location.href = "${pageContext.request.contextPath}/mycourse_more?mycourseinfo="+text+"&region=${region}";
-				}else if(category == "both"){
-					location.href = "${pageContext.request.contextPath}/mycourse_more?mycoursecommontitle="+text+"&mycourseinfo="+text+"&region=${region}";	
-				}
-				
-			});
+
+			$("#search")
+					.click(
+							function() {
+								let category = $("#search_category").val();
+								let text = $("#text").val();
+
+								if (category == "mycoursecommontitle") {
+									location.href = "${pageContext.request.contextPath}/mycourse_more?mycoursecommontitle="
+											+ text + "&region=${region}";
+								} else if (category == "mycourseinfo") {
+									location.href = "${pageContext.request.contextPath}/mycourse_more?mycourseinfo="
+											+ text + "&region=${region}";
+								} else if (category == "both") {
+									location.href = "${pageContext.request.contextPath}/mycourse_more?mycoursecommontitle="
+											+ text
+											+ "&mycourseinfo="
+											+ text
+											+ "&region=${region}";
+								}
+
+							});
 		});
 	</script>
 </body>

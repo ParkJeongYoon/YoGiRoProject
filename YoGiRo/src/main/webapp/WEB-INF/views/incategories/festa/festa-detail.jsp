@@ -8,8 +8,6 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/default.css">
-	<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <style>
 main {
 	width: 1600px;
@@ -41,7 +39,7 @@ aside {
 	display: inline-block;
 }
 
-#course_real_container {
+#food_real_container {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
@@ -113,11 +111,11 @@ hr {
 	border: 1px solid #ccc;
 }
 
-#course_detail_container{
+#food_detail_container{
 	display :flex;
 }
 
-#course_detail_img{
+#food_detail_img{
 
 	width : 50%;
 }
@@ -125,7 +123,7 @@ hr {
 	border-radius : 30px;
 
 }
-#course_detail_overview{
+#food_detail_overview{
 	padding : 20px;
 	width : 50%;
 }
@@ -139,19 +137,29 @@ hr {
 
 		<jsp:include page="../../includes/header.jsp"></jsp:include>
 
-		
-		<h1>코스</h1>
+
+
 		<main>
-		
-			<h1>코스</h1>
+			<h1>축제/행사</h1>
 			<br /><br /><br /><br />
-			<p id="title">${mycoursecommontodetailpage.mycoursecommontitle}</p>
+			<p id="title">${festatodetailpage.title}</p>
 			<br /><br /><br /> 
-			<c:if test="${mycoursecommontodetailpage.mycoursemainimage != null}">
-				<div id="uploadResult">
-					
-				</div>
+			<c:if test="${festatodetailpage.firstimage != null}">
+				<img id="common-img"
+				src="${festatodetailpage.firstimage}" alt="" /> 
+			
 			</c:if>
+			<br />
+			<br /><br />
+			<hr />
+			<br><br><br><br>
+			<p>축제명 : ${festatodetailpage.title}</p><br />
+			<c:if test="${festatodetailpage.sponsor1tel != null}">
+				<p>담당자 전화 : ${festatodetailpage.sponsor1tel}</p>
+			
+			</c:if>
+			
+			<br><br />
 			<br />
 			<br /><br />
 			<hr />
@@ -159,65 +167,31 @@ hr {
 			<h2>개요</h2>
 			<br><br />
 
-			<p>${mycoursecommontodetailpage.mycourseinfo}</p>
+			<p>${festatodetailpage.overview}</p>
 			<br /><br /><br /><br /><br /><br />
-			<h2>코스</h2>
-			<br /><br />
-			<p>총 거리 : ${mycoursecommontodetailpage.totaldistance}</p>
-			<p>소요시간 : ${mycoursecommontodetailpage.totaltime}</p>
+			<hr />
+			<br /><br /><br /><br /><br /><br />
+			<c:if test="${festatodetailpage.eventstartdate != null}">
+				<p>축제/행사 시작일 : ${festatodetailpage.eventstartdate}</p>
+			
+			</c:if><br />
+			<c:if test="${festatodetailpage.eventenddate != null}">
+				<p>축제/행사 종료일 : ${festatodetailpage.eventenddate}</p>
+			
+			</c:if>
 			<br /><br /><br /><br /><br /><br />
 			<hr />
 			<br /><br /><br />
 
 			<c:set var="i" value="1" />
 
-			<c:forEach var="item" items="${mycoursedetailtodetailpage}">
-				<h2>${i}코스:${item.mycoursedetailname}</h2>
-				<br />
-				<div id="course_detail_container">
-					<div id="course_detail_img">
-						
-							<img src="${item.mycoursedetailimage}" alt="" id="detail_img"/>
-						
-					</div>
-					<div id="course_detail_overview">
-						<p id="overview"> <<코스개요>> </p>
-						<br />
-						<p>${item.mycoursedetailoverview}</p>
-					</div>
-				</div>
-				<br /><br /><br /><br /><br /><br /><br />
-	
-				
-				
-
-				<c:set var="i" value="${i+1}"></c:set>
-			</c:forEach>
 			
-			
-		</main>
+		<jsp:include page="../../comments/festa_comments.jsp" ></jsp:include>
+		<br><br><br><br><br>
+		</main>  
 
-
-
+		 
 		<jsp:include page="../../includes/footer.jsp"></jsp:include>
 	</div>
-	<script type="text/javascript">
-	<%-- <img 
-		src="${myfoodtodetailpage.myfoodimg}" alt="" /> 
-	 --%>
-	 	let uploadResult = $("#uploadResult");	
-	 	
-	 	$(document).ready(function(){
-	 		let str = "";
-	 		let strr = "<c:out value='${mycoursecommontodetailpage.mycoursemainimage}'/>";
-	 		let fileCallPath = encodeURIComponent(strr);
-	 		str += "<img id='common-img' src='${pageContext.request.contextPath}/display?fileName=" + fileCallPath +"'>";
-	 		
-	 		uploadResult.html(str); 
-	 		
-	 	});
-	 
-	</script>
-	
 </body>
 </html>

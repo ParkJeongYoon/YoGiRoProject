@@ -228,8 +228,9 @@
 			let str = "";
 			
 			//let fileCallPath = obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName;
-			let fileCallPath = obj.uploadPath.replace(/\\/g, '/') +"/"+ obj.uuid + "_" + obj.fileName;
-			str += "<input type='hidden' name='mycoursemainimage' value='"+ fileCallPath +"'>";
+			let fileCallPath = encodeURIComponent(obj.uploadPath.replace(/\\/g, '/') +"/"+ obj.uuid + "_" + obj.fileName);
+			
+			str += "<input type='hidden' name='mycoursemainimage' value='"+ obj.uploadPath.replace(/\\/g, '/') +"/"+obj.uuid +"_" +obj.fileName+"'>";
 			
 			uploadResult.append(str);
 		}

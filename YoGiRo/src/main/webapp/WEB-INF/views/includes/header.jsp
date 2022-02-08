@@ -12,7 +12,7 @@
 				<a href="${pageContext.request.contextPath}/mypage" class="login-box-a">마이페이지<i class="far fa-address-card"></i></a>
 			</c:if>
 			<c:if test="${sessionScope.account.ismanager eq 'Y'}">
-				<a href="${pageContext.request.contextPath}/manager/manager1/manager-chart" class="login-box-a">사이트관리<i class="fas fa-chalkboard-teacher"></i></a>
+				<a href="${pageContext.request.contextPath}/manager/manager2/manager-que" class="login-box-a">사이트관리<i class="fas fa-chalkboard-teacher"></i></a>
 			</c:if>
             <a href="${pageContext.request.contextPath}/qna/qna-main" class="login-box-a">문의하기<i class="far fa-question-circle"></i></a>
             <c:choose>
@@ -28,7 +28,7 @@
     </div>
     <nav class="header-nav">
         <a href="${pageContext.request.contextPath}/move-to-food-main" class="header-nav-a">음식점</a>
-        <a href="${pageContext.request.contextPath}/incategories/festa/festa-main" class="header-nav-a">축제</a>
+        <a href="${pageContext.request.contextPath}/move-to-festa-main" class="header-nav-a">축제</a>
         <a href="${pageContext.request.contextPath}/move-to-course-main" class="header-nav-a">코스</a>
         <a href="${pageContext.request.contextPath}/incategories/community/community-main" class="header-nav-a">커뮤니티</a>
     </nav>
