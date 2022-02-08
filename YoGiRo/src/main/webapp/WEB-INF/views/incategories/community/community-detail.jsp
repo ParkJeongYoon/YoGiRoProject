@@ -259,7 +259,7 @@ main>h1 {
 								let yn = confirm("삭제하시겠습니까?");
 								// console.log(yn);
 								if(yn) {
-									// comment_data = {comid: item.comid};
+									
 									comment_data = {comcommentid: item.comcommentid};
 									
 									$.ajax({

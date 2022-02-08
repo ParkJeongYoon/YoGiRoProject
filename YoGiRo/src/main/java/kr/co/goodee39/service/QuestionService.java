@@ -33,7 +33,7 @@ public class QuestionService {
 	
 	public void getQUE(Model model, QuestionVO vo) {
 		
-		model.addAttribute("questionVO", sqlSessionTemplate.selectOne("questions.selectQuestions", vo));
+		model.addAttribute("questionVO", sqlSessionTemplate.selectOne("questions.selectQuestionsDetail", vo));
 		
 	}
 	
@@ -76,6 +76,11 @@ public class QuestionService {
 	
 	public void insertQna(QuestionVO vo) {
 		sqlSessionTemplate.insert("questions.insertQuestions" , vo);
+	}
+	
+	
+	public void deleteQna(QuestionVO vo) {
+		sqlSessionTemplate.delete("questions.deleteQuestions" , vo);
 	}
 	
 }

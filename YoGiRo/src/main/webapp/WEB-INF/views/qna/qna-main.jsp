@@ -2,7 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
-<html class="vh">
+<html>
 <head>
 	<meta charset="UTF-8">
 	<title>create title here</title>
@@ -11,8 +11,8 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/default.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/qnacss/qna-main.css">
 </head>
-<body class="body vh">
-    <div class="container vh">
+<body class="body">
+    <div class="container">
 		<jsp:include page="../includes/header.jsp"></jsp:include>
 
 
@@ -70,22 +70,19 @@
 					
 					<c:choose>
 						<c:when test="${(minblock-1) < 1}">
-							<span>&laquo;&laquo;</span>
+							<i class="fas fa-angle-left"></i><i class="fas fa-angle-left pagingarrow-left2"></i>
 						</c:when>
 						<c:otherwise>
-							<a href="${pageContext.request.contextPath}/qna/qna-main?qnum=${minblock-1}${query}">&laquo;&laquo;</a>
+							<a href="${pageContext.request.contextPath}/qna/qna-main?qnum=${minblock-1}${query}"><i class="fas fa-angle-left"></i><i class="fas fa-angle-left pagingarrow-left2"></i></a>
 						</c:otherwise>
 					</c:choose>
-					
-					&nbsp;&nbsp;
-					
 					<!-- 1미만으로 안넘어가게 처리 -->
 					<c:choose>
 						<c:when test="${qnum == 1}">
-							<span>&laquo;</span>
+							<i class="fas fa-angle-left"></i>&nbsp;&nbsp;&nbsp;
 						</c:when>
 						<c:otherwise>
-							<a href="${pageContext.request.contextPath}/qna/qna-main?qnum=${qnum-1}${query}">&laquo;</a>
+							<a href="${pageContext.request.contextPath}/qna/qna-main?qnum=${qnum-1}${query}"><i class="fas fa-angle-left"></i>&nbsp;&nbsp;&nbsp;</a>
 						</c:otherwise>
 					</c:choose>
 					
@@ -104,24 +101,22 @@
 					<!-- 최대 초과로 안넘어가게 처리 -->
 					<c:choose>
 						<c:when test="${qnum == total}">
-							<span>&raquo;</span>
+							<span>&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></span>
 						</c:when>
 						<c:otherwise>
-							<a href="${pageContext.request.contextPath}/qna/qna-main?qnum=${qnum+1}${query}">&raquo;</a>
+							<a href="${pageContext.request.contextPath}/qna/qna-main?qnum=${qnum+1}${query}">&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></a>
 						</c:otherwise>
 					</c:choose>
-					
-					&nbsp;&nbsp;
 					<!-- 블록건너뛰기 -->
 					<!-- 조건 1. 현재 페이지보다 큰페이지 존재. -->
 					<!-- 조건 2. 그 큰페이지가 속한 최대페이지 존재. -->
 						<!-- 현재페이지가 속한 블록의 최대페이지가 최종페이지보다 크면 당연히 비활성화 --> <!-- 현재페이지가 기준이 아니다 !! 주의 -->
 					<c:choose>
 						<c:when test="${maxblock > total}">
-							<span>&raquo;&raquo;</span>
+							<span><i class="fas fa-angle-right pagingarrow-right2"></i><i class="fas fa-angle-right"></i></span>
 						</c:when>
 						<c:otherwise>
-							<a href="${pageContext.request.contextPath}/qna/qna-main?qnum=${maxblock+1}${query}">&raquo;&raquo;</a>
+							<a href="${pageContext.request.contextPath}/qna/qna-main?qnum=${maxblock+1}${query}"><i class="fas fa-angle-right pagingarrow-right2"></i><i class="fas fa-angle-right"></i></a>
 						</c:otherwise>
 					</c:choose>
                 	

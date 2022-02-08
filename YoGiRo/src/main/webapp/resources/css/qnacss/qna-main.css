@@ -1,18 +1,20 @@
 @charset "UTF-8";
 
-.vh {
+/* .vh {
     width: 100%;
     height: 100%;
-}
+} */
 
 .qna-main {
   	margin-top: 1rem;
   	margin-bottom: 1rem;
     width: 100%;
-    height: calc(100vh - 250px);
+    /* height: calc(100vh - 250px); */
+    min-height: 40rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
+    gap: 2rem;
 }
 .qna-title {
     width: 100%;
@@ -20,26 +22,29 @@
     height: 10%;
 }
 .qna-section {
-	width: 100%;
-    height: 80%;
+	width: 85%;
+    height: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-right: 7.5%;
+    margin-left: 7.5%;
 }
 .qna-list {
     width: 100%;
-    height: 90%;
+    /* height: 90%; */
     border-bottom: solid 2px #93949A;
 }
 .qna-list-top {
     width: 100%;
-    height: 10%;
+    /* height: 10%; */
 }
 .qna-list-top > tr {
     border-top: solid 2px #93949A;
     border-bottom: solid 2px #93949A;
-    height: 10%;
-	background-color: #cecece;
+    /* height: 10%; */
+    height: 2.7rem;
+	background-color: #B2DFDB;
 }
 .qna-list-top th:nth-child(1) {
 	width: 7%;
@@ -55,6 +60,7 @@
     border-top: solid 1px #93949A;
     border-bottom: solid 1px #93949A;
     text-align: center;
+    height: 2.5rem;
 }
 .qna-list-main th:nth-child(1) {
 	width: 7%;
@@ -67,31 +73,33 @@
 }
 
 .pagination-box {
-    width: 100%;
-    height: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
 }
-.pagination-box a , .pagination-box span {
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
+
+.pagingarrow-left {
+	margin-right: 20px;
 }
-.pagination-box a.active {
-    background-color: #CECECE;
-    border-radius: 5px;
+
+.pagingarrow-right {
+	margin-left: 20px;
 }
-.pagination-box a:hover:not(.active) {
-    background-color: #ddd;
-    border-radius: 5px;
+
+.pagingarrow-left2 {
+	margin-right: 10px;
+}
+
+.pagingarrow-right2 {
+	margin-left: 10px;
 }
 
 .qna-aside {
-    width: 100%;
+	width: 85%;
     height: 10%;
     display: flex;
+    margin-right: 7.5%;
+    margin-left: 7.5%;
 }
 .qna-list-bottom-inner-left {
     width: 40%;
@@ -102,7 +110,7 @@
     justify-content: flex-end;
 }
 .button-sty {
-    background: #CECECE;
+    background: #B2DFDB;
     padding: 0.5rem;
 }
 select {

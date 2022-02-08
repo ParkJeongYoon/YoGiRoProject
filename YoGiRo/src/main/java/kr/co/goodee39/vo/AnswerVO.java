@@ -9,6 +9,18 @@ public class AnswerVO {
 	private String acreatedate;
 	private String acontent;
 	private String isdelete;
+	
+	
+	
+	public String toString() {
+		return "AnswerVO [anum=" + anum + ", qnum=" + qnum + ", userid=" + userid + ", ismanager=" + ismanager
+				+ ", atitle=" + atitle + ", acreatedate=" + acreatedate + ", acontent=" + acontent + ", isdelete="
+				+ isdelete + ", getAnum()=" + getAnum() + ", getQnum()=" + getQnum() + ", getUserid()=" + getUserid()
+				+ ", getIsmanager()=" + getIsmanager() + ", getAtitle()=" + getAtitle() + ", getAcreatedate()="
+				+ getAcreatedate() + ", getAcontent()=" + getAcontent() + ", getIsdelete()=" + getIsdelete()
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
+	}
 	public int getAnum() {
 		return anum;
 	}

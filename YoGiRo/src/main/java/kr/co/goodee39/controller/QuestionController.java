@@ -61,7 +61,7 @@ public class QuestionController {
 	}
 	
 	@GetMapping("/qna/qna-detail")
-	public String getBBSDetail(Model model , QuestionVO vo) {
+	public String getQnaDetail(Model model , QuestionVO vo) {
 		service.selectQnaDetail(model , vo);
 		return "/qna/qna-detail";
 	}
@@ -78,6 +78,14 @@ public class QuestionController {
 		vo.setQcreatedate(new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA).format(new Date()));
 		service.insertQna(vo);
 
+		return "redirect:/qna/qna-main";
+	}
+	
+	
+	@GetMapping("/qna/qna-delete")
+	public String deleteQna(QuestionVO vo) {
+		service.deleteQna(vo);
+		
 		return "redirect:/qna/qna-main";
 	}
 	
