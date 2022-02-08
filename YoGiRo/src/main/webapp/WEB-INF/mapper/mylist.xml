@@ -82,8 +82,7 @@
 	<select id="selectMyCourseCount" parameterType="MyCourseCommonVO" resultType="int">
 		select count(*)
 		from mycoursecommon
-		where mycourseregion = #{mycourseregion}
-		and userid=#{userid}
+		where userid=#{userid}
 		<choose>
 			<when test="mycoursecommontitle != null and mycourseinfo != null">
 				and (mycoursecommontitle like #{mycoursecommontitle} or mycourseinfo like #{mycourseinfo})
@@ -100,8 +99,7 @@
 	<select id="selectMyCourseList" parameterType="MyCourseCommonVO" resultType="MyCourseCommonVO">
 		select mycoursecommonid,userid,mycoursecommontitle, mycoursemainimage, mycourseinfo,totaldistance ,totaltime ,mycoursecommonisdelete , mycourseregion
 		from mycoursecommon
-		where mycourseregion = #{mycourseregion}
-		and userid=#{userid}
+		where userid=#{userid}
 		<choose>
 			<when test="mycoursecommontitle != null and mycourseinfo != null">
 				and (mycoursecommontitle like #{mycoursecommontitle} or mycourseinfo like #{mycourseinfo})

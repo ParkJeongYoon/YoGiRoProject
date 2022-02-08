@@ -34,18 +34,33 @@ public class MyWritingListController {
 	private MyWritingListService mls;
 	
 	
-	@GetMapping("/myqna")
-	public String myqna(@ModelAttribute UserVO uservo, QuestionVO questionvo, Model model, 
-			@RequestParam(defaultValue = "1") int qnum,
-			@RequestParam(defaultValue="") String qtitle,
-			@RequestParam(defaultValue="") String qcontent,
-			HttpSession session) {
-			
-		UserVO vo =(UserVO)session.getAttribute("account");
-		String userid = vo.getUserid();
-		mls.getQUEList(questionvo, model, qnum, qtitle, qcontent,userid);
-		return "/member/myqna";
-	}
+	
+	  @GetMapping("/myqna") 
+	  public String myqna(@ModelAttribute UserVO uservo,
+	  QuestionVO questionvo, Model model,
+	  
+	  @RequestParam(defaultValue = "1") int qnum,
+	  
+	  @RequestParam(defaultValue="") String qtitle,
+	  
+	  @RequestParam(defaultValue="") String qcontent, HttpSession session) {
+	  
+	  UserVO vo =(UserVO)session.getAttribute("account"); 
+	  String userid = vo.getUserid(); 
+	  mls.selectQnaList(questionvo, model, qnum, qtitle, qcontent,userid);
+	  return "/member/myqna"; 
+	  }
+	 
+	/*
+	 * @GetMapping("/myqna") public String getQnaList(Model model,
+	 * 
+	 * @RequestParam(defaultValue = "1") int qnum,
+	 * 
+	 * @RequestParam(defaultValue="") String qtitle,
+	 * 
+	 * @RequestParam(defaultValue="") String qcontent) { mls.selectQnaList(model,
+	 * qnum, qtitle, qcontent); return "/qna/qna-main"; }
+	 */
 	
 	@GetMapping("/mycommunity")
 	public String mycommunity(@ModelAttribute UserVO uservo, CommunityVO comvo, Model model,

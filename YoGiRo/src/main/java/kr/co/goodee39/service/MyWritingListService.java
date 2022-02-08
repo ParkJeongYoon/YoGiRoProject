@@ -66,22 +66,32 @@ public class MyWritingListService {
 	}
 	
 	// 나의 문의내역
-	public void getQUEList(QuestionVO vo, Model model, int qnum, String qtitle, String qcontent, String userid) {
-		QuestionVO vo2 = new QuestionVO();
-		vo2.setStart((qnum-1)*vo2.getCount());
-		if(!qtitle.equals("")) {
+	/*
+	 * public void getQUEList(QuestionVO vo, Model model, int qnum, String qtitle,
+	 * String qcontent, String userid) { QuestionVO vo2 = new QuestionVO();
+	 * vo2.setStart((qnum-1)*vo2.getCount()); if(!qtitle.equals("")) {
+	 * model.addAttribute("qtitle", qtitle); // %를 넣음으로써 title에 해당하는 글만 가져오는 역할
+	 * vo.setQtitle("%"+qtitle+"%"); } if(!qcontent.equals("")) {
+	 * model.addAttribute("qcontent", qcontent); vo.setQcontent("%"+qcontent+"%"); }
+	 * 
+	 * vo2.setUserid(userid); model.addAttribute("qlist",
+	 * ss.selectList("mylist.selectQuestionsListwithID",vo2));
+	 * model.addAttribute("count", ss.selectOne("mylist.selectMyQuestionsCount",
+	 * vo2)); model.addAttribute("qnum", qnum); }
+	 */
+	public void selectQnaList(QuestionVO vo,Model model, int qnum, String qtitle, String qcontent, String userid) {
+		vo.setStart((qnum - 1) * vo.getCount());
+		if (!qtitle.equals("")) {
 			model.addAttribute("qtitle", qtitle);
-			// %를 넣음으로써 title에 해당하는 글만 가져오는 역할
-			vo.setQtitle("%"+qtitle+"%");
+			vo.setQtitle("%" + qtitle + "%");
 		}
-		if(!qcontent.equals("")) {
+		if (!qcontent.equals("")) {
 			model.addAttribute("qcontent", qcontent);
-			vo.setQcontent("%"+qcontent+"%");
+			vo.setQcontent("%" + qcontent + "%");
 		}
-		
-		vo2.setUserid(userid);
-		model.addAttribute("qlist", ss.selectList("mylist.selectQuestionsListwithID",vo2));
-		model.addAttribute("count", ss.selectOne("mylist.selectMyQuestionsCount", vo2));
+		vo.setUserid(userid);
+		model.addAttribute("qlist", ss.selectList("mylist.selectQuestionsListwithID", vo));
+		model.addAttribute("count", ss.selectOne("mylist.selectMyQuestionsCount", vo));
 		model.addAttribute("qnum", qnum);
 	}
 	// 나의 코스
