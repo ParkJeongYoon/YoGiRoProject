@@ -46,7 +46,9 @@
 	<resources mapping="/img/**" location="/resources/img/" />
 	
 	<!-- ckeditor 이미지 저장 경로 // c드라이브 temp 폴더 -->
-	<resources mapping="/temp/*" location="file:///C:/temp/"/>
+	<!-- <resources mapping="/temp/*" location="file:///C:/temp/"/> -->
+	<resources mapping="/temp/com/*" location="file:///C:/temp/com/"/>
+	<resources mapping="/temp/myfood/*" location="file:///C:/temp/myfood/"/>
 	
 	<interceptors>
 		<interceptor>

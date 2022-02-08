@@ -29,7 +29,7 @@ public class CommunityController {
 			 		@RequestParam(defaultValue = "") String content) {
 		
 		if(vo.getComcategorynum()==0) { 
-			vo.setComcategorynum(1); 
+			vo.setComcategorynum(1);
 		}
 		
 		comService.selectComList(vo, model, num, title, content);
@@ -41,12 +41,10 @@ public class CommunityController {
 					@RequestParam(defaultValue = "1") int num,
 			 		@RequestParam(defaultValue = "") String title,
 			 		@RequestParam(defaultValue = "") String content) {
-		System.out.println(vo.getComcategorynum());
 		
 		if(vo.getComcategorynum()==0) { 
 			vo.setComcategorynum(1); 
 		}
-		vo.setComcategorynum(vo.getComcategorynum());
 
 		comService.selectComList(vo, model, num, title, content);
 		return "/incategories/community/community-ajax"; // com_ajax

@@ -13,6 +13,16 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/questions-detail.css">
     <script src="https://kit.fontawesome.com/79203d0d3b.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
+    <style type="text/css">
+    	.ansbtn {
+	      	position: absolute;
+	      	right: 0;
+	      	background-color: #B2DFDB;
+	      	padding: 10px 15px;
+	      	margin-top: 2px;
+	      	font-size: 15px;
+	      }
+    </style>
 </head>
 <body>
 	<div class="container" id="container1">
@@ -23,7 +33,7 @@
 			<aside>
 			
 				 <div class="sidemenubar">
-				         <a href="${pageContext.request.contextPath}/manager/manager1/manager-chart"><div><h3>방문자수 통계</h3><i class="fas fa-angle-right"></i></div></a>
+				         
 				         <a href="${pageContext.request.contextPath}/manager/manager2/manager-que"><div><h3>문의내역 보기</h3><i class="fas fa-angle-right"></i></div></a>
 				         <a href="${pageContext.request.contextPath}/manager/manager3/manager-member"><div><h3>회원관리</h3><i class="fas fa-angle-right"></i></div></a>
 				         <a href="${pageContext.request.contextPath}/manager/manager4/manager-block-member"><div><h3>차단회원 관리</h3><i class="fas fa-angle-right"></i></div></a>
@@ -53,7 +63,7 @@
 				                <form:textarea path="acontent" cols="50" rows="10"/>
 				            </div>
 				            
-	   			 			<form:button type="submit">답변완료</form:button>
+	   			 			<form:button type="submit" class="ansbtn">답변완료</form:button>
 	   			 		
 	   			 	</form:form>
 		   		</div>		 	

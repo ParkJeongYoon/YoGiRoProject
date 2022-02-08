@@ -2,6 +2,7 @@ package kr.co.goodee39.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -46,6 +47,7 @@ import kr.co.goodee39.vo.AttachImageVO;
 import kr.co.goodee39.vo.MyCourseCommonVO;
 import kr.co.goodee39.vo.MyCourseDetailVO;
 import kr.co.goodee39.vo.ThemeCommentVO;
+import kr.co.goodee39.vo.UserVO;
 
 @Controller
 public class CourseController {
@@ -220,10 +222,10 @@ public class CourseController {
 		
 		try {
 			
+			
 			HttpHeaders header = new HttpHeaders();
 			
 			header.add("Content-type", Files.probeContentType(file.toPath()));
-			
 			result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
 			
 		}catch (IOException e) {

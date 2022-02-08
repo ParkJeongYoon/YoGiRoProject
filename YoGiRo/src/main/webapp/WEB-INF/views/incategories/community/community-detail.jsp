@@ -133,6 +133,8 @@ main>h1 {
 	border: 1px solid lightgray;
 	border-radius: 2px;
 	margin-top: 34px;
+	margin-bottom: 40px;
+	padding: 7px;
 }
 
 #set-comment {
@@ -140,9 +142,12 @@ main>h1 {
 	height: 35px;
 	border: 1px solid lightgray;
 	outline: 0;
-	background-color: #fff;
+	background-color: #B2DFDB;
 	border-radius: 2px;
-	margin-bottom: 30px;
+	/* margin-bottom: 30px; */
+	position: absolute;
+	right: 0;
+	bottom: 7px;
 }
 
 #modify, #delete {
@@ -150,14 +155,14 @@ main>h1 {
 	height: 35px;
 	border: 1px solid lightgray;
 	outline: 0;
-	background-color: #fff;
+	background-color: #B2DFDB;
 	border-radius: 2px;
 }
 
 #modify {
 	margin-top: 3px;
 	position: absolute;
-	right: 50px;
+	right: 52px;
 }
 
 #delete {
@@ -169,23 +174,28 @@ main>h1 {
 #comment-list > div > button {
 	width: 35px;
 	height: 25px;
-	background-color: #fff;
+	background-color: #B2DFDB;
 	border: 1px solid lightgray;
 	border-radius: 2px;
 	padding-bottom: 25px;
 	text-align: center;
-	
+	margin-right: 2px;
 }
 
 #comment-list > div {
-	margin: 5px;
+	padding: 10px 0 10px 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 	position: relative;
 	border: 1px solid lightgray;
 	background-color: #fafafa;
 }
 #comment-list > div > h3, #comment-list > div > p {
-	padding-bottom: 5px;
+	padding-bottom: 7px;
 	padding-left: 5px;
+}
+.comment-headline{
+	padding: 7px 0 5px 9px;
 }
 </style>
 </head>
@@ -220,10 +230,19 @@ main>h1 {
 				</c:if>
 				<div class="comment-container">
 					<div class="line"></div>
-					<div id="comment-list"></div>
+					<div id="comment-list">
+						<h3 class="comment-headline">댓글</h3>
+					</div>
 					<div>
-						<textarea name="comment" id="comment" rows="5"></textarea>
-						<button id="set-comment">댓글 등록</button>
+						<c:if test="${sessionScope.account==null}">
+							<textarea name="comment" id="comment" rows="5" placeholder="댓글을 입력하려면 로그인을 해주세요"></textarea>
+						</c:if>
+						<c:if test="${sessionScope.account.userid!=null}">
+							<textarea name="comment" id="comment" rows="5"></textarea>
+						</c:if>
+						<c:if test="${sessionScope.account.userid!=null}">
+							<button id="set-comment">댓글 등록</button>
+						</c:if>
 					</div>
 				</div>
 			</main>
@@ -401,9 +420,6 @@ main>h1 {
 							
 							});	
 							
-							div.append(delete_button);
-							
-							// 수정 버튼
 							// 수정 버튼
 							const modify_button = document.createElement("button");
 							modify_button.innerText = "수정";
@@ -419,6 +435,7 @@ main>h1 {
 								
 								const edit_modify = document.createElement("button");
 								edit_modify.innerText = "수정완료";
+								edit_modify.style.width = "60px";
 								const edit_cancel = document.createElement("button");
 								edit_cancel.innerText = "취소";
 								
@@ -435,7 +452,7 @@ main>h1 {
 									edit_div.remove();
 								});
 								
-								// 수정완료 버튼 클릭 시 이벤트1
+								// 수정완료 버튼 클릭 시 이벤트
 								edit_modify.addEventListener("click", function() {
 									// alert("수정완료 버튼 클릭");
 									if(confirm("수정하시겠습니까")){
@@ -461,6 +478,7 @@ main>h1 {
 							});
 							
 							div.append(modify_button);
+							div.append(delete_button);
 							
 							div.prepend(p);
 							div.prepend(h3);

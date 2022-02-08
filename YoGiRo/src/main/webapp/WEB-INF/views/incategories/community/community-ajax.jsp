@@ -9,168 +9,161 @@
 <script src="https://kit.fontawesome.com/79203d0d3b.js" crossorigin="anonymous"></script>
 <script type="text/javascript"src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <style>
-	a:visited {
-		color: black;
-	}
-	a {
-		color: black;
-	}
-	#logo {
-		font-family: Righteous-Regular;
-		font-size: 4rem;
-		color: black;
-	}
-	.right {
-		font-size: 1.1rem;
-		color: black;
-		position: absolute;
-		right: 0;
-		top: 30px;
-		color: black;
-	}
-	.qna, .login, .signup {
-		font-family: 티웨이_항공, tway air;
-		font-weight: 500;
-		margin: 5px;
-	}
-	.center {
-		position: absolute;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		color: black;
-		display: flex;
-		
-	}
-	.topmenu {
-		width: 100px;
-		height: 50px;
-	}
 	/* 사이드 메뉴바 */
-	.main-container {
-		width: 100%;
-		height: 800px;
-		display: flex;
-		
-	}
-	aside {
-		position: relative;
-		height: 300px;
-		width: 180px;
-		margin-right: 30px;
-		margin-top: 100px;
-	}
-	.sidemenubar {
-		/*position: absolute;
-		left: 0;
-		top: 150px;*/
-	}
-	.sidemenubar > a > div {
-		width: 180px;
-		height: 47px;
-		background-color: #FAFAFA;
-		border: 1.3px solid #E7E7E7;
-		display: flex;
-/*		justify-content: center;*/
-		align-items: center;
-	}
-	.sideright {
-		position: absolute;
-		right: 10px;
-	}
-	h3{
-		font-weight: 500;
-		margin-left: 50px;
-	}
-	p {
-		font-weight: 500;
-		font-size: 1.3rem;
-	}
-	/* 메인 */
-	main {
-		margin-top: 50px;
-		margin-left: 30px;
-		width: 70%;
-		height: 80%;
-		position: relative;
-	}
-	main > h1 {
-		margin-left: 20px;
-	}
-	.table-con {
-		margin-top: 34px;
-		height: 80%;
-	}
-	table, th, tr, td {
-		border-collapse: collapse;
-		height: 40px;
-	}
-	thead {
-		background-color: #FAFAFA;
-		border: 1px solid #E7E7E7;
-	}
-	tr {
-		border-bottom: 1px solid #E7E7E7;
-	}
-	table {
-		width: 99%;
-		text-align: center;
-	}
-	thead > tr > th:nth-child(1) {
-		width: 80px;
-	}
-	thead > tr > th:nth-child(2) {
-		width: 430px;
-	}
-	thead > tr > th:nth-child(3) {
-		width: 100px;
-	}
-	thead > tr > th:nth-child(4) {
-		width: 90px;
-	}
-	thead > tr > th:nth-child(5) {
-		width: 80px;
-	}
-	#bbs-create {
-		background-color: #fff; 
-		border: 1px solid black;
-		width: 100px;
-		height: 35px;
-	}
-	#category {
-		height: 35px;
-		position: absolute;
-		right: 305px;
-	}
-	#search {
-		height: 35px;
-		width: 80px;
-		position: absolute;
-		right: 10px;
-	}
-	#search-text {
-		height: 35px;
-		width: 200px;
-		position: absolute;
-		right: 95px;
-	}
-	/* 페이징 */
-	.pagenum {
-		text-align: center;
-		margin-top: 30px;
-		margin-bottom: 30px;
-	}
-	.pagingarrow-left {
-		margin-right: 20px;
-	}
-	.pagingarrow-right {
-		margin-left: 20px;
-	}
-	.pagingarrow-left2 {
-		margin-right: 10px;
-	}
-	.pagingarrow-right2 {
-		margin-left: 10px;
-	}
+.main-container {
+	width: 100%;
+	height: 800px;
+	display: flex;
+}
+
+aside {
+	position: relative;
+	height: 300px;
+	width: 180px;
+	margin-right: 30px;
+	margin-top: 100px;
+}
+
+.sidemenubar>a>div {
+	width: 180px;
+	height: 47px;
+	background-color: #FAFAFA;
+	border: 1.3px solid #E7E7E7;
+	display: flex;
+	/*	justify-content: center;*/
+	align-items: center;
+}
+
+.sideright {
+	position: absolute;
+	right: 10px;
+}
+
+h3 {
+	font-weight: 500;
+	margin-left: 50px;
+}
+
+p {
+	font-weight: 500;
+	font-size: 1.3rem;
+}
+/* 메인 */
+main {
+	margin-top: 50px;
+	margin-left: 30px;
+	width: 70%;
+	height: 80%;
+	position: relative;
+}
+
+main>h1 {
+	margin-left: 20px;
+}
+
+#main-content > h1 {
+	margin-bottom: 11px;
+}
+
+.table-con {
+	/* margin-top: 34px; */
+	height: 80%;
+}
+
+table, th, tr, td {
+	border-collapse: collapse;
+	height: 40px;
+}
+
+thead {
+	background-color: #B2DFDB;
+	border: 1px solid #E7E7E7;
+}
+
+tr {
+	border-bottom: 1px solid #E7E7E7;
+}
+
+table {
+	width: 99%;
+	text-align: center;
+}
+
+thead>tr>th:nth-child(1) {
+	width: 80px;
+}
+
+thead>tr>th:nth-child(2) {
+	width: 430px;
+}
+
+thead>tr>th:nth-child(3) {
+	width: 100px;
+}
+
+thead>tr>th:nth-child(4) {
+	width: 90px;
+}
+
+thead>tr>th:nth-child(5) {
+	width: 80px;
+}
+
+#category {
+	height: 35px;
+	position: absolute;
+	right: 305px;
+	border: 1px solid lightgray;
+}
+
+#search {
+	height: 35px;
+	width: 80px;
+	position: absolute;
+	right: 10px;
+	background-color: #B2DFDB;
+	border-radius: 2px;
+	border: 1px solid lightgray;
+}
+
+#create-btn {
+	height: 35px;
+	width: 80px;
+	background-color: #B2DFDB;
+	border-radius: 2px;
+	border: 1px solid lightgray;
+	cursor: pointer;
+}
+
+#search-text {
+	height: 35px;
+	width: 200px;
+	position: absolute;
+	right: 95px;
+	border: 1px solid lightgray;
+}
+/* 페이징 */
+.pagenum {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.pagingarrow-left {
+	margin-right: 20px;
+}
+
+.pagingarrow-right {
+	margin-left: 20px;
+}
+
+.pagingarrow-left2 {
+	margin-right: 10px;
+}
+
+.pagingarrow-right2 {
+	margin-left: 10px;
+}
 </style>
 </head>
 <body>
@@ -348,11 +341,11 @@
 			let text = $("#search-text").val();
 			
 			if(category == "title") {
-				location.href = "${pageContext.request.contextPath}/incategories/community/community-main?title="+text;
+				location.href = "${pageContext.request.contextPath}/incategories/community/community-main?comcategorynum=${ComVO.comcategorynum}&title="+text;
 			}else if(category == "content") {
-				location.href = "${pageContext.request.contextPath}/incategories/community/community-main?content="+text;
+				location.href = "${pageContext.request.contextPath}/incategories/community/community-main?comcategorynum=${ComVO.comcategorynum}&content="+text;
 			}else if(category == "both") {
-				location.href = "${pageContext.request.contextPath}/incategories/community/community-main?title="+text+"&content="+text;
+				location.href = "${pageContext.request.contextPath}/incategories/community/community-main?comcategorynum=${ComVO.comcategorynum}&title="+text+"&content="+text;
 			}
 		});
 		$('#search-text').on('keydown', function(e) {
@@ -363,11 +356,11 @@
 				let text = $("#search-text").val();
 				
 				if(category == "title") {
-					location.href = "${pageContext.request.contextPath}/incategories/community/community-main?title="+text;
+					location.href = "${pageContext.request.contextPath}/incategories/community/community-main?comcategorynum=${ComVO.comcategorynum}&title="+text;
 				}else if(category == "content") {
-					location.href = "${pageContext.request.contextPath}/incategories/community/community-main?content="+text;
+					location.href = "${pageContext.request.contextPath}/incategories/community/community-main?comcategorynum=${ComVO.comcategorynum}&content="+text;
 				}else if(category == "both") {
-					location.href = "${pageContext.request.contextPath}/incategories/community/community-main?title="+text+"&content="+text;
+					location.href = "${pageContext.request.contextPath}/incategories/community/community-main?comcategorynum=${ComVO.comcategorynum}&title="+text+"&content="+text;
 				}
 			}
 		});

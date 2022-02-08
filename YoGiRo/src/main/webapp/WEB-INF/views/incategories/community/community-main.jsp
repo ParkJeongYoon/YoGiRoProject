@@ -65,8 +65,12 @@ main>h1 {
 	margin-left: 20px;
 }
 
+#main-content > h1 {
+	margin-bottom: 11px;
+}
+
 .table-con {
-	margin-top: 34px;
+	/* margin-top: 34px; */
 	height: 80%;
 }
 
@@ -76,7 +80,7 @@ table, th, tr, td {
 }
 
 thead {
-	background-color: #FAFAFA;
+	background-color: #B2DFDB;
 	border: 1px solid #E7E7E7;
 }
 
@@ -109,17 +113,11 @@ thead>tr>th:nth-child(5) {
 	width: 80px;
 }
 
-#bbs-create {
-	background-color: #fff;
-	border: 1px solid black;
-	width: 100px;
-	height: 35px;
-}
-
 #category {
 	height: 35px;
 	position: absolute;
 	right: 305px;
+	border: 1px solid lightgray;
 }
 
 #search {
@@ -127,17 +125,18 @@ thead>tr>th:nth-child(5) {
 	width: 80px;
 	position: absolute;
 	right: 10px;
-	background-color: #fff;
+	background-color: #B2DFDB;
 	border-radius: 2px;
-	border: 1px solid gray;
+	border: 1px solid lightgray;
 }
 
 #create-btn {
 	height: 35px;
 	width: 80px;
-	background-color: #fff;
+	background-color: #B2DFDB;
 	border-radius: 2px;
-	border: 1px solid gray;
+	border: 1px solid lightgray;
+	cursor: pointer;
 }
 
 #search-text {
@@ -145,6 +144,7 @@ thead>tr>th:nth-child(5) {
 	width: 200px;
 	position: absolute;
 	right: 95px;
+	border: 1px solid lightgray;
 }
 /* 페이징 */
 .pagenum {
@@ -381,15 +381,16 @@ thead>tr>th:nth-child(5) {
 								function() {
 									let category = $("#category").val();
 									let text = $("#search-text").val();
+									let comcategorynum = ${ComVO.comcategorynum};
 
 									if (category == "title") {
-										location.href = "${pageContext.request.contextPath}/incategories/community/community-main?title="
+										location.href = "${pageContext.request.contextPath}/incategories/community/community-main?comcategorynum=${ComVO.comcategorynum}&title="
 												+ text;
 									} else if (category == "content") {
-										location.href = "${pageContext.request.contextPath}/incategories/community/community-main?content="
+										location.href = "${pageContext.request.contextPath}/incategories/community/community-main?comcategorynum=${ComVO.comcategorynum}&content="
 												+ text;
 									} else if (category == "both") {
-										location.href = "${pageContext.request.contextPath}/incategories/community/community-main?title="
+										location.href = "${pageContext.request.contextPath}/incategories/community/community-main?comcategorynum=${ComVO.comcategorynum}&title="
 												+ text + "&content=" + text;
 									}
 								});
@@ -404,13 +405,13 @@ thead>tr>th:nth-child(5) {
 										let text = $("#search-text").val();
 
 										if (category == "title") {
-											location.href = "${pageContext.request.contextPath}/incategories/community/community-main?title="
+											location.href = "${pageContext.request.contextPath}/incategories/community/community-main?comcategorynum=${ComVO.comcategorynum}&title="
 													+ text;
 										} else if (category == "content") {
-											location.href = "${pageContext.request.contextPath}/incategories/community/community-main?content="
+											location.href = "${pageContext.request.contextPath}/incategories/community/community-main?comcategorynum=${ComVO.comcategorynum}&content="
 													+ text;
 										} else if (category == "both") {
-											location.href = "${pageContext.request.contextPath}/incategories/community/community-main?title="
+											location.href = "${pageContext.request.contextPath}/incategories/community/community-main?comcategorynum=${ComVO.comcategorynum}&title="
 													+ text + "&content=" + text;
 										}
 									}

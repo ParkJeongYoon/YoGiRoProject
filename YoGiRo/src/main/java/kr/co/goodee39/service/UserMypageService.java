@@ -27,22 +27,22 @@ public class UserMypageService {
 		ss.insert("user.insertUser", vo);
 	}
 	
-	
 	 public void updateUser(UserVO vo) { 
 		 ss.update("user.updateUser", vo);
 	 }
-	
-	public void deleteUser(UserVO vo) {
-		ss.delete("user.deleteUser", vo);
+	 
+	// 회원탈퇴 > vo, session 정보를 받아서 회원정보를 삭제 후 / 세션종료
+	public void deleteUser(UserVO vo, HttpSession session) {
+		ss.delete("user.deleteUser",vo);
+		session.invalidate();
 	}
 	
-	public Object passChk(UserVO vo){
-		return ss.selectOne("user.PassChk",vo); 
+	// 패스워드 체크
+	public int passChk(UserVO vo){
+		int result = ss.selectOne("user.passChk",vo);
+		return result;
 	}
 	
-	public UserVO selectUser(Model model, UserVO vo) {
-		model.addAttribute("UserVO",ss.selectOne("user.selectUser", vo));
-		return ss.selectOne("user.selectUser", vo);
-	}
+	 
 
 }

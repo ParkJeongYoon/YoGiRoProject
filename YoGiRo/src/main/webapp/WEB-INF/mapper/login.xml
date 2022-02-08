@@ -22,7 +22,7 @@
       </if> -->
    </where>
    </select>
-   <select id="selectUser_info" parameterType="userVO"
+   <select id="selectUser_info" parameterType="kr.co.goodee39.vo.UserVO"
 		resultType="userVO">
 		select userid, username, usernickname, userpassword,
 		useremail, userphonenumber, ismanager, isblock
@@ -32,24 +32,26 @@
          and userpassword = #{userpassword}
     
 	</select>
-   <insert id="insertUser" parameterType="userVO">
+   <insert id="insertUser" parameterType="kr.co.goodee39.vo.UserVO">
       insert into 
       user(username, usernickname, userid, userpassword, useremail, userphonenumber)
       values(#{username}, #{usernickname}, #{userid}, #{userpassword}, #{useremail}, #{userphonenumber})
    </insert>
-   <update id="updateUser" parameterType="userVO">
+   <update id="updateUser" parameterType="kr.co.goodee39.vo.UserVO">
       update user
       set
-         username = #{username},usernickname = #{usernickname},userpassword = #{userpassword},
-         useremail = #{useremail},userphonenumber = #{userphonenumber}
+         username = #{username}, usernickname = #{usernickname}, userpassword = #{userpassword},
+         useremail = #{useremail}, userphonenumber = #{userphonenumber}
       where userid=#{userid}
    </update>
-   <delete id="deleteUser" parameterType="userVO">
-      delete from user where user=#{userid} and userpassword=#{userpassword}
+   <delete id="deleteUser" parameterType="kr.co.goodee39.vo.UserVO">
+      delete from user where userid=#{userid} and userpassword=#{userpassword}
    </delete>
-   <select id="passChk" parameterType="userVO">
-	SELECT COUNT(*) FROM user
-	WHERE USERID = #{userId}
-	  AND USERPASS = #{userPass}
+   
+   <select id="passChk" resultType="int">
+	select count(*) 
+	from user 
+	where userid = #{userid} 
+	and userpassword = #{userpassword}
 	</select>
 </mapper>

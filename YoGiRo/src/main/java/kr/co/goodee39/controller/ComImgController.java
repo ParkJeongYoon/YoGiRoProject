@@ -38,7 +38,7 @@ public class ComImgController {
 		fileName = imsi.format(date) + "_" + fileName;
 		byte[] bytes = upload.getBytes();
 		
-		String uploadPath = "C:/temp/";
+		String uploadPath = "C:/temp/com/";
 		// String uploadPath = request.getSession().getServletContext().getRealPath("/") + "/resources/ckeditor/images/";
 		OutputStream outStr = new FileOutputStream(new File(uploadPath + fileName));
 
@@ -47,7 +47,7 @@ public class ComImgController {
 		// String callback=request.getParameter("CKEditorFuncNum");
 		PrintWriter out = response.getWriter();
 		// String fileUrl = request.getContextPath() + "/resources/ckeditor/images/" + fileName;
-		String fileUrl = request.getContextPath()+"/temp/" + fileName;
+		String fileUrl = request.getContextPath()+"/temp/com/" + fileName;
 
 		out.println("{\"filename\" : \"" + fileName + "\", \"uploaded\" : 1, \"url\":\"" + fileUrl + "\"}");
 
