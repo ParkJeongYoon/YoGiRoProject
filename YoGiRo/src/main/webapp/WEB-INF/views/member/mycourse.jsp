@@ -1,26 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-</head>
-<body>
-	<link rel="stylesheet" type="text/css"
-		href="${pageContext.request.contextPath}/css/default.css">
-	<script src="https://kit.fontawesome.com/79203d0d3b.js"
-		crossorigin="anonymous"></script>
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
-	<style>
-.main-container {
-	margin-left: 30px;
-	width: 100%;
-	height: 80%;
+<script src="https://kit.fontawesome.com/79203d0d3b.js"
+	crossorigin="anonymous"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/css/default.css">
+<style>
+.container {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
 	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	max-width: 1600px;
+	padding-right: 1.7rem;
+	padding-left: 1.7rem;
 }
 
+.main-container {
+	width: 100%;
+	height: 800px;
+	display: flex;
+}
 aside {
 	position: relative;
 	height: 200px;
@@ -42,7 +52,6 @@ aside {
 	background-color: #fafafa;
 	border: 1.3px solid #e7e7e7;
 	display: flex;
-	/*      justify-content: center;*/
 	align-items: center;
 }
 
@@ -50,7 +59,7 @@ aside {
 	margin-right: 20px;
 }
 
-.fa-angle-right {
+.side-right {
 	position: absolute;
 	right: 10px;
 }
@@ -66,11 +75,10 @@ p {
 }
 /* 메인 */
 main {
-	margin-left: 30px;
 	margin-top: 50px;
-	/* margin-left: 30px; */
-	width: 80%;
-	height: 700px;
+	margin-left: 30px;
+	width: 70%;
+	height: 80%;
 	position: relative;
 }
 
@@ -78,8 +86,93 @@ main>h1 {
 	margin-left: 20px;
 }
 
-div {
-	box-sizing: content-box;
+.table-con {
+	margin-top: 34px;
+	height: 100%;
+}
+
+table, th, tr, td {
+	border-collapse: collapse;
+	height: 40px;
+}
+
+thead {
+	background-color: #B2DFDB;
+	border: 1px solid #E7E7E7;
+}
+
+tr {
+	border-bottom: 1px solid #E7E7E7;
+}
+
+table {
+	width: 99%;
+	height: auto;
+	text-align: center;
+}
+
+thead>tr>th:nth-child(1) {
+	width: 80px;
+}
+
+thead>tr>th:nth-child(2) {
+	width: 430px;
+}
+
+thead>tr>th:nth-child(3) {
+	width: 100px;
+}
+
+thead>tr>th:nth-child(4) {
+	width: 90px;
+}
+
+thead>tr>th:nth-child(5) {
+	width: 80px;
+}
+
+
+
+#category {
+	height: 35px;
+	position: absolute;
+	right: 305px;
+}
+
+#search {
+	height: 35px;
+	width: 80px;
+	position: absolute;
+	right: 10px;
+}
+
+#search-text {
+	height: 35px;
+	width: 200px;
+	position: absolute;
+	right: 95px;
+}
+/* 페이징 */
+.pagenum {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.pagingarrow-left {
+	margin-right: 20px;
+}
+
+.pagingarrow-right {
+	margin-left: 20px;
+}
+
+.pagingarrow-left2 {
+	margin-right: 10px;
+}
+
+.pagingarrow-right2 {
+	margin-left: 10px;
 }
 
 #table-con {
@@ -102,178 +195,227 @@ div {
 
 #search {
 	height: 35px;
-	width: 200px;
+	width: 80px;
 	position: absolute;
-	right: 80px;
+	right: 10px;
+	background-color: #B2DFDB;
 }
 
-.course_container {
-	width: 100%;
-	height: auto;
-	margin-top: 80px;
-	display: flex;
-}
-
-#main_course {
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-}
-
-.course_content {
-	border: 1px solid black;
-	border-radius: 30px;
-	width: 18vw;
-}
-
-.bg {
-	background-color: rgba(0, 0, 0, 0.5);
-	border-radius: 30px;
-	width: 18vw ;
-	height: 100px;
-	position: absolute;
-}
-
-.div_image {
-	border-radius: 30px;
-	width: 18vw;
-	height: 100px;
-	background-size: cover;
-	background-repeat: no-repeat;
-	max-width : 100%;
-}
-
-.div_image p {
-	padding: 10px;
-	color: #ffffff;
-	z-index: 1000;
-	position: relative;
-}
-
-.icon {
-	display: inline-block;
-	margin: 5px;
-	padding-left: 10px;
-}
-
-.subname_container {
-	margin-top: 10px;
-}
-
-.subname {
-	display: inline-block;
-	margin-bottom: 10px;
-	font-size: 18px;
-}
-
-#add_my_course {
-	right: 0;
-	position: absolute;
-	margin-top: 5px;
-}
-
-#user_course {
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-}
-
-.mycourse_content {
-	border: 1px solid black;
-	border-radius: 30px;
-	width: auto;
-	margin-right : 3vw;
-	margin-left : 2vw;
-}
 </style>
 </head>
 <body>
-
-	<jsp:include page="../includes/header.jsp"></jsp:include>
-
 	<div class="container">
+	<jsp:include page="../includes/header.jsp"></jsp:include>
 		<div class="main-container">
 			<aside>
 				<div class="sidemenubar">
-					<a href="">
+					<a href="${pageContext.request.contextPath}/mypage">
 						<div>
 							<h3>내 정보</h3>
-							<i class="fas fa-angle-right"></i>
-						</div>
-					</a> <a href="${pageContext.request.contextPath}/myfavorite"><div>
-							<h3>즐겨찾기</h3>
-							<i class="fas fa-angle-right"></i>
-						</div></a> <a href="${pageContext.request.contextPath}/myqna"><div>
+							<i class="fas fa-angle-right side-right"></i>
+						</div></a> 
+					<a href="${pageContext.request.contextPath}/myqna"><div>
 							<h3>문의 내역</h3>
-							<i class="fas fa-angle-right"></i>
-						</div></a> <a href="${pageContext.request.contextPath}/mycommunity"><div>
+							<i class="fas fa-angle-right side-right"></i>	
+							</div></a> 
+					<a href="${pageContext.request.contextPath}/mycommunity"><div>
 							<h3>내 글 보기</h3>
-							<i class="fas fa-angle-right"></i>
-						</div></a> <a href="${pageContext.request.contextPath}/mycourse"><div>
+							<i class="fas fa-angle-right side-right"></i>
+							</div></a> 
+					<a href="${pageContext.request.contextPath}/mycourse"><div>
 							<h3>내 코스</h3>
-							<i class="fas fa-angle-right"></i>
-						</div></a> <a href="${pageContext.request.contextPath}/myrestaurant"><div>
+							<i class="fas fa-angle-right side-right"></i>
+							</div></a> 
+					<a href="${pageContext.request.contextPath}/myrestaurant"><div>
 							<h3>내 음식점</h3>
-							<i class="fas fa-angle-right"></i>
-						</div></a>
+							<i class="fas fa-angle-right side-right"></i>
+							</div></a>
 				</div>
 			</aside>
 			<main>
-				<h1>YoGiRo 어때요?</h1>
-				<div id="search_box">
-					<button id="search_btn"
-						onclick="location.href='mycourse_more?region=${commonList[0].region}'">더보기</button>
-				</div>
-				<br />
-				<br />
-				<c:if test="${sessionScope.account.userid != null}">
-					<br>
-					<a href="${pageContext.request.contextPath}/add_my_course"><h4
-							id="add_my_course">내 코스 올리기</h4></a>
-					<br>
-					<br>
-				</c:if>
-				<div class="course_container">
-					<div id="user_course">
+				<h1 style="display: block;">내 코스</h1>
+				<div class="table-con">
+					<table>
+						<thead>
+							<tr>
+								<th>번호</th>
+								<th>제목</th>
+								<th>총소요거리</th>
+								<th>총소요시간</th>
+								<th>작성자</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="item" items="${list}">
+								<tr>
+									<td>${item.mycoursecommonid}</td>
+									<td><a href="mycourse_detail?mycoursecommonid=${item.mycoursecommonid}">${item.mycoursecommontitle}</a></td>
+									<td>${item.totaldistance}</td>
+									<td>${item.totaltime}</td>
+									<td>${item.userid}</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+					<div class="pagenum">
+						<%
+							int num = (Integer) request.getAttribute("num");
+							int count = (Integer) request.getAttribute("count");
+							int total = count / 10 + ((count % 10 == 0) ? 0 : 1);
+							int minBlock = (((num - 1) / 10) * 10) + 1;
+							int maxBlock = (((num - 1) / 10) + 1) * 10;
 
+							pageContext.setAttribute("total", total);
+							pageContext.setAttribute("minBlock", minBlock);
+							pageContext.setAttribute("maxBlock", maxBlock);
 
-						<c:forEach var="j" begin="0" end="2">
-							<c:if test="${myCommonList[j].mycoursecommonid != null}">
-								<div id="my_course${j}" class="mycourse_content">
+							String query = "";
 
+							String title = (String) request.getAttribute("mycoursecommontitle");
+							String content = (String) request.getAttribute("content");
+
+							if (title != null) {
+								query += "&mycoursecommontitle=" + title;
+							}
+							if (content != null) {
+								query += "&content=" + content;
+							}
+
+							pageContext.setAttribute("query", query);
+							%>
+						<c:choose>
+							<c:when test="${(minBlock-1) < 1}">
+								<i class="fas fa-angle-left"></i>
+								<i class="fas fa-angle-left pagingarrow-left2"></i>
+							</c:when>
+							<c:otherwise>
+								<a
+									href="${pageContext.request.contextPath}/mycourse?num=${minBlock-1}${query}">
+									<i class="fas fa-angle-left"></i> <i
+									class="fas fa-angle-left pagingarrow-left2"></i>
+								</a>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${num==1}">
+								<i class="fas fa-angle-left pagingarrow-left"></i>
+							</c:when>
+							<c:otherwise>
+								<a
+									href="${pageContext.request.contextPath}/mycourse?num=${num-1}${query}">
+									<i class="fas fa-angle-left pagingarrow-left"></i>
+								</a>
+							</c:otherwise>
+						</c:choose>
+						<c:forEach begin="${minBlock}"
+							end="${maxBlock>total?total:maxBlock}" step="1" var="i">
+							<c:choose>
+								<c:when test="${num == i}">
+									<b>${i}</b>
+								</c:when>
+								<c:otherwise>
 									<a
-										href="mycourse_detail?mycoursecommonid=${myCommonList[j].mycoursecommonid}">
-										<div class="div_image"
-											style="background-image: url('${myCommonList[j].mycoursemainimage}')">
-											<div class="bg"></div>
-											<p>${myCommonList[j].mycoursecommontitle}</p>
-										</div>
-									</a>
-
-
-									<c:forEach var="item2" items="${myDetailList}">
-
-										<c:if
-											test="${item2.mycoursecommonid eq myCommonList[j].mycoursecommonid}">
-											<div class="subname_container">
-												<img class="icon"
-													src="https://cdn.visitkorea.or.kr/resources/images/sub/ico_leftobj.png"
-													alt="" />
-												<p class="subname">${item2.mycoursedetailname}</p>
-												<br>
-											</div>
-										</c:if>
-									</c:forEach>
-								</div>
-							</c:if>
+										href="${pageContext.request.contextPath}/mycourse?num=${i}${query}">${i}</a>
+								</c:otherwise>
+							</c:choose>
 						</c:forEach>
-					</div>
-				</div>
+						<c:choose>
+							<c:when test="${num==total}">
+								<i class="fas fa-angle-right pagingarrow-right"></i>
+							</c:when>
+							<c:otherwise>
+								<a
+									href="${pageContext.request.contextPath}/mycourse?num=${num+1}${query}">
+									<i class="fas fa-angle-right pagingarrow-right"></i>
+								</a>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${maxBlock > total}">
+								<span> <i class="fas fa-angle-right pagingarrow-right2"></i>
+									<i class="fas fa-angle-right"></i>
+								</span>
+							</c:when>
+							<c:otherwise>
+								<a
+									href="${pageContext.request.contextPath}/mycourse?num=${maxBlock+1}${query}">
+									<i class="fas fa-angle-right pagingarrow-right2"></i><i
+									class="fas fa-angle-right"></i>
+								</a>
+							</c:otherwise>
+						</c:choose>
+			</div>
+		<c:choose>
+			<c:when test="${(mycoursecommontitle!=null)&&(content!=null)}">
+				<select name="category" id="category">
+					<option value="mycoursecommontitle">제목</option>
+					<option value="content">내용</option>
+					<option value="both" selected>제목+내용</option>
+				</select>
+				<input type="text" id="search-text" name="text" value="${mycoursecommontitle}" />
+			</c:when>
+			<c:when test="${mycoursecommontitle!=null}">
+				<select name="category" id="category">
+					<option value="mycoursecommontitle" selected>제목</option>
+					<option value="content">내용</option>
+					<option value="both">제목+내용</option>
+				</select>
+				<input type="text" id="search-text" name="text" value="${mycoursecommontitle}" />
+			</c:when>
+			<c:when test="${content!=null}">
+				<select name="category" id="category">
+					<option value="mycoursecommontitle">제목</option>
+					<option value="content" selected>내용</option>
+					<option value="both">제목+내용</option>
+				</select>
+				<input type="text" id="search-text" name="text" value="${content}" />
+			</c:when>
+			<c:otherwise>
+				<select name="category" id="category">
+					<option value="mycoursecommontitle">제목</option>
+					<option value="content">내용</option>
+					<option value="both">제목+내용</option>
+				</select>
+				<input type="text" id="search-text" name="text" />
+			</c:otherwise>
+		</c:choose>
+		<button id="search">검색</button>
+		</div>
 			</main>
 		</div>
 		<jsp:include page="../includes/footer.jsp"></jsp:include>
 	</div>
+	<script type="text/javascript">
+	$(function() {	
+		$("#search").click(function() {
+			let category = $("#category").val();
+			let text = $("#search-text").val();
+			
+			if(category == "title") {
+				location.href = "${pageContext.request.contextPath}/mycourse?mycoursecommontitle="+text;
+			}else if(category == "content") {
+				location.href = "${pageContext.request.contextPath}/mycourse?content="+text;
+			}else if(category == "both") {
+				location.href = "${pageContext.request.contextPath}/mycourse?mycoursecommontitle="+text+"&content="+text;
+			}
+		});
+		$('#search-text').on('keydown', function(e) {
+			var keyCode = e.which; // 눌린 키 기록
+
+			if (keyCode === 13) { // Enter Key
+				let category = $("#category").val();
+				let text = $("#search-text").val();
+				
+				if(category == "title") {
+					location.href = "${pageContext.request.contextPath}/mycourse?mycoursecommontitle="+text;
+				}else if(category == "content") {
+					location.href = "${pageContext.request.contextPath}/mycourse?content="+text;
+				}else if(category == "both") {
+					location.href = "${pageContext.request.contextPath}/mycourse?mycoursecommontitle="+text+"&content="+text;
+				}
+			}
+		});
+	});
+</script>
 </body>
 </html>

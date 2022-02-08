@@ -15,11 +15,21 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <style>
+.container{
+	position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1600px;
+    padding-right: 1.7rem;
+    padding-left: 1.7rem;
+}
 .main-container {
-	margin-left: 30px;
-	width: 100%;
-	height: 80%;
-	display: flex;
+    width: 100%;
+    height: 800px;
+    display: flex;
 }
 
 aside {
@@ -142,35 +152,29 @@ td {
 </head>
 <body>
 
-	<jsp:include page="../includes/header.jsp"></jsp:include>
-
 	<div class="container">
+	<jsp:include page="../includes/header.jsp"></jsp:include>
 		<div class="main-container">
 			<aside>
 				<div class="sidemenubar">
-					<a href="">
+					<a href="${pageContext.request.contextPath}/mypage">
 						<div>
 							<h3>내 정보</h3>
 							<i class="fas fa-angle-right"></i>
-						</div>
-					</a> 
-					<a href=""><div>
-							<h3>즐겨찾기</h3>
-							<i class="fas fa-angle-right"></i>
-							</div></a> 
-					<a href=""><div>
+						</div></a> 
+					<a href="${pageContext.request.contextPath}/myqna"><div>
 							<h3>문의 내역</h3>
-							<i class="fas fa-angle-right"></i>
+							<i class="fas fa-angle-right"></i>	
 							</div></a> 
-					<a href="${pageContext.request.contextPath}/member/mycommunity"><div>
+					<a href="${pageContext.request.contextPath}/mycommunity"><div>
 							<h3>내 글 보기</h3>
 							<i class="fas fa-angle-right"></i>
 							</div></a> 
-					<a href=""><div>
+					<a href="${pageContext.request.contextPath}/mycourse"><div>
 							<h3>내 코스</h3>
 							<i class="fas fa-angle-right"></i>
 							</div></a> 
-					<a href=""><div>
+					<a href="${pageContext.request.contextPath}/myrestaurant"><div>
 							<h3>내 음식점</h3>
 							<i class="fas fa-angle-right"></i>
 							</div></a>

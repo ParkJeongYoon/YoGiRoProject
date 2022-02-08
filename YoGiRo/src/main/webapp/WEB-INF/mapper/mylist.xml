@@ -4,6 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mylist">
 	
+	<!-- 내가 쓴 글 내역 -->
 	<select id="selectMyComCount" parameterType="communityVO" resultType="int">
 		select count(*)
 		from community
@@ -40,5 +41,119 @@
 		order by comid DESC
 		limit #{start}, #{count}
 	</select>
+	
+	<!-- 문의내역 -->
+	<select id="selectMyQuestionsCount" parameterType="questionVO" resultType="int">
+		select count(*)
+		from questions
+		where isdelete = 'N' and userid=#{userid}
+		<choose>
+			<when test="qtitle != null and qcontent != null">
+				and (qtitle like #{qtitle} or qcontent like #{qcontent})
+			</when>
+			<when test="qtitle == null and qcontent != null">
+				and qcontent like #{qcontent}
+			</when>
+			<when test="qtitle != null and qcontent == null">
+				and qtitle like #{qtitle}
+			</when>
+		</choose>
+	</select>
+		<select id="selectQuestionsListwithID" parameterType="questionVO" resultType="questionVO">
+		select qnum , userid , qtitle , qcreatedate , isans , isdelete
+		from questions
+		where isdelete = 'N' and userid=#{userid}
+		<choose>
+			<when test="qtitle != null and qcontent != null">
+				and (qtitle like #{qtitle} or qcontent like #{qcontent})
+			</when>
+			<when test="qtitle == null and qcontent != null">
+				and qcontent like #{qcontent}
+			</when>
+			<when test="qtitle != null and qcontent == null">
+				and qtitle like #{qtitle}
+			</when>
+		</choose>
+		order by qnum desc
+		limit #{start}, #{count}
+	</select>
+	
+	<!-- 내코스 -->
+	<select id="selectMyCourseCount" parameterType="MyCourseCommonVO" resultType="int">
+		select count(*)
+		from mycoursecommon
+		where mycourseregion = #{mycourseregion}
+		and userid=#{userid}
+		<choose>
+			<when test="mycoursecommontitle != null and mycourseinfo != null">
+				and (mycoursecommontitle like #{mycoursecommontitle} or mycourseinfo like #{mycourseinfo})
+			</when>
+			<when test="mycoursecommontitle == null and mycourseinfo != null">
+				and mycourseinfo like #{mycourseinfo}
+			</when>
+			<when test="mycoursecommontitle != null and mycourseinfo == null">
+				and mycoursecommontitle like #{mycoursecommontitle}
+			</when>
+		</choose>
+	</select>
+	
+	<select id="selectMyCourseList" parameterType="MyCourseCommonVO" resultType="MyCourseCommonVO">
+		select mycoursecommonid,userid,mycoursecommontitle, mycoursemainimage, mycourseinfo,totaldistance ,totaltime ,mycoursecommonisdelete , mycourseregion
+		from mycoursecommon
+		where mycourseregion = #{mycourseregion}
+		and userid=#{userid}
+		<choose>
+			<when test="mycoursecommontitle != null and mycourseinfo != null">
+				and (mycoursecommontitle like #{mycoursecommontitle} or mycourseinfo like #{mycourseinfo})
+			</when>
+			<when test="mycoursecommontitle == null and mycourseinfo != null">
+				and mycourseinfo like #{mycourseinfo}
+			</when>
+			<when test="mycoursecommontitle != null and mycourseinfo == null">
+				and mycoursecommontitle like #{mycoursecommontitle}
+			</when>
+		</choose>
+		order by mycoursecommonid desc
+		limit #{start}, #{count}
+	</select>
+	
+	<!-- 내 음식점 -->
+	<select id="selectMyFoodCount" parameterType="MyFoodVO" resultType="int">
+		select count(*)
+		from myfood
+		where region = #{region}
+		and userid=${userid}
+		<choose>
+			<when test="myfoodname != null and myfooddetail != null">
+				and (myfoodname like #{myfoodname} or myfooddetail like #{myfooddetail})
+			</when>
+			<when test="myfoodname == null and myfooddetail != null">
+				and myfooddetail like #{myfooddetail}
+			</when>
+			<when test="myfoodname != null and myfooddetail == null">
+				and myfoodname like #{myfoodname}
+			</when>
+		</choose>
+	</select>
+	<select id="selectMyFoodList" parameterType="MyFoodVO" resultType="MyFoodVO">
+		select myfoodid, userid,region,themecode,  myfoodname, myfoodaddress, myfoodimg, myfooddetail, isdelete
+		from myfood
+		where region = #{region}
+		and userid=${userid}
+		<choose>
+			<when test="myfoodname != null and myfooddetail != null">
+				and (myfoodname like #{myfoodname} or myfooddetail like #{myfooddetail})
+			</when>
+			<when test="myfoodname == null and myfooddetail != null">
+				and myfooddetail like #{myfooddetail}
+			</when>
+			<when test="myfoodname != null and myfooddetail == null">
+				and myfoodname like #{myfoodname}
+			</when>
+		</choose>
+		order by myfoodid desc
+		limit #{start}, #{count}
+	</select>
+
 </mapper>
 

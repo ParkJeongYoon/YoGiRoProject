@@ -21,6 +21,10 @@ import kr.co.goodee39.service.CommunityService;
 import kr.co.goodee39.service.MyWritingListService;
 import kr.co.goodee39.vo.ComCommentVO;
 import kr.co.goodee39.vo.CommunityVO;
+import kr.co.goodee39.vo.MyCourseCommonVO;
+import kr.co.goodee39.vo.MyCourseDetailVO;
+import kr.co.goodee39.vo.MyFoodVO;
+import kr.co.goodee39.vo.QuestionVO;
 import kr.co.goodee39.vo.UserVO;
 
 @Controller
@@ -30,13 +34,16 @@ public class MyWritingListController {
 	private MyWritingListService mls;
 	
 	
-	@GetMapping("/myfavorite")
-	public String myfavorite() {
-		return "/member/myfavorite";
-	}
-	
 	@GetMapping("/myqna")
-	public String myqna() {
+	public String myqna(@ModelAttribute UserVO uservo, QuestionVO questionvo, Model model, 
+			@RequestParam(defaultValue = "1") int qnum,
+			@RequestParam(defaultValue="") String qtitle,
+			@RequestParam(defaultValue="") String qcontent,
+			HttpSession session) {
+			
+		UserVO vo =(UserVO)session.getAttribute("account");
+		String userid = vo.getUserid();
+		mls.getQUEList(questionvo, model, qnum, qtitle, qcontent,userid);
 		return "/member/myqna";
 	}
 	
@@ -47,10 +54,6 @@ public class MyWritingListController {
 							  @RequestParam(defaultValue = "") String content,
 							  HttpSession session) {
 		
-		//session에서 UserVO에 있는 Userid를 Comuserid에 sets
-		//UserVO vo1 = (UserVO)session.getAttribute("account");
-		
-		//comvo.setComuserid(vo1.getUserid());
 		UserVO vo =(UserVO)session.getAttribute("account");
 		String userid = vo.getUserid();
 		mls.selectComList(comvo, model, num, title, content,userid);
@@ -58,26 +61,35 @@ public class MyWritingListController {
 			
 		return "/member/mycommunity";
 	}	
-	/*
-	 * @GetMapping("/get/{comid}") public String<List<CommunityVO>>
-	 * getCommunityList(CommunityVO vo, Model model,HttpSession session) 
-	 * { UserVO userVO = (UserVO) session.getAttribute("account"); // 유저에 대한 넘버, 네임
-	 * 
-	 * List<CommunityVO> list = mls.mycommunityList(vo); model.addAttribute("list",
-	 * list);
-	 * 
-	 * }
-	 */
+
 	
 	@GetMapping("/mycourse")
-	public String mycourse() {
+	public String mycourse(@ModelAttribute UserVO uservo, MyCourseCommonVO coursevo,Model model,
+			@RequestParam(defaultValue = "1") int num,
+			@RequestParam(defaultValue="") String mycoursecommontitle,
+			@RequestParam(defaultValue="") String mycourseinfo,
+			@RequestParam(defaultValue="서울") String region,
+			HttpSession session) {
+		
+		UserVO vo =(UserVO)session.getAttribute("account");
+		String userid = vo.getUserid();
+		mls.selectMyCourseList(coursevo,model, num, mycoursecommontitle, mycourseinfo, region,userid);
 		return "/member/mycourse";
 	}
 	
+	
 	@GetMapping("/myrestaurant")
-	public String myrestaurant() {
+	public String myrestaurant(@ModelAttribute UserVO uservo, MyFoodVO myfoodvo,Model model,
+			@RequestParam(defaultValue = "1") int num,
+			@RequestParam(defaultValue="") String myfoodname,
+			@RequestParam(defaultValue="") String myfooddetail,
+			@RequestParam(defaultValue="서울") String region,
+			HttpSession session) {
+		
+		UserVO vo =(UserVO)session.getAttribute("account");
+		String userid = vo.getUserid();
+		mls.selectMyFoodList(myfoodvo,model, num, myfoodname, myfooddetail, region,userid);
 		return "/member/myrestaurant";
 	}
-	
 	
 }
