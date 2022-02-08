@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,9 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/default.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/manager.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/questions.css">
     <script src="https://kit.fontawesome.com/79203d0d3b.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -28,10 +31,155 @@
 		 </div>
    		</aside>
    		<main>
-   			<div class="main2">
-		   		<h1>block-member</h1>
+   		<div class="main2">
+		   		<h1>차단회원 관리</h1>
+		   		<hr />
+		   		
+		   		<table>
+		   			
+		   				<thead>
+                               <tr>                                                                    
+                                  <th>회원아이디</th>                                  
+                                  <th>회원이메일</th>
+                                  <th>차단해제여부</th>
+                               </tr>
+                        </thead>
+                            <tbody> 
+                            
+                            <c:forEach var="user" items="${list}" >  
+                              <c:if test="${user.isblock eq Y }">                       	
+                            	<tr>
+	                               <td>${user.userid}</td>	                               
+	                               <td>${user.useremail}</td>
+	                               <td><label><input type="checkbox" name="bloCheck" value="${user.userid}"></label></td>
+                               	</tr>
+                              </c:if> 
+                            </c:forEach>  
+                                                	
+                            </tbody>		   			              
+                </table>
+                      <div class="pagenum" style="text-align: center; margin-top: 20px; ">
+                      <%
+                        int usernum = (Integer)request.getAttribute("usernum");
+                        int count = (Integer)request.getAttribute("count");
+                        int total = count/10+((count%10==0)?0:1);
+                        int minBlock = (((usernum-1)/10)*10)+1;
+                        int maxBlock = (((usernum-1)/10)+1)*10;
+                        
+                        pageContext.setAttribute("total", total);
+                        pageContext.setAttribute("minBlock", minBlock);
+                        pageContext.setAttribute("maxBlock", maxBlock);
+                        
+                         //검색 데이터 연동
+                        String query = "";
+                        
+                        String userid = (String)request.getAttribute("userid");
+                        String useremail = (String)request.getAttribute("useremail");
+                        
+                        if(userid != null){
+                           query += "&userid="+userid;
+                        }
+                        
+                        if(useremail != null){
+                           query += "&useremail="+useremail;
+                        }
+                        
+                        pageContext.setAttribute("query", query);
+                     %>
+                     <c:choose>
+                        <c:when test="${(minBlock-1) < 1 }">
+                           <span><i class="fas fa-angle-double-left"></i></span>   
+                        </c:when>
+                        <c:otherwise>
+                           <a href="${pageContext.request.contextPath}/manager/manager4/manager-block-member?usernum=${minBlock-1}${query}">
+                              <span><i class="fas fa-angle-double-left"></i></span>
+                           </a>
+                        </c:otherwise>
+                     </c:choose>
+                     &nbsp;&nbsp;
+                     <c:choose>
+                        <c:when test="${usernum == 1 }">
+                           <span><i class="fas fa-chevron-left"></i></span>
+                        </c:when>
+                        <c:otherwise>
+                           <a href="${pageContext.request.contextPath}/manager/manager4/manager-block-member?usernum=${usernum-1}${query}">
+                              <span><i class="fas fa-chevron-left"></i></span>
+                           </a>
+                        </c:otherwise>
+                     </c:choose>
+                     <c:forEach begin="${minBlock}" end="${(total<maxBlock)?total:maxBlock}" step="1" var="i">
+                        <c:choose>
+                           <c:when test="${usernum == i}">
+                              <span>${i}</span>
+                           </c:when>
+                           <c:otherwise>
+                              <a href="${pageContext.request.contextPath}/manager/manager4/manager-block-member?usernum=${i}${query}">${i}</a>
+                           </c:otherwise>
+                        </c:choose>
+                  
+                     </c:forEach>
+                     <c:choose>
+                        <c:when test="${usernum == total }">
+                           <span><i class="fas fa-chevron-right"></i></span>
+                        </c:when>
+                        <c:otherwise>
+                           <a href="${pageContext.request.contextPath}/manager/manager4/manager-block-member?usernum=${num+1}${query}">
+                              <span><i class="fas fa-chevron-right"></i></span>
+                           </a>   
+                        </c:otherwise>
+                     </c:choose>
+                     &nbsp;&nbsp;
+                     <c:choose>
+                        <c:when test="${maxBlock > total }">
+                           <span> <i class="fas fa-angle-double-right"></i></span>   
+                        </c:when>
+                        <c:otherwise>
+                           <a href="${pageContext.request.contextPath}/manager/manager4/manager-block-member?usernum=${maxBlock+1}${query}">
+                              <span> <i class="fas fa-angle-double-right"></i></span>
+                           </a>
+                        </c:otherwise>
+                     </c:choose>
+                 </div>
+                 
+                 <input type="button" value="차단해제" onclick="" />
+                 
+                 <div class="com-input">
+			              <c:choose>
+			               
+			               <c:when test="${userid!=null}">
+			                  <select name="category" id="category">
+			                     <option value="userid" selected>회원아이디</option>
+			                     <option value="useremail">회원이메일</option>
+			                     
+			                  </select>
+			                  <input type="text" id="search-text" name="text" value="${userid}" />
+			               </c:when>
+			               <c:when test="${useremail!=null}">
+			                  <select name="category" id="category">
+			                     <option value="userid" selected>회원아이디</option>
+			                     <option value="useremail">회원이메일</option>
+			                     
+			                  </select>
+			                  <input type="text" id="search-text" name="text" value="${useremail}" />
+			               </c:when>
+			               <c:otherwise>
+			                  <select name="category" id="category">
+			                    <option value="userid" selected>회원아이디</option>
+			                     <option value="useremail">회원이메일</option>
+			                     
+			                  </select>
+			                  <input type="text" id="search-text" name="text" />
+			               </c:otherwise>
+			            </c:choose>
+            			<button id="search">검색</button>
+                      
+                
+                  </div>
+              </main>
 		 	</div>
-   		</main>
+          </div>
+		 	
+   		
    		</div>
    		<jsp:include page="../../includes/footer.jsp"></jsp:include>
 	</div>
