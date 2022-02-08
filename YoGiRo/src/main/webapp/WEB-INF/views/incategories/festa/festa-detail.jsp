@@ -132,6 +132,11 @@ hr {
 #overview{
 	font-weight : bold;
 }
+/* 맵 div */
+#map {
+	width: 40%;
+	height: 400px;
+}
 </style>
 </head>
 <body class="body">
@@ -151,7 +156,8 @@ hr {
 				src="${festatodetailpage.firstimage}" alt="" />
 			
 			</c:if>
-			
+			<!-- 네이버 지도 -->
+			<div id="map"></div>
 			<br />
 			<br /><br />
 			<hr />
@@ -200,13 +206,13 @@ hr {
 		/* 네이버 지도 api */
 		let y = ${festatodetailpage.mapy};
 		let x = ${festatodetailpage.mapx};
-		let level = ${festatodetailpage.mlevel};
+		/* let level = ${festatodetailpage.mlevel}; */
 		
 		var position = new naver.maps.LatLng(y, x);
 	
 		var map = new naver.maps.Map('map', {
 		    center: position,
-		    zoom: level
+		    zoom: 10
 		});
 	
 		var markerOptions = {
