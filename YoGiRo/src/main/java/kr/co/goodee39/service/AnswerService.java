@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import kr.co.goodee39.vo.AnswerVO;
+import kr.co.goodee39.vo.QuestionVO;
 
 @Service
 public class AnswerService {
@@ -47,8 +48,9 @@ public class AnswerService {
 	
 	
 	public void insertAnswer(AnswerVO vo) {
+		System.out.println(vo);
 		sqlSessionTemplate.insert("answer.insertAnswer" , vo);
-		sqlSessionTemplate.insert("answer.insertIsans" , vo);
+		sqlSessionTemplate.update("answer.updateIsansY" , vo);
 	}
 	
 	public List<AnswerVO> selectAnswerList(AnswerVO vo) {
@@ -56,8 +58,8 @@ public class AnswerService {
 	}
 	
 	public void deleteAnswer(AnswerVO vo) {
-		sqlSessionTemplate.update("answer.deleteAnswer" , vo);
+		sqlSessionTemplate.delete("answer.deleteAnswer" , vo);
+		sqlSessionTemplate.delete("answer.updateIsansN" , vo);
 	}
-	
 	
 }

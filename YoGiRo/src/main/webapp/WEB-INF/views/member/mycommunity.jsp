@@ -1,6 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -146,26 +146,36 @@
 		<div class="main-container">
 			<aside>
 				<div class="sidemenubar">
-					<a href=""><div>
-							<h3>맛집1</h3>
-							<i class="fas fa-angle-right sideright"></i>
-						</div></a> <a href=""><div>
-							<h3>축제</h3>
-							<i class="fas fa-angle-right sideright"></i>
-						</div></a> <a href=""><div>
-							<h3>교통</h3>
-							<i class="fas fa-angle-right sideright"></i>
-						</div></a> <a href=""><div>
-							<h3>추천 코스</h3>
-							<i class="fas fa-angle-right sideright"></i>
-						</div></a> <a href=""><div>
-							<h3>기타</h3>
-							<i class="fas fa-angle-right sideright"></i>
-						</div></a>
+					<a href="">
+						<div>
+							<h3>내 정보</h3>
+							<i class="fas fa-angle-right"></i>
+						</div>
+					</a> 
+					<a href="${pageContext.request.contextPath}/myfavorite"><div>
+							<h3>즐겨찾기</h3>
+							<i class="fas fa-angle-right"></i>
+							</div></a> 
+					<a href="${pageContext.request.contextPath}/myqna"><div>
+							<h3>문의 내역</h3>
+							<i class="fas fa-angle-right"></i>
+							</div></a> 
+					<a href="${pageContext.request.contextPath}/mycommunity"><div>
+							<h3>내 글 보기</h3>
+							<i class="fas fa-angle-right"></i>
+							</div></a> 
+					<a href="${pageContext.request.contextPath}/mycourse"><div>
+							<h3>내 코스</h3>
+							<i class="fas fa-angle-right"></i>
+							</div></a> 
+					<a href="${pageContext.request.contextPath}/myrestaurant"><div>
+							<h3>내 음식점</h3>
+							<i class="fas fa-angle-right"></i>
+							</div></a>
 				</div>
 			</aside>
 			<main>
-				<h1 style="display: block;">맛집</h1>
+				<h1 style="display: block;">내 글 내역</h1>
 				<div class="table-con">
 					<table>
 						<thead>
@@ -178,11 +188,12 @@
 							</tr>
 						</thead>
 						<tbody>
+							
 							<c:forEach var="item" items="${list}">
 								<tr>
 									<td>${item.comid}</td>
 									<td><a
-										href="${pageContext.request.contextPath}/incategories/community/community-detail?comid=${item.comid}">${item.comtitle}</a></td>
+										href="${pageContext.request.contextPath}/incategories/community/detail?comid=${item.comid}">${item.comtitle}</a></td>
 									<td>${item.comuserid}</td>
 									<td>${item.comcreatedate}</td>
 									<td>${item.compageview}</td>
@@ -191,101 +202,95 @@
 						</tbody>
 					</table>
 					<div class="pagenum">
-						<%
-						int num = (Integer) request.getAttribute("num");
-						int count = (Integer) request.getAttribute("count");
-						int total = count / 10 + ((count % 10 == 0) ? 0 : 1);
-						int minBlock = (((num - 1) / 10) * 10) + 1;
-						int maxBlock = (((num - 1) / 10) + 1) * 10;
+							<%
+							int num = (Integer) request.getAttribute("num");
+							int count = (Integer) request.getAttribute("count");
+							int total = count / 10 + ((count % 10 == 0) ? 0 : 1);
+							int minBlock = (((num - 1) / 10) * 10) + 1;
+							int maxBlock = (((num - 1) / 10) + 1) * 10;
 
-						pageContext.setAttribute("total", total);
-						pageContext.setAttribute("minBlock", minBlock);
-						pageContext.setAttribute("maxBlock", maxBlock);
+							pageContext.setAttribute("total", total);
+							pageContext.setAttribute("minBlock", minBlock);
+							pageContext.setAttribute("maxBlock", maxBlock);
 
-						String query = "";
+							String query = "";
 
-						String title = (String) request.getAttribute("title");
-						String content = (String) request.getAttribute("content");
+							String title = (String) request.getAttribute("title");
+							String content = (String) request.getAttribute("content");
 
-						if (title != null) {
-							query += "&title=" + title;
-						}
-						if (content != null) {
-							query += "&content=" + content;
-						}
-						if (title != null) {
-							query += "&title=" + title;
-						}
-						if (content != null) {
-							query += "&content=" + content;
-						}
-						
-						pageContext.setAttribute("query", query);
-						%>
-						<c:choose>
-							<c:when test="${(minBlock-1) < 1}">
-								<i class="fas fa-angle-left"></i>
-								<i class="fas fa-angle-left pagingarrow-left2"></i>
-							</c:when>
-							<c:otherwise>
-								<a
-									href="${pageContext.request.contextPath}/incategories/community/community-main?num=${minBlock-1}${query}">
-									<i class="fas fa-angle-left"></i> <i
-									class="fas fa-angle-left pagingarrow-left2"></i>
-								</a>
-							</c:otherwise>
-						</c:choose>
-						<c:choose>
-							<c:when test="${num==1}">
-								<i class="fas fa-angle-left pagingarrow-left"></i>
-							</c:when>
-							<c:otherwise>
-								<a
-									href="${pageContext.request.contextPath}/incategories/community/community-main?num=${num-1}${query}">
-									<i class="fas fa-angle-left pagingarrow-left"></i>
-								</a>
-							</c:otherwise>
-						</c:choose>
-						<c:forEach begin="${minBlock}"
-							end="${maxBlock>total?total:maxBlock}" step="1" var="i">
+							if (title != null) {
+								query += "&title=" + title;
+							}
+							if (content != null) {
+								query += "&content=" + content;
+							}
+
+							pageContext.setAttribute("query", query);
+							%>
 							<c:choose>
-								<c:when test="${num == i}">
-									<b>${i}</b>
+								<c:when test="${(minBlock-1) < 1}">
+									<i class="fas fa-angle-left"></i>
+									<i class="fas fa-angle-left pagingarrow-left2"></i>
 								</c:when>
 								<c:otherwise>
 									<a
-										href="${pageContext.request.contextPath}/incategories/community/community-main?num=${i}${query}">${i}</a>
+										href="${pageContext.request.contextPath}/mycommunity?num=${minBlock-1}${query}">
+										<i class="fas fa-angle-left"></i> <i
+										class="fas fa-angle-left pagingarrow-left2"></i>
+									</a>
 								</c:otherwise>
 							</c:choose>
-						</c:forEach>
-						<c:choose>
-							<c:when test="${num==total}">
-								<i class="fas fa-angle-right pagingarrow-right"></i>
-							</c:when>
-							<c:otherwise>
-								<a
-									href="${pageContext.request.contextPath}/incategories/community/community-main?num=${num+1}${query}">
+							<c:choose>
+								<c:when test="${num==1}">
+									<i class="fas fa-angle-left pagingarrow-left"></i>
+								</c:when>
+								<c:otherwise>
+									<a
+										href="${pageContext.request.contextPath}/mycommunity?num=${num-1}${query}">
+										<i class="fas fa-angle-left pagingarrow-left"></i>
+									</a>
+								</c:otherwise>
+							</c:choose>
+							<c:forEach begin="${minBlock}"
+								end="${maxBlock>total?total:maxBlock}" step="1" var="i">
+								<c:choose>
+									<c:when test="${num == i}">
+										<b>${i}</b>
+									</c:when>
+									<c:otherwise>
+										<a
+											href="${pageContext.request.contextPath}/mycommunity?num=${i}${query}">${i}</a>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							<c:choose>
+								<c:when test="${num==total}">
 									<i class="fas fa-angle-right pagingarrow-right"></i>
-								</a>
-							</c:otherwise>
-						</c:choose>
-						<c:choose>
-							<c:when test="${maxBlock > total}">
-								<span> <i class="fas fa-angle-right pagingarrow-right2"></i>
-									<i class="fas fa-angle-right"></i>
-								</span>
-							</c:when>
-							<c:otherwise>
-								<a
-									href="${pageContext.request.contextPath}/incategories/community/community-main?num=${maxBlock+1}${query}">
-									<i class="fas fa-angle-right pagingarrow-right2"></i><i
-									class="fas fa-angle-right"></i>
-								</a>
-							</c:otherwise>
-						</c:choose>
+								</c:when>
+								<c:otherwise>
+									<a
+										href="${pageContext.request.contextPath}/mycommunity?num=${num+1}${query}">
+										<i class="fas fa-angle-right pagingarrow-right"></i>
+									</a>
+								</c:otherwise>
+							</c:choose>
+							<c:choose>
+								<c:when test="${maxBlock > total}">
+									<span> <i class="fas fa-angle-right pagingarrow-right2"></i>
+										<i class="fas fa-angle-right"></i>
+									</span>
+								</c:when>
+								<c:otherwise>
+									<a
+										href="${pageContext.request.contextPath}/mycommunity?num=${maxBlock+1}${query}">
+										<i class="fas fa-angle-right pagingarrow-right2"></i><i
+										class="fas fa-angle-right"></i>
+									</a>
+								</c:otherwise>
+							</c:choose>
+						</div>
 					</div>
-				</div>
-				<input id="create-btn" type="button" value="글쓰기">
+					</div>
 				<c:choose>
 					<c:when test="${(title!=null)&&(content!=null)}">
 						<select name="category" id="category">
@@ -326,21 +331,17 @@
 		<jsp:include page="../includes/footer.jsp"></jsp:include>
 	</div>
 	<script type="text/javascript">
-	$(function() {
-		$("#create-btn").click(function() {
-			location.href = "${pageContext.request.contextPath}/incategories/community/community-create";
-		});
-		
+	$(function() {	
 		$("#search").click(function() {
 			let category = $("#category").val();
 			let text = $("#search-text").val();
 			
 			if(category == "title") {
-				location.href = "${pageContext.request.contextPath}/incategories/community/community-main?title="+text;
+				location.href = "${pageContext.request.contextPath}/incategories/community/mycommunity?title="+text;
 			}else if(category == "content") {
-				location.href = "${pageContext.request.contextPath}/incategories/community/community-main?content="+text;
+				location.href = "${pageContext.request.contextPath}/incategories/community/mycommunity?content="+text;
 			}else if(category == "both") {
-				location.href = "${pageContext.request.contextPath}/incategories/community/community-main?title="+text+"&content="+text;
+				location.href = "${pageContext.request.contextPath}/incategories/community/mycommunity?title="+text+"&content="+text;
 			}
 		});
 		$('#search-text').on('keydown', function(e) {
@@ -351,11 +352,11 @@
 				let text = $("#search-text").val();
 				
 				if(category == "title") {
-					location.href = "${pageContext.request.contextPath}/incategories/community/community-main?title="+text;
+					location.href = "${pageContext.request.contextPath}/incategories/community/mycommunity?title="+text;
 				}else if(category == "content") {
-					location.href = "${pageContext.request.contextPath}/incategories/community/community-main?content="+text;
+					location.href = "${pageContext.request.contextPath}/incategories/community/mycommunity?content="+text;
 				}else if(category == "both") {
-					location.href = "${pageContext.request.contextPath}/incategories/community/community-main?title="+text+"&content="+text;
+					location.href = "${pageContext.request.contextPath}/incategories/community/mycommunity?title="+text+"&content="+text;
 				}
 			}
 		});

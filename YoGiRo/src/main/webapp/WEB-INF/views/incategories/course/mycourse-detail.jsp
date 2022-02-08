@@ -132,6 +132,13 @@ hr {
 #overview{
 	font-weight : bold;
 }
+
+.image_wrap img {
+    width : 100%;
+    height: 100%;
+    display: block;
+    border-radius : 15px;
+}
 </style>
 </head>
 <body class="body">
@@ -176,9 +183,9 @@ hr {
 				<br />
 				<div id="course_detail_container">
 					<div id="course_detail_img">
-						
-							<img src="${item.mycoursedetailimage}" alt="" id="detail_img"/>
-						
+						<div class="image_wrap" data-mycoursedetailimage="${item.mycoursedetailimage}" >
+							<img>
+						</div>
 					</div>
 					<div id="course_detail_overview">
 						<p id="overview"> <<코스개요>> </p>
@@ -216,7 +223,29 @@ hr {
 	 		uploadResult.html(str); 
 	 		
 	 	});
-	 
+	 	
+	 	
+	 	$(document).ready(function() {
+			/* 디테일 이미지 삽입 */
+			$(".image_wrap").each(function(i, obj){
+				
+				const bobj = $(obj);
+				if(bobj.data("mycoursedetailimage")){
+					const filecall = bobj.data("mycoursedetailimage");
+					
+					const fileCallPath = encodeURIComponent(filecall);
+					
+					$(this).find("img").attr('src', '${pageContext.request.contextPath}/display?fileName=' + fileCallPath);
+					
+				}else{
+					$(this).find("img").attr('src', '${pageContext.request.contextPath}/resources/img/noimg.jpg');
+					
+				}
+				
+			});
+						
+		
+		});
 	</script>
 	
 </body>

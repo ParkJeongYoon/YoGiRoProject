@@ -78,4 +78,9 @@ public class QuestionService {
 		sqlSessionTemplate.insert("questions.insertQuestions" , vo);
 	}
 	
+	
+	public void deleteQna(QuestionVO vo) {
+		sqlSessionTemplate.delete("questions.deleteQuestions" , vo);
+	}
+	
 }

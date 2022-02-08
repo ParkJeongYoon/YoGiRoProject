@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mylist">
+	
+	<select id="selectMyComCount" parameterType="communityVO" resultType="int">
+		select count(*)
+		from community
+		where comisdelete = 'N' 
+		and comuserid= #{comuserid}
+		<choose>
+			<when test="comtitle != null and comcontent != null">
+				and (comtitle like #{comtitle} or comcontent like #{comcontent})
+			</when>
+			<when test="comtitle == null and comcontent != null">
+				and comcontent like #{comcontent}
+			</when>
+			<when test="comtitle != null and comcontent == null">
+				and comcontent like #{comtitle}
+			</when>
+		</choose>
+	</select>
+	<select id="selectComListWithID" parameterType="communityVO" resultType="communityVO">
+		select comid, comcategorynum, comtitle, comcontent, compageview, comuserid, comcreatedate, comisdelete 
+		from community
+		where comisdelete = 'N' 
+		and comuserid= #{comuserid}
+		<choose>
+			<when test="comtitle != null and comcontent != null">
+				and (comtitle like #{comtitle} or comcontent like #{comcontent})
+			</when>
+			<when test="comtitle == null and comcontent != null">
+				and comcontent like #{comcontent}
+			</when>
+			<when test="comtitle != null and comcontent == null">
+				and comtitle like #{comtitle}
+			</when>
+		</choose>
+		order by comid DESC
+		limit #{start}, #{count}
+	</select>
+</mapper>
+
