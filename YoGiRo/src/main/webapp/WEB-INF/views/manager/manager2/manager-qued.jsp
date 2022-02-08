@@ -12,6 +12,16 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/questions-detail.css">
     <script src="https://kit.fontawesome.com/79203d0d3b.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
+    <style type="text/css">
+    	.quedbtn {
+	      	position: absolute;
+	      	right: 0;
+	      	background-color: #B2DFDB;
+	      	padding: 10px 15px;
+	      	margin-top: 2px;
+	      	font-size: 15px;
+	      }
+    </style>
 </head>
 <body>
 	<div class="container" id="container1">
@@ -56,8 +66,10 @@
         			
 	   			 	 
 	   			 	
-	   			 	
+	   			 	<button class="quedbtn">
 	   			 		<a href="${pageContext.request.contextPath}/manager/manager2/move_answer">답변하기</a>
+	   			 	</button>
+	   			 		
 	   			 	
         		</div>
         		
