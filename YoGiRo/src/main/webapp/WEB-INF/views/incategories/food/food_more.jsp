@@ -160,16 +160,17 @@ table {
 
 #main_food {
 	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	flex-wrap: wrap;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(4, 1fr);
+	gap: 20px;
+	justify-content: center; /* 수평 가운데 정렬 */
 }
 
 .food_content {
-	width: 18vw;
 	margin-bottom: 20px;
 	overflow: hidden;
+	text-align: center;
 }
 
 .div_image {
@@ -315,9 +316,18 @@ span {
 
 								<a href="food_detail?contentid=${item.contentid}&themecode=3"
 									class="course-a">
-
+									<c:if test="${item.firstimage != null}">
 									<div class="div_image"
-										style="background-image: url('${item.firstimage}')"></div>
+										style="background-image: url('${item.firstimage}')">
+										
+									</div>
+									
+									</c:if>
+									<c:if test="${item.firstimage == null}">
+									<div class="div_image"
+										style="background-image: url('${pageContext.request.contextPath}/resources/img/noimg.jpg')">
+									</div>
+									</c:if>
 									<p>${item.title}</p>
 								</a>
 

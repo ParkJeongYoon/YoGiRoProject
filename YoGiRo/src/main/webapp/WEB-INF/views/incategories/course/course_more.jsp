@@ -158,18 +158,19 @@ table {
 	flex-wrap: wrap;
 }
 
-#main_course {
+#main_course1 {
 	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	flex-wrap: wrap;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(4, 1fr);
+	gap: 20px;
+	justify-content: center; /* 수평 가운데 정렬 */
 }
 
-.course_content {
-	width: 18vw;
+.course_content1 {
 	margin-bottom: 20px;
 	overflow: hidden;
+	text-align: center;
 }
 
 .div_image {
@@ -211,18 +212,7 @@ table {
 	margin-top: 5px;
 }
 
-#user_food {
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-}
 
-.mycourse_content {
-	width: 19vw;
-	margin-right: 2vw;
-	margin-left: 2vw;
-}
 
 p {
 	overflow: hidden;
@@ -308,16 +298,26 @@ span {
 
 
 				<div class="course_container">
-					<div id="main_course">
+					<div id="main_course1">
 
 						<c:forEach var="item" items="${list}">
-							<div class="course_content">
+							<div class="course_content1">
 
 								<a href="course_detail?contentid=${item.contentid}&themecode=2"
 									class="course-a">
 
+									<c:if test="${item.firstimage != null}">
 									<div class="div_image"
-										style="background-image: url('${item.firstimage}')"></div>
+										style="background-image: url('${item.firstimage}')">
+										
+									</div>
+									
+									</c:if>
+									<c:if test="${item.firstimage == null}">
+									<div class="div_image"
+										style="background-image: url('${pageContext.request.contextPath}/resources/img/noimg.jpg')">
+									</div>
+									</c:if>
 									<p>${item.title}</p>
 								</a>
 

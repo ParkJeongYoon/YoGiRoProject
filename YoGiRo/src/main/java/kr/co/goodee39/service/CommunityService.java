@@ -1,11 +1,14 @@
  package kr.co.goodee39.service;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
+import kr.co.goodee39.vo.ComCommentVO;
 import kr.co.goodee39.vo.CommunityVO;
 
 @Service
@@ -74,5 +77,7 @@ public class CommunityService {
 	public void deleteCom(CommunityVO vo) {
 		sqlSessionTemplate.delete("community.deleteCom", vo);
 	}
+
+	
 
 }

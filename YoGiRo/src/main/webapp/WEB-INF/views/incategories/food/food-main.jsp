@@ -138,21 +138,18 @@ table {
 #search_btn {
 	height: 35px;
 	width: 80px;
-	position: absolute;
-	right: 0px;
-	background-color: #1DC078;
+	/* position: absolute;
+	right: 0px; */
+	float : right;
+	background-color: #B2DFDB;
+	border-radius : 15px;
 }
 
 #search_btn:hover {
-	background-color: green;
+	background-color: #92C8FF;
 }
 
-#search {
-	height: 35px;
-	width: 200px;
-	position: absolute;
-	right: 80px;
-}
+
 
 .food_container {
 	width: 100%;
@@ -164,18 +161,30 @@ table {
 
 #main_food {
 	width: 100%;
-	display: flex;
+	/* display: flex;
 	flex-direction: row;
 	justify-content: space-around;
-	flex-wrap: wrap;
+	flex-wrap: wrap; */
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	gap: 20px;
+	justify-content: center; /* 수평 가운데 정렬 */
+	align-items: center; /* 수직 가운데 정렬 */
+	
 }
 
 .food_content {
-	width: 18vw;
 	margin-bottom: 20px;
 	overflow : hidden;
+	text-align: center;
 }
 
+.myfood_content{
+	margin-bottom: 20px;
+	overflow : hidden;
+	text-align: center;
+}
 
 
 .div_image {
@@ -219,16 +228,14 @@ table {
 
 #user_food {
 	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+	justify-content: center; /* 수평 가운데 정렬 */
+	align-items: center; /* 수직 가운데 정렬 */
 }
 
-.myfood_content {
-	width: 19vw;
-	margin-right : 2vw;
-	margin-left : 2vw;
-}
+
 p {
 	overflow :hidden;
 }
@@ -248,7 +255,7 @@ p {
 	<div class="container"> 
 
 		<jsp:include page="../../includes/header.jsp"></jsp:include>
-
+		<br><br>
 
 
 		<main>
@@ -275,9 +282,8 @@ p {
 			<div id="food_real_container">
 				<div id="food_top">
 					<h1>음식점</h1>
-					<div id="search_box">
-						<button id="search_btn" onclick="location.href='food_more?region=${foodList[0].region}'">더보기</button>
-					</div>
+					<button id="search_btn" onclick="location.href='food_more?region=${foodList[0].region}'">더보기</button>
+					
 				</div>
  
 				<div class="food_container">
@@ -287,11 +293,18 @@ p {
 							<div id="food${i}" class="food_content"> 
 
 								<a href="food_detail?contentid=${foodList[i].contentid}&themecode=3" class="course-a">
-								
+								 <c:if test="${foodList[i].firstimage != null}">
 									<div class="div_image"
 										style="background-image: url('${foodList[i].firstimage}')">
 										
 									</div>
+									
+									</c:if>
+									<c:if test="${foodList[i].firstimage == null}">
+									<div class="div_image"
+										style="background-image: url('${pageContext.request.contextPath}/resources/img/noimg.jpg')">
+									</div>
+									</c:if>
 									<p>${foodList[i].title}</p>
 								</a>
 
@@ -312,10 +325,10 @@ p {
 				<div id="search_box">
 						<button id="search_btn" onclick="location.href='myfood_more?region=${foodList[0].region}'">더보기</button>
 					</div>
-				<br /><br />
+				<br />
 				<c:if test="${sessionScope.account.userid != null}">
 				<br> <a href="${pageContext.request.contextPath}/add_my_food"><h4 id="add_my_food">나의 맛집 올리기</h4></a> <br>
-				<br>
+				<br><br>
 				</c:if>
 				<div class="food_container">
 					<div id="user_food">

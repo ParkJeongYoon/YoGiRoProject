@@ -117,7 +117,7 @@ thead>tr>th:nth-child(5) {
 	height: 35px;
 	position: absolute;
 	right: 305px;
-	border: 1px solid lightgray;
+	/* border: 1px solid lightgray; */
 }
 
 #search {

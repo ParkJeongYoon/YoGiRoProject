@@ -138,13 +138,15 @@ table {
 #search_btn {
 	height: 35px;
 	width: 80px;
-	position: absolute;
-	right: 0px;
-	background-color: #1DC078;
+	/* position: absolute;
+	right: 0px; */
+	float : right;
+	background-color: #B2DFDB;
+	border-radius : 15px;
 }
 
 #search_btn:hover {
-	background-color: green;
+	background-color: #92C8FF;
 }
 
 #search {
@@ -163,9 +165,10 @@ table {
 
 #main_course {
 	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+	justify-content: center; /* 수평 가운데 정렬 */
 }
 
 .course_content {
@@ -222,18 +225,19 @@ table {
 
 #user_course {
 	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+	justify-content: center; /* 수평 가운데 정렬 */
 }
 
 .mycourse_content {
 	border: 1px solid black;
 	border-radius: 30px;
-	width: auto;
-	margin-right : 3vw;
-	margin-left : 2vw;
+	width: 18vw;
 }
+
+
 </style>
 </head>
 <body>
@@ -303,8 +307,7 @@ table {
 								<div id="my_course${j}" class="mycourse_content">
 
 									<a href="mycourse_detail?mycoursecommonid=${myCommonList[j].mycoursecommonid}">
-										<div class="div_image"
-											style="background-image: url('${myCommonList[j].mycoursemainimage}')">
+										<div class="image_wrap div_image" data-mycoursemainimage="${myCommonList[j].mycoursemainimage}">
 											<div class="bg"></div>
 											<p>${myCommonList[j].mycoursecommontitle}</p>
 										</div>
@@ -331,7 +334,27 @@ table {
 				</div>
 			</div>
 			<script>
- 
+			$(document).ready(function() {
+				/* 이미지 삽입 */
+				$(".image_wrap").each(function(i, obj){
+					
+					const bobj = $(obj);
+					if(bobj.data("mycoursemainimage")){
+						const filecall = bobj.data("mycoursemainimage");
+						
+						const fileCallPath = encodeURIComponent(filecall);
+						
+						$(this).attr('style', "background-image: url('${pageContext.request.contextPath}/display?fileName="+fileCallPath+"')");
+						
+					}else{
+						$(this).attr('style', "background-image: url('${pageContext.request.contextPath}/resources/img/noimg.jpg')");
+						
+					}
+					
+				});
+							 
+			
+			});
     function acyncMovePage(url){
         // ajax option
         var ajaxOption = {

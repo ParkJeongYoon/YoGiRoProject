@@ -15,6 +15,15 @@
 <style>
 @import url('http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css');
 
+main {
+	background-color: #FAFAFA;
+	border-radius : 15px;
+	padding : 50px;
+}
+#myfoodtitle {
+	border-bottom : 2px solid gray;
+	display : inline-block;
+}
 .sr-only {
 	position: absolute;
 	width: 1px;
@@ -48,53 +57,59 @@
 		width: 100%;
 		height: 100%;
 }
+.noenter{
+	display : inline-block;
+	margin-right : 10px;
+}
+
+#send{
+	padding : 10px 30px;
+	font-size : large; 
+	background-color : #B2DFDB;
+	border-radius : 15px;
+	box-sizing: border-box; 
+    margin: 0 auto; 
+    position: relative;
+    display:block;
+    width : 200px;
+
+}
 </style>
 </head>
 <body class="body">
 	<div class="container">
 		<jsp:include page="../../includes/header.jsp"></jsp:include>
-
+		<br> <br> <br> <br> <br>
 		<main>
-			<br> <br> <br> <br> <br>
-			<h1>내 맛집 리뷰 작성</h1>
-			<br>
-			<p id="info">
-				<i class="xi-check-min"></i>는 필수
-			</p>
+			
+			<h1 id="myfoodtitle">내 맛집 리뷰 작성</h1>
 			<br>
 			<br>
-			<br>
-			<br>
-			<br>
-			<h2>
-				<i class="xi-check-min"></i>공통정보
-			</h2>
-			<br>
-			<br>
+			
+			<br><br>
 			<br>
 
 			<form action="${pageContext.request.contextPath}/create_my_food"
 				method="POST">
 				<ul>
-					<li><label for="myfoodname">음식점 이름 : </label> <input
-						type="text" id="myfoodname" name="myfoodname"></li>
-
+					<li><label for="myfoodname"><h3 class="noenter">음식점 이름 : </h3></label> <input
+						type="text" id="myfoodname" name="myfoodname"></li><br><br>
+						
 				</ul>
 
 
 				<br>
-				<h3 id="firstimgtitle">대표 이미지 첨부 :</h3>
-				<label for="upload">파일 추가 : </label><input type="file"
-					name="uploadFile" id="uploadFile" onchange="f_changeFunc(this)"/> <br>
+				<label for="upload"><h3 class="noenter">대표 이미지 첨부 :   </h3></label><input type="file"
+					name="uploadFile" id="uploadFile" onchange="f_changeFunc(this)"/> <br><br><br>
 				<div id="add_image_div"></div>
 				<br>
-				<h3>맛집 설명 :</h3>
+				<h3>맛집 설명 :</h3><br><br>
 				<li><textarea name="myfooddetail" id="myfooddetail" cols="50"
-						rows="10"></textarea></li> <br> <br> <br> <br> <br>
+						rows="10"></textarea></li> <br> <br> <br> <br>
 
-				<li><label for="myfoodaddress">맛집 주소 : </label><input
-					type="text" name="myfoodaddress" id="myfoodaddress" /></li> <br>
-				<li><label for="region" id="regionlabel">권역 : </label> <select
+				<li><label for="myfoodaddress"><h3 class="noenter">맛집 주소 : </h3></label><input
+					type="text" name="myfoodaddress" id="myfoodaddress" /></li> <br><br> <br>
+				<li><label for="region" id="regionlabel"><h3 class="noenter">권역 : </h3></label> <select
 					name="region" id="region">
 						<option value="서울">수도권</option>
 						<option value="강원">강원권</option>
@@ -105,7 +120,7 @@
 				</select></li> <br> <br>
 				<br>
 				<br>
-				<br> <input type="submit" value="전송" /> <br>
+				<br> <input type="submit" value="등록" id="send" style="cursor: pointer"/> <br>
 				<br>
 				<br>
 				<br>

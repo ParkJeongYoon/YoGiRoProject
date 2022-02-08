@@ -37,6 +37,7 @@
 		order by comid DESC
 		limit #{start}, #{count}
 	</select>
+	
 	<update id="viewCount" parameterType="communityVO">
 		update community
 		<set>

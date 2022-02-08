@@ -18,7 +18,7 @@ public class CourseCommonVO {
 	public CourseCommonVO() {
 		// TODO Auto-generated constructor stub
 		this.start =0;
-		this.count = 10;
+		this.count = 12;
 	}
 	public int getStart() {
 		return start;
