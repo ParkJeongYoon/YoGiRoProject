@@ -1,12 +1,12 @@
 package kr.co.goodee39.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.goodee39.service.LoginService;
 import kr.co.goodee39.vo.UserVO;
@@ -18,7 +18,9 @@ public class UserController {
 	LoginService loginservice;
 	
 	@PostMapping("/login")
-	public String isLogin(UserVO vo, HttpSession session) {
+	public String isLogin(UserVO vo, HttpSession session, HttpServletRequest request) {
+		String backButton = request.getParameter("backButton");
+		session.setAttribute("backButton" , backButton);
 		return loginservice.getuser(vo, session);
 	}
 	
