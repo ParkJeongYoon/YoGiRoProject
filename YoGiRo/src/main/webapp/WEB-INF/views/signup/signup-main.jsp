@@ -84,12 +84,12 @@
 			</form>
 		</div>
 		<script type="text/javascript">
-		let userID = document.querySelector('#userID');
+		let userID = document.querySelector('#userid');
 		let pw = document.querySelector('#pw1');
 		let pwCheck = document.querySelector('#pw2');
 		let signUpButton = document.querySelector('#submit');
 		
-		let userID = document.querySelector('#userID').value; // 여기서 value값을 변수에 담고 싶었다
+		let userID = document.querySelector('#userid').value; // 여기서 value값을 변수에 담고 싶었다
 		function greeting() {
 		    if (pw.value !== pwCheck.value) {
 		        alert('비밀번호가 다릅니다')
