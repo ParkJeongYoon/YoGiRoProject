@@ -37,4 +37,9 @@ public class FestaService {
 		
 		model.addAttribute("festatodetailpage",sqlSessionTemplate.selectOne("festa.getfestawithid",vo));
 	}
+	
+	public void selectFestaToInmap(Model model, FestaVO vo) {
+		
+		model.addAttribute("festatoinmap",sqlSessionTemplate.selectList("festa.getFesta",vo));
+	}
 }

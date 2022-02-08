@@ -146,7 +146,7 @@ input[type='checkbox']:checked+label {
 	align-content: space-around;
 }
 
-.course_p, .food_p {
+.course_p, .food_p, .festa_p {
 	visibility: hidden;
 	color: #fff;
 	font-size: 0.9rem;
@@ -163,7 +163,7 @@ input[type='checkbox']:checked+label {
   	-webkit-box-orient: vertical;
 }
 
-.food, .course {
+.food, .course, .festa {
 	width: 100%;
 	height: 70px;
 	background-color: #fff;
@@ -177,16 +177,16 @@ input[type='checkbox']:checked+label {
 	justify-content: center;
 	align-items: center;
 }
-.course_image:hover .backcolor, .food_image:hover .backcolor {
+.course_image:hover .backcolor, .food_image:hover .backcolor, festa_image:hover .backcolor {
 	visibility: visible;
 	background-color: rgba(0, 0, 0, 0.5);
 }
 
-.course_image:hover .course_p, .food_image:hover .food_p {
+.course_image:hover .course_p, .food_image:hover .food_p, .festa_image:hover .festa_p {
 	visibility: visible;
 }
 
-.course_image, .food_image{
+.course_image, .food_image, .festa_image{
 	display: flex;
 	width: 100%;
 	height: 70px;
@@ -218,11 +218,11 @@ input[type='checkbox']:checked+label {
 					<h2>축제</h2>
 					<div class="side-fasta side">
 						<c:forEach var="i" begin="3" end="8">
-							<div class="food-container">
-								<a href="${pageContext.request.contextPath}/festa_detail?contentid=${festatodetailpage[i].contentid}&themecode=1" class="food">
-									<div class="food_image" style="background: center / cover no-repeat url('${festatodetailpage[i].firstimage}')">
+							<div class="festa-container">
+								<a href="${pageContext.request.contextPath}/festa_detail?contentid=${festatoinmap[i].contentid}&themecode=1" class="festa">
+									<div class="festa_image" style="background: center / cover no-repeat url('${festatoinmap[i].firstimage}')">
 										<div class="backcolor">
-											<p class="food_p">${festatodetailpage[i].title}</p>
+											<p class="festa_p">${festatoinmap[i].title}</p>
 										</div>
 									</div>
 								</a>
