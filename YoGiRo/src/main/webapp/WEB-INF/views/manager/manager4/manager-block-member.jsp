@@ -21,8 +21,7 @@
 		<div class="middle-container">
 		<aside>
 		
-		 <div class="sidemenubar">
-		        
+		 <div class="sidemenubar">		        
 		         <a href="${pageContext.request.contextPath}/manager/manager2/manager-que"><div><h3>문의내역 보기</h3><i class="fas fa-angle-right"></i></div></a>
 		         <a href="${pageContext.request.contextPath}/manager/manager3/manager-member"><div><h3>회원관리</h3><i class="fas fa-angle-right"></i></div></a>
 		         <a href="${pageContext.request.contextPath}/manager/manager4/manager-block-member"><div><h3>차단회원 관리</h3><i class="fas fa-angle-right"></i></div></a>
@@ -31,36 +30,37 @@
 		 </div>
    		</aside>
    		<main>
-   		<div class="main2">
+   			<div class="main2">
 		   		<h1>차단회원 관리</h1>
 		   		<hr />
-		   		
 		   		<table>
 		   			
 		   				<thead>
-                               <tr>                                                                    
+                               <tr>          
+                               	  <th>차단해제</th>                                                          
                                   <th>회원아이디</th>                                  
                                   <th>회원이메일</th>
-                                  <th>차단해제여부</th>
+                                  
                                </tr>
                         </thead>
-                            <tbody> 
+                        <tbody> 
                             
                             <c:forEach var="user" items="${list}" >  
-                              <c:if test="${user.isblock eq Y }">                       	
+                                                    	
                             	<tr>
+                            	   <td><label><input type="checkbox" name="bloCheck" value="${user.userid}"></label></td>
 	                               <td>${user.userid}</td>	                               
-	                               <td>${user.useremail}</td>
-	                               <td><label><input type="checkbox" name="bloCheck" value="${user.userid}"></label></td>
+	                               <td>${user.useremail}</td>                 
                                	</tr>
-                              </c:if> 
+                              
                             </c:forEach>  
                                                 	
-                            </tbody>		   			              
+                        </tbody>		   			              
                 </table>
-                      <div class="pagenum" style="text-align: center; margin-top: 20px; ">
+		   		
+		   		<div class="pagenum" style="text-align: center; margin-top: 20px; ">
                       <%
-                        int usernum = (Integer)request.getAttribute("usernum");
+                        int usernum = (Integer)request.getAttribute("usernumber");
                         int count = (Integer)request.getAttribute("count");
                         int total = count/10+((count%10==0)?0:1);
                         int minBlock = (((usernum-1)/10)*10)+1;
@@ -141,7 +141,7 @@
                      </c:choose>
                  </div>
                  
-                 <input type="button" value="차단해제" onclick="" />
+                 <input type="button" value="차단해제" id="block" />
                  
                  <div class="com-input">
 			              <c:choose>
@@ -173,15 +173,29 @@
 			            </c:choose>
             			<button id="search">검색</button>
                       
-                
-                  </div>
-              </main>
+                        </div>
 		 	</div>
-          </div>
 		 	
-   		
+		 	
+   		</main>
    		</div>
    		<jsp:include page="../../includes/footer.jsp"></jsp:include>
 	</div>
+	
+	<script type="text/javascript">
+		$(function(){
+			
+			$("#search").click(function() {
+		         let category = $("#category").val();
+		         let text = $("#search-text").val();
+		         
+		         if(category == "userid") {
+		            location.href = "${pageContext.request.contextPath}/manager/manager4/manager-block-member?userid="+text;
+		         }else if(category == "useremail") {
+		            location.href = "${pageContext.request.contextPath}/manager/manager4/manager-block-member?useremail="+text;
+		         }
+		      });
+		});
+	</script>
 </body>
 </html>

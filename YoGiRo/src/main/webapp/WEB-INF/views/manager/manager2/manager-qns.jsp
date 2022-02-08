@@ -33,8 +33,8 @@
                   <a href="${pageContext.request.contextPath}/manager/manager6/manager-delete-community"><div><h3>삭제된 게시글 관리</h3><i class="fas fa-angle-right"></i></div></a>
           </div>
            </aside>
-            <main class="qna-detail">
-        	<h1 class="qna-title">문의하기</h1>
+            <main class="qna-detail" style="margin-top: 75px;">
+        	<h1 class="qna-title" style="margin-left: 4%;">문의하기</h1>
         	
         	<div class="qna-qnabox">
         		<section class="qna-question">

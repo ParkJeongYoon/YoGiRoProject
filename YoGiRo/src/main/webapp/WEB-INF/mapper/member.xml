@@ -34,16 +34,25 @@
 		limit #{start}, #{count}
   	</select>
   	
-  	<select id="selectUserBlock" parameterType="UserVO" resultType="UserVO">
+  	<select id="selectUserBlockList" parameterType="UserVO" resultType="UserVO">
   		select userid, username, usernumber, usernickname, userpassword, useremail, userphonenumber, isblock, ismanager
 		from user
 		where isblock = 'Y'
+		<choose>
+			
+			<when test="userid == null and useremail != null">
+				and useremail like #{useremail}
+			</when>
+			<when test="userid != null and useremail == null">
+				and userid like #{userid}
+			</when>
+		</choose>
 		order by usernumber desc
 		limit #{start}, #{count}
   	</select>
   	
 	
-	<delete id="deleteUser" parameterType="userVO">
+	<delete id="blockUser" parameterType="userVO">
       update user set  isblock= 'Y' where userid = #{userid}
    	</delete>
 </mapper>

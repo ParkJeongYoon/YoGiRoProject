@@ -1,5 +1,4 @@
-
-
+/*
 function checkAll() {
 	if (!checkUserId(form.userid.value)) {
 		return false;
@@ -46,53 +45,41 @@ function checkName(name) {
 	}
 	return true; //확인이 완료되었을 때
 }
+*/
 
-function checkPassword(id, pw1, pw2) {
-	//비밀번호가 입력되었는지 확인하기
-	if (!checkExistData(pw1, "비밀번호를"))
-		return false;
-	//비밀번호 확인이 입력되었는지 확인하기
-	if (!checkExistData(pw2, "비밀번호 확인을"))
-		return false;
+function checkPassword() {
+	let pw1 = document.getElementById('pw1').value;
+	let pw2 = document.getElementById('pw2').value;
 
 	var password1RegExp = /^[a-z0-9]{8,20}$/; //비밀번호 유효성 검사
-	if (!password1RegExp.test(password1)) {
+	if (!password1RegExp.test(pw1)) {
 		alert("비밀번호는 영문 대소문자와 숫자 8~20자리로 입력해야합니다!");
-		form.password1.value = "";
-		form.password1.focus();
+		pw1 = "";
+		document.getElementById('pw1').focus();
 		return false;
 	}
 	//비밀번호와 비밀번호 확인이 맞지 않다면..
-	if (password1 != password2) {
-		alert("두 비밀번호가 맞지 않습니다.");
-		form.password1.value = "";
-		form.password2.value = "";
-		form.password2.focus();
+	if (pw1 != pw2) {
+		document.getElementById('check').innerHTML="비밀번호가 일치하지 않습니다.";
+		document.getElementById('check').style.color="red";
+		pw1 = "";
+		pw2 = "";
+		document.getElementById('pw2').focus();
 		return false;
+	}else {
+		document.getElementById('check').innerHTML="비밀번호가 일치합니다.";
 	}
 
-	//아이디와 비밀번호가 같을 때..
-	if (id == password1) {
-		alert("아이디와 비밀번호는 같을 수 없습니다!");
-		form.password1.value = "";
-		form.password2.value = "";
-		form.password2.focus();
-		return false;
-	}
-	return true; //확인이 완료되었을 때
-}
-
-function checkMail(mail) {
-	//mail이 입력되었는지 확인하기
-	if (!checkExistData(mail, "이메일을"))
-		return false;
+function checkMail() {
+	let email = document.getElementById('checkemail').value;
 
 	var emailRegExp = /^[A-Za-z0-9_]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/;
-	if (!emailRegExp.test(mail)) {
+	if (!emailRegExp.test(email)) {
 		alert("이메일 형식이 올바르지 않습니다!");
-		form.mail.value = "";
-		form.mail.focus();
+		email = "";
+		document.getElementById('checkmail').focus();
 		return false;
 	}
 	return true; //확인이 완료되었을 때
+	}
 }

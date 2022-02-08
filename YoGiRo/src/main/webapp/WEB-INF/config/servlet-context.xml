@@ -52,7 +52,8 @@
 	
 	<interceptors>
 		<interceptor>
-			<mapping path="/after-login_main/maib/**"/>
+			<mapping path="/main/maib/**"/>
+		
 			<beans:bean class="kr.co.goodee39.interceptor.LoginInterceptor"/>
 		</interceptor>
 	</interceptors>

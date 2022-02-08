@@ -6,12 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.goodee39.service.MemberService;
-import kr.co.goodee39.vo.UserVO;
 
 @Controller
 public class MemberController {
@@ -31,7 +28,7 @@ public class MemberController {
 	public String getBlockUserList(Model model, @RequestParam(defaultValue = "1") int usernumber,
 										   @RequestParam(defaultValue="") String userid,
 										   @RequestParam(defaultValue="") String useremail) {
-		userService.getUserBlock(model, usernumber, userid, useremail);
+		userService.getUserBlockList(model, usernumber, userid, useremail);
 		return "/manager/manager4/manager-block-member";
 	}
 	

@@ -14,7 +14,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/login/css/form.css">
 </head>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/login/js/signup.js"></script>
+
 <body class="body">
 	<div class="container">
 
@@ -44,15 +44,15 @@
 					</ul>
 					<ul class="container">
 						<li class="item center">비밀번호</li>
-						<li class="item"><input type="password" id="pw1" name="userpassword"
-							placeholder="영문+숫자 조합 8자리이상" minlength="8" maxlength="20"
+						<li class="item"><input type="password" id="pw1" name="userpassword" onchange="checkPassword()"
+							placeholder="영문+숫자 조합 8자리이상" minlength="8" maxlength="20" 
 							required></li>
 						<li class="item"></li>
 					</ul>
 					<ul class="container">
 						<li class="item center">비밀번호 확인</li>
-						<li class="item"><input type="password" id="pw2" required></li>
-						<li class="item"></li>
+						<li class="item"><input type="password" id="pw2" onchange="checkPassword()" required></li>
+						<li class="item"><span id="check"></span></li>
 					</ul>
 					<ul class="container">
 						<li class="item center">이메일</li>
@@ -62,7 +62,7 @@
 					</ul>
 					<ul class="container">
 						<li class="item center">전화번호</li>
-						<li class="item"><input type="tel" name="userphonenumber"></li>
+						<li class="item"><input type="tel" name="userphonenumber"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"></li>
 						<li class="item"></li>
 					</ul>
 					<div class="checkbox">
@@ -83,23 +83,8 @@
 				</div>
 			</form>
 		</div>
-		<script type="text/javascript">
-		let userID = document.querySelector('#userid');
-		let pw = document.querySelector('#pw1');
-		let pwCheck = document.querySelector('#pw2');
-		let signUpButton = document.querySelector('#submit');
-		
-		let userID = document.querySelector('#userid').value; // 여기서 value값을 변수에 담고 싶었다
-		function greeting() {
-		    if (pw.value !== pwCheck.value) {
-		        alert('비밀번호가 다릅니다')
-		    } else {
-		        alert(userID + '님 환영합니다!');
-		    }
-		}
-
-		</script>
 		<jsp:include page="../includes/footer.jsp"></jsp:include>
 	</div>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/login/js/signup.js"></script>
 </body>
 </html>

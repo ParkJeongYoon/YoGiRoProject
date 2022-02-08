@@ -259,7 +259,7 @@
 
 				ckText = ckText.replace(/(<([^>]+)>)/gi, "");
 				ckText = ckText.replace(/&nbsp;/gi,"");
-
+				
 				
 				let acontent = ckText;
 				let userid = $(".userid").val();
