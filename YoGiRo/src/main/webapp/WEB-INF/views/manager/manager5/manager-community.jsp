@@ -84,7 +84,7 @@
                             </tbody>
                          </table>
                		<div class="pagenum" style="text-align: center; margin-top: 20px; ">
-               			 <input type="button" value="삭제" class="btn btn-outline" onclick="deleteValue();" />
+               			 <input type="button" value="삭제" class="delbtn" onclick="deleteValue();" />
                			 
 						<%
 						int num = (Integer) request.getAttribute("num");
@@ -378,7 +378,7 @@
   	  
   	  const chk = confirm('정말 삭제하시겠습니까?');
   	  
-  	  if(chk){
+  	  if(chk){      
   		  
   		  $.ajax({
   			  type : 'POST',  

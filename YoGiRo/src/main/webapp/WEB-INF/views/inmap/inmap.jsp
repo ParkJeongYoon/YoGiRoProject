@@ -219,10 +219,10 @@ input[type='checkbox']:checked+label {
 					<div class="side-fasta side">
 						<c:forEach var="i" begin="3" end="8">
 							<div class="food-container">
-								<a href="${pageContext.request.contextPath}/food_detail?contentid=${foodList[i].contentid}&themecode=3" class="food">
-									<div class="food_image" style="background: center / cover no-repeat url('${foodList[i].firstimage}')">
+								<a href="${pageContext.request.contextPath}/festa_detail?contentid=${festatodetailpage[i].contentid}&themecode=1" class="food">
+									<div class="food_image" style="background: center / cover no-repeat url('${festatodetailpage[i].firstimage}')">
 										<div class="backcolor">
-											<p class="food_p">${foodList[i].title}</p>
+											<p class="food_p">${festatodetailpage[i].title}</p>
 										</div>
 									</div>
 								</a>

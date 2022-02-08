@@ -77,7 +77,7 @@ table, th, tr, td {
 
 thead {
 	background-color: #B2DFDB;
-	border: 1px solid #E7E7E7;
+	/* border: 1px solid #E7E7E7; */
 }
 
 tr {
@@ -123,7 +123,7 @@ thead>tr>th:nth-child(5) {
 	right: 10px;
 	background-color: #B2DFDB;
 	border-radius: 2px;
-	border: 1px solid lightgray;
+	/* border: 1px solid lightgray; */
 }
 
 #create-btn {
@@ -131,7 +131,8 @@ thead>tr>th:nth-child(5) {
 	width: 80px;
 	background-color: #B2DFDB;
 	border-radius: 2px;
-	border: 1px solid lightgray;
+	/* border: 1px solid lightgray; */
+	border: none;
 	cursor: pointer;
 }
 

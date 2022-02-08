@@ -48,9 +48,14 @@
 	</select>
 	
 	
-	<insert id="insertQuestions" parameterType="kr.co.goodee39.vo.QuestionVO">
+	<insert id="insertQuestions" parameterType="questionVO">
 		insert into questions(qnum , userid , qtitle , qcreatedate , qcontent)
 		values(#{qnum} , #{userid} , #{qtitle} , #{qcreatedate} , #{qcontent})
 	</insert>
+	
+	
+	<delete id="deleteQuestions" parameterType="questionVO">
+		update questions set isdelete='Y' where qnum = #{qnum}
+	</delete>
 	
 </mapper>

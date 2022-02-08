@@ -31,6 +31,7 @@
 		select anum , qnum , userid , ismanager , atitle , acreatedate , acontent , isdelete
 		from answer
 		where qnum = #{qnum}
+		and isdelete = 'N'
 	</select>
 	
 	<select id="selectUserAnswer" parameterType="answerVO" resultType="answerVO">
@@ -39,19 +40,22 @@
 		where userid = #{userid}
 	</select>
 	
-	<insert id="insertAnswer" parameterType="answerVO" useGeneratedKeys="true" keyProperty="num">
-		insert into answer(qnum , userid , ismanager , atitle , acreatedate , acontent)
-		values(#{qnum} , #{userid} , #{ismanager} , #{atitle} , #{acreatedate} , #{acontent})
+	<insert id="insertAnswer" parameterType="answerVO" useGeneratedKeys="true" keyProperty="anum">
+		insert into answer(anum , qnum , userid , ismanager , atitle , acreatedate , acontent)
+		values(#{anum} , #{qnum} , #{userid} , #{ismanager} , #{atitle} , #{acreatedate} , #{acontent})
 	</insert>
-	<insert id="insertIsans" parameterType="answerVO">
-		insert into questions(isans)
-		values('Y')
-	</insert>
+	<update id="updateIsansY" parameterType="answerVO">
+		update questions set isans = 'Y'
+		where qnum = #{qnum}
+	</update>
 	
-	<!-- 컨트롤러에 해킹방지를 위한 세션에 담은 넘버값을 '쿼리에 맞을 경우'를 핸들링 하기 위해서 'and writernum = #{writernum}'추가했다. -->
-	<update id="deleteAnswer" parameterType="answerVO">
+
+	<delete id="deleteAnswer" parameterType="answerVO">
 		update answer set isdelete = 'Y'
 		where anum = #{anum}
-		and ismanager = #{ismanager}
-	</update>
-  </mapper >
+	</delete>
+	<delete id="updateIsansN" parameterType="answerVO">
+		update questions set isans = 'N'
+		where qnum = #{qnum}
+	</delete>
+  </mapper>
