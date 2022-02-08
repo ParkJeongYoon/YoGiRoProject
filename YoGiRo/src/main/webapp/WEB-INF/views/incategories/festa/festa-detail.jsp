@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/default.css">
+<script type="text/javascript"
+	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=q47hthbmmp&submodules=geocoder"></script>
 <style>
 main {
 	width: 1600px;
@@ -146,9 +148,10 @@ hr {
 			<br /><br /><br /> 
 			<c:if test="${festatodetailpage.firstimage != null}">
 				<img id="common-img"
-				src="${festatodetailpage.firstimage}" alt="" /> 
+				src="${festatodetailpage.firstimage}" alt="" />
 			
 			</c:if>
+			
 			<br />
 			<br /><br />
 			<hr />
@@ -193,5 +196,30 @@ hr {
 		 
 		<jsp:include page="../../includes/footer.jsp"></jsp:include>
 	</div>
+	<script type="text/javascript">
+		/* 네이버 지도 api */
+		let y = ${festatodetailpage.mapy};
+		let x = ${festatodetailpage.mapx};
+		let level = ${festatodetailpage.mlevel};
+		
+		var position = new naver.maps.LatLng(y, x);
+	
+		var map = new naver.maps.Map('map', {
+		    center: position,
+		    zoom: level
+		});
+	
+		var markerOptions = {
+		    position: position,
+		    map: map,
+		    icon: {
+		    	url : '${pageContext.request.contextPath}/img/mapmarker/red-marker40.png',
+		        size: new naver.maps.Size(40, 40),
+		        anchor: new naver.maps.Point(20, 40)
+		    }
+		};
+	
+		var marker = new naver.maps.Marker(markerOptions);
+	</script>
 </body>
 </html>

@@ -177,7 +177,7 @@ input[type='checkbox']:checked+label {
 	justify-content: center;
 	align-items: center;
 }
-.course_image:hover .backcolor, .food_image:hover .backcolor, festa_image:hover .backcolor {
+.course_image:hover .backcolor, .food_image:hover .backcolor, .festa_image:hover .backcolor {
 	visibility: visible;
 	background-color: rgba(0, 0, 0, 0.5);
 }
