@@ -45,6 +45,13 @@ public class QuestionController {
 		return "/manager/manager2/manager-qued";
 	}
 	
+	@GetMapping("/manager/manager2/manager-qns")
+	public String getQnaDetail1(Model model , QuestionVO vo) {
+		service.selectQnaDetail(model , vo);
+		return "/manager/manager2/manager-qns";
+	}
+	
+	
 	
 	
 	

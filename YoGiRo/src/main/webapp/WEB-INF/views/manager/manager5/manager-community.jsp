@@ -84,7 +84,7 @@
                             </tbody>
                          </table>
                		<div class="pagenum" style="text-align: center; margin-top: 20px; ">
-               			 <input type="button" value="삭제" class="btn btn-outline" onclick="deleteValue();" />
+               			 <input type="button" value="삭제" class="delbtn" onclick="deleteValue();" />
                			 
 						<%
 						int num = (Integer) request.getAttribute("num");
