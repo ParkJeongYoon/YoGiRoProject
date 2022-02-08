@@ -61,8 +61,8 @@ main {
 }
 
 #map {
-	width: 62vw;
-	height: 69vh;
+	width: 54vw;
+	height: 74vh;
 	margin-bottom: 2%;
 	position: relative;
 }
@@ -191,6 +191,17 @@ input[type='checkbox']:checked+label {
 	width: 100%;
 	height: 70px;
 }
+
+/* 맵 미디어쿼리 */
+@media screen and (max-width: 1700px)
+{
+    #map {
+		width: 62vw;
+		height: 74vh;
+		margin-bottom: 2%;
+		position: relative;
+	}
+}
 </style>
 </head>
 <body class="body">
@@ -305,6 +316,18 @@ input[type='checkbox']:checked+label {
 	<!-- ========================================================================= -->
 	<!-- ncp예제 -->
 	<script id="code">
+		/* var $window = $(window);
+		
+		function getMapSize() {
+		    var size = new naver.maps.Size($window.width() - 800, $window.height() - 400);
+
+		    return size;
+		};
+
+		$window.on('resize', function() {
+		    map.setSize(getMapSize());
+		});
+		 */
 		var HOME_PATH = window.HOME_PATH || '.',
 		    urlPrefix = HOME_PATH +'/data/region',
 		    urlSuffix = '.json',
