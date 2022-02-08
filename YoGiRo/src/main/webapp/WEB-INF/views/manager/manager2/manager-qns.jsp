@@ -79,7 +79,7 @@
 		        	<div class="qna-question-content">${questionVO.qcontent}</div>
 	        	</section>
 	        	
-	        	<section class="qna-answer">
+	        	<section class="qna-answer" style="margin-bottom: 20px;">
 					
 	        	</section>
         	</div>
@@ -109,37 +109,42 @@
 		const liButton = document.createElement("li");
 		const button = document.createElement("button");
 		
-		$(document).on("click",".ans-create", function(){
-			label.setAttribute("for" , "atitle")
-			label.innerText = '답변제목';
-			inputAtitle.setAttribute("id" , "atitle");
-			inputAtitle.setAttribute("name" , "atitle");
-			textarea.setAttribute("id" , "editor");
-			textarea.setAttribute("name" , "acontent");
-			inputUserid.setAttribute("hidden" , "");
-			inputUserid.classList.add("userid");
-			inputUserid.setAttribute("name" , "userid");
-			inputUserid.innerText = '${sessionScope.account.userid}';
-			inputIsmanager.setAttribute("hidden" , "");
-			inputIsmanager.classList.add("ismanager");
-			inputIsmanager.setAttribute("name" , "ismanager");
-			inputIsmanager.innerText = '${sessionScope.account.ismanager}';
-			button.classList.add("button-sty" , "set-answer");
-			button.innerText = '전송';
-			liAtitle.append(label);
-			liAtitle.append(inputAtitle);
-			ul.append(liAtitle);
-			liAcontent.append(textarea);
-			ul.append(liAcontent);
-			ul.append(inputUserid);
-			ul.append(inputIsmanager);
-			liButton.append(button);
-			ul.append(liButton);
-			qnaAnswer.append(ul);
-			CKEDITOR.replace("editor" , {
-				enterMode : '2'
-			});
-			this.setAttribute("disabled" , "");
+		$(document).on("click" , ".ans-create" , function(){
+			let isans = '${questionVO.isans}';
+			if (isans == 'Y') {
+				document.querySelector(".ans-create").setAttribute("disabled" , "");
+			}else {
+				label.setAttribute("for" , "atitle")
+				label.innerText = '답변제목';
+				inputAtitle.setAttribute("id" , "atitle");
+				inputAtitle.setAttribute("name" , "atitle");
+				textarea.setAttribute("id" , "editor");
+				textarea.setAttribute("name" , "acontent");
+				inputUserid.setAttribute("hidden" , "");
+				inputUserid.classList.add("userid");
+				inputUserid.setAttribute("name" , "userid");
+				inputUserid.innerText = '${sessionScope.account.userid}';
+				inputIsmanager.setAttribute("hidden" , "");
+				inputIsmanager.classList.add("ismanager");
+				inputIsmanager.setAttribute("name" , "ismanager");
+				inputIsmanager.innerText = '${sessionScope.account.ismanager}';
+				button.classList.add("button-sty" , "set-answer");
+				button.innerText = '전송';
+				liAtitle.append(label);
+				liAtitle.append(inputAtitle);
+				ul.append(liAtitle);
+				liAcontent.append(textarea);
+				ul.append(liAcontent);
+				ul.append(inputUserid);
+				ul.append(inputIsmanager);
+				liButton.append(button);
+				ul.append(liButton);
+				qnaAnswer.append(ul);
+				CKEDITOR.replace("editor" , {
+					enterMode : '2'
+				});
+				this.setAttribute("disabled" , "");
+			}
 		});
 		
 		
@@ -229,6 +234,8 @@
 										success: function(data) {
 											console.log(data);
 											ansBox.remove();
+											document.querySelector(".ans-create").removeAttribute("disabled");
+											window.location.reload();
 										}
 									});
 								}
@@ -250,7 +257,7 @@
 			
 			$(".delete").click(function() {
 				if (confirm("정말로 삭제하시겠습니까?")) {
-					location.href = "${pageContext.request.contextPath}/qna/qna-delete?qnum=${questionVO.qnum}";
+					location.href = "${pageContext.request.contextPath}/manager/manager2/manager-que-delete?qnum=${questionVO.qnum}";
 				}
 			});
 			
@@ -260,7 +267,18 @@
 			$(document).on("click",".set-answer", function(){
 				
 				let atitle = $("#atitle").val();
-				let acontent = CKEDITOR.instances.editor.getData();
+				
+				var ckText = CKEDITOR.instances.editor.getData();
+				ckText = ckText.replace(/<br\/>/ig, "\n");
+				ckText = ckText.replace(/<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>/ig, "");
+
+
+				ckText = ckText.replace(/(<([^>]+)>)/gi, "");
+				ckText = ckText.replace(/&nbsp;/gi,"");
+
+				
+				let acontent = ckText;
+				
 				let userid = $(".userid").val();
 				let ismanager = $(".ismanager").val();
 				// 프론트에서 받아지는지 확인
@@ -326,6 +344,8 @@
 										success: function(data) {
 											console.log("딜리트시 오는 데이터 : "+data);
 											ansBox.remove();
+											document.querySelector(".ans-create").removeAttribute("disabled");
+											window.location.reload();
 										}
 									});
 								}

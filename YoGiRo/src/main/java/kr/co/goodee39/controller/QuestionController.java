@@ -51,6 +51,13 @@ public class QuestionController {
 		return "/manager/manager2/manager-qns";
 	}
 	
+	@GetMapping("/manager/manager2/manager-que-delete")
+	public String deleteQna1(QuestionVO vo) {
+		service.deleteQna(vo);
+		
+		return "redirect:/manager/manager2/manager-que";
+	}
+	
 	
 	
 	

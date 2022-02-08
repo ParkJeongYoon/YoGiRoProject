@@ -72,9 +72,7 @@
                             </tbody>
                          </table>
                          
-                          <div class="qna-list-bottom-inner-left">
-                   			<button type="submit" class="quedbtn qna-create">글쓰기 <i class="fas fa-pen"></i></button>
-                		  </div>
+                          
                          
                          <div class="pageqnum" style="text-align: center; margin-top: 20px; ">
                             <%
