@@ -26,8 +26,7 @@
 								name="userpassword" required>
 							<input type="hidden" name="backButton" value="${header.referer}">
 							<button class="login_button" type="submit">로그인</button>
-							<label class="findandjoin"><a href="#">아이디 비밀번호 찾기</a> <a
-								href="${pageContext.request.contextPath}/signup/signup-main">회원가입</a>
+							<label class="findandjoin"> <a href="${pageContext.request.contextPath}/signup/signup-main">회원가입</a>
 							</label>
 						</div>
 					</form>
