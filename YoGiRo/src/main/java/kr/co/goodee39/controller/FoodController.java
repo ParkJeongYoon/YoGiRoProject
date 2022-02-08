@@ -96,7 +96,7 @@ public class FoodController {
 	 @PostMapping("/create_my_food")
 		public String getCreateMyCoursePage(Model model,HttpServletRequest request) {
 			//구현해야함 ------------------------
-		 
+		 	
 		 
 		 
 		 

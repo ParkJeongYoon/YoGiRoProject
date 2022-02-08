@@ -71,8 +71,8 @@
 					<br>
 					<h3 id="firstimgtitle">대표 이미지 첨부 :</h3>
 					<label for="upload">파일 추가 : </label><input type="file"
-						name="uploadFile" id="uploadFile" /> <br>
-					<div id="add_image_div"></div>
+						name="uploadFile0" id="uploadFile0" onchange="f_changeFunc(this)"/> <br>
+					<div id="add_image_div0"></div>
 					<br> 
 					<h3>개요 :</h3>
 					<li><textarea name="mycourseinfo" id="mycourseinfo" cols="50"
@@ -102,12 +102,16 @@
 					<br> <br>
 					<div id="my_course_detail">
 						<ul>
-							<li><label for="mycoursedetailname0">장소 이름 : </label> 
-							<input type="text" name="mycoursedetailname0" id="mycoursedetailname0" /></li>
+							<li><label for="mycoursedetailname1">장소 이름 : </label> 
+							<input type="text" name="mycoursedetailname1" id="mycoursedetailname1" /></li>
 							<br>
-							<li><label for="mycoursedetailoverview0">장소 설명 : </label> 
-							<input type="text" id="mycoursedetailoverview0"
-								name="mycoursedetailoverview0" /></li>
+							<label for="uploadFile1">코스 이미지 첨부 :</label>
+							<input type="file" name="uploadFile1" id="uploadFile1" onchange="f_changeFunc(this)"/> <br>
+							<div id="add_image_div1"></div>
+							<br> 
+							<li><label for="mycoursedetailoverview1">장소 설명 : </label> 
+							<input type="text" id="mycoursedetailoverview1"
+								name="mycoursedetailoverview1" /></li>
 							<br>
 						</ul>
 					</div>
@@ -124,6 +128,11 @@
 							<input type="text" name="mycoursedetailname" id="mycoursedetailname" />
 							</li>
 							<br>
+							<label for="uploadFile">코스 이미지 첨부 :</label>
+							<input type="file" name="uploadFile" id="uploadFile" onchange="f_changeFunc(this)"/> <br>
+							<div id="add_image_div"></div>
+							<br> 
+							</li>
 							<li>
 							<label for="mycoursedetailoverview">장소 설명 : </label>
 							<input type="text" id="mycoursedetailoverview"
@@ -143,9 +152,8 @@
 		<jsp:include page="../../includes/footer.jsp"></jsp:include>
 	</div>
 	<script type="text/javascript">
-		let num = 1;
-		
-		
+		let num = 2;
+		let callnum = 0;
 		function addForm() {
 			$('#my_course_detail').append($('#add_my_course_detail').html());
 			
@@ -153,6 +161,11 @@
 			$("#mycoursedetailname"+num).attr('name','mycoursedetailname'+num);
 			$("#mycoursedetailoverview").attr('id','mycoursedetailoverview'+num);
 			$("#mycoursedetailoverview"+num).attr('name','mycoursedetailoverview'+num);
+			
+					
+			$("#uploadFile").attr('id','uploadFile'+num);
+			$("#uploadFile"+num).attr('name','uploadFile'+num);
+			$("#add_image_div").attr('id','add_image_div'+num);
 			num++;
 			
 		}
@@ -164,11 +177,12 @@
 			div.remove();
 			num--;
 		}
-		/* 이미지 업로드 */
-		$("input[type='file']").on("change", function(e){
-			
+		
+		
+		/* 대표 이미지 업로드 */
+		function f_changeFunc(obj){
 			let formData = new FormData();
-			let fileInput = $('input[name="uploadFile"]');
+			let fileInput = $(obj);
 			let fileList = fileInput[0].files;
 			let fileObj = fileList[0];
 			
@@ -188,13 +202,15 @@
 		    	success : function(result){
 			    	console.log(result);
 			    	showUploadImage(result);
+			    		
+			    	
+			    	
 			    },
 		    	error : function(result){
 		    		alert("이미지 파일이 아닙니다.");
 		    	}
 			});	
-			
-		});
+		}
 		
 		/* var, method related with attachFile */
 		let regex = new RegExp("(.*?)\.(jpg|png)$");
@@ -220,8 +236,7 @@
 		function showUploadImage(uploadResultArr){
 			/* 전달받은 데이터 검증 */
 			if(!uploadResultArr || uploadResultArr.length == 0){return}
-			
-			let uploadResult = $("#add_image_div");
+			let uploadResult = $("#add_image_div"+callnum);
 			
 			let obj = uploadResultArr[0];
 			
@@ -230,9 +245,10 @@
 			//let fileCallPath = obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName;
 			let fileCallPath = encodeURIComponent(obj.uploadPath.replace(/\\/g, '/') +"/"+ obj.uuid + "_" + obj.fileName);
 			
-			str += "<input type='hidden' name='mycoursemainimage' value='"+ obj.uploadPath.replace(/\\/g, '/') +"/"+obj.uuid +"_" +obj.fileName+"'>";
+			str += "<input type='hidden' name='mycoursemainimage"+callnum+"' value='"+ obj.uploadPath.replace(/\\/g, '/') +"/"+obj.uuid +"_" +obj.fileName+"'>";
 			
 			uploadResult.append(str);
+			callnum++;
 		}
 	</script>
 </body>

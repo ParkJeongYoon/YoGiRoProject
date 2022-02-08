@@ -484,18 +484,20 @@ public class CourseService {
 		mcvo.setMycoursecommontitle(request.getParameter("mycoursecommontitle"));
 		mcvo.setMycourseinfo(request.getParameter("mycourseinfo"));
 		mcvo.setMycourseregion(request.getParameter("mycourseregion"));
+		mcvo.setTotaldistance(request.getParameter("totaldistance"));
+		mcvo.setTotaltime(request.getParameter("totaltime"));
 		// 나중에 userid 가져와서 넣는 로직 넣기 
 		
 		mcvo.setUserid(vo.getUserid());
 		// 이미지 넣는 로직 넣기
 		
-		mcvo.setMycoursemainimage(request.getParameter("mycoursemainimage"));
+		mcvo.setMycoursemainimage(request.getParameter("mycoursemainimage0"));
 		System.out.println("두번가는거 확인");
 		sqlSessionTemplate.insert("course.insertmycoursecommon",mcvo);
 		insertMyCourseDetail(request,mcvo);
 	}
 	public void insertMyCourseDetail(HttpServletRequest request,MyCourseCommonVO mcvo) {
-		int i = 0;
+		int i = 1;
 		MyCourseDetailVO mdvo = new MyCourseDetailVO();
 		mdvo.setMycoursecommonid(mcvo.getMycoursecommonid());
 		mdvo.setUserid(mcvo.getUserid());
@@ -505,6 +507,7 @@ public class CourseService {
 			mdvo.setMycoursedetailname(request.getParameter("mycoursedetailname"+Integer.toString(i)));
 			mdvo.setMycoursedetailoverview(request.getParameter("mycoursedetailoverview"+Integer.toString(i)));
 			mdvo.setMycourseregion(mcvo.getMycourseregion());
+			mdvo.setMycoursedetailimage(request.getParameter("mycoursemainimage"+Integer.toString(i)));
 			sqlSessionTemplate.insert("course.insertmycoursedetail",mdvo);
 			
 			i++;
