@@ -53,7 +53,8 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/main/maib/**"/>
-		
+			<mapping path="/qna/qna-create/**"/>
+			
 			<beans:bean class="kr.co.goodee39.interceptor.LoginInterceptor"/>
 		</interceptor>
 	</interceptors>

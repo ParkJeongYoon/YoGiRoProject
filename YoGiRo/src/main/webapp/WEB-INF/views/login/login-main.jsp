@@ -1,5 +1,5 @@
-<%@page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html class="vh">
 <head>
@@ -13,7 +13,7 @@
 <body class="body vh">
 	<div class="container vh">
 		<jsp:include page="../includes/header.jsp"></jsp:include>
-
+		
 		<main class="login_main">
 			<div id="login">
 				<div id="login_box">
@@ -24,7 +24,6 @@
 							<input type="text" placeholder="아이디 또는 이메일 입력" name="userid"
 								required> <input type="password" placeholder="비밀번호 입력"
 								name="userpassword" required>
-							<input type="hidden" name="backButton" value="${header.referer}">
 							<button class="login_button" type="submit">로그인</button>
 							<label class="findandjoin"> <a href="${pageContext.request.contextPath}/signup/signup-main">회원가입</a>
 							</label>

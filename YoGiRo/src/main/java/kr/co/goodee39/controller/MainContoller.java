@@ -1,8 +1,15 @@
 package kr.co.goodee39.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import kr.co.goodee39.vo.UserVO;
 
 @Controller
 public class MainContoller {
@@ -12,7 +19,14 @@ public class MainContoller {
 	}
 	
 	@GetMapping("/login/login-main")
-	public String login() {
+	public String login(HttpServletRequest request,
+						HttpSession session,
+						@RequestParam(required=false, defaultValue="0") int flag) {
+		if(flag==0) {
+			String beforePage = request.getHeader("referer");
+			session.setAttribute("beforePage" , beforePage);
+			System.out.println("con: " + beforePage);
+		}
 		return "/login/login-main";
 	}
 	

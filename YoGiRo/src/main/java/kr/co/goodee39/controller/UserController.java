@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.goodee39.service.LoginService;
 import kr.co.goodee39.vo.UserVO;
@@ -18,10 +19,13 @@ public class UserController {
 	LoginService loginservice;
 	
 	@PostMapping("/login")
-	public String isLogin(UserVO vo, HttpSession session, HttpServletRequest request) {
-		String backButton = request.getParameter("backButton");
-		session.setAttribute("backButton" , backButton);
-		return loginservice.getuser(vo, session);
+	public String isLogin(UserVO vo,
+							HttpSession session,
+							HttpServletRequest request) {
+		//String backButton = request.getParameter("backButton");
+		//System.out.println("con1 : " + backButton);
+		
+		return loginservice.getuser(vo, session, request);
 	}
 	
 	@GetMapping("/signup/signup-main")
