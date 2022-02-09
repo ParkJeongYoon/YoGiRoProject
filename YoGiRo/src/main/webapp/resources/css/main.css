@@ -24,44 +24,48 @@ main {
     align-items: center;
     width: 85%;
     height: 60%;
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px 5px grey;
 }
 .rok-thumbnail-top {
 	width: 100%;
-	height: 10%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: #93949A;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 15px 15px 0 0;
 }
 .rok-thumbnail-title {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	padding-left: 0.7rem;
-	font-size: 2rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 0.7rem;
+    font-size: 2rem;
 }
 .rok-thumbnail-main {
-	width: 100%;
-	height: 60%;
-	display: flex;
-	flex-wrap: wrap;
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-wrap: wrap;
 }
 .rok-thumbnail {
 	width: 50%;
 	object-fit: cover;
 }
 .rok-thumbnail-bottom {
-	width: 100%;
-	height: 30%;
-	display: flex;
-	background-color: #DEE2E6;
+    width: 100%;
+    height: 30%;
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 0 0 15px 15px;
 }
 .rok-thumbnail-content {
-	display: flex;
-	font-size: 0.93em;
-	padding: 0.3rem;
-	line-height: 1.3em;
+    display: flex;
+    font-size: 0.93em;
+    padding: 0.3rem;
+    line-height: 1.3em;
 }
 .article-r {
     width: 60%;

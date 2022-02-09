@@ -64,12 +64,12 @@ header {
     justify-content: center;
     align-items: center;
     font-family: 'Righteous', cursive;
-    background-color: #B2DFDB;
+    border-radius: 15px;
 }
 .logo {
     font-family: 'Righteous', cursive;
     font-size: 2.2em;
-    color: #FF7262;
+    color: #2ed3c4;
 }
 .login-box {
     margin-right: 2em;
