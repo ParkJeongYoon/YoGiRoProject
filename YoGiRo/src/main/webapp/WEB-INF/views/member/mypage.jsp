@@ -126,6 +126,8 @@ td {
 	border-style: none;
 	font-size: 1rem;
 	margin-left: 20px;
+	text-align:center;
+	
 }
 
 .info_title {
@@ -199,7 +201,8 @@ td {
 							</tr>
 							<tr>
 								<td class="info_title">비밀번호</td>
-								<td class="info_box">${account.userpassword}</td>
+								<td class="info_box">
+								<input class="info" type="password" value="${account.userpassword}" readonly></td>
 							</tr>
 							<tr>               
 								<td class="info_title">전화번호</td>
