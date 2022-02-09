@@ -202,7 +202,7 @@ thead>tr>th:nth-child(5) {
 	position: absolute;
 	right: 80px;
 }
-.search-text {
+#text {
 	height: 35px;
 	width: 200px;
 	position: absolute;
@@ -384,9 +384,9 @@ thead>tr>th:nth-child(5) {
 							<option value="qtitle">제목</option>
 							<option value="qcontent">내용</option>
 							<option value="both">제목+내용</option>
-						</select> <input type="text" class="search-text" id="text" name="text"
+						</select> <input type="text" id="text" name="text"
 							placeholder="검색어를 입력해주세요">
-						<% } %>
+						  <%}%>
 						<button class="qna-search button-sty">검색</button>
 					</div>
 				</div>

@@ -119,8 +119,7 @@
 	<select id="selectMyFoodCount" parameterType="MyFoodVO" resultType="int">
 		select count(*)
 		from myfood
-		where region = #{region}
-		and userid=${userid}
+		where userid=#{userid}
 		<choose>
 			<when test="myfoodname != null and myfooddetail != null">
 				and (myfoodname like #{myfoodname} or myfooddetail like #{myfooddetail})
@@ -136,8 +135,7 @@
 	<select id="selectMyFoodList" parameterType="MyFoodVO" resultType="MyFoodVO">
 		select myfoodid, userid,region,themecode,  myfoodname, myfoodaddress, myfoodimg, myfooddetail, isdelete
 		from myfood
-		where region = #{region}
-		and userid=${userid}
+		where userid=#{userid}
 		<choose>
 			<when test="myfoodname != null and myfooddetail != null">
 				and (myfoodname like #{myfoodname} or myfooddetail like #{myfooddetail})
