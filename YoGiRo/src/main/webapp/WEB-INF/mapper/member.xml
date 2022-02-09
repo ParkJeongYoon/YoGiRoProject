@@ -17,6 +17,20 @@
 			</when>
 		</choose>
   	</select>
+  	
+  	<select id="selectUserBlockCount" parameterType="UserVO" resultType="int">
+  		select count(*) from user
+		where isblock = 'Y'
+		<choose>
+			
+			<when test="userid == null and useremail != null">
+				and useremail like #{useremail}
+			</when>
+			<when test="userid != null and useremail == null">
+				and userid like #{userid}
+			</when>
+		</choose>
+  	</select>
   	<select id="selectUserList" parameterType="UserVO" resultType="UserVO">
   		select userid, username, usernumber, usernickname, userpassword, useremail, userphonenumber, isblock, ismanager
 		from user

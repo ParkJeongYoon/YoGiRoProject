@@ -112,7 +112,7 @@
                            <span><i class="fas fa-chevron-left"></i></span>
                         </c:when>
                         <c:otherwise>
-                           <a href="${pageContext.request.contextPath}/manager/manager4/manager-block-member?usernumber=${usernum-1}${query}">
+                           <a href="${pageContext.request.contextPath}/manager/manager4/manager-block-member?usernumber=${usernumber-1}${query}">
                               <span><i class="fas fa-chevron-left"></i></span>
                            </a>
                         </c:otherwise>
@@ -133,7 +133,7 @@
                            <span><i class="fas fa-chevron-right"></i></span>
                         </c:when>
                         <c:otherwise>
-                           <a href="${pageContext.request.contextPath}/manager/manager4/manager-block-member?usernumber=${num+1}${query}">
+                           <a href="${pageContext.request.contextPath}/manager/manager4/manager-block-member?usernumber=${usernumber+1}${query}">
                               <span><i class="fas fa-chevron-right"></i></span>
                            </a>   
                         </c:otherwise>

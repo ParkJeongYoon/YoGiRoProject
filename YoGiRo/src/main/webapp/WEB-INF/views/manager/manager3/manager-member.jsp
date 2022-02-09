@@ -66,14 +66,12 @@
                 </table>
 		   		
 		   		<div class="pagenum" style="text-align: center; margin-top: 20px; ">
-		   		 
-		   		 
                       <%
-                        int usernum = (Integer)request.getAttribute("usernumber");
+                        int usernumber = (Integer)request.getAttribute("usernumber");
                         int count = (Integer)request.getAttribute("count");
                         int total = count/10+((count%10==0)?0:1);
-                        int minBlock = (((usernum-1)/10)*10)+1;
-                        int maxBlock = (((usernum-1)/10)+1)*10;
+                        int minBlock = (((usernumber-1)/10)*10)+1;
+                        int maxBlock = (((usernumber-1)/10)+1)*10;
                         
                         pageContext.setAttribute("total", total);
                         pageContext.setAttribute("minBlock", minBlock);
@@ -100,39 +98,39 @@
                            <span><i class="fas fa-angle-double-left"></i></span>   
                         </c:when>
                         <c:otherwise>
-                           <a href="${pageContext.request.contextPath}/manager/manager3/manager-member?usernum=${minBlock-1}${query}">
+                           <a href="${pageContext.request.contextPath}/manager/manager3/manager-member?usernumber=${minBlock-1}${query}">
                               <span><i class="fas fa-angle-double-left"></i></span>
                            </a>
                         </c:otherwise>
                      </c:choose>
                      &nbsp;&nbsp;
                      <c:choose>
-                        <c:when test="${usernum == 1 }">
+                        <c:when test="${usernumber == 1 }">
                            <span><i class="fas fa-chevron-left"></i></span>
                         </c:when>
                         <c:otherwise>
-                           <a href="${pageContext.request.contextPath}/manager/manager3/manager-member?usernum=${usernum-1}${query}">
+                           <a href="${pageContext.request.contextPath}/manager/manager3/manager-member?usernumber=${usernumber-1}${query}">
                               <span><i class="fas fa-chevron-left"></i></span>
                            </a>
                         </c:otherwise>
                      </c:choose>
                      <c:forEach begin="${minBlock}" end="${(total<maxBlock)?total:maxBlock}" step="1" var="i">
                         <c:choose>
-                           <c:when test="${usernum == i}">
+                           <c:when test="${usernumber == i}">
                               <span>${i}</span>
                            </c:when>
                            <c:otherwise>
-                              <a href="${pageContext.request.contextPath}/manager/manager3/manager-member?usernum=${i}${query}">${i}</a>
+                              <a href="${pageContext.request.contextPath}/manager/manager3/manager-member?usernumber=${i}${query}">${i}</a>
                            </c:otherwise>
                         </c:choose>
                   
                      </c:forEach>
                      <c:choose>
-                        <c:when test="${usernum == total }">
+                        <c:when test="${usernumber == total }">
                            <span><i class="fas fa-chevron-right"></i></span>
                         </c:when>
                         <c:otherwise>
-                           <a href="${pageContext.request.contextPath}/manager/manager3/manager-member?usernum=${num+1}${query}">
+                           <a href="${pageContext.request.contextPath}/manager/manager3/manager-member?usernumber=${usernumber+1}${query}">
                               <span><i class="fas fa-chevron-right"></i></span>
                            </a>   
                         </c:otherwise>
@@ -143,7 +141,7 @@
                            <span> <i class="fas fa-angle-double-right"></i></span>   
                         </c:when>
                         <c:otherwise>
-                           <a href="${pageContext.request.contextPath}/manager/manager3/manager-member?usernum=${maxBlock+1}${query}">
+                           <a href="${pageContext.request.contextPath}/manager/manager3/manager-member?usernumber=${maxBlock+1}${query}">
                               <span> <i class="fas fa-angle-double-right"></i></span>
                            </a>
                         </c:otherwise>
