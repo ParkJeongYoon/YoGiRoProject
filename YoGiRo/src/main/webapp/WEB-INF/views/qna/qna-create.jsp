@@ -41,12 +41,12 @@
 	
 	
     <script type="text/javascript">
-//		document.querySelector("button").addEventListener("click" , function() {
-//			this.setAttribute("disabled" , "");
-//			let setTo = setTimeout(function(){
-//				document.querySelector(".qna-create").removeAttribute("disabled");
-//			}, 1000);
-//		});
+		document.querySelector("button").addEventListener("click" , function() {
+			this.setAttribute("disabled" , "");
+			let setTo = setTimeout(function(){
+				document.querySelector(".qna-create").removeAttribute("disabled");
+			}, 1000);
+		});
 		
 		window.onload = function() {
 			CKEDITOR.replace("editor" , {

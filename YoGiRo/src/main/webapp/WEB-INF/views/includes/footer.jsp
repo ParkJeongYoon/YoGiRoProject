@@ -13,7 +13,6 @@
 		</div>
 		<div class="footer-main-right">
 			<div class="source-api-box">
-                <img class="source-api" src="${pageContext.request.contextPath}/img/common/logo-ncp.png">
                 <img class="source-api" src="${pageContext.request.contextPath}/img/common/logo-tour.jpg">
                 <img class="source-api" src="${pageContext.request.contextPath}/img/common/logo-nti.png">
                 <img class="source-api" src="${pageContext.request.contextPath}/img/common/logo-ex.png">
