@@ -22,9 +22,6 @@ public class UserController {
 	public String isLogin(UserVO vo,
 							HttpSession session,
 							HttpServletRequest request) {
-		//String backButton = request.getParameter("backButton");
-		//System.out.println("con1 : " + backButton);
-		
 		return loginservice.getuser(vo, session, request);
 	}
 	
