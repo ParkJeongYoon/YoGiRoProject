@@ -107,7 +107,7 @@
 	
 	    	rokThumbnail1.setAttribute('src' , '${pageContext.request.contextPath}/img/main/incheon/songdo.JPG');
 	    	rokThumbnail2.setAttribute('src' , '${pageContext.request.contextPath}/img/main/incheon/incheoninternationalairport.jpg');
-	    	rokThumbnail3.setAttribute('src' , '${pageContext.request.contextPath}/img/main/incheon/yeonpyeong.jpg');
+	    	rokThumbnail3.setAttribute('src' , '${pageContext.request.contextPath}/img/main/incheon/Ganghwa.jpg');
 	    	rokThumbnail4.setAttribute('src' , '${pageContext.request.contextPath}/img/main/incheon/dolmen.jpg');
 	    	
 	    	rokThumbnailContent.innerHTML = "<p>인천광역시는 대한민국 서북부에 있는 광역시이다. 육지를 기준으로 북쪽으로 경기도 김포시, 동쪽으로 서울특별시 강서구, 경기도 부천시와 접해있으며, 남동쪽으로 경기도 시흥시, 서쪽으로 황해와 접한다.</p>";
