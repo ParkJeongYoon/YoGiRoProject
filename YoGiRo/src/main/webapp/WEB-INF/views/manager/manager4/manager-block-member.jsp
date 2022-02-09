@@ -60,11 +60,11 @@
 		   		
 		   		<div class="pagenum" style="text-align: center; margin-top: 20px; ">
                       <%
-                        int usernum = (Integer)request.getAttribute("usernumber");
+                        int usernumber = (Integer)request.getAttribute("usernumber");
                         int count = (Integer)request.getAttribute("count");
                         int total = count/10+((count%10==0)?0:1);
-                        int minBlock = (((usernum-1)/10)*10)+1;
-                        int maxBlock = (((usernum-1)/10)+1)*10;
+                        int minBlock = (((usernumber-1)/10)*10)+1;
+                        int maxBlock = (((usernumber-1)/10)+1)*10;
                         
                         pageContext.setAttribute("total", total);
                         pageContext.setAttribute("minBlock", minBlock);
@@ -91,39 +91,39 @@
                            <span><i class="fas fa-angle-double-left"></i></span>   
                         </c:when>
                         <c:otherwise>
-                           <a href="${pageContext.request.contextPath}/manager/manager4/manager-block-member?usernum=${minBlock-1}${query}">
+                           <a href="${pageContext.request.contextPath}/manager/manager4/manager-block-member?usernumber=${minBlock-1}${query}">
                               <span><i class="fas fa-angle-double-left"></i></span>
                            </a>
                         </c:otherwise>
                      </c:choose>
                      &nbsp;&nbsp;
                      <c:choose>
-                        <c:when test="${usernum == 1 }">
+                        <c:when test="${usernumber == 1 }">
                            <span><i class="fas fa-chevron-left"></i></span>
                         </c:when>
                         <c:otherwise>
-                           <a href="${pageContext.request.contextPath}/manager/manager4/manager-block-member?usernum=${usernum-1}${query}">
+                           <a href="${pageContext.request.contextPath}/manager/manager4/manager-block-member?usernumber=${usernum-1}${query}">
                               <span><i class="fas fa-chevron-left"></i></span>
                            </a>
                         </c:otherwise>
                      </c:choose>
                      <c:forEach begin="${minBlock}" end="${(total<maxBlock)?total:maxBlock}" step="1" var="i">
                         <c:choose>
-                           <c:when test="${usernum == i}">
+                           <c:when test="${usernumber == i}">
                               <span>${i}</span>
                            </c:when>
                            <c:otherwise>
-                              <a href="${pageContext.request.contextPath}/manager/manager4/manager-block-member?usernum=${i}${query}">${i}</a>
+                              <a href="${pageContext.request.contextPath}/manager/manager4/manager-block-member?usernumber=${i}${query}">${i}</a>
                            </c:otherwise>
                         </c:choose>
                   
                      </c:forEach>
                      <c:choose>
-                        <c:when test="${usernum == total }">
+                        <c:when test="${usernumber == total }">
                            <span><i class="fas fa-chevron-right"></i></span>
                         </c:when>
                         <c:otherwise>
-                           <a href="${pageContext.request.contextPath}/manager/manager4/manager-block-member?usernum=${num+1}${query}">
+                           <a href="${pageContext.request.contextPath}/manager/manager4/manager-block-member?usernumber=${num+1}${query}">
                               <span><i class="fas fa-chevron-right"></i></span>
                            </a>   
                         </c:otherwise>
@@ -134,14 +134,14 @@
                            <span> <i class="fas fa-angle-double-right"></i></span>   
                         </c:when>
                         <c:otherwise>
-                           <a href="${pageContext.request.contextPath}/manager/manager4/manager-block-member?usernum=${maxBlock+1}${query}">
+                           <a href="${pageContext.request.contextPath}/manager/manager4/manager-block-member?usernumber=${maxBlock+1}${query}">
                               <span> <i class="fas fa-angle-double-right"></i></span>
                            </a>
                         </c:otherwise>
                      </c:choose>
                  </div>
                  
-                 <input type="button" value="차단해제" id="block" />
+                 <input type="button" value="차단해제" id="block" onclick="blockbtn()" />
                  
                  <div class="com-input">
 			              <c:choose>
@@ -196,6 +196,50 @@
 		         }
 		      });
 		});
+		
+		function blockbtn(){
+		  	  
+		  	  const url = "manager-block";		// controller로 보내고자 하는 url
+		  	  const valueArr = new Array();
+		  	  const list = $("input[name='bloCheck']");
+		  	  
+		  	  console.log(list);
+		  	  
+		  	  for (var i = 0; i < list.length; i++) {
+					if (list[i].checked) { // 선택되어있으면 배열에 값을 저장
+						valueArr.push(list[i].value);
+					}
+				}
+		  	  
+		  	  console.log(valueArr);
+		  	  
+		  	  
+		  	  if(valueArr.length == 0){
+		  		  alert("삭제할 항목을 선택해주세요");
+		  		  
+		  	  }
+		  	  
+		  	  const chk = confirm('정말 삭제하시겠습니까?');
+		  	  
+		  	  if(chk){      
+		  		  
+		  		  $.ajax({
+		  			  type : 'POST',  
+		  			  url : url,		// 전송 URL
+		  			  dataType : 'json',
+		  			  contentType:'application/json',
+		  			  data : JSON.stringify({ valueArr }), 	// 보내고자 하는 data 변수 설정		  
+		  			  success : function(result){
+		  				  if(result = 1) {
+		  					  alert("삭제 성공");
+		  					  location.replace("${pageContext.request.contextPath}/manager/manager4/manager-block-member"); // list로 페이지 새로고침
+		  				  }else{
+		  					  alert("삭제 실패");
+		  				  }
+		  			  }
+		  		  })
+		  	  }
+		    }
 	</script>
 </body>
 </html>

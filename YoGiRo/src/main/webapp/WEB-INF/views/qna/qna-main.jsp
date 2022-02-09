@@ -34,7 +34,8 @@
 							<tr>
 								<td>${item.qnum}</td>
 								<td>
-									<a href="${pageContext.request.contextPath}/qna/qna-detail?qnum=${item.qnum}">${item.qtitle}<c:if test="${item.isans eq 'Y'}">&nbsp;&nbsp;<i class="far fa-lightbulb"></i></c:if></a>
+									<a href="${pageContext.request.contextPath}/qna/qna-detail?qnum=${item.qnum}">${item.qtitle}
+									<c:if test="${item.isans eq 'Y'}">&nbsp;&nbsp;<i class="far fa-lightbulb"></i></c:if></a>
 								</td>
 								<td>${item.userid}</td>
 							</tr>

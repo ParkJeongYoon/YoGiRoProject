@@ -55,4 +55,10 @@
 	<delete id="blockUser" parameterType="userVO">
       update user set  isblock= 'Y' where userid = #{userid}
    	</delete>
+   	
+   	<update id="blockUser2" parameterType="userVO">
+      update user set  isblock= 'N' where userid = #{userid}
+   	</update>
+   	
+   	
 </mapper>
