@@ -36,15 +36,6 @@ public class MemberService {
 		
 	}
 	
-	public void getUserManager(UserVO vo) {
-		System.out.println(vo.getUserid()+"안녕 서비스");
-		sqlSessionTemplate.update("member.blockUser", vo);
-	}
-	
-	public void getUserManager2(UserVO vo) {
-		System.out.println(vo.getUserid()+"안녕 서비스");
-		sqlSessionTemplate.update("member.blockUser2", vo);
-	}
 	
 	public void getUserBlockList(Model model, int usernumber, String userid, String useremail ) {
 		UserVO vo = new UserVO();
@@ -60,7 +51,17 @@ public class MemberService {
 		}
 		
 		model.addAttribute("list", sqlSessionTemplate.selectList("member.selectUserBlockList",vo));
-		model.addAttribute("count", sqlSessionTemplate.selectOne("member.selectUserCount", vo));
+		model.addAttribute("count", sqlSessionTemplate.selectOne("member.selectUserBlockCount", vo));
 		model.addAttribute("usernumber", usernumber);
+	}
+	
+	public void getUserManager(UserVO vo) {
+//		System.out.println(vo.getUserid()+"안녕 서비스");
+		sqlSessionTemplate.update("member.blockUser", vo);
+	}
+	
+	public void getUserManager2(UserVO vo) {
+//		System.out.println(vo.getUserid()+"안녕 서비스");
+		sqlSessionTemplate.update("member.blockUser2", vo);
 	}
 }
