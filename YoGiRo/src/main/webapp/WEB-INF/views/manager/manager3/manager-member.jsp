@@ -234,11 +234,11 @@
 		  	  
 		  	  
 		  	  if(valueArr.length == 0){
-		  		  alert("삭제할 항목을 선택해주세요");
+		  		  alert("차단할 계정을 선택해주세요");
 		  		  
 		  	  }
 		  	  
-		  	  const chk = confirm('정말 삭제하시겠습니까?');
+		  	  const chk = confirm('정말 차단하시겠습니까?');
 		  	  
 		  	  if(chk){      
 		  		  
@@ -250,10 +250,10 @@
 		  			  data : JSON.stringify({ valueArr }), 	// 보내고자 하는 data 변수 설정		  
 		  			  success : function(result){
 		  				  if(result = 1) {
-		  					  alert("삭제 성공");
+		  					  alert("차단하였습니다");
 		  					  location.replace("${pageContext.request.contextPath}/manager/manager3/manager-member"); // list로 페이지 새로고침
 		  				  }else{
-		  					  alert("삭제 실패");
+		  					  alert("차단에 실패했습니다");
 		  				  }
 		  			  }
 		  		  })
