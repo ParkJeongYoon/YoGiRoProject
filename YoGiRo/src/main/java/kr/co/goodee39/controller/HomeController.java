@@ -10,8 +10,6 @@ public class HomeController {
 
 	@GetMapping("/")
 	public String main(HttpSession session) {
-//		int failCnt = -1;
-//		session.setAttribute("fail-cnt" , failCnt);
 		return "main";
 	}
 

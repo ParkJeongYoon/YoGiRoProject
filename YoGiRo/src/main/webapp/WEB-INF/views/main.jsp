@@ -10,7 +10,6 @@
 </head>
 <body class="body">
     <div class="container">
-        
 		<jsp:include page="includes/header.jsp"></jsp:include>
 
 

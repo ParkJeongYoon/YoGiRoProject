@@ -33,7 +33,7 @@ public class UserController {
 	@PostMapping("/signupResult")
 	public String signupResult(UserVO vo) {
 		loginservice.insertUser(vo);
-		return "/login/login-main";
+		return "signup/signup-result-alert";
 	}
 	
 	@GetMapping("/includes/logout")
