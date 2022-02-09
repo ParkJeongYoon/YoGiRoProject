@@ -173,8 +173,6 @@
     
     
     <script type="text/javascript">
-		window.location.reload(true);
-		
     	document.querySelector("button").addEventListener("click" , function() {
     		this.setAttribute("disabled" , "");
 			let setTo = setTimeout(function(){
