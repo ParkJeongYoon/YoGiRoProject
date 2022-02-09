@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 
 import kr.co.goodee39.vo.UserVO;
 
@@ -33,6 +34,16 @@ public class MemberService {
 		model.addAttribute("usernumber", usernumber);
 		
 		
+	}
+	
+	public void getUserManager(UserVO vo) {
+		System.out.println(vo.getUserid()+"안녕 서비스");
+		sqlSessionTemplate.update("member.blockUser", vo);
+	}
+	
+	public void getUserManager2(UserVO vo) {
+		System.out.println(vo.getUserid()+"안녕 서비스");
+		sqlSessionTemplate.update("member.blockUser2", vo);
 	}
 	
 	public void getUserBlockList(Model model, int usernumber, String userid, String useremail ) {

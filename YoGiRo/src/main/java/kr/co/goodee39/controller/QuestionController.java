@@ -38,13 +38,13 @@ public class QuestionController {
 		return "/manager/manager2/manager-que";
 	}
 	
-	@GetMapping("/manager/manager2/manager-qued")
-	public String getQUEDetail(@ModelAttribute("questionVO") QuestionVO vo, Model model) {
-//		System.out.println(vo.getQnum());
-		service.getQUE(model, vo);
-		
-		return "/manager/manager2/manager-qued";
-	}
+//	@GetMapping("/manager/manager2/manager-qued")
+//	public String getQUEDetail(@ModelAttribute("questionVO") QuestionVO vo, Model model) {
+////		System.out.println(vo.getQnum());
+//		service.getQUE(model, vo);
+//		
+//		return "/manager/manager2/manager-qued";
+//	}
 	
 	@GetMapping("/manager/manager2/manager-qns")
 	public String getQnaDetail1(Model model , QuestionVO vo) {

@@ -12,6 +12,17 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/questions.css">
     <script src="https://kit.fontawesome.com/79203d0d3b.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
+    <style type="text/css">
+    #block {
+    	position:absolute;
+    	left: 15%;
+    	bottom: 3%;
+    	background-color: #B2DFDB;
+    	border: none;
+    	padding: 10px 15px;
+    	cursor: pointer;
+    }
+    </style>
 </head>
 <body>
 	<div class="container">
@@ -56,6 +67,8 @@
                 </table>
 		   		
 		   		<div class="pagenum" style="text-align: center; margin-top: 20px; ">
+		   		 
+		   		 
                       <%
                         int usernum = (Integer)request.getAttribute("usernumber");
                         int count = (Integer)request.getAttribute("count");
@@ -138,7 +151,7 @@
                      </c:choose>
                  </div>
                  
-                 <input type="button" value="회원차단" id="block" />
+                 <input type="button" value="회원차단" id="block" onclick="blockbtn()" />
                  
                  <div class="com-input">
 			              <c:choose>
@@ -179,6 +192,8 @@
    		<jsp:include page="../../includes/footer.jsp"></jsp:include>
 	</div>
 	<script type="text/javascript">
+		
+	
 		$(function(){
 			
 			$("#search").click(function() {
@@ -191,7 +206,60 @@
 		            location.href = "${pageContext.request.contextPath}/manager/manager3/manager-member?useremail="+text;
 		         }
 		      });
+			
+			
 		});
+		
+		/*function blockbtn(){
+			var req = new XMLHttpRequest();
+			req.open("GET", "${pageContext.request.contextPath}/manager/manager3/manager-mem");
+			req.send();
+			location.href = "${pageContext.request.contextPath}/manager/manager3/manager-mem";
+		}*/
+		
+		function blockbtn(){
+		  	  
+		  	  const url = "manager-mem";		// controller로 보내고자 하는 url
+		  	  const valueArr = new Array();
+		  	  const list = $("input[name='bloCheck']");
+		  	  
+		  	  console.log(list);
+		  	  
+		  	  for (var i = 0; i < list.length; i++) {
+					if (list[i].checked) { // 선택되어있으면 배열에 값을 저장
+						valueArr.push(list[i].value);
+					}
+				}
+		  	  
+		  	  console.log(valueArr);
+		  	  
+		  	  
+		  	  if(valueArr.length == 0){
+		  		  alert("삭제할 항목을 선택해주세요");
+		  		  
+		  	  }
+		  	  
+		  	  const chk = confirm('정말 삭제하시겠습니까?');
+		  	  
+		  	  if(chk){      
+		  		  
+		  		  $.ajax({
+		  			  type : 'POST',  
+		  			  url : url,		// 전송 URL
+		  			  dataType : 'json',
+		  			  contentType:'application/json',
+		  			  data : JSON.stringify({ valueArr }), 	// 보내고자 하는 data 변수 설정		  
+		  			  success : function(result){
+		  				  if(result = 1) {
+		  					  alert("삭제 성공");
+		  					  location.replace("${pageContext.request.contextPath}/manager/manager3/manager-member"); // list로 페이지 새로고침
+		  				  }else{
+		  					  alert("삭제 실패");
+		  				  }
+		  			  }
+		  		  })
+		  	  }
+		    }
 	</script>
 </body>
 </html>
