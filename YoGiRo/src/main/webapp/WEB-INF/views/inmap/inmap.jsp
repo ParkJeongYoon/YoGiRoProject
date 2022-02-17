@@ -10,7 +10,7 @@
 	content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>Document</title>
 <script src="${pageContext.request.contextPath}/docs/js/jquery-1.9.1.js"></script>
-<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=q47hthbmmp&amp;submodules=geocoder"></script>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId={네이버API컨텐츠아이디}&amp;submodules=geocoder"></script>
 <script>
 	var HOME_PATH = '${pageContext.request.contextPath}/docs';
 </script>
@@ -327,7 +327,7 @@ input[type='checkbox']:checked+label {
 		$window.on('resize', function() {
 		    map.setSize(getMapSize());
 		});
-		 */
+		 */ // 페이즈 로드때부터 지도 사이즈 조절
 		var HOME_PATH = window.HOME_PATH || '.',
 		    urlPrefix = HOME_PATH +'/data/region',
 		    urlSuffix = '.json',
@@ -567,7 +567,7 @@ input[type='checkbox']:checked+label {
     	
     	// 날씨 html
 		const testWeather = document.querySelector(".test-weather");
-		let apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid=d799280283e40d2254954068f65817bd&q=${city1}";
+		let apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid={OpenWeather API 인증키}&q=${city1}";
 		
 	    $.ajax({
 	        url: apiURI,
@@ -604,7 +604,7 @@ input[type='checkbox']:checked+label {
 	    });
 	    
 	    
-		apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid=d799280283e40d2254954068f65817bd&q=${city2}";
+		apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid={OpenWeather API 인증키}&q=${city2}";
 		
 	    $.ajax({
 	        url: apiURI,
@@ -641,7 +641,7 @@ input[type='checkbox']:checked+label {
 	    });
 	    
 	    
-		apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid=d799280283e40d2254954068f65817bd&q=${city3}";
+		apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid={OpenWeather API 인증키}&q=${city3}";
 		
 	    $.ajax({
 	        url: apiURI,
@@ -678,7 +678,7 @@ input[type='checkbox']:checked+label {
 	    });
 	    
 	    
-		apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid=d799280283e40d2254954068f65817bd&q=${city4}";
+		apiURI = "https://api.openweathermap.org/data/2.5/weather?lang=kr&units=metric&appid={OpenWeather API 인증키}&q=${city4}";
 		
 	    $.ajax({
 	        url: apiURI,
@@ -720,7 +720,7 @@ input[type='checkbox']:checked+label {
 	<script type="text/javascript">
 		// 휴게소 api
 			function initMap1(index) {
-				var apiURI = "http://data.ex.co.kr/openapi/locationinfo/locationinfoRest?key=9479065828&type=json&numOfRows=99&pageNo="
+				var apiURI = "http://data.ex.co.kr/openapi/locationinfo/locationinfoRest?key={한국도로공사 휴게소 API 인증키}&type=json&numOfRows=99&pageNo="
 						+ index;
 				$.ajax({
 					url : apiURI,
@@ -743,7 +743,7 @@ input[type='checkbox']:checked+label {
 
 			// 주유소 api
 			function initMap2(index) {
-				var apiURI = "http://data.ex.co.kr/openapi/business/curStateStation?key=9479065828&type=json&numOfRows=99&pageNo="
+				var apiURI = "http://data.ex.co.kr/openapi/business/curStateStation?key={한국도로공사 주유소 API 인증키}&type=json&numOfRows=99&pageNo="
 						+ index;
 				$.ajax({
 					url : apiURI,
@@ -769,7 +769,7 @@ input[type='checkbox']:checked+label {
 
 			// 돌발사고 api
 			function initMap3() {
-				var apiURI = "https://openapi.its.go.kr:9443/eventInfo?apiKey=6cfdfd1f1e134f228a0d84a57f3de6e6&type=all&eventType=all&getType=json";
+				var apiURI = "https://openapi.its.go.kr:9443/eventInfo?apiKey={국가교통정보센터 돌발상황 API 인증키}&type=all&eventType=all&getType=json";
 				$.ajax({
 					url : apiURI,
 					dataType : "json",
