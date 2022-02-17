@@ -906,7 +906,7 @@ input[type='checkbox']:checked+label {
 				}
 			}
 			
-			/* 주소를 좌표로 바꿔주는 메소드 */
+			/* 주소를 좌표로 바꿔주는 메소드  */
 			function searchAddressToCoordinate(address) { // 주소와 마커의 위치를 위도, 경도를 받아와 지정
 				naver.maps.Service.geocode({
 					query : address
