@@ -791,7 +791,7 @@ input[type='checkbox']:checked+label {
 			// 휴게소 마커
 			function markermake1() {
 				for (var i = 0; i < areaArr1.length; i++) {
-					// 지역을 담은 배열의 길이만큼 for문으로 마커와 정보창을 채워주기
+					// 지역을 담은 배열의 길이만큼 for문으로 마커와 정보창을 채워주기 
 
 					var restmarker = new naver.maps.Marker({
 						map : map,
